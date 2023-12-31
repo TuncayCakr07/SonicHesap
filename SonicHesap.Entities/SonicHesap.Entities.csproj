@@ -53,7 +53,14 @@
   <ItemGroup>
     <Compile Include="Context\SonicHesapContext.cs" />
     <Compile Include="Mapping\CariMap.cs" />
+    <Compile Include="Mapping\DepoMap.cs" />
+    <Compile Include="Mapping\FisMap.cs" />
+    <Compile Include="Mapping\KasaHareketMap.cs" />
+    <Compile Include="Mapping\KasaMap.cs" />
+    <Compile Include="Mapping\OdemeTuruMap.cs" />
+    <Compile Include="Mapping\StokHareketMap.cs" />
     <Compile Include="Mapping\StokMap.cs" />
+    <Compile Include="Mapping\TanimMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tables\Cari.cs" />
     <Compile Include="Tables\Depo.cs" />

@@ -1,4 +1,5 @@
-﻿using SonicHesap.Entities.Tables;
+﻿using SonicHesap.Entities.Mapping;
+using SonicHesap.Entities.Tables;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -19,5 +20,19 @@ namespace SonicHesap.Entities.Context
         public DbSet<Kasa> Kasalar { get; set; }
         public DbSet<OdemeTuru> OdemeTurleri { get; set; }
         public DbSet<Tanim> Tanimlar { get; set; }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new StokMap());
+            modelBuilder.Configurations.Add(new CariMap());
+            modelBuilder.Configurations.Add(new FisMap());
+            modelBuilder.Configurations.Add(new StokHareketMap());
+            modelBuilder.Configurations.Add(new KasaHareketMap());
+            modelBuilder.Configurations.Add(new DepoMap());
+            modelBuilder.Configurations.Add(new KasaMap());
+            modelBuilder.Configurations.Add(new OdemeTuruMap());
+            modelBuilder.Configurations.Add(new TanimMap());
+        }
     }
 }

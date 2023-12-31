@@ -11,7 +11,6 @@ namespace SonicHesap.Entities.Tables
         public int Id { get; set; }
         public string FisKodu { get; set; }
         public string FisTuru { get; set; }
-        public string CariTuru { get; set; }
         public string CariKodu { get; set; }
         public string CariAdi { get; set; }
         public string BelgeNo { get; set; }

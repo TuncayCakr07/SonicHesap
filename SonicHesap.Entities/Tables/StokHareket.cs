@@ -11,7 +11,7 @@ namespace SonicHesap.Entities.Tables
         public int Id { get; set; }
         public string FisKodu { get; set; }
         public string Hareket { get; set; }
-        public string Stokkodu { get; set; }
+        public string StokKodu { get; set; }
         public string StokAdi { get; set; }
         public string BarkodTuru { get; set; }
         public string Barkod { get; set; }
