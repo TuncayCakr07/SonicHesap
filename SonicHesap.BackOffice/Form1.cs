@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SonicHesap.Entities.Context;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,10 @@ namespace SonicHesap.BackOffice
         public Form1()
         {
             InitializeComponent();
+            using (var context=new SonicHesapContext())
+            {
+                context.Database.CreateIfNotExists();
+            }
         }
     }
 }
