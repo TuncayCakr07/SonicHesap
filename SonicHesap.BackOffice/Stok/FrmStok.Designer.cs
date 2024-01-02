@@ -41,12 +41,40 @@
             this.btnDuzenle = new DevExpress.XtraEditors.SimpleButton();
             this.btnEkle = new DevExpress.XtraEditors.SimpleButton();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.filterControl1 = new DevExpress.XtraEditors.FilterControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.filterControl1 = new DevExpress.XtraEditors.FilterControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDurumu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStokKodu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStokAdi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBarkod = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBarkodTuru = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBirimi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStokGrubu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStokAltGrubu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMarka = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colModeli = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOzelKod1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOzelKod2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOzelKod3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOzelKod4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGarantiSuresi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colUreticiKodu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAlisKdv = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSatisKdv = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAlisFiyati1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAlisFiyati2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAlisFiyati3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSatisFiyati1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSatisFiyati2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSatisFiyati3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMinStokMiktarı = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMaxStokMiktarı = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -206,21 +234,38 @@
             this.splitContainerControl1.SplitterPosition = 149;
             this.splitContainerControl1.TabIndex = 2;
             // 
-            // gridControl1
+            // simpleButton3
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1365, 433);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton3.ImageOptions.ImageIndex = 0;
+            this.simpleButton3.ImageOptions.ImageList = this.ımageList1;
+            this.simpleButton3.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.simpleButton3.Location = new System.Drawing.Point(1293, 96);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(69, 53);
+            this.simpleButton3.TabIndex = 1;
             // 
-            // gridView1
+            // simpleButton2
             // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
+            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton2.ImageOptions.ImageIndex = 9;
+            this.simpleButton2.ImageOptions.ImageList = this.ımageList1;
+            this.simpleButton2.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.simpleButton2.Location = new System.Drawing.Point(1222, 96);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(69, 53);
+            this.simpleButton2.TabIndex = 1;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.ImageOptions.ImageIndex = 8;
+            this.simpleButton1.ImageOptions.ImageList = this.ımageList1;
+            this.simpleButton1.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.simpleButton1.Location = new System.Drawing.Point(1151, 96);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(69, 53);
+            this.simpleButton1.TabIndex = 1;
             // 
             // filterControl1
             // 
@@ -234,38 +279,323 @@
             this.filterControl1.TabIndex = 0;
             this.filterControl1.Text = "filterControl1";
             // 
-            // simpleButton1
+            // gridControl1
             // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.ImageOptions.ImageIndex = 8;
-            this.simpleButton1.ImageOptions.ImageList = this.ımageList1;
-            this.simpleButton1.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.simpleButton1.Location = new System.Drawing.Point(1151, 96);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(69, 53);
-            this.simpleButton1.TabIndex = 1;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(1365, 433);
+            this.gridControl1.TabIndex = 0;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
             // 
-            // simpleButton2
+            // gridView1
             // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.ImageOptions.ImageIndex = 9;
-            this.simpleButton2.ImageOptions.ImageList = this.ımageList1;
-            this.simpleButton2.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.simpleButton2.Location = new System.Drawing.Point(1222, 96);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(69, 53);
-            this.simpleButton2.TabIndex = 1;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colId,
+            this.colDurumu,
+            this.colStokKodu,
+            this.colStokAdi,
+            this.colBarkod,
+            this.colBarkodTuru,
+            this.colBirimi,
+            this.colStokGrubu,
+            this.colStokAltGrubu,
+            this.colMarka,
+            this.colModeli,
+            this.colOzelKod1,
+            this.colOzelKod2,
+            this.colOzelKod3,
+            this.colOzelKod4,
+            this.colGarantiSuresi,
+            this.colUreticiKodu,
+            this.colAlisKdv,
+            this.colSatisKdv,
+            this.colAlisFiyati1,
+            this.colAlisFiyati2,
+            this.colAlisFiyati3,
+            this.colSatisFiyati1,
+            this.colSatisFiyati2,
+            this.colSatisFiyati3,
+            this.colMinStokMiktarı,
+            this.colMaxStokMiktarı,
+            this.colAciklama});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
             // 
-            // simpleButton3
+            // colId
             // 
-            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton3.ImageOptions.ImageIndex = 0;
-            this.simpleButton3.ImageOptions.ImageList = this.ımageList1;
-            this.simpleButton3.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.simpleButton3.Location = new System.Drawing.Point(1293, 96);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(69, 53);
-            this.simpleButton3.TabIndex = 1;
+            this.colId.FieldName = "Id";
+            this.colId.MinWidth = 25;
+            this.colId.Name = "colId";
+            this.colId.OptionsColumn.AllowEdit = false;
+            this.colId.Width = 94;
+            // 
+            // colDurumu
+            // 
+            this.colDurumu.Caption = "Durumu";
+            this.colDurumu.FieldName = "Durumu";
+            this.colDurumu.MinWidth = 25;
+            this.colDurumu.Name = "colDurumu";
+            this.colDurumu.OptionsColumn.AllowEdit = false;
+            this.colDurumu.Visible = true;
+            this.colDurumu.VisibleIndex = 0;
+            this.colDurumu.Width = 77;
+            // 
+            // colStokKodu
+            // 
+            this.colStokKodu.Caption = "Stok Kodu";
+            this.colStokKodu.FieldName = "StokKodu";
+            this.colStokKodu.MinWidth = 25;
+            this.colStokKodu.Name = "colStokKodu";
+            this.colStokKodu.OptionsColumn.AllowEdit = false;
+            this.colStokKodu.Visible = true;
+            this.colStokKodu.VisibleIndex = 1;
+            this.colStokKodu.Width = 105;
+            // 
+            // colStokAdi
+            // 
+            this.colStokAdi.Caption = "Stok Adı";
+            this.colStokAdi.FieldName = "StokAdi";
+            this.colStokAdi.MinWidth = 25;
+            this.colStokAdi.Name = "colStokAdi";
+            this.colStokAdi.OptionsColumn.AllowEdit = false;
+            this.colStokAdi.Visible = true;
+            this.colStokAdi.VisibleIndex = 2;
+            this.colStokAdi.Width = 233;
+            // 
+            // colBarkod
+            // 
+            this.colBarkod.Caption = "Barkod";
+            this.colBarkod.FieldName = "Barkod";
+            this.colBarkod.MinWidth = 25;
+            this.colBarkod.Name = "colBarkod";
+            this.colBarkod.OptionsColumn.AllowEdit = false;
+            this.colBarkod.Visible = true;
+            this.colBarkod.VisibleIndex = 3;
+            this.colBarkod.Width = 95;
+            // 
+            // colBarkodTuru
+            // 
+            this.colBarkodTuru.Caption = "Barkod Türü";
+            this.colBarkodTuru.FieldName = "BarkodTuru";
+            this.colBarkodTuru.MinWidth = 25;
+            this.colBarkodTuru.Name = "colBarkodTuru";
+            this.colBarkodTuru.OptionsColumn.AllowEdit = false;
+            this.colBarkodTuru.Visible = true;
+            this.colBarkodTuru.VisibleIndex = 4;
+            this.colBarkodTuru.Width = 79;
+            // 
+            // colBirimi
+            // 
+            this.colBirimi.Caption = "Birimi";
+            this.colBirimi.FieldName = "Birimi";
+            this.colBirimi.MinWidth = 25;
+            this.colBirimi.Name = "colBirimi";
+            this.colBirimi.OptionsColumn.AllowEdit = false;
+            this.colBirimi.Visible = true;
+            this.colBirimi.VisibleIndex = 5;
+            this.colBirimi.Width = 71;
+            // 
+            // colStokGrubu
+            // 
+            this.colStokGrubu.Caption = "Stok Grubu";
+            this.colStokGrubu.FieldName = "StokGrubu";
+            this.colStokGrubu.MinWidth = 25;
+            this.colStokGrubu.Name = "colStokGrubu";
+            this.colStokGrubu.OptionsColumn.AllowEdit = false;
+            this.colStokGrubu.Visible = true;
+            this.colStokGrubu.VisibleIndex = 6;
+            this.colStokGrubu.Width = 86;
+            // 
+            // colStokAltGrubu
+            // 
+            this.colStokAltGrubu.Caption = "Stok Alt Grubu";
+            this.colStokAltGrubu.FieldName = "StokAltGrubu";
+            this.colStokAltGrubu.MinWidth = 25;
+            this.colStokAltGrubu.Name = "colStokAltGrubu";
+            this.colStokAltGrubu.OptionsColumn.AllowEdit = false;
+            this.colStokAltGrubu.Visible = true;
+            this.colStokAltGrubu.VisibleIndex = 7;
+            this.colStokAltGrubu.Width = 69;
+            // 
+            // colMarka
+            // 
+            this.colMarka.Caption = "Marka";
+            this.colMarka.FieldName = "Marka";
+            this.colMarka.MinWidth = 25;
+            this.colMarka.Name = "colMarka";
+            this.colMarka.OptionsColumn.AllowEdit = false;
+            this.colMarka.Width = 94;
+            // 
+            // colModeli
+            // 
+            this.colModeli.Caption = "Model";
+            this.colModeli.FieldName = "Modeli";
+            this.colModeli.MinWidth = 25;
+            this.colModeli.Name = "colModeli";
+            this.colModeli.OptionsColumn.AllowEdit = false;
+            this.colModeli.Width = 94;
+            // 
+            // colOzelKod1
+            // 
+            this.colOzelKod1.Caption = "Özel Kod-1";
+            this.colOzelKod1.FieldName = "OzelKod1";
+            this.colOzelKod1.MinWidth = 25;
+            this.colOzelKod1.Name = "colOzelKod1";
+            this.colOzelKod1.OptionsColumn.AllowEdit = false;
+            this.colOzelKod1.Width = 94;
+            // 
+            // colOzelKod2
+            // 
+            this.colOzelKod2.Caption = "Özel Kod-2";
+            this.colOzelKod2.FieldName = "OzelKod2";
+            this.colOzelKod2.MinWidth = 25;
+            this.colOzelKod2.Name = "colOzelKod2";
+            this.colOzelKod2.OptionsColumn.AllowEdit = false;
+            this.colOzelKod2.Width = 94;
+            // 
+            // colOzelKod3
+            // 
+            this.colOzelKod3.Caption = "Özel Kod-3";
+            this.colOzelKod3.FieldName = "OzelKod3";
+            this.colOzelKod3.MinWidth = 25;
+            this.colOzelKod3.Name = "colOzelKod3";
+            this.colOzelKod3.OptionsColumn.AllowEdit = false;
+            this.colOzelKod3.Width = 94;
+            // 
+            // colOzelKod4
+            // 
+            this.colOzelKod4.Caption = "Özel Kod-4";
+            this.colOzelKod4.FieldName = "OzelKod4";
+            this.colOzelKod4.MinWidth = 25;
+            this.colOzelKod4.Name = "colOzelKod4";
+            this.colOzelKod4.OptionsColumn.AllowEdit = false;
+            this.colOzelKod4.Width = 94;
+            // 
+            // colGarantiSuresi
+            // 
+            this.colGarantiSuresi.Caption = "Garanti Süresi";
+            this.colGarantiSuresi.FieldName = "GarantiSuresi";
+            this.colGarantiSuresi.MinWidth = 25;
+            this.colGarantiSuresi.Name = "colGarantiSuresi";
+            this.colGarantiSuresi.OptionsColumn.AllowEdit = false;
+            this.colGarantiSuresi.Width = 94;
+            // 
+            // colUreticiKodu
+            // 
+            this.colUreticiKodu.Caption = "Üretici Kodu";
+            this.colUreticiKodu.FieldName = "UreticiKodu";
+            this.colUreticiKodu.MinWidth = 25;
+            this.colUreticiKodu.Name = "colUreticiKodu";
+            this.colUreticiKodu.OptionsColumn.AllowEdit = false;
+            this.colUreticiKodu.Width = 94;
+            // 
+            // colAlisKdv
+            // 
+            this.colAlisKdv.Caption = "KDV(Alış)";
+            this.colAlisKdv.FieldName = "AlisKdv";
+            this.colAlisKdv.MinWidth = 25;
+            this.colAlisKdv.Name = "colAlisKdv";
+            this.colAlisKdv.OptionsColumn.AllowEdit = false;
+            this.colAlisKdv.Width = 94;
+            // 
+            // colSatisKdv
+            // 
+            this.colSatisKdv.Caption = "KDV(Satış)";
+            this.colSatisKdv.FieldName = "SatisKdv";
+            this.colSatisKdv.MinWidth = 25;
+            this.colSatisKdv.Name = "colSatisKdv";
+            this.colSatisKdv.OptionsColumn.AllowEdit = false;
+            this.colSatisKdv.Width = 94;
+            // 
+            // colAlisFiyati1
+            // 
+            this.colAlisFiyati1.Caption = "Alış Fiyatı-1";
+            this.colAlisFiyati1.FieldName = "AlisFiyati1";
+            this.colAlisFiyati1.MinWidth = 25;
+            this.colAlisFiyati1.Name = "colAlisFiyati1";
+            this.colAlisFiyati1.OptionsColumn.AllowEdit = false;
+            this.colAlisFiyati1.Width = 94;
+            // 
+            // colAlisFiyati2
+            // 
+            this.colAlisFiyati2.Caption = "Alış Fiyatı-2";
+            this.colAlisFiyati2.FieldName = "AlisFiyati2";
+            this.colAlisFiyati2.MinWidth = 25;
+            this.colAlisFiyati2.Name = "colAlisFiyati2";
+            this.colAlisFiyati2.OptionsColumn.AllowEdit = false;
+            this.colAlisFiyati2.Width = 94;
+            // 
+            // colAlisFiyati3
+            // 
+            this.colAlisFiyati3.Caption = "Alış Fiyatı-3";
+            this.colAlisFiyati3.FieldName = "AlisFiyati3";
+            this.colAlisFiyati3.MinWidth = 25;
+            this.colAlisFiyati3.Name = "colAlisFiyati3";
+            this.colAlisFiyati3.OptionsColumn.AllowEdit = false;
+            this.colAlisFiyati3.Width = 94;
+            // 
+            // colSatisFiyati1
+            // 
+            this.colSatisFiyati1.Caption = "Satış Fiyatı-1";
+            this.colSatisFiyati1.FieldName = "SatisFiyati1";
+            this.colSatisFiyati1.MinWidth = 25;
+            this.colSatisFiyati1.Name = "colSatisFiyati1";
+            this.colSatisFiyati1.OptionsColumn.AllowEdit = false;
+            this.colSatisFiyati1.Width = 94;
+            // 
+            // colSatisFiyati2
+            // 
+            this.colSatisFiyati2.Caption = "Satış Fiyatı-2";
+            this.colSatisFiyati2.FieldName = "SatisFiyati2";
+            this.colSatisFiyati2.MinWidth = 25;
+            this.colSatisFiyati2.Name = "colSatisFiyati2";
+            this.colSatisFiyati2.OptionsColumn.AllowEdit = false;
+            this.colSatisFiyati2.Width = 94;
+            // 
+            // colSatisFiyati3
+            // 
+            this.colSatisFiyati3.Caption = "Satış Fiyatı-3";
+            this.colSatisFiyati3.FieldName = "SatisFiyati3";
+            this.colSatisFiyati3.MinWidth = 25;
+            this.colSatisFiyati3.Name = "colSatisFiyati3";
+            this.colSatisFiyati3.OptionsColumn.AllowEdit = false;
+            this.colSatisFiyati3.Width = 94;
+            // 
+            // colMinStokMiktarı
+            // 
+            this.colMinStokMiktarı.Caption = "Min. Stok Miktarı";
+            this.colMinStokMiktarı.FieldName = "MinStokMiktarı";
+            this.colMinStokMiktarı.MinWidth = 25;
+            this.colMinStokMiktarı.Name = "colMinStokMiktarı";
+            this.colMinStokMiktarı.OptionsColumn.AllowEdit = false;
+            this.colMinStokMiktarı.Visible = true;
+            this.colMinStokMiktarı.VisibleIndex = 8;
+            this.colMinStokMiktarı.Width = 78;
+            // 
+            // colMaxStokMiktarı
+            // 
+            this.colMaxStokMiktarı.Caption = "Max. Stok Miktarı";
+            this.colMaxStokMiktarı.FieldName = "MaxStokMiktarı";
+            this.colMaxStokMiktarı.MinWidth = 25;
+            this.colMaxStokMiktarı.Name = "colMaxStokMiktarı";
+            this.colMaxStokMiktarı.OptionsColumn.AllowEdit = false;
+            this.colMaxStokMiktarı.Visible = true;
+            this.colMaxStokMiktarı.VisibleIndex = 9;
+            this.colMaxStokMiktarı.Width = 78;
+            // 
+            // colAciklama
+            // 
+            this.colAciklama.Caption = "Açıklama";
+            this.colAciklama.FieldName = "Aciklama";
+            this.colAciklama.MinWidth = 25;
+            this.colAciklama.Name = "colAciklama";
+            this.colAciklama.OptionsColumn.AllowEdit = false;
+            this.colAciklama.Visible = true;
+            this.colAciklama.VisibleIndex = 10;
+            this.colAciklama.Width = 364;
             // 
             // FrmStok
             // 
@@ -275,6 +605,7 @@
             this.Controls.Add(this.lblBaslik);
             this.Name = "FrmStok";
             this.Text = "Stok Kartları";
+            this.Load += new System.EventHandler(this.FrmStok_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).EndInit();
             this.grpMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
@@ -307,5 +638,33 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn colDurumu;
+        private DevExpress.XtraGrid.Columns.GridColumn colStokKodu;
+        private DevExpress.XtraGrid.Columns.GridColumn colStokAdi;
+        private DevExpress.XtraGrid.Columns.GridColumn colBarkod;
+        private DevExpress.XtraGrid.Columns.GridColumn colBarkodTuru;
+        private DevExpress.XtraGrid.Columns.GridColumn colBirimi;
+        private DevExpress.XtraGrid.Columns.GridColumn colStokGrubu;
+        private DevExpress.XtraGrid.Columns.GridColumn colStokAltGrubu;
+        private DevExpress.XtraGrid.Columns.GridColumn colMarka;
+        private DevExpress.XtraGrid.Columns.GridColumn colModeli;
+        private DevExpress.XtraGrid.Columns.GridColumn colOzelKod1;
+        private DevExpress.XtraGrid.Columns.GridColumn colOzelKod2;
+        private DevExpress.XtraGrid.Columns.GridColumn colOzelKod3;
+        private DevExpress.XtraGrid.Columns.GridColumn colOzelKod4;
+        private DevExpress.XtraGrid.Columns.GridColumn colGarantiSuresi;
+        private DevExpress.XtraGrid.Columns.GridColumn colUreticiKodu;
+        private DevExpress.XtraGrid.Columns.GridColumn colAlisKdv;
+        private DevExpress.XtraGrid.Columns.GridColumn colSatisKdv;
+        private DevExpress.XtraGrid.Columns.GridColumn colAlisFiyati1;
+        private DevExpress.XtraGrid.Columns.GridColumn colAlisFiyati2;
+        private DevExpress.XtraGrid.Columns.GridColumn colAlisFiyati3;
+        private DevExpress.XtraGrid.Columns.GridColumn colSatisFiyati1;
+        private DevExpress.XtraGrid.Columns.GridColumn colSatisFiyati2;
+        private DevExpress.XtraGrid.Columns.GridColumn colSatisFiyati3;
+        private DevExpress.XtraGrid.Columns.GridColumn colMinStokMiktarı;
+        private DevExpress.XtraGrid.Columns.GridColumn colMaxStokMiktarı;
+        private DevExpress.XtraGrid.Columns.GridColumn colAciklama;
     }
 }
