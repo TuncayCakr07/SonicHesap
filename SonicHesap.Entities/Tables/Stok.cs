@@ -28,14 +28,14 @@ namespace SonicHesap.Entities.Tables
         public string UreticiKodu { get; set; }
         public int AlisKdv { get; set; }
         public int SatisKdv { get; set; }
-        public decimal AlisFiyati1 { get; set; }
-        public decimal AlisFiyati2 { get; set; }
-        public decimal AlisFiyati3 { get; set; }
-        public decimal SatisFiyati1 { get; set; }
-        public decimal SatisFiyati2 { get; set; }
-        public decimal SatisFiyati3 { get; set; }
-        public decimal MinStokMiktarı { get; set; }
-        public decimal MaxStokMiktarı { get; set; }
+        public Nullable<decimal> AlisFiyati1 { get; set; }
+        public Nullable<decimal> AlisFiyati2 { get; set; }
+        public Nullable<decimal> AlisFiyati3 { get; set; }
+        public Nullable<decimal> SatisFiyati1 { get; set; }
+        public Nullable<decimal> SatisFiyati2 { get; set; }
+        public Nullable<decimal> SatisFiyati3 { get; set; }
+        public Nullable<decimal> MinStokMiktarı { get; set; }
+        public Nullable<decimal> MaxStokMiktarı { get; set; }
         public string Aciklama { get; set; }
 
     }

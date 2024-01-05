@@ -41,9 +41,9 @@
             this.btnDuzenle = new DevExpress.XtraEditors.SimpleButton();
             this.btnEkle = new DevExpress.XtraEditors.SimpleButton();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnFormKapat = new DevExpress.XtraEditors.SimpleButton();
+            this.btnFiltreKapat = new DevExpress.XtraEditors.SimpleButton();
+            this.btnFiltrele = new DevExpress.XtraEditors.SimpleButton();
             this.filterControl1 = new DevExpress.XtraEditors.FilterControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -75,6 +75,9 @@
             this.colMinStokMiktarı = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMaxStokMiktarı = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStokGiris = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStokCikis = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMevcutStok = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -129,6 +132,7 @@
             this.btnKapat.Size = new System.Drawing.Size(94, 53);
             this.btnKapat.TabIndex = 0;
             this.btnKapat.Text = "Kapat";
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
             // 
             // ımageList1
             // 
@@ -155,6 +159,7 @@
             this.btnAra.Size = new System.Drawing.Size(111, 53);
             this.btnAra.TabIndex = 0;
             this.btnAra.Text = "Ara";
+            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
             // 
             // btnGuncelle
             // 
@@ -166,6 +171,7 @@
             this.btnGuncelle.Size = new System.Drawing.Size(111, 53);
             this.btnGuncelle.TabIndex = 0;
             this.btnGuncelle.Text = "Güncelle";
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // btnKopyala
             // 
@@ -188,6 +194,7 @@
             this.btnSil.Size = new System.Drawing.Size(111, 53);
             this.btnSil.TabIndex = 0;
             this.btnSil.Text = "Sil";
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnDuzenle
             // 
@@ -220,9 +227,9 @@
             // 
             // splitContainerControl1.Panel1
             // 
-            this.splitContainerControl1.Panel1.Controls.Add(this.simpleButton3);
-            this.splitContainerControl1.Panel1.Controls.Add(this.simpleButton2);
-            this.splitContainerControl1.Panel1.Controls.Add(this.simpleButton1);
+            this.splitContainerControl1.Panel1.Controls.Add(this.btnFormKapat);
+            this.splitContainerControl1.Panel1.Controls.Add(this.btnFiltreKapat);
+            this.splitContainerControl1.Panel1.Controls.Add(this.btnFiltrele);
             this.splitContainerControl1.Panel1.Controls.Add(this.filterControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             // 
@@ -234,38 +241,41 @@
             this.splitContainerControl1.SplitterPosition = 149;
             this.splitContainerControl1.TabIndex = 2;
             // 
-            // simpleButton3
+            // btnFormKapat
             // 
-            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton3.ImageOptions.ImageIndex = 0;
-            this.simpleButton3.ImageOptions.ImageList = this.ımageList1;
-            this.simpleButton3.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.simpleButton3.Location = new System.Drawing.Point(1293, 96);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(69, 53);
-            this.simpleButton3.TabIndex = 1;
+            this.btnFormKapat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFormKapat.ImageOptions.ImageIndex = 0;
+            this.btnFormKapat.ImageOptions.ImageList = this.ımageList1;
+            this.btnFormKapat.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.btnFormKapat.Location = new System.Drawing.Point(1293, 96);
+            this.btnFormKapat.Name = "btnFormKapat";
+            this.btnFormKapat.Size = new System.Drawing.Size(69, 53);
+            this.btnFormKapat.TabIndex = 1;
+            this.btnFormKapat.Click += new System.EventHandler(this.btnFormKapat_Click);
             // 
-            // simpleButton2
+            // btnFiltreKapat
             // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.ImageOptions.ImageIndex = 9;
-            this.simpleButton2.ImageOptions.ImageList = this.ımageList1;
-            this.simpleButton2.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.simpleButton2.Location = new System.Drawing.Point(1222, 96);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(69, 53);
-            this.simpleButton2.TabIndex = 1;
+            this.btnFiltreKapat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFiltreKapat.ImageOptions.ImageIndex = 9;
+            this.btnFiltreKapat.ImageOptions.ImageList = this.ımageList1;
+            this.btnFiltreKapat.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.btnFiltreKapat.Location = new System.Drawing.Point(1222, 96);
+            this.btnFiltreKapat.Name = "btnFiltreKapat";
+            this.btnFiltreKapat.Size = new System.Drawing.Size(69, 53);
+            this.btnFiltreKapat.TabIndex = 1;
+            this.btnFiltreKapat.Click += new System.EventHandler(this.btnFiltreKapat_Click);
             // 
-            // simpleButton1
+            // btnFiltrele
             // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.ImageOptions.ImageIndex = 8;
-            this.simpleButton1.ImageOptions.ImageList = this.ımageList1;
-            this.simpleButton1.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.simpleButton1.Location = new System.Drawing.Point(1151, 96);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(69, 53);
-            this.simpleButton1.TabIndex = 1;
+            this.btnFiltrele.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFiltrele.ImageOptions.ImageIndex = 8;
+            this.btnFiltrele.ImageOptions.ImageList = this.ımageList1;
+            this.btnFiltrele.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.btnFiltrele.Location = new System.Drawing.Point(1151, 96);
+            this.btnFiltrele.Name = "btnFiltrele";
+            this.btnFiltrele.Size = new System.Drawing.Size(69, 53);
+            this.btnFiltrele.TabIndex = 1;
+            this.btnFiltrele.Click += new System.EventHandler(this.btnFiltrele_Click);
             // 
             // filterControl1
             // 
@@ -276,6 +286,7 @@
             this.filterControl1.NodeSeparatorHeight = 2;
             this.filterControl1.ShowActionButtonMode = DevExpress.XtraEditors.ShowActionButtonMode.Default;
             this.filterControl1.Size = new System.Drawing.Size(1365, 149);
+            this.filterControl1.SourceControl = this.gridControl1;
             this.filterControl1.TabIndex = 0;
             this.filterControl1.Text = "filterControl1";
             // 
@@ -320,7 +331,10 @@
             this.colSatisFiyati3,
             this.colMinStokMiktarı,
             this.colMaxStokMiktarı,
-            this.colAciklama});
+            this.colAciklama,
+            this.colStokGiris,
+            this.colStokCikis,
+            this.colMevcutStok});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
@@ -330,6 +344,7 @@
             this.colId.MinWidth = 25;
             this.colId.Name = "colId";
             this.colId.OptionsColumn.AllowEdit = false;
+            this.colId.OptionsColumn.AllowFocus = false;
             this.colId.Width = 94;
             // 
             // colDurumu
@@ -597,6 +612,39 @@
             this.colAciklama.VisibleIndex = 10;
             this.colAciklama.Width = 364;
             // 
+            // colStokGiris
+            // 
+            this.colStokGiris.Caption = "Stok Giriş";
+            this.colStokGiris.FieldName = "StokGiris";
+            this.colStokGiris.MinWidth = 25;
+            this.colStokGiris.Name = "colStokGiris";
+            this.colStokGiris.OptionsColumn.AllowFocus = false;
+            this.colStokGiris.Visible = true;
+            this.colStokGiris.VisibleIndex = 11;
+            this.colStokGiris.Width = 94;
+            // 
+            // colStokCikis
+            // 
+            this.colStokCikis.Caption = "Stok Çıkış";
+            this.colStokCikis.FieldName = "StokCikis";
+            this.colStokCikis.MinWidth = 25;
+            this.colStokCikis.Name = "colStokCikis";
+            this.colStokCikis.OptionsColumn.AllowFocus = false;
+            this.colStokCikis.Visible = true;
+            this.colStokCikis.VisibleIndex = 12;
+            this.colStokCikis.Width = 94;
+            // 
+            // colMevcutStok
+            // 
+            this.colMevcutStok.Caption = "Mevcut Stok";
+            this.colMevcutStok.FieldName = "MevcutStok";
+            this.colMevcutStok.MinWidth = 25;
+            this.colMevcutStok.Name = "colMevcutStok";
+            this.colMevcutStok.OptionsColumn.AllowFocus = false;
+            this.colMevcutStok.Visible = true;
+            this.colMevcutStok.VisibleIndex = 13;
+            this.colMevcutStok.Width = 94;
+            // 
             // FrmStok
             // 
             this.ClientSize = new System.Drawing.Size(1365, 743);
@@ -635,9 +683,9 @@
         private DevExpress.XtraEditors.FilterControl filterControl1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnFormKapat;
+        private DevExpress.XtraEditors.SimpleButton btnFiltreKapat;
+        private DevExpress.XtraEditors.SimpleButton btnFiltrele;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colDurumu;
         private DevExpress.XtraGrid.Columns.GridColumn colStokKodu;
@@ -666,5 +714,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMinStokMiktarı;
         private DevExpress.XtraGrid.Columns.GridColumn colMaxStokMiktarı;
         private DevExpress.XtraGrid.Columns.GridColumn colAciklama;
+        private DevExpress.XtraGrid.Columns.GridColumn colStokGiris;
+        private DevExpress.XtraGrid.Columns.GridColumn colStokCikis;
+        private DevExpress.XtraGrid.Columns.GridColumn colMevcutStok;
     }
 }

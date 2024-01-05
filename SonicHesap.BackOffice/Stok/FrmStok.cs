@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using SonicHesap.Entities.Context;
+using SonicHesap.Entities.Data_Access;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace SonicHesap.BackOffice.Stok
     public partial class FrmStok : DevExpress.XtraEditors.XtraForm
     {
         SonicHesapContext context=new SonicHesapContext();
+        StokDAL StokDAL = new StokDAL();
         public FrmStok()
         {
             InitializeComponent();
@@ -22,47 +24,54 @@ namespace SonicHesap.BackOffice.Stok
 
         private void FrmStok_Load(object sender, EventArgs e)
         {
-
+            GetAll();
         }
         public void GetAll() 
         {
-            var table = context.Stoklar.GroupJoin(context.StokHareketleri, c => c.StokKodu, c => c.StokKodu, (Stoklar, StokHareketleri) => 
-            new 
-            {
-                Stoklar.Id,
-                Stoklar.Durumu,
-                Stoklar.StokKodu,
-                Stoklar.StokAdi,
-                Stoklar.Barkod,
-                Stoklar.BarkodTuru,
-                Stoklar.Birimi,
-                Stoklar.StokGrubu,
-                Stoklar.StokAltGrubu,
-                Stoklar.Marka,
-                Stoklar.Modeli,
-                Stoklar.OzelKod1,
-                Stoklar.OzelKod2,
-                Stoklar.OzelKod3,
-                Stoklar.OzelKod4,
-                Stoklar.GarantiSuresi,
-                Stoklar.UreticiKodu,
-                Stoklar.AlisKdv,
-                Stoklar.SatisKdv,
-                Stoklar.AlisFiyati1,
-                Stoklar.AlisFiyati2,
-                Stoklar.AlisFiyati3,
-                Stoklar.SatisFiyati1,
-                Stoklar.SatisFiyati2,
-                Stoklar.SatisFiyati3,
-                Stoklar.MinStokMiktarı,
-                Stoklar.MaxStokMiktarı,
-                Stoklar.Aciklama,
-                StokGiris=StokHareketleri.Where(c=>c.Hareket=="Stok Giriş").Sum(c=>c.ToplamTutar),
-                StokCikis= StokHareketleri.Where(c => c.Hareket == "Stok Çıkış").Sum(c => c.ToplamTutar),
-                MevcutStok= StokHareketleri.Where(c => c.Hareket == "Stok Giriş").Sum(c => c.ToplamTutar)- StokHareketleri.Where(c => c.Hareket == "Stok Çıkış").Sum(c => c.ToplamTutar),
-            }).ToList();
-            gridControl1.DataSource = table;
+            gridControl1.DataSource=StokDAL.GetAllJoin(context);
         }
 
+        private void btnKapat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnFiltrele_Click(object sender, EventArgs e)
+        {
+            filterControl1.ApplyFilter();
+        }
+
+        private void btnFiltreKapat_Click(object sender, EventArgs e)
+        {
+            filterControl1.FilterString = null;
+            filterControl1.ApplyFilter();
+        }
+
+        private void btnFormKapat_Click(object sender, EventArgs e)
+        {
+            splitContainerControl1.PanelVisibility = SplitPanelVisibility.Panel2;
+        }
+
+        private void btnAra_Click(object sender, EventArgs e)
+        {
+            splitContainerControl1.PanelVisibility = SplitPanelVisibility.Both;
+        }
+
+        private void btnGuncelle_Click(object sender, EventArgs e)
+        {
+            GetAll();
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo)==DialogResult.Yes)
+            {
+                string secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
+                StokDAL.Delete(context,c=>c.StokKodu==secilen);
+                StokDAL.Save(context);
+                GetAll();
+            }
+            
+        }
     }
 }

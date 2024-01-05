@@ -17,12 +17,12 @@ namespace SonicHesap.Entities.Tables
         public string BarkodTuru { get; set; }
         public string Barkod { get; set; }
         public string Birimi { get; set; }
-        public decimal Miktar { get; set; }
+        public Nullable<decimal> Miktar { get; set; }
         public int Kdv { get; set; }
-        public decimal BirimFiyati { get; set; }
-        public decimal IndirimOrani { get; set; }
-        public decimal IndirimTutari { get; set; }
-        public decimal ToplamTutar { get; set; }
+        public Nullable<decimal> BirimFiyati { get; set; }
+        public Nullable<decimal> IndirimOrani { get; set; }
+        public Nullable<decimal> IndirimTutari { get; set; }
+        public Nullable<decimal> ToplamTutar { get; set; }
         public string DepoKodu { get; set; }
         public string DepoAdi { get; set; }
         public string SeriNo { get; set; }
