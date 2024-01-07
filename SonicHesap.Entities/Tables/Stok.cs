@@ -34,8 +34,8 @@ namespace SonicHesap.Entities.Tables
         public Nullable<decimal> SatisFiyati1 { get; set; }
         public Nullable<decimal> SatisFiyati2 { get; set; }
         public Nullable<decimal> SatisFiyati3 { get; set; }
-        public Nullable<decimal> MinStokMiktarı { get; set; }
-        public Nullable<decimal> MaxStokMiktarı { get; set; }
+        public Nullable<decimal> MinStokMiktari { get; set; }
+        public Nullable<decimal> MaxStokMiktari { get; set; }
         public string Aciklama { get; set; }
 
     }

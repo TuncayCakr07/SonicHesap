@@ -73,5 +73,29 @@ namespace SonicHesap.BackOffice.Stok
             }
             
         }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            FrmStokIslem form=new FrmStokIslem(new Entities.Tables.Stok());
+            form.ShowDialog();
+        }
+
+        private void btnDuzenle_Click(object sender, EventArgs e)
+        {
+            string secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
+            FrmStokIslem form = new FrmStokIslem(StokDAL.GetByFilter(context,c=>c.StokKodu==secilen));
+            form.ShowDialog();
+        }
+
+        private void btnKopyala_Click(object sender, EventArgs e)
+        {
+            string secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
+            Entities.Tables.Stok stokEntity= new Entities.Tables.Stok();
+            stokEntity = StokDAL.GetByFilter(context, c => c.StokKodu == secilen);
+            stokEntity.Id = -1;
+            stokEntity.StokKodu = null;
+            FrmStokIslem form = new FrmStokIslem(stokEntity);
+            form.ShowDialog();
+        }
     }
 }

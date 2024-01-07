@@ -37,8 +37,8 @@ namespace SonicHesap.Entities.Mapping
             this.Property(x => x.SatisFiyati1).HasPrecision(12, 2);
             this.Property(x => x.SatisFiyati2).HasPrecision(12, 2);
             this.Property(x => x.SatisFiyati3).HasPrecision(12, 2);
-            this.Property(x => x.MinStokMiktarı).HasPrecision(12, 3);
-            this.Property(x => x.MaxStokMiktarı).HasPrecision(12, 3);
+            this.Property(x => x.MinStokMiktari).HasPrecision(12, 3);
+            this.Property(x => x.MaxStokMiktari).HasPrecision(12, 3);
             this.Property(x => x.Aciklama).HasMaxLength(300);
 
             this.ToTable("Stoklar");
@@ -67,8 +67,8 @@ namespace SonicHesap.Entities.Mapping
             this.Property(x=>x.SatisFiyati1).HasColumnName("SatisFiyati1");
             this.Property(x=>x.SatisFiyati2).HasColumnName("SatisFiyati2");
             this.Property(x=>x.SatisFiyati3).HasColumnName("SatisFiyati3");
-            this.Property(x=>x.MaxStokMiktarı).HasColumnName("MaxStokMiktarı");
-            this.Property(x=>x.MinStokMiktarı).HasColumnName("MinStokMiktarı");
+            this.Property(x=>x.MaxStokMiktari).HasColumnName("MaxStokMiktarı");
+            this.Property(x=>x.MinStokMiktari).HasColumnName("MinStokMiktarı");
             this.Property(x=>x.Aciklama).HasColumnName("Aciklama");
         }
     }
