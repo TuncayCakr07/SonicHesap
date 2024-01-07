@@ -80,6 +80,12 @@
     <Compile Include="Stok\FrmStok.Designer.cs">
       <DependentUpon>FrmStok.cs</DependentUpon>
     </Compile>
+    <Compile Include="Stok\FrmStokHareket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stok\FrmStokHareket.Designer.cs">
+      <DependentUpon>FrmStokHareket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stok\FrmStokIslem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,12 +108,16 @@
     <EmbeddedResource Include="Stok\FrmStok.resx">
       <DependentUpon>FrmStok.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Stok\FrmStokHareket.resx">
+      <DependentUpon>FrmStokHareket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Stok\FrmStokIslem.resx">
       <DependentUpon>FrmStokIslem.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Stok.datasource" />
+    <None Include="Properties\DataSources\SonicHesap.Entities.Tables.StokHareket.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

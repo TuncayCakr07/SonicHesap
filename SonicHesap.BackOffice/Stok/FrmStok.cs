@@ -17,6 +17,7 @@ namespace SonicHesap.BackOffice.Stok
     {
         SonicHesapContext context=new SonicHesapContext();
         StokDAL StokDAL = new StokDAL();
+        string secilen;
         public FrmStok()
         {
             InitializeComponent();
@@ -64,9 +65,9 @@ namespace SonicHesap.BackOffice.Stok
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo)==DialogResult.Yes)
+            if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
             {
-                string secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
+                secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
                 StokDAL.Delete(context,c=>c.StokKodu==secilen);
                 StokDAL.Save(context);
                 GetAll();
@@ -82,19 +83,27 @@ namespace SonicHesap.BackOffice.Stok
 
         private void btnDuzenle_Click(object sender, EventArgs e)
         {
-            string secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
+             secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
             FrmStokIslem form = new FrmStokIslem(StokDAL.GetByFilter(context,c=>c.StokKodu==secilen));
             form.ShowDialog();
         }
 
         private void btnKopyala_Click(object sender, EventArgs e)
         {
-            string secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
+             secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
             Entities.Tables.Stok stokEntity= new Entities.Tables.Stok();
             stokEntity = StokDAL.GetByFilter(context, c => c.StokKodu == secilen);
             stokEntity.Id = -1;
             stokEntity.StokKodu = null;
             FrmStokIslem form = new FrmStokIslem(stokEntity);
+            form.ShowDialog();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+             secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
+            string secilenAd = gridView1.GetFocusedRowCellValue(colStokAdi).ToString();
+            FrmStokHareket form = new FrmStokHareket(secilen,secilenAd);
             form.ShowDialog();
         }
     }

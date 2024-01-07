@@ -32,8 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStok));
             this.lblBaslik = new DevExpress.XtraEditors.LabelControl();
             this.grpMenu = new DevExpress.XtraEditors.GroupControl();
-            this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
             this.btnAra = new DevExpress.XtraEditors.SimpleButton();
             this.btnGuncelle = new DevExpress.XtraEditors.SimpleButton();
             this.btnKopyala = new DevExpress.XtraEditors.SimpleButton();
@@ -108,6 +109,7 @@
             // 
             // grpMenu
             // 
+            this.grpMenu.Controls.Add(this.simpleButton1);
             this.grpMenu.Controls.Add(this.btnKapat);
             this.grpMenu.Controls.Add(this.btnAra);
             this.grpMenu.Controls.Add(this.btnGuncelle);
@@ -122,17 +124,17 @@
             this.grpMenu.TabIndex = 1;
             this.grpMenu.Text = "Menü";
             // 
-            // btnKapat
+            // simpleButton1
             // 
-            this.btnKapat.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnKapat.ImageOptions.ImageIndex = 0;
-            this.btnKapat.ImageOptions.ImageList = this.ımageList1;
-            this.btnKapat.Location = new System.Drawing.Point(1269, 28);
-            this.btnKapat.Name = "btnKapat";
-            this.btnKapat.Size = new System.Drawing.Size(94, 53);
-            this.btnKapat.TabIndex = 0;
-            this.btnKapat.Text = "Kapat";
-            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
+            this.simpleButton1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.simpleButton1.ImageOptions.ImageIndex = 10;
+            this.simpleButton1.ImageOptions.ImageList = this.ımageList1;
+            this.simpleButton1.Location = new System.Drawing.Point(668, 28);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(120, 53);
+            this.simpleButton1.TabIndex = 1;
+            this.simpleButton1.Text = "Stok Hareket";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // ımageList1
             // 
@@ -148,6 +150,19 @@
             this.ımageList1.Images.SetKeyName(7, "folder_out.png");
             this.ımageList1.Images.SetKeyName(8, "funnel.png");
             this.ımageList1.Images.SetKeyName(9, "funnel_delete.png");
+            this.ımageList1.Images.SetKeyName(10, "StokHareket.png");
+            // 
+            // btnKapat
+            // 
+            this.btnKapat.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnKapat.ImageOptions.ImageIndex = 0;
+            this.btnKapat.ImageOptions.ImageList = this.ımageList1;
+            this.btnKapat.Location = new System.Drawing.Point(1269, 28);
+            this.btnKapat.Name = "btnKapat";
+            this.btnKapat.Size = new System.Drawing.Size(94, 53);
+            this.btnKapat.TabIndex = 0;
+            this.btnKapat.Text = "Kapat";
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
             // 
             // btnAra
             // 
@@ -250,7 +265,7 @@
             this.btnFormKapat.ImageOptions.ImageIndex = 0;
             this.btnFormKapat.ImageOptions.ImageList = this.ımageList1;
             this.btnFormKapat.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnFormKapat.Location = new System.Drawing.Point(1293, 96);
+            this.btnFormKapat.Location = new System.Drawing.Point(2658, 96);
             this.btnFormKapat.Name = "btnFormKapat";
             this.btnFormKapat.Size = new System.Drawing.Size(69, 53);
             this.btnFormKapat.TabIndex = 1;
@@ -262,7 +277,7 @@
             this.btnFiltreKapat.ImageOptions.ImageIndex = 9;
             this.btnFiltreKapat.ImageOptions.ImageList = this.ımageList1;
             this.btnFiltreKapat.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnFiltreKapat.Location = new System.Drawing.Point(1222, 96);
+            this.btnFiltreKapat.Location = new System.Drawing.Point(2587, 96);
             this.btnFiltreKapat.Name = "btnFiltreKapat";
             this.btnFiltreKapat.Size = new System.Drawing.Size(69, 53);
             this.btnFiltreKapat.TabIndex = 1;
@@ -274,7 +289,7 @@
             this.btnFiltrele.ImageOptions.ImageIndex = 8;
             this.btnFiltrele.ImageOptions.ImageList = this.ımageList1;
             this.btnFiltrele.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnFiltrele.Location = new System.Drawing.Point(1151, 96);
+            this.btnFiltrele.Location = new System.Drawing.Point(2516, 96);
             this.btnFiltrele.Name = "btnFiltrele";
             this.btnFiltrele.Size = new System.Drawing.Size(69, 53);
             this.btnFiltrele.TabIndex = 1;
@@ -517,6 +532,8 @@
             this.colAlisKdv.MinWidth = 25;
             this.colAlisKdv.Name = "colAlisKdv";
             this.colAlisKdv.OptionsColumn.AllowEdit = false;
+            this.colAlisKdv.Visible = true;
+            this.colAlisKdv.VisibleIndex = 10;
             this.colAlisKdv.Width = 94;
             // 
             // colSatisKdv
@@ -526,6 +543,8 @@
             this.colSatisKdv.MinWidth = 25;
             this.colSatisKdv.Name = "colSatisKdv";
             this.colSatisKdv.OptionsColumn.AllowEdit = false;
+            this.colSatisKdv.Visible = true;
+            this.colSatisKdv.VisibleIndex = 11;
             this.colSatisKdv.Width = 94;
             // 
             // colAlisFiyati1
@@ -612,7 +631,7 @@
             this.colAciklama.Name = "colAciklama";
             this.colAciklama.OptionsColumn.AllowEdit = false;
             this.colAciklama.Visible = true;
-            this.colAciklama.VisibleIndex = 10;
+            this.colAciklama.VisibleIndex = 12;
             this.colAciklama.Width = 364;
             // 
             // colStokGiris
@@ -623,7 +642,7 @@
             this.colStokGiris.Name = "colStokGiris";
             this.colStokGiris.OptionsColumn.AllowFocus = false;
             this.colStokGiris.Visible = true;
-            this.colStokGiris.VisibleIndex = 11;
+            this.colStokGiris.VisibleIndex = 13;
             this.colStokGiris.Width = 94;
             // 
             // colStokCikis
@@ -634,7 +653,7 @@
             this.colStokCikis.Name = "colStokCikis";
             this.colStokCikis.OptionsColumn.AllowFocus = false;
             this.colStokCikis.Visible = true;
-            this.colStokCikis.VisibleIndex = 12;
+            this.colStokCikis.VisibleIndex = 14;
             this.colStokCikis.Width = 94;
             // 
             // colMevcutStok
@@ -645,7 +664,7 @@
             this.colMevcutStok.Name = "colMevcutStok";
             this.colMevcutStok.OptionsColumn.AllowFocus = false;
             this.colMevcutStok.Visible = true;
-            this.colMevcutStok.VisibleIndex = 13;
+            this.colMevcutStok.VisibleIndex = 15;
             this.colMevcutStok.Width = 94;
             // 
             // FrmStok
@@ -720,5 +739,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colStokGiris;
         private DevExpress.XtraGrid.Columns.GridColumn colStokCikis;
         private DevExpress.XtraGrid.Columns.GridColumn colMevcutStok;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
