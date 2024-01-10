@@ -67,9 +67,11 @@ namespace SonicHesap.BackOffice.Stok
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            StokDAL.AddOrUpdate(context, _entity);
-            StokDAL.Save(context);
-            this.Close();
+            if (StokDAL.AddOrUpdate(context, _entity))
+            {
+               StokDAL.Save(context);
+               this.Close();
+            } 
         }
 
         private void btnKapat_Click(object sender, EventArgs e)

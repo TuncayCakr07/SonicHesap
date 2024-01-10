@@ -412,8 +412,8 @@
             // 
             this.toggleDurum.Location = new System.Drawing.Point(117, 31);
             this.toggleDurum.Name = "toggleDurum";
-            this.toggleDurum.Properties.OffText = "Off";
-            this.toggleDurum.Properties.OnText = "On";
+            this.toggleDurum.Properties.OffText = "Pasif";
+            this.toggleDurum.Properties.OnText = "Aktif";
             this.toggleDurum.Size = new System.Drawing.Size(133, 24);
             this.toggleDurum.TabIndex = 1;
             // 

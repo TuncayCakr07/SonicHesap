@@ -15,7 +15,6 @@ namespace SonicHesap.BackOffice.Stok
 {
     public partial class FrmStokHareket : DevExpress.XtraEditors.XtraForm
     {
-        StokDAL stokDal=new StokDAL();
         StokHareketDAL hareketDal=new StokHareketDAL();
         SonicHesapContext context = new SonicHesapContext();
         private string _stokKodu;
@@ -34,8 +33,8 @@ namespace SonicHesap.BackOffice.Stok
         private void Guncelle()
         {
             gridContStokHareket.DataSource = hareketDal.GetAll(context, c => c.StokKodu == _stokKodu);
-            gridContGenelStok.DataSource = stokDal.GetGenelStok(context, _stokKodu);
-            gridContDepoStok.DataSource = stokDal.GetDepoStok(context, _stokKodu);
+            gridContGenelStok.DataSource = hareketDal.GetGenelStok(context, _stokKodu);
+            gridContDepoStok.DataSource = hareketDal.GetDepoStok(context, _stokKodu);
         }
 
         private void btnKapat_Click(object sender, EventArgs e)

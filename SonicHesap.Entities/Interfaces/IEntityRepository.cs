@@ -15,7 +15,9 @@ namespace SonicHesap.Entities.Interfaces
     where TEntity : class,IEntity,new()
 
     {
-        void AddOrUpdate(TContext context, TEntity entity);
+        List<TEntity> GetAll(TContext context,Expression<Func<TEntity,bool>>filter=null);
+        TEntity GetByFilter(TContext context, Expression<Func<TEntity, bool>> filter);
+        bool AddOrUpdate(TContext context, TEntity entity);
         void Delete(TContext context, Expression<Func<TEntity, bool>> filter);
         void Save(TContext context);
     }

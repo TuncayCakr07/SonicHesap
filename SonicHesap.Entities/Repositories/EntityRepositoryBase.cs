@@ -29,7 +29,7 @@ namespace SonicHesap.Entities.Repositories
             return context.Set<TEntity>().SingleOrDefault(filter);
         }
 
-        public void AddOrUpdate(TContext context, TEntity entity)
+        public bool AddOrUpdate(TContext context, TEntity entity)
         {
             TValidator validator=new TValidator();
             var validationResult = ValidatorTool.Validate(validator, entity);
@@ -37,6 +37,7 @@ namespace SonicHesap.Entities.Repositories
             {
               context.Set<TEntity>().AddOrUpdate(entity);
             }
+            return validationResult;
             
         }
 

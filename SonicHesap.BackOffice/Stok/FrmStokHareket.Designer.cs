@@ -331,6 +331,8 @@
             // colKdv
             // 
             this.colKdv.Caption = "KDV(%)";
+            this.colKdv.DisplayFormat.FormatString = "\'%0\'";
+            this.colKdv.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colKdv.FieldName = "Kdv";
             this.colKdv.MinWidth = 25;
             this.colKdv.Name = "colKdv";
@@ -343,6 +345,8 @@
             // colBirimFiyati
             // 
             this.colBirimFiyati.Caption = "Birim Fiyatı";
+            this.colBirimFiyati.DisplayFormat.FormatString = "C2";
+            this.colBirimFiyati.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colBirimFiyati.FieldName = "BirimFiyati";
             this.colBirimFiyati.MinWidth = 25;
             this.colBirimFiyati.Name = "colBirimFiyati";
@@ -355,6 +359,8 @@
             // colIndirimOrani
             // 
             this.colIndirimOrani.Caption = "İnd.Oran(%)";
+            this.colIndirimOrani.DisplayFormat.FormatString = "\'%0\'";
+            this.colIndirimOrani.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colIndirimOrani.FieldName = "IndirimOrani";
             this.colIndirimOrani.MinWidth = 25;
             this.colIndirimOrani.Name = "colIndirimOrani";
@@ -367,6 +373,8 @@
             // colIndirimTutari
             // 
             this.colIndirimTutari.Caption = "İnd. Tutar";
+            this.colIndirimTutari.DisplayFormat.FormatString = "C2";
+            this.colIndirimTutari.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colIndirimTutari.FieldName = "IndirimTutari";
             this.colIndirimTutari.MinWidth = 25;
             this.colIndirimTutari.Name = "colIndirimTutari";
@@ -379,6 +387,8 @@
             // colToplamTutar
             // 
             this.colToplamTutar.Caption = "Toplam Tutar";
+            this.colToplamTutar.DisplayFormat.FormatString = "C2";
+            this.colToplamTutar.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colToplamTutar.FieldName = "ToplamTutar";
             this.colToplamTutar.MinWidth = 25;
             this.colToplamTutar.Name = "colToplamTutar";
@@ -423,6 +433,8 @@
             // colTarih
             // 
             this.colTarih.Caption = "Tarih";
+            this.colTarih.DisplayFormat.FormatString = "d";
+            this.colTarih.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colTarih.FieldName = "Tarih";
             this.colTarih.MinWidth = 25;
             this.colTarih.Name = "colTarih";
@@ -435,6 +447,8 @@
             // colSaat
             // 
             this.colSaat.Caption = "Saat";
+            this.colSaat.DisplayFormat.FormatString = "t";
+            this.colSaat.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colSaat.FieldName = "Tarih";
             this.colSaat.MinWidth = 25;
             this.colSaat.Name = "colSaat";
