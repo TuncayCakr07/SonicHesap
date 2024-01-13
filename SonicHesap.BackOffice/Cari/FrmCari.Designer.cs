@@ -353,6 +353,7 @@
             // 
             this.colIskontoOranı.Caption = "İskonto Oranı";
             this.colIskontoOranı.DisplayFormat.FormatString = "\'%0\'";
+            this.colIskontoOranı.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colIskontoOranı.FieldName = "IskontoOranı";
             this.colIskontoOranı.MinWidth = 25;
             this.colIskontoOranı.Name = "colIskontoOranı";
@@ -498,6 +499,7 @@
             this.simpleButton1.Size = new System.Drawing.Size(120, 53);
             this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "Cari Hareket";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // btnKapat
             // 

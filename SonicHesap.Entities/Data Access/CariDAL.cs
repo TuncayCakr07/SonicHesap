@@ -48,8 +48,8 @@ namespace SonicHesap.Entities.Data_Access
                 cariler.AlisOzelFiyati,
                 cariler.SatisOzelFiyati,
                 cariler.Aciklama,
-                AlisToplam = fisler.Where(c => c.FisTuru == "Alış Fişi").Sum(c => c.ToplamTutar) ?? 0,
-                SatisToplam = fisler.Where(c => c.FisTuru == "Satış Fişi").Sum(c => c.ToplamTutar) ?? 0,
+                AlisToplam = fisler.Where(c => c.FisTuru == "Alış Faturası").Sum(c => c.ToplamTutar) ?? 0,
+                SatisToplam = fisler.Where(c => c.FisTuru == "Perakende Satış Faturası").Sum(c => c.ToplamTutar) ?? 0,
             }).GroupJoin(context.KasaHareketleri, c => c.CariKodu, c => c.CariKodu, (cariler, kasahareket) => new
             {
                 cariler.Id,
@@ -102,18 +102,18 @@ namespace SonicHesap.Entities.Data_Access
                 fisler.IskontoOrani,
                 fisler.Aciklama,
                 fisler.ToplamTutar,
-                Odenen=context.KasaHareketleri.Sum(c=>c.Tutar) ?? 0,
-                KalanOdeme=fisler.ToplamTutar - context.KasaHareketleri.Sum(c => c.Tutar) ?? 0
+                Odenen=context.KasaHareketleri.Where(c=>c.FisKodu==fisler.FisKodu).Sum(c=>c.Tutar) ?? 0,
+                KalanOdeme=fisler.ToplamTutar - context.KasaHareketleri.Where(c => c.FisKodu == fisler.FisKodu).Sum(c => c.Tutar) ?? 0
             }).ToList();
             return result;
         }
         public object CariFisGenelToplam(SonicHesapContext context,string cariKodu)
         {
-            var result=(from c in context.fisler.Where(c=>c.CariKodu==cariKodu) group c by new {c.FisTuru,c.ToplamTutar} into grp select new
+            var result=(from c in context.fisler.Where(c=>c.CariKodu==cariKodu) group c by new {c.FisTuru} into grp select new
             {
               Bilgi=grp.Key.FisTuru,
               KayitSayisi=grp.Count(),
-              ToplamTutar=grp.Sum(c=>c.ToplamTutar),
+              Tutar=grp.Sum(c=>c.ToplamTutar),
             }).ToList();
             return result;
         }
@@ -122,7 +122,7 @@ namespace SonicHesap.Entities.Data_Access
             decimal alacak = (context.fisler.Where(c => c.CariKodu == cariKodu && c.FisTuru == "Alış Faturası").Sum(c => c.ToplamTutar) ?? 0 +
                 (context.KasaHareketleri.Where(c => c.CariKodu == cariKodu && c.Hareket == "Kasa Giriş").Sum(c => c.Tutar) ?? 0));
 
-            decimal borc = (context.fisler.Where(c => c.CariKodu == cariKodu && c.FisTuru == "Satış Faturası").Sum(c => c.ToplamTutar) ?? 0 +
+            decimal borc = (context.fisler.Where(c => c.CariKodu == cariKodu && c.FisTuru == "Perakende Satış Faturası").Sum(c => c.ToplamTutar) ?? 0 +
             (context.KasaHareketleri.Where(c => c.CariKodu == cariKodu && c.Hareket == "Kasa Çıkış").Sum(c => c.Tutar) ?? 0));
 
             List<GenelToplam> genelToplamlar = new List<GenelToplam>()

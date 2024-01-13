@@ -97,5 +97,13 @@ namespace SonicHesap.BackOffice.Cari
             FrmCariIslem form = new FrmCariIslem(cariEntity);
             form.ShowDialog();
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            secilen = gridView1.GetFocusedRowCellValue(colCariKodu).ToString();
+            string secilenAd = gridView1.GetFocusedRowCellValue(colCariAdi).ToString();
+            FrmCariHareket form = new FrmCariHareket(secilen, secilenAd);
+            form.ShowDialog();
+        }
     }
 }

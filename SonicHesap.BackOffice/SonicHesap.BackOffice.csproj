@@ -153,6 +153,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Cari.datasource" />
+    <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Fis.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Stok.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.StokHareket.datasource" />
     <None Include="Properties\Settings.settings">
