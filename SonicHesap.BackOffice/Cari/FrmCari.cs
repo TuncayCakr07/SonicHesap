@@ -27,7 +27,11 @@ namespace SonicHesap.BackOffice.Cari
         private void btnEkle_Click(object sender, EventArgs e)
         {
             FrmCariIslem form=new FrmCariIslem(new Entities.Tables.Cari());
-            form.ShowDialog();  
+            form.ShowDialog();
+            if (form.saved)
+            {
+                GetAll();
+            }
         }
         private void btnFormKapat_Click(object sender, EventArgs e)
         {
@@ -85,6 +89,10 @@ namespace SonicHesap.BackOffice.Cari
             secilen = gridView1.GetFocusedRowCellValue(colCariKodu).ToString();
             FrmCariIslem form = new FrmCariIslem(cariDal.GetByFilter(context, c => c.CariKodu == secilen));
             form.ShowDialog();
+            if (form.saved)
+            {
+                GetAll();
+            }
         }
 
         private void btnKopyala_Click(object sender, EventArgs e)
@@ -96,6 +104,8 @@ namespace SonicHesap.BackOffice.Cari
             cariEntity.CariKodu = null;
             FrmCariIslem form = new FrmCariIslem(cariEntity);
             form.ShowDialog();
+            GetAll();
+
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -104,6 +114,7 @@ namespace SonicHesap.BackOffice.Cari
             string secilenAd = gridView1.GetFocusedRowCellValue(colCariAdi).ToString();
             FrmCariHareket form = new FrmCariHareket(secilen, secilenAd);
             form.ShowDialog();
+            GetAll();
         }
     }
 }

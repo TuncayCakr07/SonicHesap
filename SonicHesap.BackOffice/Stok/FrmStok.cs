@@ -79,6 +79,10 @@ namespace SonicHesap.BackOffice.Stok
         {
             FrmStokIslem form=new FrmStokIslem(new Entities.Tables.Stok());
             form.ShowDialog();
+            if (form.saved)
+            {
+                GetAll();
+            }
         }
 
         private void btnDuzenle_Click(object sender, EventArgs e)
@@ -86,6 +90,10 @@ namespace SonicHesap.BackOffice.Stok
              secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
             FrmStokIslem form = new FrmStokIslem(StokDAL.GetByFilter(context,c=>c.StokKodu==secilen));
             form.ShowDialog();
+            if (form.saved)
+            {
+                GetAll();
+            }
         }
 
         private void btnKopyala_Click(object sender, EventArgs e)
@@ -97,6 +105,10 @@ namespace SonicHesap.BackOffice.Stok
             stokEntity.StokKodu = null;
             FrmStokIslem form = new FrmStokIslem(stokEntity);
             form.ShowDialog();
+            if (form.saved)
+            {
+                GetAll();
+            }
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)

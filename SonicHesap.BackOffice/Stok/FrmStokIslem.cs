@@ -17,6 +17,7 @@ namespace SonicHesap.BackOffice.Stok
         private Entities.Tables.Stok _entity;
         private StokDAL StokDAL=new StokDAL();
         private SonicHesapContext context=new SonicHesapContext();
+        public bool saved = false;
         public FrmStokIslem(Entities.Tables.Stok entity)
         {
             InitializeComponent();

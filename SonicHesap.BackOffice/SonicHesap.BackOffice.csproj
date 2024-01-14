@@ -90,6 +90,24 @@
     <Compile Include="Cari\FrmCariIslem.Designer.cs">
       <DependentUpon>FrmCariIslem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cari\FrmCariSec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cari\FrmCariSec.Designer.cs">
+      <DependentUpon>FrmCariSec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kasa\FrmKasa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kasa\FrmKasa.Designer.cs">
+      <DependentUpon>FrmKasa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kasa\FrmKasaIslem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kasa\FrmKasaIslem.Designer.cs">
+      <DependentUpon>FrmKasaIslem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stok\FrmStok.cs">
@@ -128,6 +146,15 @@
     <EmbeddedResource Include="Cari\FrmCariIslem.resx">
       <DependentUpon>FrmCariIslem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cari\FrmCariSec.resx">
+      <DependentUpon>FrmCariSec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kasa\FrmKasa.resx">
+      <DependentUpon>FrmKasa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kasa\FrmKasaIslem.resx">
+      <DependentUpon>FrmKasaIslem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -154,6 +181,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Cari.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Fis.datasource" />
+    <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Kasa.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Stok.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.StokHareket.datasource" />
     <None Include="Properties\Settings.settings">

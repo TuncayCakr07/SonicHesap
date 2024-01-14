@@ -19,6 +19,7 @@ namespace SonicHesap.BackOffice.Cari
         private  Entities.Tables.Cari _entity;
         private CariDAL cariDAL=new CariDAL();
         private SonicHesapContext context=new SonicHesapContext();
+        public bool saved=false;
         public FrmCariIslem(Entities.Tables.Cari entity)
         {
             InitializeComponent();
@@ -49,7 +50,7 @@ namespace SonicHesap.BackOffice.Cari
             btnOzelKod4.DataBindings.Add("Text", _entity, "OzelKod4", false, DataSourceUpdateMode.OnPropertyChanged);
             cmbAlisOzelFiyat.DataBindings.Add("Text", _entity, "AlisOzelFiyati", false, DataSourceUpdateMode.OnPropertyChanged);
             cmbSatisOzelFiyat.DataBindings.Add("Text", _entity, "SatisOzelFiyati", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtIskontoOrani.DataBindings.Add("EditValue", _entity, "IskontoOrani", true, DataSourceUpdateMode.OnPropertyChanged, 0, "'%'0");
+            txtIskontoOrani.DataBindings.Add("EditValue", _entity, "IskontoOranı", true, DataSourceUpdateMode.OnPropertyChanged, 0, "'%'0");
             txtIskontoOrani.DataBindings[0].DataSourceNullValue = "0";
             txtRiskLimiti.DataBindings.Add("EditValue", _entity, "RiskLimiti", true, DataSourceUpdateMode.OnPropertyChanged, 0, "C2");
             txtRiskLimiti.DataBindings[0].DataSourceNullValue = "0";
@@ -68,6 +69,7 @@ namespace SonicHesap.BackOffice.Cari
             if (cariDAL.AddOrUpdate(context,_entity))
             {
                 cariDAL.Save(context);
+                saved=true;
                 this.Close();
             }
         }
