@@ -98,5 +98,14 @@ namespace SonicHesap.BackOffice.Kasa
                 Guncelle();
             }
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            secilen = gridKasalar.GetFocusedRowCellValue(colKasaKodu).ToString();
+            string secilenAd = gridKasalar.GetFocusedRowCellValue(colKasaKodu).ToString();
+            FrmCariHareket form = new FrmCariHareket(secilen, secilenAd);
+            form.ShowDialog();
+            Guncelle();
+        }
     }
 }

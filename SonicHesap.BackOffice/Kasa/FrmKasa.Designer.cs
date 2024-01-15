@@ -125,6 +125,7 @@
             this.simpleButton1.Size = new System.Drawing.Size(120, 53);
             this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "Kasa\r\nHareket";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // btnKapat
             // 

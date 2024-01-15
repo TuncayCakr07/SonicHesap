@@ -96,17 +96,35 @@
     <Compile Include="Cari\FrmCariSec.Designer.cs">
       <DependentUpon>FrmCariSec.cs</DependentUpon>
     </Compile>
+    <Compile Include="Depo\FrmDepo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Depo\FrmDepo.Designer.cs">
+      <DependentUpon>FrmDepo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kasa\FrmKasa.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Kasa\FrmKasa.Designer.cs">
       <DependentUpon>FrmKasa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kasa\FrmKasaHareket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kasa\FrmKasaHareket.Designer.cs">
+      <DependentUpon>FrmKasaHareket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kasa\FrmKasaIslem.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Kasa\FrmKasaIslem.Designer.cs">
       <DependentUpon>FrmKasaIslem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kasa\FrmKasaSecim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kasa\FrmKasaSecim.Designer.cs">
+      <DependentUpon>FrmKasaSecim.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,11 +167,20 @@
     <EmbeddedResource Include="Cari\FrmCariSec.resx">
       <DependentUpon>FrmCariSec.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Depo\FrmDepo.resx">
+      <DependentUpon>FrmDepo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Kasa\FrmKasa.resx">
       <DependentUpon>FrmKasa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Kasa\FrmKasaHareket.resx">
+      <DependentUpon>FrmKasaHareket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Kasa\FrmKasaIslem.resx">
       <DependentUpon>FrmKasaIslem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kasa\FrmKasaSecim.resx">
+      <DependentUpon>FrmKasaSecim.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -180,8 +207,10 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Cari.datasource" />
+    <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Depo.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Fis.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Kasa.datasource" />
+    <None Include="Properties\DataSources\SonicHesap.Entities.Tables.KasaHareket.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Stok.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.StokHareket.datasource" />
     <None Include="Properties\Settings.settings">
