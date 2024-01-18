@@ -38,15 +38,6 @@
             this.filterControl1 = new DevExpress.XtraEditors.FilterControl();
             this.gridContDepolar = new DevExpress.XtraGrid.GridControl();
             this.gridDepolar = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.grpMenu = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
-            this.btnAra = new DevExpress.XtraEditors.SimpleButton();
-            this.btnGuncelle = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSil = new DevExpress.XtraEditors.SimpleButton();
-            this.btnDuzenle = new DevExpress.XtraEditors.SimpleButton();
-            this.btnEkle = new DevExpress.XtraEditors.SimpleButton();
-            this.lblBaslik = new DevExpress.XtraEditors.LabelControl();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDepoKodu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDepoAdi = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -58,6 +49,15 @@
             this.colAdres = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTelefon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grpMenu = new DevExpress.XtraEditors.GroupControl();
+            this.btnHareket = new DevExpress.XtraEditors.SimpleButton();
+            this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAra = new DevExpress.XtraEditors.SimpleButton();
+            this.btnGuncelle = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSil = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDuzenle = new DevExpress.XtraEditors.SimpleButton();
+            this.btnEkle = new DevExpress.XtraEditors.SimpleButton();
+            this.lblBaslik = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             this.splitContainerControl1.Panel1.SuspendLayout();
@@ -192,119 +192,6 @@
             this.gridDepolar.GridControl = this.gridContDepolar;
             this.gridDepolar.Name = "gridDepolar";
             // 
-            // grpMenu
-            // 
-            this.grpMenu.Controls.Add(this.simpleButton1);
-            this.grpMenu.Controls.Add(this.btnKapat);
-            this.grpMenu.Controls.Add(this.btnAra);
-            this.grpMenu.Controls.Add(this.btnGuncelle);
-            this.grpMenu.Controls.Add(this.btnSil);
-            this.grpMenu.Controls.Add(this.btnDuzenle);
-            this.grpMenu.Controls.Add(this.btnEkle);
-            this.grpMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grpMenu.Location = new System.Drawing.Point(0, 660);
-            this.grpMenu.Name = "grpMenu";
-            this.grpMenu.Size = new System.Drawing.Size(1365, 83);
-            this.grpMenu.TabIndex = 4;
-            this.grpMenu.Text = "Menü";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.simpleButton1.ImageOptions.ImageIndex = 9;
-            this.simpleButton1.ImageOptions.ImageList = this.ımageList1;
-            this.simpleButton1.Location = new System.Drawing.Point(557, 28);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(120, 53);
-            this.simpleButton1.TabIndex = 1;
-            this.simpleButton1.Text = "Stok Hareket";
-            // 
-            // btnKapat
-            // 
-            this.btnKapat.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnKapat.ImageOptions.ImageIndex = 6;
-            this.btnKapat.ImageOptions.ImageList = this.ımageList1;
-            this.btnKapat.Location = new System.Drawing.Point(1269, 28);
-            this.btnKapat.Name = "btnKapat";
-            this.btnKapat.Size = new System.Drawing.Size(94, 53);
-            this.btnKapat.TabIndex = 0;
-            this.btnKapat.Text = "Kapat";
-            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
-            // 
-            // btnAra
-            // 
-            this.btnAra.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAra.ImageOptions.ImageIndex = 15;
-            this.btnAra.ImageOptions.ImageList = this.ımageList1;
-            this.btnAra.Location = new System.Drawing.Point(446, 28);
-            this.btnAra.Name = "btnAra";
-            this.btnAra.Size = new System.Drawing.Size(111, 53);
-            this.btnAra.TabIndex = 0;
-            this.btnAra.Text = "Ara";
-            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
-            // 
-            // btnGuncelle
-            // 
-            this.btnGuncelle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnGuncelle.ImageOptions.ImageIndex = 12;
-            this.btnGuncelle.ImageOptions.ImageList = this.ımageList1;
-            this.btnGuncelle.Location = new System.Drawing.Point(335, 28);
-            this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(111, 53);
-            this.btnGuncelle.TabIndex = 0;
-            this.btnGuncelle.Text = "Güncelle";
-            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
-            // 
-            // btnSil
-            // 
-            this.btnSil.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnSil.ImageOptions.ImageIndex = 14;
-            this.btnSil.ImageOptions.ImageList = this.ımageList1;
-            this.btnSil.Location = new System.Drawing.Point(224, 28);
-            this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(111, 53);
-            this.btnSil.TabIndex = 0;
-            this.btnSil.Text = "Sil";
-            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
-            // 
-            // btnDuzenle
-            // 
-            this.btnDuzenle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnDuzenle.ImageOptions.ImageIndex = 3;
-            this.btnDuzenle.ImageOptions.ImageList = this.ımageList1;
-            this.btnDuzenle.Location = new System.Drawing.Point(113, 28);
-            this.btnDuzenle.Name = "btnDuzenle";
-            this.btnDuzenle.Size = new System.Drawing.Size(111, 53);
-            this.btnDuzenle.TabIndex = 0;
-            this.btnDuzenle.Text = "Düzenle";
-            // 
-            // btnEkle
-            // 
-            this.btnEkle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnEkle.ImageOptions.ImageIndex = 4;
-            this.btnEkle.ImageOptions.ImageList = this.ımageList1;
-            this.btnEkle.Location = new System.Drawing.Point(2, 28);
-            this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(111, 53);
-            this.btnEkle.TabIndex = 0;
-            this.btnEkle.Text = "Ekle";
-            // 
-            // lblBaslik
-            // 
-            this.lblBaslik.Appearance.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblBaslik.Appearance.Options.UseFont = true;
-            this.lblBaslik.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblBaslik.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.lblBaslik.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblBaslik.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.lblBaslik.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblBaslik.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("lblBaslik.ImageOptions.Image")));
-            this.lblBaslik.Location = new System.Drawing.Point(0, 0);
-            this.lblBaslik.Name = "lblBaslik";
-            this.lblBaslik.Size = new System.Drawing.Size(1365, 66);
-            this.lblBaslik.TabIndex = 3;
-            this.lblBaslik.Text = "Depo Kartları";
-            // 
             // colId
             // 
             this.colId.FieldName = "Id";
@@ -424,6 +311,122 @@
             this.colAciklama.VisibleIndex = 9;
             this.colAciklama.Width = 94;
             // 
+            // grpMenu
+            // 
+            this.grpMenu.Controls.Add(this.btnHareket);
+            this.grpMenu.Controls.Add(this.btnKapat);
+            this.grpMenu.Controls.Add(this.btnAra);
+            this.grpMenu.Controls.Add(this.btnGuncelle);
+            this.grpMenu.Controls.Add(this.btnSil);
+            this.grpMenu.Controls.Add(this.btnDuzenle);
+            this.grpMenu.Controls.Add(this.btnEkle);
+            this.grpMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.grpMenu.Location = new System.Drawing.Point(0, 660);
+            this.grpMenu.Name = "grpMenu";
+            this.grpMenu.Size = new System.Drawing.Size(1365, 83);
+            this.grpMenu.TabIndex = 4;
+            this.grpMenu.Text = "Menü";
+            // 
+            // btnHareket
+            // 
+            this.btnHareket.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnHareket.ImageOptions.ImageIndex = 9;
+            this.btnHareket.ImageOptions.ImageList = this.ımageList1;
+            this.btnHareket.Location = new System.Drawing.Point(557, 28);
+            this.btnHareket.Name = "btnHareket";
+            this.btnHareket.Size = new System.Drawing.Size(120, 53);
+            this.btnHareket.TabIndex = 1;
+            this.btnHareket.Text = "Depo Hareket";
+            this.btnHareket.Click += new System.EventHandler(this.btnHareket_Click);
+            // 
+            // btnKapat
+            // 
+            this.btnKapat.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnKapat.ImageOptions.ImageIndex = 6;
+            this.btnKapat.ImageOptions.ImageList = this.ımageList1;
+            this.btnKapat.Location = new System.Drawing.Point(1269, 28);
+            this.btnKapat.Name = "btnKapat";
+            this.btnKapat.Size = new System.Drawing.Size(94, 53);
+            this.btnKapat.TabIndex = 0;
+            this.btnKapat.Text = "Kapat";
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
+            // 
+            // btnAra
+            // 
+            this.btnAra.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAra.ImageOptions.ImageIndex = 15;
+            this.btnAra.ImageOptions.ImageList = this.ımageList1;
+            this.btnAra.Location = new System.Drawing.Point(446, 28);
+            this.btnAra.Name = "btnAra";
+            this.btnAra.Size = new System.Drawing.Size(111, 53);
+            this.btnAra.TabIndex = 0;
+            this.btnAra.Text = "Ara";
+            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
+            // 
+            // btnGuncelle
+            // 
+            this.btnGuncelle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnGuncelle.ImageOptions.ImageIndex = 12;
+            this.btnGuncelle.ImageOptions.ImageList = this.ımageList1;
+            this.btnGuncelle.Location = new System.Drawing.Point(335, 28);
+            this.btnGuncelle.Name = "btnGuncelle";
+            this.btnGuncelle.Size = new System.Drawing.Size(111, 53);
+            this.btnGuncelle.TabIndex = 0;
+            this.btnGuncelle.Text = "Güncelle";
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
+            // 
+            // btnSil
+            // 
+            this.btnSil.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSil.ImageOptions.ImageIndex = 14;
+            this.btnSil.ImageOptions.ImageList = this.ımageList1;
+            this.btnSil.Location = new System.Drawing.Point(224, 28);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(111, 53);
+            this.btnSil.TabIndex = 0;
+            this.btnSil.Text = "Sil";
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
+            // 
+            // btnDuzenle
+            // 
+            this.btnDuzenle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDuzenle.ImageOptions.ImageIndex = 3;
+            this.btnDuzenle.ImageOptions.ImageList = this.ımageList1;
+            this.btnDuzenle.Location = new System.Drawing.Point(113, 28);
+            this.btnDuzenle.Name = "btnDuzenle";
+            this.btnDuzenle.Size = new System.Drawing.Size(111, 53);
+            this.btnDuzenle.TabIndex = 0;
+            this.btnDuzenle.Text = "Düzenle";
+            this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
+            // 
+            // btnEkle
+            // 
+            this.btnEkle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnEkle.ImageOptions.ImageIndex = 4;
+            this.btnEkle.ImageOptions.ImageList = this.ımageList1;
+            this.btnEkle.Location = new System.Drawing.Point(2, 28);
+            this.btnEkle.Name = "btnEkle";
+            this.btnEkle.Size = new System.Drawing.Size(111, 53);
+            this.btnEkle.TabIndex = 0;
+            this.btnEkle.Text = "Ekle";
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
+            // 
+            // lblBaslik
+            // 
+            this.lblBaslik.Appearance.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblBaslik.Appearance.Options.UseFont = true;
+            this.lblBaslik.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblBaslik.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.lblBaslik.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblBaslik.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.lblBaslik.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblBaslik.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("lblBaslik.ImageOptions.Image")));
+            this.lblBaslik.Location = new System.Drawing.Point(0, 0);
+            this.lblBaslik.Name = "lblBaslik";
+            this.lblBaslik.Size = new System.Drawing.Size(1365, 66);
+            this.lblBaslik.TabIndex = 3;
+            this.lblBaslik.Text = "Depo Kartları";
+            // 
             // FrmDepo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -460,7 +463,7 @@
         private DevExpress.XtraGrid.GridControl gridContDepolar;
         private DevExpress.XtraGrid.Views.Grid.GridView gridDepolar;
         private DevExpress.XtraEditors.GroupControl grpMenu;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnHareket;
         private DevExpress.XtraEditors.SimpleButton btnKapat;
         private DevExpress.XtraEditors.SimpleButton btnAra;
         private DevExpress.XtraEditors.SimpleButton btnGuncelle;

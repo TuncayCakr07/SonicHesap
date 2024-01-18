@@ -33,10 +33,11 @@
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnCari = new DevExpress.XtraBars.BarButtonItem();
+            this.btnKasa = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.btnKasa = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDepo = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -49,10 +50,11 @@
             this.ribbonControl1.ExpandCollapseItem,
             this.barButtonItem1,
             this.btnCari,
-            this.btnKasa});
+            this.btnKasa,
+            this.btnDepo});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 4;
+            this.ribbonControl1.MaxItemId = 5;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 385;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -75,6 +77,15 @@
             this.btnCari.Name = "btnCari";
             this.btnCari.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCari_ItemClick);
             // 
+            // btnKasa
+            // 
+            this.btnKasa.Caption = "Kasa";
+            this.btnKasa.Id = 3;
+            this.btnKasa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnKasa.ImageOptions.Image")));
+            this.btnKasa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnKasa.ImageOptions.LargeImage")));
+            this.btnKasa.Name = "btnKasa";
+            this.btnKasa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnKasa_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -87,6 +98,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnCari);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnKasa);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnDepo);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
@@ -94,14 +106,13 @@
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
-            // btnKasa
+            // btnDepo
             // 
-            this.btnKasa.Caption = "Kasa";
-            this.btnKasa.Id = 3;
-            this.btnKasa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.btnKasa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
-            this.btnKasa.Name = "btnKasa";
-            this.btnKasa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnKasa_ItemClick);
+            this.btnDepo.Caption = "Depo";
+            this.btnDepo.Id = 4;
+            this.btnDepo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDepo.ImageOptions.LargeImage")));
+            this.btnDepo.Name = "btnDepo";
+            this.btnDepo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDepo_ItemClick);
             // 
             // FrmAnaMenu
             // 
@@ -130,6 +141,7 @@
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraBars.BarButtonItem btnCari;
         private DevExpress.XtraBars.BarButtonItem btnKasa;
+        private DevExpress.XtraBars.BarButtonItem btnDepo;
     }
 }
 

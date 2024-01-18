@@ -102,11 +102,23 @@
     <Compile Include="Depo\FrmDepo.Designer.cs">
       <DependentUpon>FrmDepo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Depo\FrmDepoHareket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Depo\FrmDepoHareket.Designer.cs">
+      <DependentUpon>FrmDepoHareket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Depo\FrmDepoIslem.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Depo\FrmDepoIslem.Designer.cs">
       <DependentUpon>FrmDepoIslem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Depo\FrmDepoSec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Depo\FrmDepoSec.Designer.cs">
+      <DependentUpon>FrmDepoSec.cs</DependentUpon>
     </Compile>
     <Compile Include="Kasa\FrmKasa.cs">
       <SubType>Form</SubType>
@@ -176,8 +188,14 @@
     <EmbeddedResource Include="Depo\FrmDepo.resx">
       <DependentUpon>FrmDepo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Depo\FrmDepoHareket.resx">
+      <DependentUpon>FrmDepoHareket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Depo\FrmDepoIslem.resx">
       <DependentUpon>FrmDepoIslem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Depo\FrmDepoSec.resx">
+      <DependentUpon>FrmDepoSec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Kasa\FrmKasa.resx">
       <DependentUpon>FrmKasa.cs</DependentUpon>

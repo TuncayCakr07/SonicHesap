@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using SonicHesap.BackOffice.Cari;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
 using SonicHesap.Entities.Mapping;
@@ -18,6 +19,7 @@ namespace SonicHesap.BackOffice.Depo
     {
         SonicHesapContext context=new SonicHesapContext();
         DepoDAL depoDal=new DepoDAL();
+        string secilen = null;
         public FrmDepo()
         {
             InitializeComponent();
@@ -74,6 +76,36 @@ namespace SonicHesap.BackOffice.Depo
                 depoDal.Save(context);
                 Listele();
             }
+        }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            FrmDepoIslem form=new FrmDepoIslem(new Entities.Tables.Depo());
+            form.ShowDialog();
+            if (form.kaydedildi)
+            {
+                Listele();
+            }
+        }
+
+        private void btnDuzenle_Click(object sender, EventArgs e)
+        {
+            secilen = gridDepolar.GetFocusedRowCellValue(colDepoKodu).ToString();
+            FrmDepoIslem form = new FrmDepoIslem(depoDal.GetByFilter(context, c => c.DepoKodu == secilen));
+            form.ShowDialog();
+            if (form.kaydedildi)
+            {
+                Listele();
+            }
+        }
+
+        private void btnHareket_Click(object sender, EventArgs e)
+        {
+            secilen = gridDepolar.GetFocusedRowCellValue(colDepoKodu).ToString();
+            string depoKodu = gridDepolar.GetFocusedRowCellValue(colDepoKodu).ToString();
+            FrmDepoHareket form = new FrmDepoHareket(secilen,depoKodu);
+            form.ShowDialog();
+            Listele();
         }
     }
 }

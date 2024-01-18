@@ -1,4 +1,5 @@
 ﻿using SonicHesap.BackOffice.Cari;
+using SonicHesap.BackOffice.Depo;
 using SonicHesap.BackOffice.Kasa;
 using SonicHesap.BackOffice.Stok;
 using SonicHesap.Entities.Context;
@@ -41,6 +42,13 @@ namespace SonicHesap.BackOffice
         private void btnKasa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FrmKasa form = new FrmKasa();
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void btnDepo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmDepo form = new FrmDepo();
             form.MdiParent = this;
             form.Show();
         }
