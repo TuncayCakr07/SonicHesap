@@ -1,7 +1,9 @@
 ﻿using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
 using SonicHesap.BackOffice.Kasa;
+using SonicHesap.BackOffice.Odeme_Turu;
 using SonicHesap.BackOffice.Stok;
+using SonicHesap.BackOffice.Tanimlar;
 using SonicHesap.Entities.Context;
 using System;
 using System.Collections.Generic;
@@ -51,6 +53,18 @@ namespace SonicHesap.BackOffice
             FrmDepo form = new FrmDepo();
             form.MdiParent = this;
             form.Show();
+        }
+
+        private void btnOdemeTuru_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmOdemeTuru form = new FrmOdemeTuru();
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void btnTanim_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }

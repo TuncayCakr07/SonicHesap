@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using SonicHesap.BackOffice.Tanimlar;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
 using SonicHesap.Entities.Tables;
@@ -71,6 +72,115 @@ namespace SonicHesap.BackOffice.Cari
                 cariDAL.Save(context);
                 saved=true;
                 this.Close();
+            }
+        }
+
+        private void btnCariGrubu_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            switch (e.Button.Index)
+            {
+                case 0:
+                    FrmTanim form = new FrmTanim(FrmTanim.TanimTuru.CariGrubu);
+                    form.ShowDialog();
+                    if (form.secildi)
+                    {
+                        btnCariGrubu.Text = form._entity.Tanimi;
+                    }
+                    break;
+                case 1:
+                    btnCariGrubu.Text = null;
+                    break;
+            }
+        }
+
+        private void btnOzelKod1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            switch (e.Button.Index)
+            {
+                case 0:
+                    FrmTanim form = new FrmTanim(FrmTanim.TanimTuru.CariOzelKod1);
+                    form.ShowDialog();
+                    if (form.secildi)
+                    {
+                        btnOzelKod1.Text = form._entity.Tanimi;
+                    }
+                    break;
+                case 1:
+                    btnOzelKod1.Text = null;
+                    break;
+            }
+        }
+
+        private void btnCariAltGrubu_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+
+            switch (e.Button.Index)
+            {
+                case 0:
+                    FrmTanim form = new FrmTanim(FrmTanim.TanimTuru.CariAltGrubu);
+                    form.ShowDialog();
+                    if (form.secildi)
+                    {
+                        btnCariAltGrubu.Text = form._entity.Tanimi;
+                    }
+                    break;
+                case 1:
+                    btnCariAltGrubu.Text = null;
+                    break;
+            }
+        }
+
+        private void btnOzelKod2_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            switch (e.Button.Index)
+            {
+                case 0:
+                    FrmTanim form = new FrmTanim(FrmTanim.TanimTuru.CariOzelKod2);
+                    form.ShowDialog();
+                    if (form.secildi)
+                    {
+                        btnOzelKod2.Text = form._entity.Tanimi;
+                    }
+                    break;
+                case 1:
+                    btnOzelKod2.Text = null;
+                    break;
+            }
+        }
+
+        private void btnOzelKod3_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            switch (e.Button.Index)
+            {
+                case 0:
+                    FrmTanim form = new FrmTanim(FrmTanim.TanimTuru.CariOzelKod3);
+                    form.ShowDialog();
+                    if (form.secildi)
+                    {
+                        btnOzelKod3.Text = form._entity.Tanimi;
+                    }
+                    break;
+                case 1:
+                    btnOzelKod3.Text = null;
+                    break;
+            }
+        }
+
+        private void btnOzelKod4_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            switch (e.Button.Index)
+            {
+                case 0:
+                    FrmTanim form = new FrmTanim(FrmTanim.TanimTuru.CariOzelKod4);
+                    form.ShowDialog();
+                    if (form.secildi)
+                    {
+                        btnOzelKod4.Text = form._entity.Tanimi;
+                    }
+                    break;
+                case 1:
+                    btnOzelKod4.Text = null;
+                    break;
             }
         }
     }

@@ -34,10 +34,12 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnCari = new DevExpress.XtraBars.BarButtonItem();
             this.btnKasa = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDepo = new DevExpress.XtraBars.BarButtonItem();
+            this.btnOdemeTuru = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTanim = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.btnDepo = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -51,10 +53,12 @@
             this.barButtonItem1,
             this.btnCari,
             this.btnKasa,
-            this.btnDepo});
+            this.btnDepo,
+            this.btnOdemeTuru,
+            this.btnTanim});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 5;
+            this.ribbonControl1.MaxItemId = 7;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 385;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -86,6 +90,30 @@
             this.btnKasa.Name = "btnKasa";
             this.btnKasa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnKasa_ItemClick);
             // 
+            // btnDepo
+            // 
+            this.btnDepo.Caption = "Depo";
+            this.btnDepo.Id = 4;
+            this.btnDepo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDepo.ImageOptions.LargeImage")));
+            this.btnDepo.Name = "btnDepo";
+            this.btnDepo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDepo_ItemClick);
+            // 
+            // btnOdemeTuru
+            // 
+            this.btnOdemeTuru.Caption = "Ödeme Türleri";
+            this.btnOdemeTuru.Id = 5;
+            this.btnOdemeTuru.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnOdemeTuru.ImageOptions.LargeImage")));
+            this.btnOdemeTuru.Name = "btnOdemeTuru";
+            this.btnOdemeTuru.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnOdemeTuru_ItemClick);
+            // 
+            // btnTanim
+            // 
+            this.btnTanim.Caption = "Tanımlar";
+            this.btnTanim.Id = 6;
+            this.btnTanim.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnTanim.ImageOptions.LargeImage")));
+            this.btnTanim.Name = "btnTanim";
+            this.btnTanim.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTanim_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -99,20 +127,13 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btnCari);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnKasa);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnDepo);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnOdemeTuru);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
-            // 
-            // btnDepo
-            // 
-            this.btnDepo.Caption = "Depo";
-            this.btnDepo.Id = 4;
-            this.btnDepo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDepo.ImageOptions.LargeImage")));
-            this.btnDepo.Name = "btnDepo";
-            this.btnDepo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDepo_ItemClick);
             // 
             // FrmAnaMenu
             // 
@@ -142,6 +163,8 @@
         private DevExpress.XtraBars.BarButtonItem btnCari;
         private DevExpress.XtraBars.BarButtonItem btnKasa;
         private DevExpress.XtraBars.BarButtonItem btnDepo;
+        private DevExpress.XtraBars.BarButtonItem btnOdemeTuru;
+        private DevExpress.XtraBars.BarButtonItem btnTanim;
     }
 }
 

@@ -120,6 +120,18 @@
     <Compile Include="Depo\FrmDepoSec.Designer.cs">
       <DependentUpon>FrmDepoSec.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fis\FrmFis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fis\FrmFis.Designer.cs">
+      <DependentUpon>FrmFis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fis\FrmFisIslem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fis\FrmFisIslem.Designer.cs">
+      <DependentUpon>FrmFisIslem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kasa\FrmKasa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +155,24 @@
     </Compile>
     <Compile Include="Kasa\FrmKasaSecim.Designer.cs">
       <DependentUpon>FrmKasaSecim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Odeme Turu\FrmOdemeTuru.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Odeme Turu\FrmOdemeTuru.Designer.cs">
+      <DependentUpon>FrmOdemeTuru.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Odeme Turu\FrmOdemeTuruHareket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Odeme Turu\FrmOdemeTuruHareket.Designer.cs">
+      <DependentUpon>FrmOdemeTuruHareket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Odeme Turu\FrmOdemeTuruIslem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Odeme Turu\FrmOdemeTuruIslem.Designer.cs">
+      <DependentUpon>FrmOdemeTuruIslem.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -169,6 +199,12 @@
     </Compile>
     <Compile Include="Stok\FrmStokSec.Designer.cs">
       <DependentUpon>FrmStokSec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tanimlar\FrmTanim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tanimlar\FrmTanim.Designer.cs">
+      <DependentUpon>FrmTanim.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AnaMenu\FrmAnaMenu.resx">
       <DependentUpon>FrmAnaMenu.cs</DependentUpon>
@@ -197,6 +233,12 @@
     <EmbeddedResource Include="Depo\FrmDepoSec.resx">
       <DependentUpon>FrmDepoSec.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fis\FrmFis.resx">
+      <DependentUpon>FrmFis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fis\FrmFisIslem.resx">
+      <DependentUpon>FrmFisIslem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Kasa\FrmKasa.resx">
       <DependentUpon>FrmKasa.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +250,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Kasa\FrmKasaSecim.resx">
       <DependentUpon>FrmKasaSecim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Odeme Turu\FrmOdemeTuru.resx">
+      <DependentUpon>FrmOdemeTuru.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Odeme Turu\FrmOdemeTuruHareket.resx">
+      <DependentUpon>FrmOdemeTuruHareket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Odeme Turu\FrmOdemeTuruIslem.resx">
+      <DependentUpon>FrmOdemeTuruIslem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -231,6 +282,9 @@
     <EmbeddedResource Include="Stok\FrmStokSec.resx">
       <DependentUpon>FrmStokSec.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tanimlar\FrmTanim.resx">
+      <DependentUpon>FrmTanim.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Cari.datasource" />
@@ -238,6 +292,7 @@
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Fis.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Kasa.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.KasaHareket.datasource" />
+    <None Include="Properties\DataSources\SonicHesap.Entities.Tables.OdemeTuru.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Stok.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.StokHareket.datasource" />
     <None Include="Properties\Settings.settings">
