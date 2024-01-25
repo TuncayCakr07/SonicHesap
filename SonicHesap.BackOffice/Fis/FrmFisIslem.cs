@@ -17,5 +17,10 @@ namespace SonicHesap.BackOffice.Fis
         {
             InitializeComponent();
         }
+
+        private void textEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
