@@ -1,5 +1,6 @@
 ﻿using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
+using SonicHesap.BackOffice.Fis;
 using SonicHesap.BackOffice.Kasa;
 using SonicHesap.BackOffice.Odeme_Turu;
 using SonicHesap.BackOffice.Stok;
@@ -65,6 +66,19 @@ namespace SonicHesap.BackOffice
         private void btnTanim_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
+        }
+
+        private void btnFis_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+           FrmFis form = new FrmFis();
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void btnFisIslem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmFisIslem form = new FrmFisIslem();
+            form.Show();
         }
     }
 }

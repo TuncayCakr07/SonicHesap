@@ -40,6 +40,8 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.btnFis = new DevExpress.XtraBars.BarButtonItem();
+            this.btnFisIslem = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -55,10 +57,12 @@
             this.btnKasa,
             this.btnDepo,
             this.btnOdemeTuru,
-            this.btnTanim});
+            this.btnTanim,
+            this.btnFis,
+            this.btnFisIslem});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 7;
+            this.ribbonControl1.MaxItemId = 9;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 385;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -128,12 +132,31 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btnKasa);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnDepo);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnOdemeTuru);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnFis);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnFisIslem);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
+            // 
+            // btnFis
+            // 
+            this.btnFis.Caption = "Fişler";
+            this.btnFis.Id = 7;
+            this.btnFis.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.btnFis.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.btnFis.Name = "btnFis";
+            this.btnFis.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFis_ItemClick);
+            // 
+            // btnFisIslem
+            // 
+            this.btnFisIslem.Caption = "Fiş İşlemleri";
+            this.btnFisIslem.Id = 8;
+            this.btnFisIslem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFisIslem.ImageOptions.LargeImage")));
+            this.btnFisIslem.Name = "btnFisIslem";
+            this.btnFisIslem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFisIslem_ItemClick);
             // 
             // FrmAnaMenu
             // 
@@ -165,6 +188,8 @@
         private DevExpress.XtraBars.BarButtonItem btnDepo;
         private DevExpress.XtraBars.BarButtonItem btnOdemeTuru;
         private DevExpress.XtraBars.BarButtonItem btnTanim;
+        private DevExpress.XtraBars.BarButtonItem btnFis;
+        private DevExpress.XtraBars.BarButtonItem btnFisIslem;
     }
 }
 
