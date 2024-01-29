@@ -3,6 +3,7 @@ using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Stok;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
+using SonicHesap.Entities.Interfaces;
 using SonicHesap.Entities.Tables;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,9 @@ namespace SonicHesap.BackOffice.Fis
         FisDAL fisDal = new FisDAL();
         StokHareketDAL stokHareketDal = new StokHareketDAL();
         KasaHareketDAL kasaHareketDal = new KasaHareketDAL();
+        CariDAL cariDal= new CariDAL();
         Entities.Tables.Fis _fisEntity = new Entities.Tables.Fis();
+        CariBakiye entityBakiye = new CariBakiye();
         public FrmFisIslem()
         {
             InitializeComponent();
@@ -52,6 +55,7 @@ namespace SonicHesap.BackOffice.Fis
             stokHareket.Birimi = entity.Birimi;
             stokHareket.Miktar = txtMiktar.Value;
             stokHareket.Kdv = entity.SatisKdv;
+            stokHareket.IndirimOrani = 0;
             return stokHareket;
         }
 
@@ -62,6 +66,7 @@ namespace SonicHesap.BackOffice.Fis
             if (form.secildi)
             {
                 stokHareketDal.AddOrUpdate(contex, StokSec(form.secilen.First()));
+                Toplamlar();
             }
         }
 
@@ -79,6 +84,7 @@ namespace SonicHesap.BackOffice.Fis
                 if (entity != null)
                 {
                     stokHareketDal.AddOrUpdate(contex, StokSec(entity));
+                    Toplamlar();
                 }
                 else
                 {
@@ -97,7 +103,7 @@ namespace SonicHesap.BackOffice.Fis
             if (form.secildi)
             {
                 Entities.Tables.Cari entity= form.secilen.FirstOrDefault();
-                CariBakiye bakiye=form.secilenCariBakiye.FirstOrDefault();
+                entityBakiye = cariDal.CariBakiyesi(contex, entity.CariKodu);
 
                 lblCariKodu.Text =entity.CariKodu;
                 lblCariAdi.Text = entity.CariAdi;
@@ -109,10 +115,39 @@ namespace SonicHesap.BackOffice.Fis
                 txtIlce.Text= entity.Ilce;
                 txtSemt.Text= entity.Semt;
                 txtAdres.Text= entity.Adres;
-                lblAlacak.Text=bakiye.Alacak.ToString("C2");
-                lblBorc.Text = bakiye.Borc.ToString("C2");
-                lblBakiye.Text = bakiye.Bakiye.ToString("C2");
+                lblAlacak.Text=entityBakiye.Alacak.ToString("C2");
+                lblBorc.Text = entityBakiye.Borc.ToString("C2");
+                lblBakiye.Text = entityBakiye.Bakiye.ToString("C2");
             }
+        }
+
+        private void btnTemizle_Click(object sender, EventArgs e)
+        {
+            lblCariKodu.Text =null;
+            lblCariAdi.Text = null;
+            txtFaturaUnvani.Text = null;
+            txtVergiDairesi.Text = null;
+            txtVergiNo.Text = null;
+            txtCepTelefonu.Text = null;
+            txtIl.Text = null;
+            txtIlce.Text = null;
+            txtSemt.Text = null;
+            txtAdres.Text = null;
+            lblAlacak.Text = "Görüntülenemiyor";
+            lblBorc.Text = "Görüntülenemiyor";
+            lblBakiye.Text = "Görüntülenemiyor";
+        }
+
+        private void gridStokHareket_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+                Toplamlar();
+        }
+
+        private void Toplamlar()
+        {
+            txtToplam.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue);
+            txtKdvToplam.Value = Convert.ToDecimal(colKdvToplam.SummaryItem.SummaryValue);
+            txtIndirimToplam.Value = Convert.ToDecimal(colIndirimtutari.SummaryItem.SummaryValue);
         }
     }
 }

@@ -20,7 +20,6 @@ namespace SonicHesap.BackOffice.Cari
         CariDAL cariDAL = new CariDAL();
         SonicHesapContext context = new SonicHesapContext();
         public List<Entities.Tables.Cari> secilen = new List<Entities.Tables.Cari>();
-        public List<CariBakiye> secilenCariBakiye=new List<CariBakiye>();
         public bool secildi=false;
         public FrmCariSec(bool cokluSecim = false)
         {
@@ -45,13 +44,6 @@ namespace SonicHesap.BackOffice.Cari
                 {
                     string cariKodu = gridView1.GetRowCellValue(row, colCariKodu).ToString();
                     secilen.Add(context.Cariler.SingleOrDefault(c => c.CariKodu == cariKodu));
-                    secilenCariBakiye.Add(new CariBakiye
-                    {
-                        CariKodu =gridView1.GetRowCellValue(row, colCariKodu).ToString(),
-                        Alacak = Convert.ToDecimal(gridView1.GetRowCellValue(row, colAlacak)),
-                        Borc= Convert.ToDecimal(gridView1.GetRowCellValue(row, colBorc)),
-                        Bakiye= Convert.ToDecimal(gridView1.GetRowCellValue(row, colBakiye)),
-                    });
                 }
                 secildi = true;
                 this.Close();

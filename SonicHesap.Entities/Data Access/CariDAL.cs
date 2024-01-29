@@ -148,5 +148,23 @@ namespace SonicHesap.Entities.Data_Access
             };
             return genelToplamlar;
         }
+        public CariBakiye CariBakiyesi(SonicHesapContext context,string cariKodu)
+        {
+            decimal alacak = (context.fisler.Where(c => c.CariKodu == cariKodu && c.FisTuru == "Alış Faturası").Sum(c => c.ToplamTutar) ?? 0 +
+    (context.KasaHareketleri.Where(c => c.CariKodu == cariKodu && c.Hareket == "Kasa Giriş").Sum(c => c.Tutar) ?? 0));
+
+            decimal borc = (context.fisler.Where(c => c.CariKodu == cariKodu && c.FisTuru == "Perakende Satış Faturası").Sum(c => c.ToplamTutar) ?? 0 +
+            (context.KasaHareketleri.Where(c => c.CariKodu == cariKodu && c.Hareket == "Kasa Çıkış").Sum(c => c.Tutar) ?? 0));
+
+            CariBakiye entity = new CariBakiye
+            {
+                CariKodu = cariKodu,
+                RiskLimiti=Convert.ToDecimal(context.Cariler.Where(c=>c.CariKodu==cariKodu).SingleOrDefault().RiskLimiti),
+                Alacak = alacak,
+                Borc = borc,
+                Bakiye=alacak-borc,
+            };
+            return entity;
+        }
     }
 }
