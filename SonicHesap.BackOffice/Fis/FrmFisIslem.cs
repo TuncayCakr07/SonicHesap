@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using SonicHesap.BackOffice.Cari;
+using SonicHesap.BackOffice.Depo;
 using SonicHesap.BackOffice.Stok;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
@@ -145,9 +146,57 @@ namespace SonicHesap.BackOffice.Fis
 
         private void Toplamlar()
         {
-            txtToplam.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue);
+            gridStokHareket.UpdateSummary();
+            txtIskontoTutar.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) / 100 * txtIskontoOrani.Value;
+            txtToplam.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) - txtIskontoTutar.Value;
             txtKdvToplam.Value = Convert.ToDecimal(colKdvToplam.SummaryItem.SummaryValue);
             txtIndirimToplam.Value = Convert.ToDecimal(colIndirimtutari.SummaryItem.SummaryValue);
+
+        }
+
+        private void txtToplam_EditValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtIskontoOrani_EditValueChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtIskontoOrani_Validated(object sender, EventArgs e)
+        {
+            Toplamlar();
+        }
+
+        private void repoDepoSecim_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            FrmDepoSec form=new FrmDepoSec(gridStokHareket.GetFocusedRowCellValue(colStokKodu).ToString());
+            form.ShowDialog();
+            if (form.secildi)
+            {
+                gridStokHareket.SetFocusedRowCellValue(colDepoKodu, form.entity.DepoKodu);
+                gridStokHareket.SetFocusedRowCellValue(colDepoAdi, form.entity.DepoAdi);
+            }
+        }
+
+        private void repoBirimFiyat_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            string fiyatSecilen=gridStokHareket.GetFocusedRowCellValue(colStokKodu).ToString(); 
+            Entities.Tables.Stok fiyatEntity=contex.Stoklar.Where(c=>c.StokKodu==fiyatSecilen).SingleOrDefault();
+
+            barFiyat1.Tag = fiyatEntity.SatisFiyati1 ?? 0;
+            barFiyat2.Tag = fiyatEntity.SatisFiyati2 ?? 0;
+            barFiyat3.Tag = fiyatEntity.SatisFiyati3 ?? 0;
+            barFiyat1.Caption = string.Format("{0:C2}",barFiyat1.Tag);
+            barFiyat2.Caption = string.Format("{0:C2}",barFiyat2.Tag);
+            barFiyat3.Caption = string.Format("{0:C2}",barFiyat3.Tag);
+            radialFiyat.ShowPopup(MousePosition);
+        }
+
+        private void FiyatSec(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridStokHareket.SetFocusedRowCellValue(colBirimFiyati,Convert.ToDecimal(e.Item.Tag));
         }
     }
 }

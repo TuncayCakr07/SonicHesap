@@ -62,12 +62,13 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ımageList2 = new System.Windows.Forms.ImageList(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.txtIskontoTutar = new DevExpress.XtraEditors.CalcEdit();
+            this.txtIskontoOrani = new DevExpress.XtraEditors.CalcEdit();
             this.txtIndirimToplam = new DevExpress.XtraEditors.CalcEdit();
             this.txtToplam = new DevExpress.XtraEditors.CalcEdit();
             this.txtKdvToplam = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
@@ -173,13 +174,22 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.txtIskontoOrani = new DevExpress.XtraEditors.CalcEdit();
+            this.radialFiyat = new DevExpress.XtraBars.Ribbon.RadialMenu(this.components);
+            this.barFiyat1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barFiyat2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barFiyat3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIskontoTutar.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIskontoOrani.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIndirimToplam.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtToplam.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKdvToplam.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
@@ -221,7 +231,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridKasaHareket)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoKasa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoOHSil)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIskontoOrani.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radialFiyat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // ımageList2
@@ -236,13 +247,13 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.txtIskontoTutar);
             this.groupControl1.Controls.Add(this.txtIskontoOrani);
             this.groupControl1.Controls.Add(this.txtIndirimToplam);
             this.groupControl1.Controls.Add(this.txtToplam);
             this.groupControl1.Controls.Add(this.txtKdvToplam);
             this.groupControl1.Controls.Add(this.labelControl10);
             this.groupControl1.Controls.Add(this.labelControl12);
-            this.groupControl1.Controls.Add(this.textEdit5);
             this.groupControl1.Controls.Add(this.labelControl6);
             this.groupControl1.Controls.Add(this.labelControl7);
             this.groupControl1.Controls.Add(this.labelControl9);
@@ -260,6 +271,39 @@
             this.groupControl1.Size = new System.Drawing.Size(1365, 213);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Toplamlar Ve Ek Bilgiler";
+            // 
+            // txtIskontoTutar
+            // 
+            this.txtIskontoTutar.Location = new System.Drawing.Point(658, 91);
+            this.txtIskontoTutar.Name = "txtIskontoTutar";
+            this.txtIskontoTutar.Properties.Appearance.BackColor = System.Drawing.Color.Green;
+            this.txtIskontoTutar.Properties.Appearance.Font = new System.Drawing.Font("DS-Digital", 12F);
+            this.txtIskontoTutar.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.txtIskontoTutar.Properties.Appearance.Options.UseBackColor = true;
+            this.txtIskontoTutar.Properties.Appearance.Options.UseFont = true;
+            this.txtIskontoTutar.Properties.Appearance.Options.UseForeColor = true;
+            this.txtIskontoTutar.Properties.DisplayFormat.FormatString = "C2";
+            this.txtIskontoTutar.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtIskontoTutar.Properties.NullText = "0,00";
+            this.txtIskontoTutar.Size = new System.Drawing.Size(227, 26);
+            this.txtIskontoTutar.TabIndex = 32;
+            // 
+            // txtIskontoOrani
+            // 
+            this.txtIskontoOrani.Location = new System.Drawing.Point(658, 61);
+            this.txtIskontoOrani.Name = "txtIskontoOrani";
+            this.txtIskontoOrani.Properties.Appearance.BackColor = System.Drawing.Color.Green;
+            this.txtIskontoOrani.Properties.Appearance.Font = new System.Drawing.Font("DS-Digital", 12F);
+            this.txtIskontoOrani.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.txtIskontoOrani.Properties.Appearance.Options.UseBackColor = true;
+            this.txtIskontoOrani.Properties.Appearance.Options.UseFont = true;
+            this.txtIskontoOrani.Properties.Appearance.Options.UseForeColor = true;
+            this.txtIskontoOrani.Properties.DisplayFormat.FormatString = "\'%\'0";
+            this.txtIskontoOrani.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtIskontoOrani.Properties.NullText = "0,00";
+            this.txtIskontoOrani.Size = new System.Drawing.Size(227, 26);
+            this.txtIskontoOrani.TabIndex = 31;
+            this.txtIskontoOrani.Validated += new System.EventHandler(this.txtIskontoOrani_Validated);
             // 
             // txtIndirimToplam
             // 
@@ -334,27 +378,6 @@
             this.labelControl12.Size = new System.Drawing.Size(125, 37);
             this.labelControl12.TabIndex = 21;
             this.labelControl12.Text = "KDV Toplamı :";
-            // 
-            // textEdit5
-            // 
-            this.textEdit5.EditValue = "0.00 ₺";
-            this.textEdit5.Location = new System.Drawing.Point(659, 91);
-            this.textEdit5.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Properties.Appearance.BackColor = System.Drawing.Color.Green;
-            this.textEdit5.Properties.Appearance.Font = new System.Drawing.Font("DS-Digital", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit5.Properties.Appearance.ForeColor = System.Drawing.Color.White;
-            this.textEdit5.Properties.Appearance.Options.UseBackColor = true;
-            this.textEdit5.Properties.Appearance.Options.UseFont = true;
-            this.textEdit5.Properties.Appearance.Options.UseForeColor = true;
-            this.textEdit5.Properties.Appearance.Options.UseTextOptions = true;
-            this.textEdit5.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.textEdit5.Properties.DisplayFormat.FormatString = "C2";
-            this.textEdit5.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.textEdit5.Properties.EditFormat.FormatString = "C2";
-            this.textEdit5.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.textEdit5.Size = new System.Drawing.Size(226, 26);
-            this.textEdit5.TabIndex = 20;
             // 
             // labelControl6
             // 
@@ -590,10 +613,10 @@
             this.btnTemizle.Appearance.Options.UseFont = true;
             this.btnTemizle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnTemizle.ImageOptions.Image")));
             this.btnTemizle.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnTemizle.Location = new System.Drawing.Point(142, 11);
+            this.btnTemizle.Location = new System.Drawing.Point(124, 11);
             this.btnTemizle.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnTemizle.Name = "btnTemizle";
-            this.btnTemizle.Size = new System.Drawing.Size(127, 78);
+            this.btnTemizle.Size = new System.Drawing.Size(144, 78);
             this.btnTemizle.TabIndex = 63;
             this.btnTemizle.Text = "Temizle";
             this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
@@ -860,6 +883,8 @@
             // 
             this.lblBakiye.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.lblBakiye.Appearance.Options.UseFont = true;
+            this.lblBakiye.Appearance.Options.UseTextOptions = true;
+            this.lblBakiye.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.lblBakiye.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblBakiye.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.lblBakiye.Location = new System.Drawing.Point(124, 154);
@@ -873,6 +898,8 @@
             // 
             this.lblBorc.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.lblBorc.Appearance.Options.UseFont = true;
+            this.lblBorc.Appearance.Options.UseTextOptions = true;
+            this.lblBorc.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.lblBorc.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblBorc.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.lblBorc.Location = new System.Drawing.Point(124, 124);
@@ -886,6 +913,8 @@
             // 
             this.lblAlacak.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.lblAlacak.Appearance.Options.UseFont = true;
+            this.lblAlacak.Appearance.Options.UseTextOptions = true;
+            this.lblAlacak.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.lblAlacak.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblAlacak.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.lblAlacak.Location = new System.Drawing.Point(124, 94);
@@ -949,7 +978,7 @@
             this.btnBul.Location = new System.Drawing.Point(8, 11);
             this.btnBul.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnBul.Name = "btnBul";
-            this.btnBul.Size = new System.Drawing.Size(127, 78);
+            this.btnBul.Size = new System.Drawing.Size(111, 78);
             this.btnBul.TabIndex = 36;
             this.btnBul.Text = "Cari Seç";
             this.btnBul.Click += new System.EventHandler(this.btnBul_Click);
@@ -1299,9 +1328,10 @@
             this.colBirimFiyati.MinWidth = 25;
             this.colBirimFiyati.Name = "colBirimFiyati";
             this.colBirimFiyati.OptionsColumn.ShowInCustomizationForm = false;
+            this.colBirimFiyati.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.colBirimFiyati.Visible = true;
             this.colBirimFiyati.VisibleIndex = 9;
-            this.colBirimFiyati.Width = 60;
+            this.colBirimFiyati.Width = 99;
             // 
             // repoBirimFiyat
             // 
@@ -1311,6 +1341,7 @@
             this.repoBirimFiyat.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repoBirimFiyat.Name = "repoBirimFiyat";
+            this.repoBirimFiyat.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repoBirimFiyat_ButtonClick);
             // 
             // colIndirimOrani
             // 
@@ -1323,7 +1354,7 @@
             this.colIndirimOrani.OptionsColumn.ShowInCustomizationForm = false;
             this.colIndirimOrani.Visible = true;
             this.colIndirimOrani.VisibleIndex = 11;
-            this.colIndirimOrani.Width = 62;
+            this.colIndirimOrani.Width = 54;
             // 
             // colDepoKodu
             // 
@@ -1340,8 +1371,8 @@
             this.colDepoAdi.FieldName = "DepoAdi";
             this.colDepoAdi.MinWidth = 25;
             this.colDepoAdi.Name = "colDepoAdi";
-            this.colDepoAdi.OptionsColumn.AllowEdit = false;
             this.colDepoAdi.OptionsColumn.ShowInCustomizationForm = false;
+            this.colDepoAdi.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.colDepoAdi.Visible = true;
             this.colDepoAdi.VisibleIndex = 4;
             this.colDepoAdi.Width = 135;
@@ -1354,6 +1385,7 @@
             this.repoDepoSecim.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repoDepoSecim.Name = "repoDepoSecim";
+            this.repoDepoSecim.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repoDepoSecim_ButtonClick);
             // 
             // colSeriNo
             // 
@@ -1361,7 +1393,6 @@
             this.colSeriNo.FieldName = "SeriNo";
             this.colSeriNo.MinWidth = 25;
             this.colSeriNo.Name = "colSeriNo";
-            this.colSeriNo.OptionsColumn.AllowEdit = false;
             this.colSeriNo.OptionsColumn.ShowInCustomizationForm = false;
             this.colSeriNo.Visible = true;
             this.colSeriNo.VisibleIndex = 5;
@@ -1376,7 +1407,6 @@
             this.repoSeriNo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Seri No", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repoSeriNo.Name = "repoSeriNo";
-            this.repoSeriNo.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
             // colAciklama
             // 
@@ -1421,7 +1451,7 @@
             this.colIndirimtutari.UnboundExpression = "[colToplamTutar] / 100 * [IndirimOrani]";
             this.colIndirimtutari.Visible = true;
             this.colIndirimtutari.VisibleIndex = 12;
-            this.colIndirimtutari.Width = 73;
+            this.colIndirimtutari.Width = 63;
             // 
             // colToplamTutar
             // 
@@ -1437,11 +1467,13 @@
             this.colToplamTutar.UnboundExpression = "[BirimFiyati] * [Miktar] - [BirimFiyati] * [Miktar] / 100 * [IndirimOrani]";
             this.colToplamTutar.Visible = true;
             this.colToplamTutar.VisibleIndex = 13;
-            this.colToplamTutar.Width = 104;
+            this.colToplamTutar.Width = 94;
             // 
             // colKdvToplam
             // 
-            this.colKdvToplam.Caption = "KDV(%) Toplamı";
+            this.colKdvToplam.Caption = "KDV Toplamı";
+            this.colKdvToplam.DisplayFormat.FormatString = "C2";
+            this.colKdvToplam.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colKdvToplam.FieldName = "colKdvToplam";
             this.colKdvToplam.MinWidth = 25;
             this.colKdvToplam.Name = "colKdvToplam";
@@ -1451,7 +1483,6 @@
             this.colKdvToplam.UnboundExpression = "[colToplamTutar] / 100 * [Kdv]";
             this.colKdvToplam.Visible = true;
             this.colKdvToplam.VisibleIndex = 10;
-            this.colKdvToplam.Width = 86;
             // 
             // panelControl1
             // 
@@ -1468,44 +1499,43 @@
             // 
             // txtMiktar
             // 
-            this.txtMiktar.Location = new System.Drawing.Point(8, 14);
+            this.txtMiktar.Location = new System.Drawing.Point(8, 10);
             this.txtMiktar.Name = "txtMiktar";
             this.txtMiktar.Properties.Appearance.BackColor = System.Drawing.Color.Green;
-            this.txtMiktar.Properties.Appearance.Font = new System.Drawing.Font("DS-Digital", 22.2F, System.Drawing.FontStyle.Bold);
+            this.txtMiktar.Properties.Appearance.Font = new System.Drawing.Font("DS-Digital", 26.2F, System.Drawing.FontStyle.Bold);
             this.txtMiktar.Properties.Appearance.ForeColor = System.Drawing.Color.White;
             this.txtMiktar.Properties.Appearance.Options.UseBackColor = true;
             this.txtMiktar.Properties.Appearance.Options.UseFont = true;
             this.txtMiktar.Properties.Appearance.Options.UseForeColor = true;
             this.txtMiktar.Properties.NullText = "0,00";
-            this.txtMiktar.Size = new System.Drawing.Size(227, 42);
+            this.txtMiktar.Size = new System.Drawing.Size(227, 50);
             this.txtMiktar.TabIndex = 27;
             // 
             // btnStokSec
             // 
             this.btnStokSec.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnStokSec.Appearance.Options.UseFont = true;
-            this.btnStokSec.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnStokSec.ImageOptions.ImageIndex = 2;
             this.btnStokSec.ImageOptions.ImageList = this.ımageList1;
-            this.btnStokSec.Location = new System.Drawing.Point(1039, 2);
+            this.btnStokSec.Location = new System.Drawing.Point(1039, 13);
             this.btnStokSec.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnStokSec.Name = "btnStokSec";
-            this.btnStokSec.Size = new System.Drawing.Size(209, 65);
+            this.btnStokSec.Size = new System.Drawing.Size(209, 47);
             this.btnStokSec.TabIndex = 26;
             this.btnStokSec.Text = "Ürün Ara";
             this.btnStokSec.Click += new System.EventHandler(this.btnStokSec_Click);
             // 
             // txtBarkod
             // 
-            this.txtBarkod.Location = new System.Drawing.Point(280, 15);
+            this.txtBarkod.Location = new System.Drawing.Point(280, 11);
             this.txtBarkod.Name = "txtBarkod";
             this.txtBarkod.Properties.Appearance.BackColor = System.Drawing.Color.Green;
-            this.txtBarkod.Properties.Appearance.Font = new System.Drawing.Font("DS-Digital", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBarkod.Properties.Appearance.Font = new System.Drawing.Font("DS-Digital", 26.2F, System.Drawing.FontStyle.Bold);
             this.txtBarkod.Properties.Appearance.ForeColor = System.Drawing.Color.White;
             this.txtBarkod.Properties.Appearance.Options.UseBackColor = true;
             this.txtBarkod.Properties.Appearance.Options.UseFont = true;
             this.txtBarkod.Properties.Appearance.Options.UseForeColor = true;
-            this.txtBarkod.Size = new System.Drawing.Size(752, 42);
+            this.txtBarkod.Size = new System.Drawing.Size(752, 50);
             this.txtBarkod.TabIndex = 25;
             this.txtBarkod.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarkod_KeyDown);
             // 
@@ -1732,21 +1762,86 @@
             this.gridColumn5.VisibleIndex = 4;
             this.gridColumn5.Width = 213;
             // 
-            // txtIskontoOrani
+            // radialFiyat
             // 
-            this.txtIskontoOrani.Location = new System.Drawing.Point(658, 61);
-            this.txtIskontoOrani.Name = "txtIskontoOrani";
-            this.txtIskontoOrani.Properties.Appearance.BackColor = System.Drawing.Color.Green;
-            this.txtIskontoOrani.Properties.Appearance.Font = new System.Drawing.Font("DS-Digital", 12F);
-            this.txtIskontoOrani.Properties.Appearance.ForeColor = System.Drawing.Color.White;
-            this.txtIskontoOrani.Properties.Appearance.Options.UseBackColor = true;
-            this.txtIskontoOrani.Properties.Appearance.Options.UseFont = true;
-            this.txtIskontoOrani.Properties.Appearance.Options.UseForeColor = true;
-            this.txtIskontoOrani.Properties.DisplayFormat.FormatString = "\'%\'0";
-            this.txtIskontoOrani.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtIskontoOrani.Properties.NullText = "0,00";
-            this.txtIskontoOrani.Size = new System.Drawing.Size(227, 26);
-            this.txtIskontoOrani.TabIndex = 31;
+            this.radialFiyat.AutoExpand = true;
+            this.radialFiyat.Glyph = ((System.Drawing.Image)(resources.GetObject("radialFiyat.Glyph")));
+            this.radialFiyat.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barFiyat1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barFiyat2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barFiyat3)});
+            this.radialFiyat.Manager = this.barManager1;
+            this.radialFiyat.Name = "radialFiyat";
+            this.radialFiyat.PaintStyle = DevExpress.XtraBars.Ribbon.PaintStyle.Classic;
+            // 
+            // barFiyat1
+            // 
+            this.barFiyat1.Id = 0;
+            this.barFiyat1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barFiyat1.ImageOptions.Image")));
+            this.barFiyat1.Name = "barFiyat1";
+            this.barFiyat1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
+            this.barFiyat1.ItemPress += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
+            // 
+            // barFiyat2
+            // 
+            this.barFiyat2.Id = 1;
+            this.barFiyat2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barFiyat2.ImageOptions.Image")));
+            this.barFiyat2.Name = "barFiyat2";
+            this.barFiyat2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
+            this.barFiyat2.ItemPress += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
+            // 
+            // barFiyat3
+            // 
+            this.barFiyat3.Id = 2;
+            this.barFiyat3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barFiyat3.ImageOptions.Image")));
+            this.barFiyat3.Name = "barFiyat3";
+            this.barFiyat3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
+            this.barFiyat3.ItemPress += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
+            // 
+            // barManager1
+            // 
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barFiyat1,
+            this.barFiyat2,
+            this.barFiyat3});
+            this.barManager1.MaxItemId = 3;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1365, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 853);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1365, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 853);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1365, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 853);
             // 
             // FrmFisIslem
             // 
@@ -1757,6 +1852,10 @@
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.navigationPane1);
             this.Controls.Add(this.labelControl16);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -1766,10 +1865,11 @@
             this.Load += new System.EventHandler(this.FrmFisIslem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtIskontoTutar.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIskontoOrani.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIndirimToplam.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtToplam.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKdvToplam.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
@@ -1811,8 +1911,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridKasaHareket)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoKasa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoOHSil)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIskontoOrani.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radialFiyat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1823,7 +1925,6 @@
         private DevExpress.XtraEditors.SimpleButton btnKapat;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit5;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl9;
@@ -1931,5 +2032,15 @@
         private DevExpress.XtraEditors.CalcEdit txtKdvToplam;
         private DevExpress.XtraEditors.CalcEdit txtIndirimToplam;
         private DevExpress.XtraEditors.CalcEdit txtIskontoOrani;
+        private DevExpress.XtraEditors.CalcEdit txtIskontoTutar;
+        private DevExpress.XtraBars.Ribbon.RadialMenu radialFiyat;
+        private DevExpress.XtraBars.BarButtonItem barFiyat1;
+        private DevExpress.XtraBars.BarButtonItem barFiyat2;
+        private DevExpress.XtraBars.BarButtonItem barFiyat3;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
     }
 }

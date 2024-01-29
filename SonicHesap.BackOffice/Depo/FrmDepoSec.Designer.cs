@@ -34,6 +34,7 @@
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
             this.grpMenu = new DevExpress.XtraEditors.GroupControl();
+            this.btnSec = new DevExpress.XtraEditors.SimpleButton();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTelefon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAdres = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,7 +49,9 @@
             this.gridDepolar = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridContDepolar = new DevExpress.XtraGrid.GridControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.btnSec = new DevExpress.XtraEditors.SimpleButton();
+            this.colStokGiris = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStokCikis = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMevcutStok = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDepolar)).BeginInit();
@@ -118,6 +121,21 @@
             this.grpMenu.Size = new System.Drawing.Size(1365, 83);
             this.grpMenu.TabIndex = 7;
             this.grpMenu.Text = "Menü";
+            // 
+            // btnSec
+            // 
+            this.btnSec.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSec.Appearance.Options.UseFont = true;
+            this.btnSec.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSec.ImageOptions.Image")));
+            this.btnSec.ImageOptions.ImageIndex = 0;
+            this.btnSec.ImageOptions.ImageList = this.ımageList1;
+            this.btnSec.Location = new System.Drawing.Point(1175, 28);
+            this.btnSec.Name = "btnSec";
+            this.btnSec.Size = new System.Drawing.Size(94, 53);
+            this.btnSec.TabIndex = 2;
+            this.btnSec.Text = "Seç";
+            this.btnSec.Click += new System.EventHandler(this.btnSec_Click);
             // 
             // colAciklama
             // 
@@ -251,7 +269,10 @@
             this.colSemt,
             this.colAdres,
             this.colTelefon,
-            this.colAciklama});
+            this.colAciklama,
+            this.colStokGiris,
+            this.colStokCikis,
+            this.colMevcutStok});
             this.gridDepolar.GridControl = this.gridContDepolar;
             this.gridDepolar.Name = "gridDepolar";
             // 
@@ -285,20 +306,35 @@
             this.splitContainerControl1.SplitterPosition = 47;
             this.splitContainerControl1.TabIndex = 8;
             // 
-            // btnSec
+            // colStokGiris
             // 
-            this.btnSec.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSec.Appearance.Options.UseFont = true;
-            this.btnSec.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSec.ImageOptions.Image")));
-            this.btnSec.ImageOptions.ImageIndex = 0;
-            this.btnSec.ImageOptions.ImageList = this.ımageList1;
-            this.btnSec.Location = new System.Drawing.Point(1175, 28);
-            this.btnSec.Name = "btnSec";
-            this.btnSec.Size = new System.Drawing.Size(94, 53);
-            this.btnSec.TabIndex = 2;
-            this.btnSec.Text = "Seç";
-            this.btnSec.Click += new System.EventHandler(this.btnSec_Click);
+            this.colStokGiris.Caption = "Stok Giriş";
+            this.colStokGiris.FieldName = "StokGiris";
+            this.colStokGiris.MinWidth = 25;
+            this.colStokGiris.Name = "colStokGiris";
+            this.colStokGiris.Visible = true;
+            this.colStokGiris.VisibleIndex = 10;
+            this.colStokGiris.Width = 94;
+            // 
+            // colStokCikis
+            // 
+            this.colStokCikis.Caption = "Stok Çıkış";
+            this.colStokCikis.FieldName = "StokCikis";
+            this.colStokCikis.MinWidth = 25;
+            this.colStokCikis.Name = "colStokCikis";
+            this.colStokCikis.Visible = true;
+            this.colStokCikis.VisibleIndex = 11;
+            this.colStokCikis.Width = 94;
+            // 
+            // colMevcutStok
+            // 
+            this.colMevcutStok.Caption = "Mevcut Stok";
+            this.colMevcutStok.FieldName = "MevcutStok";
+            this.colMevcutStok.MinWidth = 25;
+            this.colMevcutStok.Name = "colMevcutStok";
+            this.colMevcutStok.Visible = true;
+            this.colMevcutStok.VisibleIndex = 12;
+            this.colMevcutStok.Width = 94;
             // 
             // FrmDepoSec
             // 
@@ -346,5 +382,8 @@
         private DevExpress.XtraGrid.GridControl gridContDepolar;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraEditors.SimpleButton btnSec;
+        private DevExpress.XtraGrid.Columns.GridColumn colStokGiris;
+        private DevExpress.XtraGrid.Columns.GridColumn colStokCikis;
+        private DevExpress.XtraGrid.Columns.GridColumn colMevcutStok;
     }
 }
