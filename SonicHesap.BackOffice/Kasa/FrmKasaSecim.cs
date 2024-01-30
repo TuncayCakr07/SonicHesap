@@ -19,6 +19,7 @@ namespace SonicHesap.BackOffice.Kasa
         KasaDAL kasaDal=new KasaDAL();
         SonicHesapContext context = new SonicHesapContext();
         public Entities.Tables.Kasa entity=new Entities.Tables.Kasa();
+        public bool secildi=false;
         public FrmKasaSecim()
         {
             InitializeComponent();
@@ -31,9 +32,13 @@ namespace SonicHesap.BackOffice.Kasa
 
         private void btnSec_Click(object sender, EventArgs e)
         {
-            string kasaKodu = gridSecim.GetFocusedRowCellValue(colKasaKodu).ToString();
-            entity=context.Kasalar.SingleOrDefault(c => c.KasaKodu == kasaKodu);
-            this.Close();
+            if (gridSecim.GetSelectedRows().Length!=0)
+            {
+                string kasaKodu = gridSecim.GetFocusedRowCellValue(colKasaKodu).ToString();
+                entity = context.Kasalar.SingleOrDefault(c => c.KasaKodu == kasaKodu);
+                secildi = true;
+                this.Close();
+            }
         }
 
         private void btnKapat_Click(object sender, EventArgs e)

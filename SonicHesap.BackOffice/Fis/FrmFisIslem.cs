@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
+using SonicHesap.BackOffice.Kasa;
 using SonicHesap.BackOffice.Stok;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
@@ -64,6 +65,22 @@ namespace SonicHesap.BackOffice.Fis
                 OdemeTuruAdi = buton.Text,
                 Tutar = txtOdenmesiGereken.Value
             };
+            if (txtOdenmesiGereken.Value<=0)
+            {
+                MessageBox.Show("Ödeme Yapılacak Tutar Bulunamadı!","Uyarı!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+            else
+            {
+                kasaHareketDal.AddOrUpdate(contex, entitykasaHareket);
+                OdenenTutarGuncelle();
+            }
+        }
+
+        private void OdenenTutarGuncelle()
+        {
+            gridKasaHareket.UpdateSummary();
+            txtOdenenTutar.Value = Convert.ToDecimal(colTutar.SummaryItem.SummaryValue);
+            txtOdenmesiGereken.Value = txtToplam.Value - txtOdenenTutar.Value;
         }
 
         private void FrmFisIslem_Load(object sender, EventArgs e)
@@ -176,7 +193,7 @@ namespace SonicHesap.BackOffice.Fis
             txtToplam.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) - txtIskontoTutar.Value;
             txtKdvToplam.Value = Convert.ToDecimal(colKdvToplam.SummaryItem.SummaryValue);
             txtIndirimToplam.Value = Convert.ToDecimal(colIndirimtutari.SummaryItem.SummaryValue);
-
+            txtOdenmesiGereken.Value=txtToplam.Value-txtOdenenTutar.Value;
         }
 
         private void txtToplam_EditValueChanged(object sender, EventArgs e)
@@ -237,6 +254,27 @@ namespace SonicHesap.BackOffice.Fis
             if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                gridStokHareket.DeleteSelectedRows();
+            }
+        }
+
+        private void repoOHSil_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                gridKasaHareket.DeleteSelectedRows();
+                OdenenTutarGuncelle();
+            }
+            
+        }
+
+        private void repoKasa_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            FrmKasaSecim form = new FrmKasaSecim();
+            form.ShowDialog();
+            if (form.secildi)
+            {
+                gridKasaHareket.SetFocusedRowCellValue(colKasaKodu, form.entity.KasaKodu);
+                gridKasaHareket.SetFocusedRowCellValue(colKasaAdi, form.entity.KasaAdi);
             }
         }
     }
