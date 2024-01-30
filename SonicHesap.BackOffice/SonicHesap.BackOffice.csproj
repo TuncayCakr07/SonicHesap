@@ -132,6 +132,12 @@
     <Compile Include="Fis\FrmFisIslem.Designer.cs">
       <DependentUpon>FrmFisIslem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fis\FrmSeriNoGir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fis\FrmSeriNoGir.Designer.cs">
+      <DependentUpon>FrmSeriNoGir.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kasa\FrmKasa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fis\FrmFisIslem.resx">
       <DependentUpon>FrmFisIslem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fis\FrmSeriNoGir.resx">
+      <DependentUpon>FrmSeriNoGir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Kasa\FrmKasa.resx">
       <DependentUpon>FrmKasa.cs</DependentUpon>

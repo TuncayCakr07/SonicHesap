@@ -530,7 +530,7 @@
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(1361, 86);
             this.groupControl2.TabIndex = 0;
-            this.groupControl2.Text = "groupControl2";
+            this.groupControl2.Text = "Menü";
             // 
             // btnKapat
             // 
@@ -1407,6 +1407,7 @@
             this.repoSeriNo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Seri No", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repoSeriNo.Name = "repoSeriNo";
+            this.repoSeriNo.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repoSeriNo_ButtonClick);
             // 
             // colAciklama
             // 
@@ -1778,6 +1779,10 @@
             // 
             this.barFiyat1.Id = 0;
             this.barFiyat1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barFiyat1.ImageOptions.Image")));
+            this.barFiyat1.ItemAppearance.Normal.Font = new System.Drawing.Font("DS-Digital", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barFiyat1.ItemAppearance.Normal.Options.UseFont = true;
+            this.barFiyat1.ItemInMenuAppearance.Normal.Font = new System.Drawing.Font("DS-Digital", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barFiyat1.ItemInMenuAppearance.Normal.Options.UseFont = true;
             this.barFiyat1.Name = "barFiyat1";
             this.barFiyat1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
             this.barFiyat1.ItemPress += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
@@ -1786,6 +1791,8 @@
             // 
             this.barFiyat2.Id = 1;
             this.barFiyat2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barFiyat2.ImageOptions.Image")));
+            this.barFiyat2.ItemAppearance.Normal.Font = new System.Drawing.Font("DS-Digital", 12F, System.Drawing.FontStyle.Bold);
+            this.barFiyat2.ItemAppearance.Normal.Options.UseFont = true;
             this.barFiyat2.Name = "barFiyat2";
             this.barFiyat2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
             this.barFiyat2.ItemPress += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
@@ -1794,6 +1801,8 @@
             // 
             this.barFiyat3.Id = 2;
             this.barFiyat3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barFiyat3.ImageOptions.Image")));
+            this.barFiyat3.ItemAppearance.Normal.Font = new System.Drawing.Font("DS-Digital", 12F, System.Drawing.FontStyle.Bold);
+            this.barFiyat3.ItemAppearance.Normal.Options.UseFont = true;
             this.barFiyat3.Name = "barFiyat3";
             this.barFiyat3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
             this.barFiyat3.ItemPress += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);

@@ -198,5 +198,13 @@ namespace SonicHesap.BackOffice.Fis
         {
             gridStokHareket.SetFocusedRowCellValue(colBirimFiyati,Convert.ToDecimal(e.Item.Tag));
         }
+
+        private void repoSeriNo_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            string veri = Convert.ToString(gridStokHareket.GetFocusedRowCellValue(colSeriNo));
+            FrmSeriNoGir form=new FrmSeriNoGir(veri);
+            form.ShowDialog();
+            gridStokHareket.SetFocusedRowCellValue(colSeriNo, form.veriSeriNo);
+        }
     }
 }
