@@ -13,6 +13,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,6 +40,30 @@ namespace SonicHesap.BackOffice.Fis
             lblCariAdi.DataBindings.Add("Text", _fisEntity, "CariAdi");
             gridContStokHareket.DataSource = contex.StokHareketleri.Local.ToBindingList();
             gridContKasaHareket.DataSource = contex.KasaHareketleri.Local.ToBindingList();
+
+            foreach (var item in contex.OdemeTurleri.ToList())
+            {
+                var buton = new SimpleButton 
+                {
+                    Name=item.OdemeTuruKodu,
+                    Text=item.OdemeTuruAdi,
+                    Height=55,
+                    Width=110,
+                };
+                buton.Click += OdemeEkle_Click;
+                flowOdemeTurleri.Controls.Add(buton);
+            }
+        }
+
+        private void OdemeEkle_Click(object sender, EventArgs e)
+        {
+            var buton=(sender as SimpleButton);
+            KasaHareket entitykasaHareket = new KasaHareket
+            {
+                OdemeTuruKodu = buton.Name,
+                OdemeTuruAdi = buton.Text,
+                Tutar = txtOdenmesiGereken.Value
+            };
         }
 
         private void FrmFisIslem_Load(object sender, EventArgs e)
@@ -205,6 +230,14 @@ namespace SonicHesap.BackOffice.Fis
             FrmSeriNoGir form=new FrmSeriNoGir(veri);
             form.ShowDialog();
             gridStokHareket.SetFocusedRowCellValue(colSeriNo, form.veriSeriNo);
+        }
+
+        private void repoSil_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+               gridStokHareket.DeleteSelectedRows();
+            }
         }
     }
 }
