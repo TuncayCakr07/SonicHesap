@@ -14,6 +14,14 @@ namespace SonicHesap.Entities.Tables
         public string FisTuru { get; set; }
         public string CariKodu { get; set; }
         public string CariAdi { get; set; }
+        public string FaturaUnvani { get; set; }
+        public string CepTelefonu { get; set; }
+        public string Il { get; set; }
+        public string Ilce { get; set; }
+        public string Semt { get; set; }
+        public string Adres { get; set; }
+        public string VergiDairesi { get; set; }
+        public string VergiNo { get; set; }
         public string BelgeNo { get; set; }
         public DateTime Tarih { get; set; }
         public string PlasiyerKodu { get; set; }

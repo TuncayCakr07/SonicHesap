@@ -30,17 +30,43 @@ namespace SonicHesap.BackOffice.Fis
         CariDAL cariDal= new CariDAL();
         Entities.Tables.Fis _fisEntity = new Entities.Tables.Fis();
         CariBakiye entityBakiye = new CariBakiye();
-        public FrmFisIslem()
+        public FrmFisIslem(string fisKodu=null)
         {
             InitializeComponent();
-            txtFisTuru.DataBindings.Add("Text", _fisEntity, "FisTuru");
-            cmbTarih.DataBindings.Add("EditValue", _fisEntity, "Tarih");
-            txtBelgeNo.DataBindings.Add("Text", _fisEntity, "BelgeNo");
-            txtAciklama.DataBindings.Add("Text", _fisEntity, "Aciklama");
-            lblCariKodu.DataBindings.Add("Text", _fisEntity, "CariKodu");
-            lblCariAdi.DataBindings.Add("Text", _fisEntity, "CariAdi");
+            if (fisKodu!=null)
+            {
+                _fisEntity = contex.fisler.Where(c => c.FisKodu == fisKodu).SingleOrDefault();
+                contex.StokHareketleri.Where(c => c.FisKodu == fisKodu).Load();
+                contex.KasaHareketleri.Where(c => c.FisKodu == fisKodu).Load();
+
+                entityBakiye = cariDal.CariBakiyesi(contex, _fisEntity.CariKodu);
+
+                lblAlacak.Text = entityBakiye.Alacak.ToString("C2");
+                lblBorc.Text = entityBakiye.Borc.ToString("C2");
+                lblBakiye.Text = entityBakiye.Bakiye.ToString("C2");
+            }
+           
+            txtFisTuru.DataBindings.Add("Text", _fisEntity, "FisTuru",false,DataSourceUpdateMode.OnPropertyChanged);
+            txtFisKodu.DataBindings.Add("Text", _fisEntity, "FisKodu",false, DataSourceUpdateMode.OnPropertyChanged);
+            cmbTarih.DataBindings.Add("EditValue", _fisEntity, "Tarih",false, DataSourceUpdateMode.OnPropertyChanged);
+            txtBelgeNo.DataBindings.Add("Text", _fisEntity, "BelgeNo", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtAciklama.DataBindings.Add("Text", _fisEntity, "Aciklama", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblCariKodu.DataBindings.Add("Text", _fisEntity, "CariKodu", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblCariAdi.DataBindings.Add("Text", _fisEntity, "CariAdi", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtFaturaUnvani.DataBindings.Add("Text", _fisEntity, "FaturaUnvani", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtCepTelefonu.DataBindings.Add("Text", _fisEntity, "CepTelefonu", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtIl.DataBindings.Add("Text", _fisEntity, "Il", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtIlce.DataBindings.Add("Text", _fisEntity, "Ilce", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtSemt.DataBindings.Add("Text", _fisEntity, "Semt", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtAdres.DataBindings.Add("Text", _fisEntity, "Adres", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtVergiDairesi.DataBindings.Add("Text", _fisEntity, "VergiDairesi", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtVergiNo.DataBindings.Add("Text", _fisEntity, "VergiNo", false, DataSourceUpdateMode.OnPropertyChanged);
+
             gridContStokHareket.DataSource = contex.StokHareketleri.Local.ToBindingList();
             gridContKasaHareket.DataSource = contex.KasaHareketleri.Local.ToBindingList();
+
+            Toplamlar();
+            OdenenTutarGuncelle();
 
             foreach (var item in contex.OdemeTurleri.ToList())
             {
@@ -94,7 +120,7 @@ namespace SonicHesap.BackOffice.Fis
             stokHareket.StokAdi = entity.StokAdi;
             stokHareket.Barkod = entity.Barkod;
             stokHareket.BarkodTuru = entity.BarkodTuru;
-            stokHareket.BirimFiyati = entity.SatisFiyati1;
+            stokHareket.BirimFiyati = txtFisTuru.Text == "Alış Faturası" ? entity.AlisFiyati1 : entity.SatisFiyati1;
             stokHareket.Birimi = entity.Birimi;
             stokHareket.Miktar = txtMiktar.Value;
             stokHareket.Kdv = entity.SatisKdv;
@@ -227,9 +253,9 @@ namespace SonicHesap.BackOffice.Fis
             string fiyatSecilen=gridStokHareket.GetFocusedRowCellValue(colStokKodu).ToString(); 
             Entities.Tables.Stok fiyatEntity=contex.Stoklar.Where(c=>c.StokKodu==fiyatSecilen).SingleOrDefault();
 
-            barFiyat1.Tag = fiyatEntity.SatisFiyati1 ?? 0;
-            barFiyat2.Tag = fiyatEntity.SatisFiyati2 ?? 0;
-            barFiyat3.Tag = fiyatEntity.SatisFiyati3 ?? 0;
+            barFiyat1.Tag = txtFisTuru.Text == "Alış Faturası" ? fiyatEntity.AlisFiyati1 ?? 0 : fiyatEntity.SatisFiyati1 ?? 0;
+            barFiyat2.Tag = txtFisTuru.Text == "Alış Faturası" ? fiyatEntity.AlisFiyati2 ?? 0 : fiyatEntity.SatisFiyati2 ?? 0;
+            barFiyat3.Tag = txtFisTuru.Text == "Alış Faturası" ? fiyatEntity.AlisFiyati3 ?? 0 : fiyatEntity.SatisFiyati3 ?? 0;
             barFiyat1.Caption = string.Format("{0:C2}",barFiyat1.Tag);
             barFiyat2.Caption = string.Format("{0:C2}",barFiyat2.Tag);
             barFiyat3.Caption = string.Format("{0:C2}",barFiyat3.Tag);
@@ -275,6 +301,40 @@ namespace SonicHesap.BackOffice.Fis
             {
                 gridKasaHareket.SetFocusedRowCellValue(colKasaKodu, form.entity.KasaKodu);
                 gridKasaHareket.SetFocusedRowCellValue(colKasaAdi, form.entity.KasaAdi);
+            }
+        }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            int StokHata=contex.StokHareketleri.Local.Where(c=>c.DepoKodu==null).Count();
+            int KasaHata= contex.KasaHareketleri.Local.Where(c => c.KasaKodu == null).Count();
+            if (StokHata==0 && KasaHata==0)
+            {
+                foreach (var stokVeri in contex.StokHareketleri.Local.ToList())
+                {
+                    stokVeri.Tarih = stokVeri.Tarih == null ? Convert.ToDateTime(cmbTarih.DateTime) : Convert.ToDateTime(stokVeri.Tarih);
+                    stokVeri.FisKodu = txtFisKodu.Text;
+                    stokVeri.Hareket = _fisEntity.FisTuru == "Alış Faturası" ? "Stok Giriş" : "Stok Çıkış";
+                }
+
+                foreach (var kasaVeri in contex.KasaHareketleri.Local.ToList())
+                {
+                    kasaVeri.Tarih = kasaVeri.Tarih == null ? Convert.ToDateTime(cmbTarih.DateTime) : Convert.ToDateTime(kasaVeri.Tarih);
+                    kasaVeri.FisKodu = txtFisKodu.Text;
+                    kasaVeri.Hareket = _fisEntity.FisTuru == "Alış Faturası" ? "Kasa Çıkış" : "Kasa Giriş";
+                    kasaVeri.CariKodu = lblCariKodu.Text;
+                    kasaVeri.CariAdi = lblCariAdi.Text;
+                }
+                _fisEntity.ToplamTutar = txtToplam.Value;
+                _fisEntity.IskontoOrani = txtIskontoOrani.Value;
+                _fisEntity.IskontoTutar= txtIskontoTutar.Value;
+                fisDal.AddOrUpdate(contex, _fisEntity);
+                contex.SaveChanges();
+                MessageBox.Show("Belge Kaydedildi!","Bilgi",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Depo Kodu Ve Kasa Kodunu Kontrol Ediniz!","Uyarı!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
     }

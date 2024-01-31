@@ -26,8 +26,6 @@ namespace SonicHesap.Entities.Mapping
             this.Property(x => x.Miktar).HasPrecision(12, 3);
             this.Property(x => x.BirimFiyati).HasPrecision(12, 2);
             this.Property(x => x.IndirimOrani).HasPrecision(5, 2);
-            this.Property(x => x.IndirimTutari).HasPrecision(12, 2);
-            this.Property(x => x.ToplamTutar).HasPrecision(12, 2);
             this.Property(x => x.DepoKodu).HasMaxLength(15);
             this.Property(x => x.DepoAdi).HasMaxLength(50);
             this.Property(x => x.SeriNo).HasMaxLength(200);
@@ -46,8 +44,6 @@ namespace SonicHesap.Entities.Mapping
             this.Property(x => x.Kdv).HasColumnName("Kdv");
             this.Property(x => x.BirimFiyati).HasColumnName("BirimFiyati");
             this.Property(x => x.IndirimOrani).HasColumnName("IndirimOrani");
-            this.Property(x => x.IndirimTutari).HasColumnName("IndirimTutari");
-            this.Property(x => x.ToplamTutar).HasColumnName("ToplamTutar");
             this.Property(x => x.DepoKodu).HasColumnName("DepoKodu"); 
             this.Property(x => x.DepoAdi).HasColumnName("DepoAdi");
             this.Property(x => x.SeriNo).HasColumnName("SeriNo");
