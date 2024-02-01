@@ -1,4 +1,5 @@
-﻿using SonicHesap.BackOffice.Cari;
+﻿using SonicHesap.BackOffice.AnaMenu;
+using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
 using SonicHesap.BackOffice.Fis;
 using SonicHesap.BackOffice.Kasa;
@@ -78,6 +79,13 @@ namespace SonicHesap.BackOffice
         private void btnFisIslem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FrmFisIslem form = new FrmFisIslem();
+            form.Show();
+        }
+
+        private void FrmAnaMenu_Load(object sender, EventArgs e)
+        {
+            FrmAnaMenuBilgi form = new FrmAnaMenuBilgi();
+            form.MdiParent = this;
             form.Show();
         }
     }
