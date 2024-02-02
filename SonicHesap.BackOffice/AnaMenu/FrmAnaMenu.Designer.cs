@@ -41,7 +41,7 @@
             this.btnFisIslem = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.btnStokHareketleri = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnKasaHareket = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
@@ -113,7 +113,7 @@
             this.btnFisIslem,
             this.barButtonItem2,
             this.btnStokHareketleri,
-            this.barButtonItem4,
+            this.btnKasaHareket,
             this.barButtonItem5,
             this.barButtonItem6,
             this.barButtonItem7,
@@ -236,16 +236,17 @@
             // 
             this.btnStokHareketleri.Caption = "Stok Hareketleri";
             this.btnStokHareketleri.Id = 10;
-            this.btnStokHareketleri.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.btnStokHareketleri.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnStokHareketleri.ImageOptions.LargeImage")));
             this.btnStokHareketleri.Name = "btnStokHareketleri";
             this.btnStokHareketleri.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStokHareketleri_ItemClick);
             // 
-            // barButtonItem4
+            // btnKasaHareket
             // 
-            this.barButtonItem4.Caption = "Kasa Hareket";
-            this.barButtonItem4.Id = 11;
-            this.barButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
-            this.barButtonItem4.Name = "barButtonItem4";
+            this.btnKasaHareket.Caption = "Kasa Hareket";
+            this.btnKasaHareket.Id = 11;
+            this.btnKasaHareket.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnKasaHareket.ImageOptions.LargeImage")));
+            this.btnKasaHareket.Name = "btnKasaHareket";
+            this.btnKasaHareket.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnKasaHareket_ItemClick);
             // 
             // barButtonItem5
             // 
@@ -277,7 +278,7 @@
             // 
             // barButtonItem9
             // 
-            this.barButtonItem9.Caption = "Plasiyerler";
+            this.barButtonItem9.Caption = "Personeller";
             this.barButtonItem9.Id = 16;
             this.barButtonItem9.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.LargeImage")));
             this.barButtonItem9.Name = "barButtonItem9";
@@ -499,7 +500,7 @@
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.btnStokHareketleri);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnKasaHareket);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Hareketler";
             // 
@@ -631,7 +632,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmAnaMenu";
             this.Ribbon = this.ribbonControl1;
-            this.Text = "Form1";
+            this.Text = "SonicHesap Ön Muhasebe Programı V.01.01";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmAnaMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
@@ -657,7 +658,7 @@
         private DevExpress.XtraBars.BarButtonItem btnFisIslem;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem btnStokHareketleri;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem btnKasaHareket;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;

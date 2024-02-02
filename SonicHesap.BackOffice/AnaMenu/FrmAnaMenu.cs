@@ -3,6 +3,7 @@ using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
 using SonicHesap.BackOffice.Fis;
 using SonicHesap.BackOffice.Kasa;
+using SonicHesap.BackOffice.Kasa_Hareketleri;
 using SonicHesap.BackOffice.Odeme_Turu;
 using SonicHesap.BackOffice.Stok;
 using SonicHesap.BackOffice.Stok_Hareketleri;
@@ -95,6 +96,13 @@ namespace SonicHesap.BackOffice
             FrmStokHareketleri form = new FrmStokHareketleri();
             form.MdiParent = this;
             form.Show();
+        }
+
+        private void btnKasaHareket_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmKasaHareketleri form = new FrmKasaHareketleri();
+            form.MdiParent = this;
+            form.Show();    
         }
     }
 }

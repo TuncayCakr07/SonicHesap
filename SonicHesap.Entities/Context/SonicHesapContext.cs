@@ -20,6 +20,7 @@ namespace SonicHesap.Entities.Context
         public DbSet<Kasa> Kasalar { get; set; }
         public DbSet<OdemeTuru> OdemeTurleri { get; set; }
         public DbSet<Tanim> Tanimlar { get; set; }
+        public DbSet<Personel> Personeller { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -33,6 +34,7 @@ namespace SonicHesap.Entities.Context
             modelBuilder.Configurations.Add(new KasaMap());
             modelBuilder.Configurations.Add(new OdemeTuruMap());
             modelBuilder.Configurations.Add(new TanimMap());
+            modelBuilder.Configurations.Add(new PersonelMap());
         }
     }
 }

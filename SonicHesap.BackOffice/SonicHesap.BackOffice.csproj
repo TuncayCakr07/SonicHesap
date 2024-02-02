@@ -144,6 +144,12 @@
     <Compile Include="Fis\FrmSeriNoGir.Designer.cs">
       <DependentUpon>FrmSeriNoGir.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kasa Hareketleri\FrmKasaHareketleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kasa Hareketleri\FrmKasaHareketleri.Designer.cs">
+      <DependentUpon>FrmKasaHareketleri.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kasa\FrmKasa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +191,24 @@
     </Compile>
     <Compile Include="Odeme Turu\FrmOdemeTuruIslem.Designer.cs">
       <DependentUpon>FrmOdemeTuruIslem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personel\FrmPersonel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personel\FrmPersonel.Designer.cs">
+      <DependentUpon>FrmPersonel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personel\FrmPersonelHareket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personel\FrmPersonelHareket.Designer.cs">
+      <DependentUpon>FrmPersonelHareket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personel\FrmPersonelIslem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personel\FrmPersonelIslem.Designer.cs">
+      <DependentUpon>FrmPersonelIslem.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -263,6 +287,9 @@
     <EmbeddedResource Include="Fis\FrmSeriNoGir.resx">
       <DependentUpon>FrmSeriNoGir.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Kasa Hareketleri\FrmKasaHareketleri.resx">
+      <DependentUpon>FrmKasaHareketleri.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Kasa\FrmKasa.resx">
       <DependentUpon>FrmKasa.cs</DependentUpon>
     </EmbeddedResource>
@@ -283,6 +310,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Odeme Turu\FrmOdemeTuruIslem.resx">
       <DependentUpon>FrmOdemeTuruIslem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personel\FrmPersonel.resx">
+      <DependentUpon>FrmPersonel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personel\FrmPersonelHareket.resx">
+      <DependentUpon>FrmPersonelHareket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personel\FrmPersonelIslem.resx">
+      <DependentUpon>FrmPersonelIslem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -320,6 +356,7 @@
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Kasa.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.KasaHareket.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.OdemeTuru.datasource" />
+    <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Personel.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Stok.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.StokHareket.datasource" />
     <None Include="Properties\Settings.settings">
@@ -338,6 +375,7 @@
       <Name>SonicHesap.Entities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
