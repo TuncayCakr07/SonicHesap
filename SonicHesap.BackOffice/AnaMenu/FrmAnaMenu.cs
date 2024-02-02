@@ -5,6 +5,7 @@ using SonicHesap.BackOffice.Fis;
 using SonicHesap.BackOffice.Kasa;
 using SonicHesap.BackOffice.Odeme_Turu;
 using SonicHesap.BackOffice.Stok;
+using SonicHesap.BackOffice.Stok_Hareketleri;
 using SonicHesap.BackOffice.Tanimlar;
 using SonicHesap.Entities.Context;
 using System;
@@ -85,6 +86,13 @@ namespace SonicHesap.BackOffice
         private void FrmAnaMenu_Load(object sender, EventArgs e)
         {
             FrmAnaMenuBilgi form = new FrmAnaMenuBilgi();
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void btnStokHareketleri_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmStokHareketleri form = new FrmStokHareketleri();
             form.MdiParent = this;
             form.Show();
         }

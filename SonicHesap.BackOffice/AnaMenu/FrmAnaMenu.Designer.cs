@@ -40,7 +40,7 @@
             this.btnFis = new DevExpress.XtraBars.BarButtonItem();
             this.btnFisIslem = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnStokHareketleri = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
@@ -112,7 +112,7 @@
             this.btnFis,
             this.btnFisIslem,
             this.barButtonItem2,
-            this.barButtonItem3,
+            this.btnStokHareketleri,
             this.barButtonItem4,
             this.barButtonItem5,
             this.barButtonItem6,
@@ -232,12 +232,13 @@
             this.barButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
             this.barButtonItem2.Name = "barButtonItem2";
             // 
-            // barButtonItem3
+            // btnStokHareketleri
             // 
-            this.barButtonItem3.Caption = "Stok Hareketleri";
-            this.barButtonItem3.Id = 10;
-            this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
-            this.barButtonItem3.Name = "barButtonItem3";
+            this.btnStokHareketleri.Caption = "Stok Hareketleri";
+            this.btnStokHareketleri.Id = 10;
+            this.btnStokHareketleri.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.btnStokHareketleri.Name = "btnStokHareketleri";
+            this.btnStokHareketleri.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStokHareketleri_ItemClick);
             // 
             // barButtonItem4
             // 
@@ -497,7 +498,7 @@
             // 
             // ribbonPageGroup2
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem3);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnStokHareketleri);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem4);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Hareketler";
@@ -655,7 +656,7 @@
         private DevExpress.XtraBars.BarButtonItem btnFis;
         private DevExpress.XtraBars.BarButtonItem btnFisIslem;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem btnStokHareketleri;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;

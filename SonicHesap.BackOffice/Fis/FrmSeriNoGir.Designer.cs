@@ -32,22 +32,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSeriNoGir));
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.grpBilgi = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.txtSeriNo = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.listSeriNo = new DevExpress.XtraEditors.ListBoxControl();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.btnSil = new DevExpress.XtraEditors.SimpleButton();
-            this.btnKaydet = new DevExpress.XtraEditors.SimpleButton();
-            this.BtnYeni = new DevExpress.XtraEditors.SimpleButton();
-            this.btnVazgeç = new DevExpress.XtraEditors.SimpleButton();
+            this.groupAltMenu = new DevExpress.XtraEditors.GroupControl();
             this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btnVazgeç = new DevExpress.XtraEditors.SimpleButton();
+            this.BtnYeni = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSil = new DevExpress.XtraEditors.SimpleButton();
+            this.btnKaydet = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.grpBilgi)).BeginInit();
             this.grpBilgi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSeriNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listSeriNo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupAltMenu)).BeginInit();
+            this.groupAltMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelControl16
@@ -79,6 +79,13 @@
             this.grpBilgi.TabIndex = 16;
             this.grpBilgi.Text = "Seri No Bilgileri";
             // 
+            // txtSeriNo
+            // 
+            this.txtSeriNo.Location = new System.Drawing.Point(113, 32);
+            this.txtSeriNo.Name = "txtSeriNo";
+            this.txtSeriNo.Size = new System.Drawing.Size(476, 22);
+            this.txtSeriNo.TabIndex = 1;
+            // 
             // labelControl20
             // 
             this.labelControl20.Appearance.Options.UseTextOptions = true;
@@ -91,13 +98,6 @@
             this.labelControl20.TabIndex = 0;
             this.labelControl20.Text = "Seri No :";
             // 
-            // txtSeriNo
-            // 
-            this.txtSeriNo.Location = new System.Drawing.Point(113, 32);
-            this.txtSeriNo.Name = "txtSeriNo";
-            this.txtSeriNo.Size = new System.Drawing.Size(476, 22);
-            this.txtSeriNo.TabIndex = 1;
-            // 
             // listSeriNo
             // 
             this.listSeriNo.Location = new System.Drawing.Point(8, 133);
@@ -105,20 +105,73 @@
             this.listSeriNo.Size = new System.Drawing.Size(581, 268);
             this.listSeriNo.TabIndex = 17;
             // 
-            // groupControl2
+            // groupAltMenu
             // 
-            this.groupControl2.Controls.Add(this.btnKapat);
-            this.groupControl2.Controls.Add(this.btnVazgeç);
-            this.groupControl2.Controls.Add(this.BtnYeni);
-            this.groupControl2.Controls.Add(this.btnSil);
-            this.groupControl2.Controls.Add(this.btnKaydet);
-            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupControl2.Location = new System.Drawing.Point(0, 408);
-            this.groupControl2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(595, 92);
-            this.groupControl2.TabIndex = 18;
-            this.groupControl2.Text = "Menü";
+            this.groupAltMenu.Controls.Add(this.btnKapat);
+            this.groupAltMenu.Controls.Add(this.btnVazgeç);
+            this.groupAltMenu.Controls.Add(this.BtnYeni);
+            this.groupAltMenu.Controls.Add(this.btnSil);
+            this.groupAltMenu.Controls.Add(this.btnKaydet);
+            this.groupAltMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupAltMenu.Location = new System.Drawing.Point(0, 408);
+            this.groupAltMenu.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.groupAltMenu.Name = "groupAltMenu";
+            this.groupAltMenu.Size = new System.Drawing.Size(595, 92);
+            this.groupAltMenu.TabIndex = 18;
+            this.groupAltMenu.Text = "Menü";
+            // 
+            // btnKapat
+            // 
+            this.btnKapat.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnKapat.Appearance.Options.UseFont = true;
+            this.btnKapat.ImageOptions.ImageIndex = 0;
+            this.btnKapat.ImageOptions.ImageList = this.ımageList1;
+            this.btnKapat.Location = new System.Drawing.Point(474, 30);
+            this.btnKapat.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnKapat.Name = "btnKapat";
+            this.btnKapat.Size = new System.Drawing.Size(115, 60);
+            this.btnKapat.TabIndex = 4;
+            this.btnKapat.Text = "Kapat";
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
+            // 
+            // ımageList1
+            // 
+            this.ımageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ımageList1.ImageStream")));
+            this.ımageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.ımageList1.Images.SetKeyName(0, "folder_out.png");
+            this.ımageList1.Images.SetKeyName(1, "add.png");
+            this.ımageList1.Images.SetKeyName(2, "delete.png");
+            this.ımageList1.Images.SetKeyName(3, "floppy_disk.png");
+            this.ımageList1.Images.SetKeyName(4, "floppy_disk_delete.png");
+            // 
+            // btnVazgeç
+            // 
+            this.btnVazgeç.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnVazgeç.Appearance.Options.UseFont = true;
+            this.btnVazgeç.Enabled = false;
+            this.btnVazgeç.ImageOptions.ImageIndex = 4;
+            this.btnVazgeç.ImageOptions.ImageList = this.ımageList1;
+            this.btnVazgeç.Location = new System.Drawing.Point(357, 30);
+            this.btnVazgeç.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnVazgeç.Name = "btnVazgeç";
+            this.btnVazgeç.Size = new System.Drawing.Size(115, 60);
+            this.btnVazgeç.TabIndex = 3;
+            this.btnVazgeç.Text = "Vazgeç";
+            this.btnVazgeç.Click += new System.EventHandler(this.btnVazgeç_Click);
+            // 
+            // BtnYeni
+            // 
+            this.BtnYeni.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.BtnYeni.Appearance.Options.UseFont = true;
+            this.BtnYeni.ImageOptions.ImageIndex = 1;
+            this.BtnYeni.ImageOptions.ImageList = this.ımageList1;
+            this.BtnYeni.Location = new System.Drawing.Point(4, 30);
+            this.BtnYeni.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.BtnYeni.Name = "BtnYeni";
+            this.BtnYeni.Size = new System.Drawing.Size(115, 60);
+            this.BtnYeni.TabIndex = 2;
+            this.BtnYeni.Text = "Yeni";
+            this.BtnYeni.Click += new System.EventHandler(this.BtnYeni_Click);
             // 
             // btnSil
             // 
@@ -149,65 +202,12 @@
             this.btnKaydet.Text = "Kaydet";
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
-            // BtnYeni
-            // 
-            this.BtnYeni.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.BtnYeni.Appearance.Options.UseFont = true;
-            this.BtnYeni.ImageOptions.ImageIndex = 1;
-            this.BtnYeni.ImageOptions.ImageList = this.ımageList1;
-            this.BtnYeni.Location = new System.Drawing.Point(4, 30);
-            this.BtnYeni.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.BtnYeni.Name = "BtnYeni";
-            this.BtnYeni.Size = new System.Drawing.Size(115, 60);
-            this.BtnYeni.TabIndex = 2;
-            this.BtnYeni.Text = "Yeni";
-            this.BtnYeni.Click += new System.EventHandler(this.BtnYeni_Click);
-            // 
-            // btnVazgeç
-            // 
-            this.btnVazgeç.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold);
-            this.btnVazgeç.Appearance.Options.UseFont = true;
-            this.btnVazgeç.Enabled = false;
-            this.btnVazgeç.ImageOptions.ImageIndex = 4;
-            this.btnVazgeç.ImageOptions.ImageList = this.ımageList1;
-            this.btnVazgeç.Location = new System.Drawing.Point(357, 30);
-            this.btnVazgeç.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.btnVazgeç.Name = "btnVazgeç";
-            this.btnVazgeç.Size = new System.Drawing.Size(115, 60);
-            this.btnVazgeç.TabIndex = 3;
-            this.btnVazgeç.Text = "Vazgeç";
-            this.btnVazgeç.Click += new System.EventHandler(this.btnVazgeç_Click);
-            // 
-            // btnKapat
-            // 
-            this.btnKapat.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold);
-            this.btnKapat.Appearance.Options.UseFont = true;
-            this.btnKapat.ImageOptions.ImageIndex = 0;
-            this.btnKapat.ImageOptions.ImageList = this.ımageList1;
-            this.btnKapat.Location = new System.Drawing.Point(474, 30);
-            this.btnKapat.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.btnKapat.Name = "btnKapat";
-            this.btnKapat.Size = new System.Drawing.Size(115, 60);
-            this.btnKapat.TabIndex = 4;
-            this.btnKapat.Text = "Kapat";
-            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
-            // 
-            // ımageList1
-            // 
-            this.ımageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ımageList1.ImageStream")));
-            this.ımageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.ımageList1.Images.SetKeyName(0, "folder_out.png");
-            this.ımageList1.Images.SetKeyName(1, "add.png");
-            this.ımageList1.Images.SetKeyName(2, "delete.png");
-            this.ımageList1.Images.SetKeyName(3, "floppy_disk.png");
-            this.ımageList1.Images.SetKeyName(4, "floppy_disk_delete.png");
-            // 
             // FrmSeriNoGir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 500);
-            this.Controls.Add(this.groupControl2);
+            this.Controls.Add(this.groupAltMenu);
             this.Controls.Add(this.listSeriNo);
             this.Controls.Add(this.grpBilgi);
             this.Controls.Add(this.labelControl16);
@@ -222,8 +222,8 @@
             this.grpBilgi.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtSeriNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listSeriNo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupAltMenu)).EndInit();
+            this.groupAltMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -235,7 +235,7 @@
         private DevExpress.XtraEditors.TextEdit txtSeriNo;
         private DevExpress.XtraEditors.LabelControl labelControl20;
         private DevExpress.XtraEditors.ListBoxControl listSeriNo;
-        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.GroupControl groupAltMenu;
         private DevExpress.XtraEditors.SimpleButton btnKapat;
         private DevExpress.XtraEditors.SimpleButton btnVazgeç;
         private DevExpress.XtraEditors.SimpleButton BtnYeni;
