@@ -46,7 +46,6 @@
             this.filterControl1 = new DevExpress.XtraEditors.FilterControl();
             this.gridContPersonelHareket = new DevExpress.XtraGrid.GridControl();
             this.gridPersonelHareket = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.lblBaslik = new DevExpress.XtraEditors.LabelControl();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCalisiyor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUnvani = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,6 +70,7 @@
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colToplamSatis = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrimTutar = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lblBaslik = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -111,6 +111,7 @@
             this.btnAra.Size = new System.Drawing.Size(111, 53);
             this.btnAra.TabIndex = 2;
             this.btnAra.Text = "Ara";
+            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
             // 
             // ımageList1
             // 
@@ -155,6 +156,7 @@
             this.btnKapat.Size = new System.Drawing.Size(94, 53);
             this.btnKapat.TabIndex = 0;
             this.btnKapat.Text = "Kapat";
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
             // 
             // btnGuncelle
             // 
@@ -168,6 +170,7 @@
             this.btnGuncelle.Size = new System.Drawing.Size(111, 53);
             this.btnGuncelle.TabIndex = 0;
             this.btnGuncelle.Text = "Güncelle";
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // btnSil
             // 
@@ -181,6 +184,7 @@
             this.btnSil.Size = new System.Drawing.Size(111, 53);
             this.btnSil.TabIndex = 0;
             this.btnSil.Text = "Sil";
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnDuzenle
             // 
@@ -241,6 +245,7 @@
             this.btnFormKapat.Name = "btnFormKapat";
             this.btnFormKapat.Size = new System.Drawing.Size(69, 53);
             this.btnFormKapat.TabIndex = 1;
+            this.btnFormKapat.Click += new System.EventHandler(this.btnFormKapat_Click);
             // 
             // btnFiltreKapat
             // 
@@ -252,6 +257,7 @@
             this.btnFiltreKapat.Name = "btnFiltreKapat";
             this.btnFiltreKapat.Size = new System.Drawing.Size(69, 53);
             this.btnFiltreKapat.TabIndex = 1;
+            this.btnFiltreKapat.Click += new System.EventHandler(this.btnFiltreKapat_Click);
             // 
             // btnFiltrele
             // 
@@ -263,6 +269,7 @@
             this.btnFiltrele.Name = "btnFiltrele";
             this.btnFiltrele.Size = new System.Drawing.Size(69, 53);
             this.btnFiltrele.TabIndex = 1;
+            this.btnFiltrele.Click += new System.EventHandler(this.btnFiltrele_Click);
             // 
             // filterControl1
             // 
@@ -319,22 +326,6 @@
             this.gridPersonelHareket.CustomizationFormBounds = new System.Drawing.Rectangle(1100, 647, 326, 271);
             this.gridPersonelHareket.GridControl = this.gridContPersonelHareket;
             this.gridPersonelHareket.Name = "gridPersonelHareket";
-            // 
-            // lblBaslik
-            // 
-            this.lblBaslik.Appearance.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblBaslik.Appearance.Options.UseFont = true;
-            this.lblBaslik.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblBaslik.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.lblBaslik.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblBaslik.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.lblBaslik.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblBaslik.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("lblBaslik.ImageOptions.Image")));
-            this.lblBaslik.Location = new System.Drawing.Point(0, 0);
-            this.lblBaslik.Name = "lblBaslik";
-            this.lblBaslik.Size = new System.Drawing.Size(1365, 66);
-            this.lblBaslik.TabIndex = 6;
-            this.lblBaslik.Text = "Personel Kartları";
             // 
             // colId
             // 
@@ -548,6 +539,8 @@
             // colPrimOrani
             // 
             this.colPrimOrani.Caption = "Prim Oranı(%)";
+            this.colPrimOrani.DisplayFormat.FormatString = "\'%\'0";
+            this.colPrimOrani.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colPrimOrani.FieldName = "PrimOrani";
             this.colPrimOrani.MinWidth = 25;
             this.colPrimOrani.Name = "colPrimOrani";
@@ -560,6 +553,8 @@
             // colAylikMaasi
             // 
             this.colAylikMaasi.Caption = "Aylık Maaşı";
+            this.colAylikMaasi.DisplayFormat.FormatString = "C2";
+            this.colAylikMaasi.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colAylikMaasi.FieldName = "AylikMaasi";
             this.colAylikMaasi.MinWidth = 25;
             this.colAylikMaasi.Name = "colAylikMaasi";
@@ -584,9 +579,12 @@
             // colToplamSatis
             // 
             this.colToplamSatis.Caption = "Toplam Satış";
+            this.colToplamSatis.DisplayFormat.FormatString = "C2";
+            this.colToplamSatis.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colToplamSatis.FieldName = "ToplamSatis";
             this.colToplamSatis.MinWidth = 25;
             this.colToplamSatis.Name = "colToplamSatis";
+            this.colToplamSatis.OptionsColumn.AllowEdit = false;
             this.colToplamSatis.Visible = true;
             this.colToplamSatis.VisibleIndex = 13;
             this.colToplamSatis.Width = 88;
@@ -594,12 +592,31 @@
             // colPrimTutar
             // 
             this.colPrimTutar.Caption = "Prim Tutarı";
-            this.colPrimTutar.FieldName = "PrimTutar";
+            this.colPrimTutar.DisplayFormat.FormatString = "C2";
+            this.colPrimTutar.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colPrimTutar.FieldName = "PrimTutari";
             this.colPrimTutar.MinWidth = 25;
             this.colPrimTutar.Name = "colPrimTutar";
+            this.colPrimTutar.OptionsColumn.AllowEdit = false;
             this.colPrimTutar.Visible = true;
             this.colPrimTutar.VisibleIndex = 14;
             this.colPrimTutar.Width = 76;
+            // 
+            // lblBaslik
+            // 
+            this.lblBaslik.Appearance.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblBaslik.Appearance.Options.UseFont = true;
+            this.lblBaslik.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblBaslik.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.lblBaslik.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblBaslik.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.lblBaslik.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblBaslik.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("lblBaslik.ImageOptions.Image")));
+            this.lblBaslik.Location = new System.Drawing.Point(0, 0);
+            this.lblBaslik.Name = "lblBaslik";
+            this.lblBaslik.Size = new System.Drawing.Size(1365, 66);
+            this.lblBaslik.TabIndex = 6;
+            this.lblBaslik.Text = "Personel Kartları";
             // 
             // FrmPersonel
             // 

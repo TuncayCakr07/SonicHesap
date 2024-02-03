@@ -40,7 +40,7 @@ namespace SonicHesap.Entities.Data_Access
                 personel.AylikMaasi,
                 personel.Aciklama,
                 ToplamSatis=fis.Where(c=>c.FisTuru=="Perakende Satış Faturası").Sum(c=>c.ToplamTutar) ?? 0,
-                PrimTutari= (fis.Where(c => c.FisTuru == "Perakende Satış Faturası").Sum(c => c.ToplamTutar) ?? 0)/100*personel.PrimOrani
+                PrimTutari=(fis.Where(c => c.FisTuru == "Perakende Satış Faturası").Sum(c => c.ToplamTutar) ?? 0)/100*personel.PrimOrani,
             }).ToList();
             return result;
         }
