@@ -143,6 +143,7 @@
             this.btnPersonelHareket.Size = new System.Drawing.Size(120, 53);
             this.btnPersonelHareket.TabIndex = 1;
             this.btnPersonelHareket.Text = "Personel \r\nHareket";
+            this.btnPersonelHareket.Click += new System.EventHandler(this.btnPersonelHareket_Click);
             // 
             // btnKapat
             // 
@@ -198,6 +199,7 @@
             this.btnDuzenle.Size = new System.Drawing.Size(111, 53);
             this.btnDuzenle.TabIndex = 0;
             this.btnDuzenle.Text = "Düzenle";
+            this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
             // 
             // btnEkle
             // 
@@ -211,6 +213,7 @@
             this.btnEkle.Size = new System.Drawing.Size(111, 53);
             this.btnEkle.TabIndex = 0;
             this.btnEkle.Text = "Ekle";
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // splitContainerControl1
             // 

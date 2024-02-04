@@ -1,6 +1,8 @@
 ﻿using DevExpress.XtraEditors;
+using SonicHesap.BackOffice.Cari;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
+using SonicHesap.Entities.Mapping;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,5 +81,32 @@ namespace SonicHesap.BackOffice.Personel
             }
         }
 
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            FrmPersonelIslem form = new FrmPersonelIslem(new Entities.Tables.Personel());
+            form.ShowDialog();
+            if (form.saved)
+            {
+                Listele();
+            }
+        }
+
+        private void btnDuzenle_Click(object sender, EventArgs e)
+        {
+            _secilen = gridPersonelHareket.GetFocusedRowCellValue(colPersonelKodu).ToString();
+            FrmPersonelIslem form = new FrmPersonelIslem(personelDal.GetByFilter(context, c => c.PersonelKodu == _secilen));
+            form.ShowDialog();
+            if (form.saved)
+            {
+                Listele();
+            }
+        }
+
+        private void btnPersonelHareket_Click(object sender, EventArgs e)
+        {
+            _secilen = gridPersonelHareket.GetFocusedRowCellValue(colPersonelKodu).ToString();
+            FrmPersonelHareket form = new FrmPersonelHareket(_secilen, gridPersonelHareket.GetFocusedRowCellValue(colPersonelAdi).ToString());
+            form.ShowDialog();
+        }
     }
 }

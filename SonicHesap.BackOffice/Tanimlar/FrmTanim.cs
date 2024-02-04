@@ -34,6 +34,7 @@ namespace SonicHesap.BackOffice.Tanimlar
            CariOzelKod2,
            CariOzelKod3,
            CariOzelKod4,
+           PersonelUnvan
         }
         private void FrmTanim_Load(object sender, EventArgs e)
         {

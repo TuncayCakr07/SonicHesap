@@ -44,5 +44,18 @@ namespace SonicHesap.Entities.Data_Access
             }).ToList();
             return result;
         }
+        public object PersonelFisToplam(SonicHesapContext context,string personelKodu)
+        {
+            var result = (from c in context.fisler.Where(c => c.PlasiyerKodu == personelKodu)
+                          group c by new { c.FisTuru } into grp
+                          select new
+                          {
+                              Bilgi = grp.Key.FisTuru,
+                              KayitSayisi = grp.Count(),
+                              ToplamTutar = grp.Sum(c => c.ToplamTutar)
+                          }).ToList(); 
+            return result;
+        }
+        
     }
 }
