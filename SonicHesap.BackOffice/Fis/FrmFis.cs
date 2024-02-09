@@ -79,5 +79,11 @@ namespace SonicHesap.BackOffice.Fis
                 Listele();
             }
         }
+
+        private void FisIslem_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmFisIslem form = new FrmFisIslem(null, e.Item.Caption);
+            form.ShowDialog();
+        }
     }
 }

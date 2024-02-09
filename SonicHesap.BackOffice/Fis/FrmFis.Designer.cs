@@ -37,17 +37,13 @@
             this.btnFiltrele = new DevExpress.XtraEditors.SimpleButton();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.filterControl1 = new DevExpress.XtraEditors.FilterControl();
-            this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
-            this.btnGuncelle = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSil = new DevExpress.XtraEditors.SimpleButton();
-            this.btnDuzenle = new DevExpress.XtraEditors.SimpleButton();
-            this.btnAra = new DevExpress.XtraEditors.SimpleButton();
-            this.grpMenu = new DevExpress.XtraEditors.GroupControl();
             this.gridContFis = new DevExpress.XtraGrid.GridControl();
             this.gridFis = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFisKodu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFisTuru = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCariKodu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCariAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBelgeNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTarih = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSaat = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -59,27 +55,44 @@
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOdenen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKalanTutar = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCariAdi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCariKodu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
+            this.btnGuncelle = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSil = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDuzenle = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAra = new DevExpress.XtraEditors.SimpleButton();
+            this.grpMenu = new DevExpress.XtraEditors.GroupControl();
             this.dropDownButton1 = new DevExpress.XtraEditors.DropDownButton();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barAlisFaturasi = new DevExpress.XtraBars.BarButtonItem();
+            this.barPerakendeSatisFaturasi = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barAlisFaturasi = new DevExpress.XtraBars.BarButtonItem();
-            this.barSatisFaturasi = new DevExpress.XtraBars.BarButtonItem();
+            this.barToptanSatisFaturası = new DevExpress.XtraBars.BarButtonItem();
+            this.barAlisIadeFaturasi = new DevExpress.XtraBars.BarButtonItem();
+            this.barSatisIadeFaturasi = new DevExpress.XtraBars.BarButtonItem();
+            this.barTahsilatFisi = new DevExpress.XtraBars.BarButtonItem();
+            this.barOdemeFisi = new DevExpress.XtraBars.BarButtonItem();
+            this.barCariDevirFisi = new DevExpress.XtraBars.BarButtonItem();
+            this.barSayimFazlasiFisi = new DevExpress.XtraBars.BarButtonItem();
+            this.barSayimEksigiFisi = new DevExpress.XtraBars.BarButtonItem();
+            this.barStokDevirFisi = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
+            this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
+            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             this.splitContainerControl1.Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
             this.splitContainerControl1.Panel2.SuspendLayout();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
-            this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridContFis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridFis)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
+            this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
@@ -204,86 +217,6 @@
             this.filterControl1.TabIndex = 0;
             this.filterControl1.Text = "filterControl1";
             // 
-            // btnKapat
-            // 
-            this.btnKapat.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnKapat.Appearance.Options.UseFont = true;
-            this.btnKapat.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnKapat.ImageOptions.ImageIndex = 5;
-            this.btnKapat.ImageOptions.ImageList = this.ımageMenu;
-            this.btnKapat.Location = new System.Drawing.Point(1269, 28);
-            this.btnKapat.Name = "btnKapat";
-            this.btnKapat.Size = new System.Drawing.Size(94, 53);
-            this.btnKapat.TabIndex = 0;
-            this.btnKapat.Text = "Kapat";
-            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
-            // 
-            // btnGuncelle
-            // 
-            this.btnGuncelle.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGuncelle.Appearance.Options.UseFont = true;
-            this.btnGuncelle.ImageOptions.ImageIndex = 17;
-            this.btnGuncelle.ImageOptions.ImageList = this.ımageMenu;
-            this.btnGuncelle.Location = new System.Drawing.Point(340, 28);
-            this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(111, 53);
-            this.btnGuncelle.TabIndex = 0;
-            this.btnGuncelle.Text = "Güncelle";
-            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
-            // 
-            // btnSil
-            // 
-            this.btnSil.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSil.Appearance.Options.UseFont = true;
-            this.btnSil.ImageOptions.ImageIndex = 13;
-            this.btnSil.ImageOptions.ImageList = this.ımageMenu;
-            this.btnSil.Location = new System.Drawing.Point(228, 28);
-            this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(111, 53);
-            this.btnSil.TabIndex = 0;
-            this.btnSil.Text = "Sil";
-            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
-            // 
-            // btnDuzenle
-            // 
-            this.btnDuzenle.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnDuzenle.Appearance.Options.UseFont = true;
-            this.btnDuzenle.ImageOptions.ImageIndex = 14;
-            this.btnDuzenle.ImageOptions.ImageList = this.ımageMenu;
-            this.btnDuzenle.Location = new System.Drawing.Point(116, 28);
-            this.btnDuzenle.Name = "btnDuzenle";
-            this.btnDuzenle.Size = new System.Drawing.Size(111, 53);
-            this.btnDuzenle.TabIndex = 0;
-            this.btnDuzenle.Text = "Düzenle";
-            // 
-            // btnAra
-            // 
-            this.btnAra.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnAra.Appearance.Options.UseFont = true;
-            this.btnAra.ImageOptions.ImageIndex = 26;
-            this.btnAra.ImageOptions.ImageList = this.ımageMenu;
-            this.btnAra.Location = new System.Drawing.Point(452, 28);
-            this.btnAra.Name = "btnAra";
-            this.btnAra.Size = new System.Drawing.Size(111, 53);
-            this.btnAra.TabIndex = 2;
-            this.btnAra.Text = "Ara";
-            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
-            // 
-            // grpMenu
-            // 
-            this.grpMenu.Controls.Add(this.dropDownButton1);
-            this.grpMenu.Controls.Add(this.btnAra);
-            this.grpMenu.Controls.Add(this.btnKapat);
-            this.grpMenu.Controls.Add(this.btnGuncelle);
-            this.grpMenu.Controls.Add(this.btnSil);
-            this.grpMenu.Controls.Add(this.btnDuzenle);
-            this.grpMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grpMenu.Location = new System.Drawing.Point(0, 660);
-            this.grpMenu.Name = "grpMenu";
-            this.grpMenu.Size = new System.Drawing.Size(1365, 83);
-            this.grpMenu.TabIndex = 10;
-            this.grpMenu.Text = "Menü";
-            // 
             // gridContFis
             // 
             this.gridContFis.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -350,6 +283,26 @@
             this.colFisTuru.Visible = true;
             this.colFisTuru.VisibleIndex = 1;
             this.colFisTuru.Width = 137;
+            // 
+            // colCariKodu
+            // 
+            this.colCariKodu.Caption = "Cari Kodu";
+            this.colCariKodu.FieldName = "CariKodu";
+            this.colCariKodu.MinWidth = 25;
+            this.colCariKodu.Name = "colCariKodu";
+            this.colCariKodu.Visible = true;
+            this.colCariKodu.VisibleIndex = 2;
+            this.colCariKodu.Width = 93;
+            // 
+            // colCariAdi
+            // 
+            this.colCariAdi.Caption = "Cari Adı";
+            this.colCariAdi.FieldName = "Cari Adı";
+            this.colCariAdi.MinWidth = 25;
+            this.colCariAdi.Name = "colCariAdi";
+            this.colCariAdi.Visible = true;
+            this.colCariAdi.VisibleIndex = 3;
+            this.colCariAdi.Width = 161;
             // 
             // colBelgeNo
             // 
@@ -488,25 +441,85 @@
             this.colKalanTutar.OptionsColumn.AllowEdit = false;
             this.colKalanTutar.Width = 139;
             // 
-            // colCariAdi
+            // btnKapat
             // 
-            this.colCariAdi.Caption = "Cari Adı";
-            this.colCariAdi.FieldName = "Cari Adı";
-            this.colCariAdi.MinWidth = 25;
-            this.colCariAdi.Name = "colCariAdi";
-            this.colCariAdi.Visible = true;
-            this.colCariAdi.VisibleIndex = 3;
-            this.colCariAdi.Width = 161;
+            this.btnKapat.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKapat.Appearance.Options.UseFont = true;
+            this.btnKapat.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnKapat.ImageOptions.ImageIndex = 5;
+            this.btnKapat.ImageOptions.ImageList = this.ımageMenu;
+            this.btnKapat.Location = new System.Drawing.Point(1269, 28);
+            this.btnKapat.Name = "btnKapat";
+            this.btnKapat.Size = new System.Drawing.Size(94, 53);
+            this.btnKapat.TabIndex = 0;
+            this.btnKapat.Text = "Kapat";
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
             // 
-            // colCariKodu
+            // btnGuncelle
             // 
-            this.colCariKodu.Caption = "Cari Kodu";
-            this.colCariKodu.FieldName = "CariKodu";
-            this.colCariKodu.MinWidth = 25;
-            this.colCariKodu.Name = "colCariKodu";
-            this.colCariKodu.Visible = true;
-            this.colCariKodu.VisibleIndex = 2;
-            this.colCariKodu.Width = 93;
+            this.btnGuncelle.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGuncelle.Appearance.Options.UseFont = true;
+            this.btnGuncelle.ImageOptions.ImageIndex = 17;
+            this.btnGuncelle.ImageOptions.ImageList = this.ımageMenu;
+            this.btnGuncelle.Location = new System.Drawing.Point(340, 28);
+            this.btnGuncelle.Name = "btnGuncelle";
+            this.btnGuncelle.Size = new System.Drawing.Size(111, 53);
+            this.btnGuncelle.TabIndex = 0;
+            this.btnGuncelle.Text = "Güncelle";
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
+            // 
+            // btnSil
+            // 
+            this.btnSil.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSil.Appearance.Options.UseFont = true;
+            this.btnSil.ImageOptions.ImageIndex = 13;
+            this.btnSil.ImageOptions.ImageList = this.ımageMenu;
+            this.btnSil.Location = new System.Drawing.Point(228, 28);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(111, 53);
+            this.btnSil.TabIndex = 0;
+            this.btnSil.Text = "Sil";
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
+            // 
+            // btnDuzenle
+            // 
+            this.btnDuzenle.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnDuzenle.Appearance.Options.UseFont = true;
+            this.btnDuzenle.ImageOptions.ImageIndex = 14;
+            this.btnDuzenle.ImageOptions.ImageList = this.ımageMenu;
+            this.btnDuzenle.Location = new System.Drawing.Point(116, 28);
+            this.btnDuzenle.Name = "btnDuzenle";
+            this.btnDuzenle.Size = new System.Drawing.Size(111, 53);
+            this.btnDuzenle.TabIndex = 0;
+            this.btnDuzenle.Text = "Düzenle";
+            // 
+            // btnAra
+            // 
+            this.btnAra.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnAra.Appearance.Options.UseFont = true;
+            this.btnAra.ImageOptions.ImageIndex = 26;
+            this.btnAra.ImageOptions.ImageList = this.ımageMenu;
+            this.btnAra.Location = new System.Drawing.Point(452, 28);
+            this.btnAra.Name = "btnAra";
+            this.btnAra.Size = new System.Drawing.Size(111, 53);
+            this.btnAra.TabIndex = 2;
+            this.btnAra.Text = "Ara";
+            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
+            // 
+            // grpMenu
+            // 
+            this.grpMenu.Controls.Add(this.dropDownButton1);
+            this.grpMenu.Controls.Add(this.btnAra);
+            this.grpMenu.Controls.Add(this.btnKapat);
+            this.grpMenu.Controls.Add(this.btnGuncelle);
+            this.grpMenu.Controls.Add(this.btnSil);
+            this.grpMenu.Controls.Add(this.btnDuzenle);
+            this.grpMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.grpMenu.Location = new System.Drawing.Point(0, 660);
+            this.grpMenu.Name = "grpMenu";
+            this.grpMenu.Size = new System.Drawing.Size(1365, 83);
+            this.grpMenu.TabIndex = 10;
+            this.grpMenu.Text = "Menü";
             // 
             // dropDownButton1
             // 
@@ -525,10 +538,28 @@
             // popupMenu1
             // 
             this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barAlisFaturasi),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSatisFaturasi)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
+            // 
+            // barAlisFaturasi
+            // 
+            this.barAlisFaturasi.Caption = "Alış Faturası";
+            this.barAlisFaturasi.Id = 0;
+            this.barAlisFaturasi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barAlisFaturasi.ImageOptions.Image")));
+            this.barAlisFaturasi.Name = "barAlisFaturasi";
+            this.barAlisFaturasi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
+            // 
+            // barPerakendeSatisFaturasi
+            // 
+            this.barPerakendeSatisFaturasi.Caption = "Perakende Satış Faturası";
+            this.barPerakendeSatisFaturasi.Id = 1;
+            this.barPerakendeSatisFaturasi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSatisFaturasi.ImageOptions.Image")));
+            this.barPerakendeSatisFaturasi.Name = "barPerakendeSatisFaturasi";
+            this.barPerakendeSatisFaturasi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
             // 
             // barManager1
             // 
@@ -539,8 +570,21 @@
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barAlisFaturasi,
-            this.barSatisFaturasi});
-            this.barManager1.MaxItemId = 2;
+            this.barPerakendeSatisFaturasi,
+            this.barToptanSatisFaturası,
+            this.barAlisIadeFaturasi,
+            this.barSatisIadeFaturasi,
+            this.barTahsilatFisi,
+            this.barOdemeFisi,
+            this.barCariDevirFisi,
+            this.barSayimFazlasiFisi,
+            this.barSayimEksigiFisi,
+            this.barStokDevirFisi,
+            this.barSubItem1,
+            this.barSubItem2,
+            this.barSubItem3,
+            this.barSubItem4});
+            this.barManager1.MaxItemId = 15;
             // 
             // barDockControlTop
             // 
@@ -574,19 +618,117 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 743);
             // 
-            // barAlisFaturasi
+            // barToptanSatisFaturası
             // 
-            this.barAlisFaturasi.Caption = "Alış Faturası";
-            this.barAlisFaturasi.Id = 0;
-            this.barAlisFaturasi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barAlisFisi.ImageOptions.Image")));
-            this.barAlisFaturasi.Name = "barAlisFaturasi";
+            this.barToptanSatisFaturası.Caption = "Toptan Satış Faturası";
+            this.barToptanSatisFaturası.Id = 2;
+            this.barToptanSatisFaturası.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barToptanSatisFaturası.ImageOptions.Image")));
+            this.barToptanSatisFaturası.Name = "barToptanSatisFaturası";
+            this.barToptanSatisFaturası.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
             // 
-            // barSatisFaturasi
+            // barAlisIadeFaturasi
             // 
-            this.barSatisFaturasi.Caption = "Satış Faturası";
-            this.barSatisFaturasi.Id = 1;
-            this.barSatisFaturasi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSatisFaturasi.ImageOptions.Image")));
-            this.barSatisFaturasi.Name = "barSatisFaturasi";
+            this.barAlisIadeFaturasi.Caption = "Alış İade Faturası";
+            this.barAlisIadeFaturasi.Id = 3;
+            this.barAlisIadeFaturasi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barAlisIadeFaturasi.ImageOptions.Image")));
+            this.barAlisIadeFaturasi.Name = "barAlisIadeFaturasi";
+            this.barAlisIadeFaturasi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
+            // 
+            // barSatisIadeFaturasi
+            // 
+            this.barSatisIadeFaturasi.Caption = "Satış İade Faturası";
+            this.barSatisIadeFaturasi.Id = 4;
+            this.barSatisIadeFaturasi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSatisIadeFaturasi.ImageOptions.Image")));
+            this.barSatisIadeFaturasi.Name = "barSatisIadeFaturasi";
+            this.barSatisIadeFaturasi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
+            // 
+            // barTahsilatFisi
+            // 
+            this.barTahsilatFisi.Caption = "Tahsilat Fişi";
+            this.barTahsilatFisi.Id = 5;
+            this.barTahsilatFisi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barTahsilatFisi.ImageOptions.Image")));
+            this.barTahsilatFisi.Name = "barTahsilatFisi";
+            // 
+            // barOdemeFisi
+            // 
+            this.barOdemeFisi.Caption = "Ödeme Fişi ";
+            this.barOdemeFisi.Id = 6;
+            this.barOdemeFisi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barOdemeFisi.ImageOptions.Image")));
+            this.barOdemeFisi.Name = "barOdemeFisi";
+            // 
+            // barCariDevirFisi
+            // 
+            this.barCariDevirFisi.Caption = "Cari Devir Fişi";
+            this.barCariDevirFisi.Id = 7;
+            this.barCariDevirFisi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barCariDevirFisi.ImageOptions.Image")));
+            this.barCariDevirFisi.Name = "barCariDevirFisi";
+            // 
+            // barSayimFazlasiFisi
+            // 
+            this.barSayimFazlasiFisi.Caption = "Sayım Fazlası Fişi";
+            this.barSayimFazlasiFisi.Id = 8;
+            this.barSayimFazlasiFisi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSayimFazlasiFisi.ImageOptions.Image")));
+            this.barSayimFazlasiFisi.Name = "barSayimFazlasiFisi";
+            this.barSayimFazlasiFisi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
+            // 
+            // barSayimEksigiFisi
+            // 
+            this.barSayimEksigiFisi.Caption = "Sayım Eksiği Fişi";
+            this.barSayimEksigiFisi.Id = 9;
+            this.barSayimEksigiFisi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSayimEksigiFisi.ImageOptions.Image")));
+            this.barSayimEksigiFisi.Name = "barSayimEksigiFisi";
+            this.barSayimEksigiFisi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
+            // 
+            // barStokDevirFisi
+            // 
+            this.barStokDevirFisi.Caption = "Stok Devir Fişi";
+            this.barStokDevirFisi.Id = 10;
+            this.barStokDevirFisi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStokDevirFisi.ImageOptions.Image")));
+            this.barStokDevirFisi.Name = "barStokDevirFisi";
+            this.barStokDevirFisi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Faturalar";
+            this.barSubItem1.Id = 11;
+            this.barSubItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.Image")));
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barAlisFaturasi),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barPerakendeSatisFaturasi, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barToptanSatisFaturası)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // barSubItem2
+            // 
+            this.barSubItem2.Caption = "İade Faturaları";
+            this.barSubItem2.Id = 12;
+            this.barSubItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem2.ImageOptions.Image")));
+            this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSatisIadeFaturasi),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barAlisIadeFaturasi, true)});
+            this.barSubItem2.Name = "barSubItem2";
+            // 
+            // barSubItem3
+            // 
+            this.barSubItem3.Caption = "Kasa Fişleri";
+            this.barSubItem3.Id = 13;
+            this.barSubItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.Image")));
+            this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barTahsilatFisi),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barOdemeFisi),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barCariDevirFisi, true)});
+            this.barSubItem3.Name = "barSubItem3";
+            // 
+            // barSubItem4
+            // 
+            this.barSubItem4.Caption = "Stok Fişleri";
+            this.barSubItem4.Id = 14;
+            this.barSubItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem4.ImageOptions.Image")));
+            this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSayimEksigiFisi),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSayimFazlasiFisi),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barStokDevirFisi, true)});
+            this.barSubItem4.Name = "barSubItem4";
             // 
             // FrmFis
             // 
@@ -610,10 +752,10 @@
             this.splitContainerControl1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).EndInit();
-            this.grpMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridContFis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridFis)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).EndInit();
+            this.grpMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
@@ -657,11 +799,24 @@
         private DevExpress.XtraEditors.DropDownButton dropDownButton1;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.BarButtonItem barAlisFaturasi;
-        private DevExpress.XtraBars.BarButtonItem barSatisFaturasi;
+        private DevExpress.XtraBars.BarButtonItem barPerakendeSatisFaturasi;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.BarButtonItem barToptanSatisFaturası;
+        private DevExpress.XtraBars.BarButtonItem barAlisIadeFaturasi;
+        private DevExpress.XtraBars.BarButtonItem barSatisIadeFaturasi;
+        private DevExpress.XtraBars.BarButtonItem barTahsilatFisi;
+        private DevExpress.XtraBars.BarButtonItem barOdemeFisi;
+        private DevExpress.XtraBars.BarButtonItem barCariDevirFisi;
+        private DevExpress.XtraBars.BarButtonItem barSayimFazlasiFisi;
+        private DevExpress.XtraBars.BarButtonItem barSayimEksigiFisi;
+        private DevExpress.XtraBars.BarButtonItem barStokDevirFisi;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarSubItem barSubItem2;
+        private DevExpress.XtraBars.BarSubItem barSubItem3;
+        private DevExpress.XtraBars.BarSubItem barSubItem4;
     }
 }

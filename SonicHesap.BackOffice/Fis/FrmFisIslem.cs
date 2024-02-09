@@ -30,7 +30,7 @@ namespace SonicHesap.BackOffice.Fis
         CariDAL cariDal= new CariDAL();
         Entities.Tables.Fis _fisEntity = new Entities.Tables.Fis();
         CariBakiye entityBakiye = new CariBakiye();
-        public FrmFisIslem(string fisKodu=null)
+        public FrmFisIslem(string fisKodu=null,string fisTuru=null)
         {
             InitializeComponent();
             if (fisKodu!=null)
@@ -44,6 +44,10 @@ namespace SonicHesap.BackOffice.Fis
                 lblAlacak.Text = entityBakiye.Alacak.ToString("C2");
                 lblBorc.Text = entityBakiye.Borc.ToString("C2");
                 lblBakiye.Text = entityBakiye.Bakiye.ToString("C2");
+            }
+            else
+            {
+                _fisEntity.FisTuru = fisTuru;
             }
            
             txtFisTuru.DataBindings.Add("Text", _fisEntity, "FisTuru",false,DataSourceUpdateMode.OnPropertyChanged);

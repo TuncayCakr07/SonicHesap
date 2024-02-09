@@ -39,7 +39,7 @@
             this.btnTanim = new DevExpress.XtraBars.BarButtonItem();
             this.btnFis = new DevExpress.XtraBars.BarButtonItem();
             this.btnFisIslem = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnFaturaVeFis = new DevExpress.XtraBars.BarButtonItem();
             this.btnStokHareketleri = new DevExpress.XtraBars.BarButtonItem();
             this.btnKasaHareket = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
@@ -111,7 +111,7 @@
             this.btnTanim,
             this.btnFis,
             this.btnFisIslem,
-            this.barButtonItem2,
+            this.btnFaturaVeFis,
             this.btnStokHareketleri,
             this.btnKasaHareket,
             this.barButtonItem5,
@@ -224,13 +224,14 @@
             this.btnFisIslem.Name = "btnFisIslem";
             this.btnFisIslem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFisIslem_ItemClick);
             // 
-            // barButtonItem2
+            // btnFaturaVeFis
             // 
-            this.barButtonItem2.Caption = "Fatura Ve Fişler";
-            this.barButtonItem2.Id = 9;
-            this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.barButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
-            this.barButtonItem2.Name = "barButtonItem2";
+            this.btnFaturaVeFis.Caption = "Fatura Ve Fişler";
+            this.btnFaturaVeFis.Id = 9;
+            this.btnFaturaVeFis.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.btnFaturaVeFis.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.btnFaturaVeFis.Name = "btnFaturaVeFis";
+            this.btnFaturaVeFis.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFaturaVeFis_ItemClick);
             // 
             // btnStokHareketleri
             // 
@@ -280,7 +281,7 @@
             // 
             this.btnPersoneller.Caption = "Personeller";
             this.btnPersoneller.Id = 16;
-            this.btnPersoneller.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.LargeImage")));
+            this.btnPersoneller.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPersoneller.ImageOptions.LargeImage")));
             this.btnPersoneller.Name = "btnPersoneller";
             this.btnPersoneller.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPersoneller_ItemClick);
             // 
@@ -494,7 +495,7 @@
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnCari);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem2);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnFaturaVeFis);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Kayıtlar";
             // 
@@ -657,7 +658,7 @@
         private DevExpress.XtraBars.BarButtonItem btnTanim;
         private DevExpress.XtraBars.BarButtonItem btnFis;
         private DevExpress.XtraBars.BarButtonItem btnFisIslem;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem btnFaturaVeFis;
         private DevExpress.XtraBars.BarButtonItem btnStokHareketleri;
         private DevExpress.XtraBars.BarButtonItem btnKasaHareket;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;

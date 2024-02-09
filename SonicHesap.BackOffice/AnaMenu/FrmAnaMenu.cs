@@ -112,5 +112,12 @@ namespace SonicHesap.BackOffice
             form.MdiParent = this;
             form.Show();
         }
+
+        private void btnFaturaVeFis_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmFis form = new FrmFis();
+            form.MdiParent = this;
+            form.Show();
+        }
     }
 }
