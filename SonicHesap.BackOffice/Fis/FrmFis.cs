@@ -68,15 +68,29 @@ namespace SonicHesap.BackOffice.Fis
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (gridFis.GetFocusedRow() != null)
             {
-                string secilen = gridFis.GetFocusedRowCellValue(colFisKodu).ToString();
-                fisDal.Delete(context, c => c.FisKodu == secilen);
-                kasaHareketDal.Delete(context, c => c.FisKodu == secilen);
-                stokHareketDal.Delete(context, c => c.FisKodu == secilen);
-                fisDal.Save(context);
-                MessageBox.Show("Seçili Olan Veri Silindi!", "Bilgi!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Listele();
+                string secilen = gridFis.GetFocusedRowCellValue(colFisKodu)?.ToString();
+                if (!string.IsNullOrEmpty(secilen))
+                {
+                    if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        fisDal.Delete(context, c => c.FisKodu == secilen);
+                        kasaHareketDal.Delete(context, c => c.FisKodu == secilen);
+                        stokHareketDal.Delete(context, c => c.FisKodu == secilen);
+                        fisDal.Save(context);
+                        MessageBox.Show("Seçili Olan Veri Silindi!", "Bilgi!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Listele();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Silmek İçin Bir Fiş Seçiniz.", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Silmek İçin Bir Fiş Seçiniz.", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -84,6 +98,28 @@ namespace SonicHesap.BackOffice.Fis
         {
             FrmFisIslem form = new FrmFisIslem(null, e.Item.Caption);
             form.ShowDialog();
+        }
+
+        private void btnDuzenle_Click(object sender, EventArgs e)
+        {
+            if (gridFis.GetFocusedRow() != null)
+            {
+                string secilen = gridFis.GetFocusedRowCellValue(colFisKodu)?.ToString();
+                if (!string.IsNullOrEmpty(secilen))
+                {
+                    FrmFisIslem form = new FrmFisIslem(secilen);
+                    form.ShowDialog();
+                    Listele();
+                }
+                else
+                {
+                    MessageBox.Show("Düzenlemek için bir fiş seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Düzenlemek için bir fiş seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
