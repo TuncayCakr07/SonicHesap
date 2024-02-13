@@ -228,8 +228,8 @@
             // 
             this.btnFaturaVeFis.Caption = "Fatura Ve Fişler";
             this.btnFaturaVeFis.Id = 9;
-            this.btnFaturaVeFis.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.btnFaturaVeFis.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.btnFaturaVeFis.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFaturaVeFis.ImageOptions.Image")));
+            this.btnFaturaVeFis.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnFaturaVeFis.ImageOptions.LargeImage")));
             this.btnFaturaVeFis.Name = "btnFaturaVeFis";
             this.btnFaturaVeFis.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFaturaVeFis_ItemClick);
             // 
@@ -345,6 +345,7 @@
             this.barButtonItem17.Id = 25;
             this.barButtonItem17.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem17.ImageOptions.LargeImage")));
             this.barButtonItem17.Name = "barButtonItem17";
+            this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
             // 
             // barButtonItem18
             // 
@@ -352,6 +353,7 @@
             this.barButtonItem18.Id = 26;
             this.barButtonItem18.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem18.ImageOptions.LargeImage")));
             this.barButtonItem18.Name = "barButtonItem18";
+            this.barButtonItem18.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
             // 
             // barButtonItem19
             // 
@@ -360,6 +362,7 @@
             this.barButtonItem19.Id = 27;
             this.barButtonItem19.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem19.ImageOptions.LargeImage")));
             this.barButtonItem19.Name = "barButtonItem19";
+            this.barButtonItem19.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
             // 
             // barButtonItem20
             // 
@@ -367,6 +370,7 @@
             this.barButtonItem20.Id = 28;
             this.barButtonItem20.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem20.ImageOptions.LargeImage")));
             this.barButtonItem20.Name = "barButtonItem20";
+            this.barButtonItem20.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
             // 
             // barButtonItem21
             // 
@@ -374,6 +378,7 @@
             this.barButtonItem21.Id = 29;
             this.barButtonItem21.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem21.ImageOptions.LargeImage")));
             this.barButtonItem21.Name = "barButtonItem21";
+            this.barButtonItem21.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
             // 
             // barButtonItem22
             // 
@@ -402,6 +407,7 @@
             this.barButtonItem25.Id = 33;
             this.barButtonItem25.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem25.ImageOptions.LargeImage")));
             this.barButtonItem25.Name = "barButtonItem25";
+            this.barButtonItem25.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
             // 
             // barButtonItem26
             // 
@@ -409,6 +415,7 @@
             this.barButtonItem26.Id = 34;
             this.barButtonItem26.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem26.ImageOptions.LargeImage")));
             this.barButtonItem26.Name = "barButtonItem26";
+            this.barButtonItem26.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
             // 
             // barButtonItem27
             // 
@@ -416,6 +423,7 @@
             this.barButtonItem27.Id = 35;
             this.barButtonItem27.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem27.ImageOptions.LargeImage")));
             this.barButtonItem27.Name = "barButtonItem27";
+            this.barButtonItem27.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
             // 
             // skinRibbonGalleryBarItem1
             // 

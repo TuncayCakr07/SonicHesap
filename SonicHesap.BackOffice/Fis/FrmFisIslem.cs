@@ -131,6 +131,7 @@ namespace SonicHesap.BackOffice.Fis
                     ayarlar.OdemeEkrani = false;
                     lblBaslik.ImageOptions.ImageIndex = 5;
                     navOdemeEkrani.Dispose();
+                    navCariBilgi.Dispose();
                     panelOdeme.Visible = false;
                     break;
                 case "Sayım Eksiği Fişi":
@@ -139,6 +140,7 @@ namespace SonicHesap.BackOffice.Fis
                     lblBaslik.ImageOptions.ImageIndex = 6;
                     panelOdeme.Visible = false;
                     navOdemeEkrani.Dispose();
+                    navCariBilgi.Dispose();
                     break;
                 case "Stok Devir Fişi":
                     ayarlar.StokHareketi = "Stok Giriş";
@@ -146,6 +148,7 @@ namespace SonicHesap.BackOffice.Fis
                     lblBaslik.ImageOptions.ImageIndex = 7;
                     panelOdeme.Visible = false;
                     navOdemeEkrani.Dispose();
+                    navCariBilgi.Dispose();
                     break;
             }
         }
