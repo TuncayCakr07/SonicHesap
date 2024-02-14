@@ -100,35 +100,41 @@ namespace SonicHesap.BackOffice.Fis
                     ayarlar.StokHareketi = "Stok Giriş";
                     ayarlar.KasaHareketi = "Kasa Çıkış";
                     ayarlar.OdemeEkrani = true;
+                    ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 0;
                     break;
                 case "Perakende Satış Faturası":
                     ayarlar.StokHareketi = "Stok Çıkış";
                     ayarlar.KasaHareketi = "Kasa Giriş";
                     ayarlar.OdemeEkrani = true;
+                    ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 1;
                     break;
                 case "Toptan Satış Faturası":
                     ayarlar.StokHareketi = "Stok Çıkış";
                     ayarlar.KasaHareketi = "Kasa Giriş";
                     ayarlar.OdemeEkrani = true;
+                    ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 2;
                     break;
                 case "Alış İade Faturası":
                     ayarlar.StokHareketi = "Stok Çıkış";
                     ayarlar.KasaHareketi = "Kasa Giriş";
                     ayarlar.OdemeEkrani = true;
+                    ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 3;
                     break;
                 case "Satış İade Faturası":
                     ayarlar.StokHareketi = "Stok Giriş";
                     ayarlar.KasaHareketi = "Kasa Çıkış";
                     ayarlar.OdemeEkrani = true;
+                    ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 4;
                     break;
                 case "Sayım Fazlası Fişi":
                     ayarlar.StokHareketi = "Stok Giriş";
                     ayarlar.OdemeEkrani = false;
+                    ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 5;
                     navOdemeEkrani.Dispose();
                     navCariBilgi.Dispose();
@@ -137,6 +143,7 @@ namespace SonicHesap.BackOffice.Fis
                 case "Sayım Eksiği Fişi":
                     ayarlar.StokHareketi = "Stok Çıkış";
                     ayarlar.OdemeEkrani = false;
+                    ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 6;
                     panelOdeme.Visible = false;
                     navOdemeEkrani.Dispose();
@@ -145,39 +152,102 @@ namespace SonicHesap.BackOffice.Fis
                 case "Stok Devir Fişi":
                     ayarlar.StokHareketi = "Stok Giriş";
                     ayarlar.OdemeEkrani = false;
+                    ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 7;
                     panelOdeme.Visible = false;
                     navOdemeEkrani.Dispose();
                     navCariBilgi.Dispose();
                     break;
+                case "Tahsilat Fişi":
+                    ayarlar.KasaHareketi = "Kasa Giriş";
+                    ayarlar.OdemeEkrani= true;
+                    ayarlar.SatisEkrani=false;
+                    navSatisEkrani.Dispose();
+                    panelOdeme.Visible=false;
+                    panelIskontoIndirim.Visible = false;
+                    panelKdv.Visible = false;
+                    groupToplamlar.Height = 164;
+                    panelToplam.Top = 28;
+                    navigationPane2.SelectedPage = navOdemeEkrani;
+                    break;
+                case "Ödeme Fişi":
+                    ayarlar.KasaHareketi = "Kasa Çıkış";
+                    ayarlar.OdemeEkrani = true;
+                    ayarlar.SatisEkrani = false;
+                    panelOdeme.Visible = false;
+                    panelIskontoIndirim.Visible = false;
+                    panelKdv.Visible = false;
+                    groupToplamlar.Height = 164;
+                    panelToplam.Top = 28;
+                    navSatisEkrani.Dispose();
+                    navigationPane2.SelectedPage = navOdemeEkrani;
+                    break;
+
+                    //burası daha sonra düzeltilecek.
+                case "Cari Devir Fişi":
+                    ayarlar.KasaHareketi = "Kasa Giriş";
+                    ayarlar.OdemeEkrani = true;
+                    ayarlar.SatisEkrani = false;
+                    panelOdeme.Visible = false;
+                    panelIskontoIndirim.Visible = false;
+                    panelKdv.Visible = false;
+                    groupToplamlar.Height = 164;
+                    panelToplam.Top = 28;
+                    navSatisEkrani.Dispose();
+                    navigationPane2.SelectedPage = navOdemeEkrani;
+                    break;
             }
         }
+
+
 
         private void OdemeEkle_Click(object sender, EventArgs e)
         {
             var buton = (sender as SimpleButton);
-            KasaHareket entitykasaHareket = new KasaHareket
+            if (ayarlar.SatisEkrani==false)
             {
-                OdemeTuruKodu = buton.Name,
-                OdemeTuruAdi = buton.Text,
-                Tutar = txtOdenmesiGereken.Value
-            };
-            if (txtOdenmesiGereken.Value <= 0)
-            {
-                MessageBox.Show("Ödeme Yapılacak Tutar Bulunamadı!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                FrmOdemeEkrani form = new FrmOdemeEkrani(buton.Text, buton.Name);
+                form.ShowDialog();
+                if (form.entity!=null)
+                {
+                    kasaHareketDal.AddOrUpdate(contex, form.entity);
+                    OdenenTutarGuncelle();
+                }
             }
             else
             {
-                kasaHareketDal.AddOrUpdate(contex, entitykasaHareket);
-                OdenenTutarGuncelle();
+                KasaHareket entitykasaHareket = new KasaHareket
+                {
+                    OdemeTuruKodu = buton.Name,
+                    OdemeTuruAdi = buton.Text,
+                    Tutar = txtOdenmesiGereken.Value
+                };
+                if (txtOdenmesiGereken.Value <= 0)
+                {
+                    MessageBox.Show("Ödeme Yapılacak Tutar Bulunamadı!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    kasaHareketDal.AddOrUpdate(contex, entitykasaHareket);
+                    OdenenTutarGuncelle();
+                }
             }
+
         }
 
         private void OdenenTutarGuncelle()
         {
             gridKasaHareket.UpdateSummary();
-            txtOdenenTutar.Value = Convert.ToDecimal(colTutar.SummaryItem.SummaryValue);
-            txtOdenmesiGereken.Value = txtToplam.Value - txtOdenenTutar.Value;
+            if (ayarlar.SatisEkrani)
+            {
+                txtOdenenTutar.Value = Convert.ToDecimal(colTutar.SummaryItem.SummaryValue);
+                txtOdenmesiGereken.Value = txtToplam.Value - txtOdenenTutar.Value;
+            }
+            else
+            {
+                txtToplam.Value = Convert.ToDecimal(colTutar.SummaryItem.SummaryValue);
+            }
+          
         }
 
         private void FrmFisIslem_Load(object sender, EventArgs e)
