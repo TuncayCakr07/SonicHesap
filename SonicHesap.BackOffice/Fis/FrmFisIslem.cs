@@ -1,4 +1,5 @@
 ﻿using DevExpress.ClipboardSource.SpreadsheetML;
+using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
@@ -25,14 +26,15 @@ namespace SonicHesap.BackOffice.Fis
 {
     public partial class FrmFisIslem : DevExpress.XtraEditors.XtraForm
     {
-        SonicHesapContext contex = new SonicHesapContext();
-        FisDAL fisDal = new FisDAL();
-        StokHareketDAL stokHareketDal = new StokHareketDAL();
-        KasaHareketDAL kasaHareketDal = new KasaHareketDAL();
-        CariDAL cariDal = new CariDAL();
-        FisAyarlari ayarlar = new FisAyarlari();
         Entities.Tables.Fis _fisEntity = new Entities.Tables.Fis();
+        FisAyarlari ayarlar = new FisAyarlari();
+        CariDAL cariDal = new CariDAL();
+        SonicHesapContext contex = new SonicHesapContext();
         CariBakiye entityBakiye = new CariBakiye();
+        FisDAL fisDal = new FisDAL();
+        KasaHareketDAL kasaHareketDal = new KasaHareketDAL();
+        StokHareketDAL stokHareketDal = new StokHareketDAL();
+
         public FrmFisIslem(string fisKodu = null, string fisTuru = null)
         {
             InitializeComponent();
@@ -41,6 +43,9 @@ namespace SonicHesap.BackOffice.Fis
                 _fisEntity = contex.fisler.Where(c => c.FisKodu == fisKodu).SingleOrDefault();
                 contex.StokHareketleri.Where(c => c.FisKodu == fisKodu).Load();
                 contex.KasaHareketleri.Where(c => c.FisKodu == fisKodu).Load();
+
+                toggleBakiye.IsOn = contex.KasaHareketleri.Count(c => c.FisKodu == fisKodu && c.Hareket == "Kasa Giriş") == 0;
+
                 if (_fisEntity.CariKodu != null)
                 {
                     entityBakiye = cariDal.CariBakiyesi(contex, _fisEntity.CariKodu);
@@ -53,9 +58,21 @@ namespace SonicHesap.BackOffice.Fis
             else
             {
                 _fisEntity.FisTuru = fisTuru;
-                _fisEntity.Tarih=DateTime.Now;
+                _fisEntity.Tarih = DateTime.Now;
             }
 
+            databinding();
+            gridContStokHareket.DataSource = contex.StokHareketleri.Local.ToBindingList();
+            gridContKasaHareket.DataSource = contex.KasaHareketleri.Local.ToBindingList();
+            FisAyar();
+            Toplamlar();
+            OdenenTutarGuncelle();
+
+            ButonlariYükle();
+        }
+
+        private void databinding()
+        {
             txtFisTuru.DataBindings.Add("Text", _fisEntity, "FisTuru", false, DataSourceUpdateMode.OnPropertyChanged);
             txtFisKodu.DataBindings.Add("Text", _fisEntity, "FisKodu", false, DataSourceUpdateMode.OnPropertyChanged);
             cmbTarih.DataBindings.Add("EditValue", _fisEntity, "Tarih", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -71,13 +88,10 @@ namespace SonicHesap.BackOffice.Fis
             txtAdres.DataBindings.Add("Text", _fisEntity, "Adres", false, DataSourceUpdateMode.OnPropertyChanged);
             txtVergiDairesi.DataBindings.Add("Text", _fisEntity, "VergiDairesi", false, DataSourceUpdateMode.OnPropertyChanged);
             txtVergiNo.DataBindings.Add("Text", _fisEntity, "VergiNo", false, DataSourceUpdateMode.OnPropertyChanged);
+        }
 
-            gridContStokHareket.DataSource = contex.StokHareketleri.Local.ToBindingList();
-            gridContKasaHareket.DataSource = contex.KasaHareketleri.Local.ToBindingList();
-            FisAyar();
-            Toplamlar();
-            OdenenTutarGuncelle();
-
+        private void ButonlariYükle()
+        {
             foreach (var item in contex.OdemeTurleri.ToList())
             {
                 var buton = new SimpleButton
@@ -90,6 +104,193 @@ namespace SonicHesap.BackOffice.Fis
                 buton.Click += OdemeEkle_Click;
                 flowOdemeTurleri.Controls.Add(buton);
             }
+            var SecimTemizle = new CheckButton
+            {
+                Name = "Temizle",
+                Text = "Temizle",
+                GroupIndex = 1,
+                Height = 70,
+                Width = 150,
+                Checked = _fisEntity.PlasiyerKodu == null
+            };
+            SecimTemizle.Click += PersonelEkle_Click;
+            flowPersonel.Controls.Add(SecimTemizle);
+
+            foreach (var item in contex.Personeller.ToList())
+            {
+                var buton = new CheckButton
+                {
+                    Name = item.PersonelKodu,
+                    Text = item.PersonelAdi,
+                    GroupIndex = 1,
+                    Height = 70,
+                    Width = 150,
+                    Checked=item.PersonelKodu==_fisEntity.PlasiyerKodu
+                };
+                buton.Click += PersonelEkle_Click;
+                flowPersonel.Controls.Add(buton);
+            }
+        }
+
+        private void btnBul_Click(object sender, EventArgs e)
+        {
+            FrmCariSec form = new FrmCariSec();
+            form.ShowDialog();
+            if (form.secildi)
+            {
+                Entities.Tables.Cari entity = form.secilen.FirstOrDefault();
+                entityBakiye = cariDal.CariBakiyesi(contex, entity.CariKodu);
+
+                lblCariKodu.Text = entity.CariKodu;
+                lblCariAdi.Text = entity.CariAdi;
+                txtFaturaUnvani.Text = entity.FaturaUnvani;
+                txtVergiDairesi.Text = entity.VergiDairesi;
+                txtVergiNo.Text = entity.VergiNo;
+                txtCepTelefonu.Text = entity.CepTelefonu;
+                txtIl.Text = entity.Il;
+                txtIlce.Text = entity.Ilce;
+                txtSemt.Text = entity.Semt;
+                txtAdres.Text = entity.Adres;
+                lblAlacak.Text = entityBakiye.Alacak.ToString("C2");
+                lblBorc.Text = entityBakiye.Borc.ToString("C2");
+                lblBakiye.Text = entityBakiye.Bakiye.ToString("C2");
+            }
+        }
+
+        private void btnKapat_Click(object sender, EventArgs e)
+        {
+      
+            if (gridStokHareket.RowCount != 0)
+            {
+                DialogResult result = MessageBox.Show("Satış Ekranında Belgeye Kaydedilmemiş Ürünler Var. Bu İşlemi İptal Edip Belgeyi Kapatmak İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            if (toggleBakiye.IsOn)
+            {
+                ayarlar.KasaHareketi = "Kasa Çıkış"; // Doğru kasa hareketini atadığınızdan emin olun
+            }
+            else
+            {
+                ayarlar.KasaHareketi = "Kasa Giriş"; // Doğru kasa hareketini atadığınızdan emin olun
+            }
+            int StokHata = contex.StokHareketleri.Local.Where(c => c.DepoKodu == null).Count();
+            int KasaHata = contex.KasaHareketleri.Local.Where(c => c.KasaKodu == null).Count();
+            string message = null;
+            int hata = 0;
+
+            if (gridStokHareket.RowCount == 0 && ayarlar.SatisEkrani == true)
+            {
+                message += ("Satış Ekranında Eklenmiş Bir Ürün Bulunamadı!") + System.Environment.NewLine;
+                hata++;
+            }
+
+            if (_fisEntity.CariKodu == null && ayarlar.SatisEkrani == false)
+            {
+                message += (txtFisTuru.Text + " " + "Türünde Cari Seçimi Zorunludur!") + System.Environment.NewLine;
+                hata++;
+            }
+
+            if (gridKasaHareket.RowCount == 0 && ayarlar.SatisEkrani == false)
+            {
+                message += ("Herhangi Bir Ödeme Bulunamadı!") + System.Environment.NewLine;
+                hata++;
+            }
+
+            if (string.IsNullOrEmpty(txtFisKodu.Text))
+            {
+                message += ("Fiş Kodu Alanı Boş Geçilemez!") + System.Environment.NewLine;
+                hata++;
+            }
+
+            if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani == true)
+            {
+                message += ("Ödenmesi Gereken Tutar Ödenmemiş Gözüküyor!") + System.Environment.NewLine;
+                hata++;
+            }
+
+            if (StokHata != 0)
+            {
+                message += ("Satış Ekranındaki Ürünlerin Depo Seçimlerinde Eksiklikler Var!") + System.Environment.NewLine;
+                hata++;
+            }
+            if (KasaHata != 0) // Burada StokHata yerine KasaHata kullanılmalı
+            {
+                message += ("Ödeme Ekranındaki Ödemelerin Kasa Seçimlerinde Eksiklikler Var!");
+                hata++;
+            }
+
+            if (hata != 0) // Burada StokHata yerine KasaHata kullanılmalı
+            {
+                MessageBox.Show(message, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            foreach (var stokVeri in contex.StokHareketleri.Local.ToList())
+            {
+                stokVeri.Tarih = stokVeri.Tarih == null ? Convert.ToDateTime(cmbTarih.DateTime) : Convert.ToDateTime(stokVeri.Tarih);
+                stokVeri.FisKodu = txtFisKodu.Text;
+                stokVeri.Hareket = ayarlar.StokHareketi;
+            }
+
+            if (ayarlar.OdemeEkrani)
+            {
+                foreach (var kasaVeri in contex.KasaHareketleri.Local.ToList())
+                {
+                    kasaVeri.Tarih = kasaVeri.Tarih == null ? Convert.ToDateTime(cmbTarih.DateTime) : Convert.ToDateTime(kasaVeri.Tarih);
+                    kasaVeri.FisKodu = txtFisKodu.Text;
+                    kasaVeri.Hareket = ayarlar.KasaHareketi;
+                    kasaVeri.CariKodu = lblCariKodu.Text;
+                    kasaVeri.CariAdi = lblCariAdi.Text;
+                    kasaVeri.Tutar = txtToplam.Value;
+                }
+            }
+            _fisEntity.ToplamTutar = txtToplam.Value;
+            _fisEntity.IskontoOrani = txtIskontoOrani.Value;
+            _fisEntity.IskontoTutar = txtIskontoTutar.Value;
+            fisDal.AddOrUpdate(contex, _fisEntity);
+            contex.SaveChanges();
+            Toplamlar();
+            MessageBox.Show("Belge Kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
+
+        private void btnStokSec_Click(object sender, EventArgs e)
+        {
+            FrmStokSec form = new FrmStokSec();
+            form.ShowDialog();
+            if (form.secildi)
+            {
+                stokHareketDal.AddOrUpdate(contex, StokSec(form.secilen.First()));
+                Toplamlar();
+            }
+        }
+
+        private void btnTemizle_Click(object sender, EventArgs e)
+        {
+            lblCariKodu.Text = null;
+            lblCariAdi.Text = null;
+            txtFaturaUnvani.Text = null;
+            txtVergiDairesi.Text = null;
+            txtVergiNo.Text = null;
+            txtCepTelefonu.Text = null;
+            txtIl.Text = null;
+            txtIlce.Text = null;
+            txtSemt.Text = null;
+            txtAdres.Text = null;
+            lblAlacak.Text = "Görüntülenemiyor";
+            lblBorc.Text = "Görüntülenemiyor";
+            lblBakiye.Text = "Görüntülenemiyor";
         }
 
         private void FisAyar()
@@ -160,10 +361,10 @@ namespace SonicHesap.BackOffice.Fis
                     break;
                 case "Tahsilat Fişi":
                     ayarlar.KasaHareketi = "Kasa Giriş";
-                    ayarlar.OdemeEkrani= true;
-                    ayarlar.SatisEkrani=false;
+                    ayarlar.OdemeEkrani = true;
+                    ayarlar.SatisEkrani = false;
                     navSatisEkrani.Dispose();
-                    panelOdeme.Visible=false;
+                    panelOdeme.Visible = false;
                     panelIskontoIndirim.Visible = false;
                     panelKdv.Visible = false;
                     groupToplamlar.Height = 164;
@@ -183,43 +384,68 @@ namespace SonicHesap.BackOffice.Fis
                     navigationPane2.SelectedPage = navOdemeEkrani;
                     break;
 
-                    //burası daha sonra düzeltilecek.
                 case "Cari Devir Fişi":
-                    ayarlar.KasaHareketi = "Kasa Giriş";
-                    ayarlar.OdemeEkrani = true;
-                    ayarlar.SatisEkrani = false;
+                    ayarlar.OdemeEkrani = true; // ya da false, ihtiyaca göre
+                    ayarlar.SatisEkrani = false; // ya da true, ihtiyaca göre
                     panelOdeme.Visible = false;
                     panelIskontoIndirim.Visible = false;
                     panelKdv.Visible = false;
+                    panelCariDevir.Visible = true;
                     groupToplamlar.Height = 164;
                     panelToplam.Top = 28;
                     navSatisEkrani.Dispose();
-                    navigationPane2.SelectedPage = navOdemeEkrani;
+                    txtFisKodu.Width = 386;
+                    navigationPane2.SelectedPage = navOdemeEkrani; // ya da navCariBilgi, ihtiyaca göre// Kasa hareketinin açıklamasını belirt // Kasa hareketini kaydet
                     break;
             }
         }
 
+        private void FiyatSec(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridStokHareket.SetFocusedRowCellValue(colBirimFiyati, Convert.ToDecimal(e.Item.Tag));
+        }
+
+        private void FrmFisIslem_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gridStokHareket_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            Toplamlar();
+        }
 
 
         private void OdemeEkle_Click(object sender, EventArgs e)
         {
             var buton = (sender as SimpleButton);
-            if (ayarlar.SatisEkrani==false)
+            if (ayarlar.SatisEkrani == false)
             {
                 FrmOdemeEkrani form = new FrmOdemeEkrani(buton.Text, buton.Name);
                 form.ShowDialog();
-                if (form.entity!=null)
+                if (form.entity != null)
                 {
+                    // Ödeme türü adını da ekleyin
+                    form.entity.OdemeTuruAdi = buton.Text;
                     kasaHareketDal.AddOrUpdate(contex, form.entity);
                     OdenenTutarGuncelle();
                 }
             }
             else
             {
+                string odemeTuruKodu = buton.Name;
+                string odemeTuruAdi = buton.Text;
+
+                if (string.IsNullOrEmpty(odemeTuruKodu) || string.IsNullOrEmpty(odemeTuruAdi))
+                {
+                    MessageBox.Show("Ödeme Türü ve Adı Boş Olamaz!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 KasaHareket entitykasaHareket = new KasaHareket
                 {
-                    OdemeTuruKodu = buton.Name,
-                    OdemeTuruAdi = buton.Text,
+                    OdemeTuruKodu = odemeTuruKodu,
+                    OdemeTuruAdi = odemeTuruAdi,
                     Tutar = txtOdenmesiGereken.Value
                 };
                 if (txtOdenmesiGereken.Value <= 0)
@@ -232,7 +458,6 @@ namespace SonicHesap.BackOffice.Fis
                     OdenenTutarGuncelle();
                 }
             }
-
         }
 
         private void OdenenTutarGuncelle()
@@ -247,12 +472,87 @@ namespace SonicHesap.BackOffice.Fis
             {
                 txtToplam.Value = Convert.ToDecimal(colTutar.SummaryItem.SummaryValue);
             }
-          
+
         }
 
-        private void FrmFisIslem_Load(object sender, EventArgs e)
+        private void PersonelEkle_Click(object sender, EventArgs e)
         {
 
+            var buton = sender as CheckButton;
+            if (buton.Name == "Temizle")
+            {
+                _fisEntity.PlasiyerKodu = null;
+                _fisEntity.PlasiyerAdi = null;
+            }
+            else
+            {
+                _fisEntity.PlasiyerKodu = buton.Name;
+                _fisEntity.PlasiyerAdi = buton.Text;
+            }
+
+        }
+
+        private void repoBirimFiyat_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            string fiyatSecilen = gridStokHareket.GetFocusedRowCellValue(colStokKodu).ToString();
+            Entities.Tables.Stok fiyatEntity = contex.Stoklar.Where(c => c.StokKodu == fiyatSecilen).SingleOrDefault();
+
+            barFiyat1.Tag = txtFisTuru.Text == "Alış Faturası" ? fiyatEntity.AlisFiyati1 ?? 0 : fiyatEntity.SatisFiyati1 ?? 0;
+            barFiyat2.Tag = txtFisTuru.Text == "Alış Faturası" ? fiyatEntity.AlisFiyati2 ?? 0 : fiyatEntity.SatisFiyati2 ?? 0;
+            barFiyat3.Tag = txtFisTuru.Text == "Alış Faturası" ? fiyatEntity.AlisFiyati3 ?? 0 : fiyatEntity.SatisFiyati3 ?? 0;
+            barFiyat1.Caption = string.Format("{0:C2}", barFiyat1.Tag);
+            barFiyat2.Caption = string.Format("{0:C2}", barFiyat2.Tag);
+            barFiyat3.Caption = string.Format("{0:C2}", barFiyat3.Tag);
+            radialFiyat.ShowPopup(MousePosition);
+        }
+
+        private void repoDepoSecim_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            FrmDepoSec form = new FrmDepoSec(gridStokHareket.GetFocusedRowCellValue(colStokKodu).ToString());
+            form.ShowDialog();
+            if (form.secildi)
+            {
+                gridStokHareket.SetFocusedRowCellValue(colDepoKodu, form.entity.DepoKodu);
+                gridStokHareket.SetFocusedRowCellValue(colDepoAdi, form.entity.DepoAdi);
+            }
+        }
+
+        private void repoKasa_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            FrmKasaSecim form = new FrmKasaSecim();
+            form.ShowDialog();
+            if (form.secildi)
+            {
+                gridKasaHareket.SetFocusedRowCellValue(colKasaKodu, form.entity.KasaKodu);
+                gridKasaHareket.SetFocusedRowCellValue(colKasaAdi, form.entity.KasaAdi);
+            }
+        }
+
+        private void repoOHSil_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                gridKasaHareket.DeleteSelectedRows();
+                OdenenTutarGuncelle();
+            }
+
+        }
+
+        private void repoSeriNo_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            string veri = Convert.ToString(gridStokHareket.GetFocusedRowCellValue(colSeriNo));
+            FrmSeriNoGir form = new FrmSeriNoGir(veri);
+            form.ShowDialog();
+            gridStokHareket.SetFocusedRowCellValue(colSeriNo, form.veriSeriNo);
+        }
+
+        private void repoSil_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                gridStokHareket.DeleteSelectedRows();
+                Toplamlar();
+            }
         }
         private StokHareket StokSec(Entities.Tables.Stok entity)
         {
@@ -269,31 +569,14 @@ namespace SonicHesap.BackOffice.Fis
             return stokHareket;
         }
 
-        private void btnStokSec_Click(object sender, EventArgs e)
+        private void Toplamlar()
         {
-            FrmStokSec form = new FrmStokSec();
-            form.ShowDialog();
-            if (form.secildi)
-            {
-                stokHareketDal.AddOrUpdate(contex, StokSec(form.secilen.First()));
-                Toplamlar();
-            }
-        }
-
-        private void btnKapat_Click(object sender, EventArgs e)
-        {
-            if (gridStokHareket.RowCount != 0)
-            {
-                DialogResult result = MessageBox.Show("Satış Ekranında Belgeye Kaydedilmemiş Ürünler Var. Bu İşlemi İptal Edip Belgeyi Kapatmak İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    this.Close();
-                }
-            }
-            else
-            {
-                this.Close();
-            }
+            gridStokHareket.UpdateSummary();
+            txtIskontoTutar.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) / 100 * txtIskontoOrani.Value;
+            txtToplam.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) - txtIskontoTutar.Value;
+            txtKdvToplam.Value = Convert.ToDecimal(colKdvToplam.SummaryItem.SummaryValue);
+            txtIndirimToplam.Value = Convert.ToDecimal(colIndirimtutari.SummaryItem.SummaryValue);
+            txtOdenmesiGereken.Value = txtToplam.Value - txtOdenenTutar.Value;
         }
 
 
@@ -318,68 +601,6 @@ namespace SonicHesap.BackOffice.Fis
             }
         }
 
-        private void btnBul_Click(object sender, EventArgs e)
-        {
-            FrmCariSec form = new FrmCariSec();
-            form.ShowDialog();
-            if (form.secildi)
-            {
-                Entities.Tables.Cari entity = form.secilen.FirstOrDefault();
-                entityBakiye = cariDal.CariBakiyesi(contex, entity.CariKodu);
-
-                lblCariKodu.Text = entity.CariKodu;
-                lblCariAdi.Text = entity.CariAdi;
-                txtFaturaUnvani.Text = entity.FaturaUnvani;
-                txtVergiDairesi.Text = entity.VergiDairesi;
-                txtVergiNo.Text = entity.VergiNo;
-                txtCepTelefonu.Text = entity.CepTelefonu;
-                txtIl.Text = entity.Il;
-                txtIlce.Text = entity.Ilce;
-                txtSemt.Text = entity.Semt;
-                txtAdres.Text = entity.Adres;
-                lblAlacak.Text = entityBakiye.Alacak.ToString("C2");
-                lblBorc.Text = entityBakiye.Borc.ToString("C2");
-                lblBakiye.Text = entityBakiye.Bakiye.ToString("C2");
-            }
-        }
-
-        private void btnTemizle_Click(object sender, EventArgs e)
-        {
-            lblCariKodu.Text = null;
-            lblCariAdi.Text = null;
-            txtFaturaUnvani.Text = null;
-            txtVergiDairesi.Text = null;
-            txtVergiNo.Text = null;
-            txtCepTelefonu.Text = null;
-            txtIl.Text = null;
-            txtIlce.Text = null;
-            txtSemt.Text = null;
-            txtAdres.Text = null;
-            lblAlacak.Text = "Görüntülenemiyor";
-            lblBorc.Text = "Görüntülenemiyor";
-            lblBakiye.Text = "Görüntülenemiyor";
-        }
-
-        private void gridStokHareket_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            Toplamlar();
-        }
-
-        private void Toplamlar()
-        {
-            gridStokHareket.UpdateSummary();
-            txtIskontoTutar.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) / 100 * txtIskontoOrani.Value;
-            txtToplam.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) - txtIskontoTutar.Value;
-            txtKdvToplam.Value = Convert.ToDecimal(colKdvToplam.SummaryItem.SummaryValue);
-            txtIndirimToplam.Value = Convert.ToDecimal(colIndirimtutari.SummaryItem.SummaryValue);
-            txtOdenmesiGereken.Value = txtToplam.Value - txtOdenenTutar.Value;
-        }
-
-        private void txtToplam_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtIskontoOrani_EditValueChanged(object sender, EventArgs e)
         {
 
@@ -390,143 +611,9 @@ namespace SonicHesap.BackOffice.Fis
             Toplamlar();
         }
 
-        private void repoDepoSecim_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void txtToplam_EditValueChanged(object sender, EventArgs e)
         {
-            FrmDepoSec form = new FrmDepoSec(gridStokHareket.GetFocusedRowCellValue(colStokKodu).ToString());
-            form.ShowDialog();
-            if (form.secildi)
-            {
-                gridStokHareket.SetFocusedRowCellValue(colDepoKodu, form.entity.DepoKodu);
-                gridStokHareket.SetFocusedRowCellValue(colDepoAdi, form.entity.DepoAdi);
-            }
-        }
-
-        private void repoBirimFiyat_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            string fiyatSecilen = gridStokHareket.GetFocusedRowCellValue(colStokKodu).ToString();
-            Entities.Tables.Stok fiyatEntity = contex.Stoklar.Where(c => c.StokKodu == fiyatSecilen).SingleOrDefault();
-
-            barFiyat1.Tag = txtFisTuru.Text == "Alış Faturası" ? fiyatEntity.AlisFiyati1 ?? 0 : fiyatEntity.SatisFiyati1 ?? 0;
-            barFiyat2.Tag = txtFisTuru.Text == "Alış Faturası" ? fiyatEntity.AlisFiyati2 ?? 0 : fiyatEntity.SatisFiyati2 ?? 0;
-            barFiyat3.Tag = txtFisTuru.Text == "Alış Faturası" ? fiyatEntity.AlisFiyati3 ?? 0 : fiyatEntity.SatisFiyati3 ?? 0;
-            barFiyat1.Caption = string.Format("{0:C2}", barFiyat1.Tag);
-            barFiyat2.Caption = string.Format("{0:C2}", barFiyat2.Tag);
-            barFiyat3.Caption = string.Format("{0:C2}", barFiyat3.Tag);
-            radialFiyat.ShowPopup(MousePosition);
-        }
-
-        private void FiyatSec(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            gridStokHareket.SetFocusedRowCellValue(colBirimFiyati, Convert.ToDecimal(e.Item.Tag));
-        }
-
-        private void repoSeriNo_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            string veri = Convert.ToString(gridStokHareket.GetFocusedRowCellValue(colSeriNo));
-            FrmSeriNoGir form = new FrmSeriNoGir(veri);
-            form.ShowDialog();
-            gridStokHareket.SetFocusedRowCellValue(colSeriNo, form.veriSeriNo);
-        }
-
-        private void repoSil_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                gridStokHareket.DeleteSelectedRows();
-                Toplamlar();
-            }
-        }
-
-        private void repoOHSil_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                gridKasaHareket.DeleteSelectedRows();
-                OdenenTutarGuncelle();
-            }
 
         }
-
-        private void repoKasa_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            FrmKasaSecim form = new FrmKasaSecim();
-            form.ShowDialog();
-            if (form.secildi)
-            {
-                gridKasaHareket.SetFocusedRowCellValue(colKasaKodu, form.entity.KasaKodu);
-                gridKasaHareket.SetFocusedRowCellValue(colKasaAdi, form.entity.KasaAdi);
-            }
-        }
-
-        private void btnKaydet_Click(object sender, EventArgs e)
-        {
-            int StokHata = contex.StokHareketleri.Local.Where(c => c.DepoKodu == null).Count();
-            int KasaHata = contex.KasaHareketleri.Local.Where(c => c.KasaKodu == null).Count();
-            string message = null;
-            int hata = 0;
-
-            if (gridStokHareket.RowCount == 0)
-            {
-                message += ("Satış Ekranında Eklenmiş Bir Ürün Bulunamadı!") + System.Environment.NewLine;
-                hata++;
-            }
-
-            if (string.IsNullOrEmpty(txtFisKodu.Text))
-            {
-                message += ("Fiş Kodu Alanı Boş Geçilemez!") + System.Environment.NewLine;
-                hata++;
-            }
-
-            if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani == true)
-            {
-                message += ("Ödenmesi Gereken Tutar Ödenmemiş Gözüküyor!") + System.Environment.NewLine;
-                hata++;
-            }
-
-            if (StokHata != 0)
-            {
-                message += ("Satış Ekranındaki Ürünlerin Depo Seçimlerinde Eksiklikler Var!") + System.Environment.NewLine;
-                hata++;
-            }
-            if (KasaHata != 0) // Burada StokHata yerine KasaHata kullanılmalı
-            {
-                message += ("Ödeme Ekranındaki Ödemelerin Kasa Seçimlerinde Eksiklikler Var!");
-                hata++;
-            }
-
-            if (hata != 0) // Burada StokHata yerine KasaHata kullanılmalı
-            {
-                MessageBox.Show(message, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            foreach (var stokVeri in contex.StokHareketleri.Local.ToList())
-            {
-                stokVeri.Tarih = stokVeri.Tarih == null ? Convert.ToDateTime(cmbTarih.DateTime) : Convert.ToDateTime(stokVeri.Tarih);
-                stokVeri.FisKodu = txtFisKodu.Text;
-                stokVeri.Hareket = ayarlar.StokHareketi;
-            }
-
-            if (ayarlar.OdemeEkrani)
-            {
-                foreach (var kasaVeri in contex.KasaHareketleri.Local.ToList())
-                {
-                    kasaVeri.Tarih = kasaVeri.Tarih == null ? Convert.ToDateTime(cmbTarih.DateTime) : Convert.ToDateTime(kasaVeri.Tarih);
-                    kasaVeri.FisKodu = txtFisKodu.Text;
-                    kasaVeri.Hareket = ayarlar.StokHareketi;
-                    kasaVeri.CariKodu = lblCariKodu.Text;
-                    kasaVeri.CariAdi = lblCariAdi.Text;
-                }
-            }
-
-            _fisEntity.ToplamTutar = txtToplam.Value;
-            _fisEntity.IskontoOrani = txtIskontoOrani.Value;
-            _fisEntity.IskontoTutar = txtIskontoTutar.Value;
-            fisDal.AddOrUpdate(contex, _fisEntity);
-            contex.SaveChanges();
-            MessageBox.Show("Belge Kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();   
-        }
-
     }
 }

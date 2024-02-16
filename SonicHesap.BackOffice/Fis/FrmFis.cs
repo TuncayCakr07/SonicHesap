@@ -32,6 +32,7 @@ namespace SonicHesap.BackOffice.Fis
         }
         void Listele()
         {
+            context=new SonicHesapContext();    
             gridContFis.DataSource=fisDal.GetAll(context);
         }
 
@@ -115,6 +116,7 @@ namespace SonicHesap.BackOffice.Fis
                 {
                     MessageBox.Show("Düzenlemek için bir fiş seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                Listele();
             }
             else
             {

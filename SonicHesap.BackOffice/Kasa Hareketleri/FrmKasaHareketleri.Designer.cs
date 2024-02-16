@@ -37,11 +37,6 @@
             this.btnFiltreKapat = new DevExpress.XtraEditors.SimpleButton();
             this.btnFiltrele = new DevExpress.XtraEditors.SimpleButton();
             this.filterControl1 = new DevExpress.XtraEditors.FilterControl();
-            this.grpMenu = new DevExpress.XtraEditors.GroupControl();
-            this.btnDetayGor = new DevExpress.XtraEditors.SimpleButton();
-            this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
-            this.btnAra = new DevExpress.XtraEditors.SimpleButton();
-            this.btnGuncelle = new DevExpress.XtraEditors.SimpleButton();
             this.gridContKasaHareket = new DevExpress.XtraGrid.GridControl();
             this.gridKasaHareket = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -57,16 +52,21 @@
             this.colSaat = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTutar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grpMenu = new DevExpress.XtraEditors.GroupControl();
+            this.btnDetayGor = new DevExpress.XtraEditors.SimpleButton();
+            this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAra = new DevExpress.XtraEditors.SimpleButton();
+            this.btnGuncelle = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             this.splitContainerControl1.Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
             this.splitContainerControl1.Panel2.SuspendLayout();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
-            this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridContKasaHareket)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridKasaHareket)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
+            this.grpMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblBaslik
@@ -190,66 +190,6 @@
             this.filterControl1.SourceControl = this.gridContKasaHareket;
             this.filterControl1.TabIndex = 2;
             this.filterControl1.Text = "filterControl1";
-            // 
-            // grpMenu
-            // 
-            this.grpMenu.Controls.Add(this.btnDetayGor);
-            this.grpMenu.Controls.Add(this.btnKapat);
-            this.grpMenu.Controls.Add(this.btnAra);
-            this.grpMenu.Controls.Add(this.btnGuncelle);
-            this.grpMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grpMenu.Location = new System.Drawing.Point(0, 417);
-            this.grpMenu.Name = "grpMenu";
-            this.grpMenu.Size = new System.Drawing.Size(1327, 83);
-            this.grpMenu.TabIndex = 5;
-            this.grpMenu.Text = "Menü";
-            // 
-            // btnDetayGor
-            // 
-            this.btnDetayGor.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnDetayGor.ImageOptions.ImageIndex = 15;
-            this.btnDetayGor.ImageOptions.ImageList = this.ımageMenu;
-            this.btnDetayGor.Location = new System.Drawing.Point(113, 28);
-            this.btnDetayGor.Name = "btnDetayGor";
-            this.btnDetayGor.Size = new System.Drawing.Size(120, 53);
-            this.btnDetayGor.TabIndex = 2;
-            this.btnDetayGor.Text = "Detay Gör";
-            this.btnDetayGor.Click += new System.EventHandler(this.btnDetayGor_Click);
-            // 
-            // btnKapat
-            // 
-            this.btnKapat.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnKapat.ImageOptions.ImageIndex = 5;
-            this.btnKapat.ImageOptions.ImageList = this.ımageMenu;
-            this.btnKapat.Location = new System.Drawing.Point(1231, 28);
-            this.btnKapat.Name = "btnKapat";
-            this.btnKapat.Size = new System.Drawing.Size(94, 53);
-            this.btnKapat.TabIndex = 0;
-            this.btnKapat.Text = "Kapat";
-            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
-            // 
-            // btnAra
-            // 
-            this.btnAra.ImageOptions.ImageIndex = 26;
-            this.btnAra.ImageOptions.ImageList = this.ımageMenu;
-            this.btnAra.Location = new System.Drawing.Point(233, 28);
-            this.btnAra.Name = "btnAra";
-            this.btnAra.Size = new System.Drawing.Size(111, 54);
-            this.btnAra.TabIndex = 0;
-            this.btnAra.Text = "Ara";
-            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
-            // 
-            // btnGuncelle
-            // 
-            this.btnGuncelle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnGuncelle.ImageOptions.ImageIndex = 17;
-            this.btnGuncelle.ImageOptions.ImageList = this.ımageMenu;
-            this.btnGuncelle.Location = new System.Drawing.Point(2, 28);
-            this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(111, 53);
-            this.btnGuncelle.TabIndex = 0;
-            this.btnGuncelle.Text = "Güncelle";
-            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // gridContKasaHareket
             // 
@@ -437,6 +377,66 @@
             this.colAciklama.VisibleIndex = 10;
             this.colAciklama.Width = 331;
             // 
+            // grpMenu
+            // 
+            this.grpMenu.Controls.Add(this.btnDetayGor);
+            this.grpMenu.Controls.Add(this.btnKapat);
+            this.grpMenu.Controls.Add(this.btnAra);
+            this.grpMenu.Controls.Add(this.btnGuncelle);
+            this.grpMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.grpMenu.Location = new System.Drawing.Point(0, 420);
+            this.grpMenu.Name = "grpMenu";
+            this.grpMenu.Size = new System.Drawing.Size(1327, 80);
+            this.grpMenu.TabIndex = 5;
+            this.grpMenu.Text = "Menü";
+            // 
+            // btnDetayGor
+            // 
+            this.btnDetayGor.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDetayGor.ImageOptions.ImageIndex = 15;
+            this.btnDetayGor.ImageOptions.ImageList = this.ımageMenu;
+            this.btnDetayGor.Location = new System.Drawing.Point(113, 28);
+            this.btnDetayGor.Name = "btnDetayGor";
+            this.btnDetayGor.Size = new System.Drawing.Size(120, 50);
+            this.btnDetayGor.TabIndex = 2;
+            this.btnDetayGor.Text = "Detay Gör";
+            this.btnDetayGor.Click += new System.EventHandler(this.btnDetayGor_Click);
+            // 
+            // btnKapat
+            // 
+            this.btnKapat.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnKapat.ImageOptions.ImageIndex = 5;
+            this.btnKapat.ImageOptions.ImageList = this.ımageMenu;
+            this.btnKapat.Location = new System.Drawing.Point(1231, 28);
+            this.btnKapat.Name = "btnKapat";
+            this.btnKapat.Size = new System.Drawing.Size(94, 50);
+            this.btnKapat.TabIndex = 0;
+            this.btnKapat.Text = "Kapat";
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
+            // 
+            // btnAra
+            // 
+            this.btnAra.ImageOptions.ImageIndex = 26;
+            this.btnAra.ImageOptions.ImageList = this.ımageMenu;
+            this.btnAra.Location = new System.Drawing.Point(233, 28);
+            this.btnAra.Name = "btnAra";
+            this.btnAra.Size = new System.Drawing.Size(111, 54);
+            this.btnAra.TabIndex = 0;
+            this.btnAra.Text = "Ara";
+            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
+            // 
+            // btnGuncelle
+            // 
+            this.btnGuncelle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnGuncelle.ImageOptions.ImageIndex = 17;
+            this.btnGuncelle.ImageOptions.ImageList = this.ımageMenu;
+            this.btnGuncelle.Location = new System.Drawing.Point(2, 28);
+            this.btnGuncelle.Name = "btnGuncelle";
+            this.btnGuncelle.Size = new System.Drawing.Size(111, 50);
+            this.btnGuncelle.TabIndex = 0;
+            this.btnGuncelle.Text = "Güncelle";
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
+            // 
             // FrmKasaHareketleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -454,10 +454,10 @@
             this.splitContainerControl1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).EndInit();
-            this.grpMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridContKasaHareket)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridKasaHareket)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).EndInit();
+            this.grpMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
