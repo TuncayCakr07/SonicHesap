@@ -7,8 +7,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,8 +19,8 @@ namespace SonicHesap.BackOffice.Fiyat_Degistir
 {
     public partial class FrmTopluFiyat : DevExpress.XtraEditors.XtraForm
     {
-        SonicHesapContext context=new SonicHesapContext();
-        StokDAL stokDal=new StokDAL();
+        SonicHesapContext context = new SonicHesapContext();
+        StokDAL stokDal = new StokDAL();
         public FrmTopluFiyat()
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace SonicHesap.BackOffice.Fiyat_Degistir
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            FrmStokSec form=new FrmStokSec(true);
+            FrmStokSec form = new FrmStokSec(true);
             form.ShowDialog();
             if (form.secildi)
             {
@@ -111,5 +113,48 @@ namespace SonicHesap.BackOffice.Fiyat_Degistir
         {
             this.Close();
         }
+        private void btnFiyatDegistir_Click(object sender, EventArgs e)
+        {
+            if (gridView1.RowCount == 0)
+            {
+                MessageBox.Show("Seçilen Bir Ürün Bulunamadı!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            FrmTopluFiyatDeğistir form = new FrmTopluFiyatDeğistir();
+            form.ShowDialog();
+            if (form.secildi)
+            {
+                foreach (var itemDegistir in form.List)
+                {
+                    if (itemDegistir.Degistir)
+                    {
+                        for (int i = 0; i < gridView1.RowCount; i++)
+                        {
+                            decimal kolonDeger = 0;
+                            decimal degisen = 0;
+                            kolonDeger = Convert.ToDecimal(gridView1.GetRowCellValue(i, itemDegistir.KolonAdi));
+
+                            if (itemDegistir.DegisimTuru == "Yüzde")
+                            {
+                                decimal yuzdeMiktar = kolonDeger * itemDegistir.Degeri / 100;
+                                degisen = itemDegistir.DegisimYonu == "Azalt"
+                                    ? kolonDeger - yuzdeMiktar
+                                    : kolonDeger + yuzdeMiktar;
+                            }
+                            else // Miktarı sabit değere göre arttırma/azaltma
+                            {
+                                degisen = kolonDeger - (kolonDeger * itemDegistir.Degeri / 100);
+                            }
+                            // Yeni değeri hücreye atama
+                            gridView1.SetRowCellValue(i, itemDegistir.KolonAdi, degisen);
+                        }
+                    }
+                }
+            }
+        }
+
+
+
     }
 }

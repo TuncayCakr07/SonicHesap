@@ -92,10 +92,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EntityRepositoryBase.cs" />
     <Compile Include="Tables\Cari.cs" />
+    <Compile Include="Tables\Indirim.cs" />
     <Compile Include="Tables\OtherTables\CariBakiye.cs" />
     <Compile Include="Tables\Depo.cs" />
     <Compile Include="Tables\Fis.cs" />
     <Compile Include="Tables\OtherTables\FisAyarlari.cs" />
+    <Compile Include="Tables\OtherTables\FiyatDegistir.cs" />
     <Compile Include="Tables\OtherTables\GenelToplam.cs" />
     <Compile Include="Tables\Kasa.cs" />
     <Compile Include="Tables\KasaHareket.cs" />

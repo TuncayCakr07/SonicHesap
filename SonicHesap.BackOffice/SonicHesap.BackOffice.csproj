@@ -156,6 +156,18 @@
     <Compile Include="Fiyat Degistir\FrmTopluFiyat.Designer.cs">
       <DependentUpon>FrmTopluFiyat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fiyat Degistir\FrmTopluFiyatDeğistir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fiyat Degistir\FrmTopluFiyatDeğistir.Designer.cs">
+      <DependentUpon>FrmTopluFiyatDeğistir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Indirim\FrmIndirim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Indirim\FrmIndirim.Designer.cs">
+      <DependentUpon>FrmIndirim.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kasa Hareketleri\FrmKasaHareketleri.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +316,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fiyat Degistir\FrmTopluFiyat.resx">
       <DependentUpon>FrmTopluFiyat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fiyat Degistir\FrmTopluFiyatDeğistir.resx">
+      <DependentUpon>FrmTopluFiyatDeğistir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Indirim\FrmIndirim.resx">
+      <DependentUpon>FrmIndirim.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Kasa Hareketleri\FrmKasaHareketleri.resx">
       <DependentUpon>FrmKasaHareketleri.cs</DependentUpon>

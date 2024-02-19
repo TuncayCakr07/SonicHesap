@@ -68,6 +68,7 @@
             this.btnGuncelle = new DevExpress.XtraEditors.SimpleButton();
             this.btnCikar = new DevExpress.XtraEditors.SimpleButton();
             this.btnEkle = new DevExpress.XtraEditors.SimpleButton();
+            this.btnFiyatDegistir = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
@@ -417,6 +418,7 @@
             // 
             // grpMenu
             // 
+            this.grpMenu.Controls.Add(this.btnFiyatDegistir);
             this.grpMenu.Controls.Add(this.btnKaydet);
             this.grpMenu.Controls.Add(this.btnKapat);
             this.grpMenu.Controls.Add(this.btnAra);
@@ -432,12 +434,11 @@
             // 
             // btnKaydet
             // 
-            this.btnKaydet.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnKaydet.ImageOptions.ImageIndex = 0;
             this.btnKaydet.ImageOptions.ImageList = this.ımageList1;
-            this.btnKaydet.Location = new System.Drawing.Point(446, 28);
+            this.btnKaydet.Location = new System.Drawing.Point(449, 28);
             this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(120, 53);
+            this.btnKaydet.Size = new System.Drawing.Size(111, 53);
             this.btnKaydet.TabIndex = 1;
             this.btnKaydet.Text = "Değişiklikleri \r\nKaydet";
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
@@ -470,10 +471,9 @@
             // 
             // btnAra
             // 
-            this.btnAra.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnAra.ImageOptions.ImageIndex = 8;
             this.btnAra.ImageOptions.ImageList = this.ımageList1;
-            this.btnAra.Location = new System.Drawing.Point(335, 28);
+            this.btnAra.Location = new System.Drawing.Point(561, 27);
             this.btnAra.Name = "btnAra";
             this.btnAra.Size = new System.Drawing.Size(111, 53);
             this.btnAra.TabIndex = 0;
@@ -482,10 +482,9 @@
             // 
             // btnGuncelle
             // 
-            this.btnGuncelle.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnGuncelle.ImageOptions.ImageIndex = 5;
             this.btnGuncelle.ImageOptions.ImageList = this.ımageList1;
-            this.btnGuncelle.Location = new System.Drawing.Point(224, 28);
+            this.btnGuncelle.Location = new System.Drawing.Point(337, 28);
             this.btnGuncelle.Name = "btnGuncelle";
             this.btnGuncelle.Size = new System.Drawing.Size(111, 53);
             this.btnGuncelle.TabIndex = 0;
@@ -515,6 +514,17 @@
             this.btnEkle.TabIndex = 0;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
+            // 
+            // btnFiyatDegistir
+            // 
+            this.btnFiyatDegistir.ImageOptions.ImageIndex = 2;
+            this.btnFiyatDegistir.ImageOptions.ImageList = this.ımageList1;
+            this.btnFiyatDegistir.Location = new System.Drawing.Point(225, 28);
+            this.btnFiyatDegistir.Name = "btnFiyatDegistir";
+            this.btnFiyatDegistir.Size = new System.Drawing.Size(111, 53);
+            this.btnFiyatDegistir.TabIndex = 2;
+            this.btnFiyatDegistir.Text = "Fiyat \r\nDeğiştir";
+            this.btnFiyatDegistir.Click += new System.EventHandler(this.btnFiyatDegistir_Click);
             // 
             // FrmTopluFiyat
             // 
@@ -575,5 +585,6 @@
         private DevExpress.XtraEditors.SimpleButton btnCikar;
         private DevExpress.XtraEditors.SimpleButton btnEkle;
         private System.Windows.Forms.ImageList ımageList1;
+        private DevExpress.XtraEditors.SimpleButton btnFiyatDegistir;
     }
 }
