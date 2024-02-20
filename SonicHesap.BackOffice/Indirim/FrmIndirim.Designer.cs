@@ -33,17 +33,6 @@
             this.lblBaslik = new DevExpress.XtraEditors.LabelControl();
             this.gridContDepolar = new DevExpress.XtraGrid.GridControl();
             this.gridDepolar = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDepoKodu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDepoAdi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colYetkiliKodu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colYetkiliAdi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIl = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIlce = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSemt = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colAdres = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTelefon = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.grpMenu = new DevExpress.XtraEditors.GroupControl();
             this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
@@ -52,6 +41,16 @@
             this.btnSil = new DevExpress.XtraEditors.SimpleButton();
             this.btnDuzenle = new DevExpress.XtraEditors.SimpleButton();
             this.btnEkle = new DevExpress.XtraEditors.SimpleButton();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDurumu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStokKodu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBarkod = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStokAdi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIndirimTuru = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBaslangicTarihi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBitisTarihi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIndirimOrani = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridContDepolar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDepolar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
@@ -89,137 +88,17 @@
             // 
             this.gridDepolar.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
-            this.colDepoKodu,
-            this.colDepoAdi,
-            this.colYetkiliKodu,
-            this.colYetkiliAdi,
-            this.colIl,
-            this.colIlce,
-            this.colSemt,
-            this.colAdres,
-            this.colTelefon,
+            this.colDurumu,
+            this.colStokKodu,
+            this.colBarkod,
+            this.colStokAdi,
+            this.colIndirimTuru,
+            this.colBaslangicTarihi,
+            this.colBitisTarihi,
+            this.colIndirimOrani,
             this.colAciklama});
             this.gridDepolar.GridControl = this.gridContDepolar;
             this.gridDepolar.Name = "gridDepolar";
-            // 
-            // colId
-            // 
-            this.colId.FieldName = "Id";
-            this.colId.MinWidth = 25;
-            this.colId.Name = "colId";
-            this.colId.OptionsColumn.AllowEdit = false;
-            this.colId.OptionsColumn.ShowInCustomizationForm = false;
-            this.colId.Width = 94;
-            // 
-            // colDepoKodu
-            // 
-            this.colDepoKodu.Caption = "Depo Kodu";
-            this.colDepoKodu.FieldName = "DepoKodu";
-            this.colDepoKodu.MinWidth = 25;
-            this.colDepoKodu.Name = "colDepoKodu";
-            this.colDepoKodu.OptionsColumn.AllowEdit = false;
-            this.colDepoKodu.Visible = true;
-            this.colDepoKodu.VisibleIndex = 0;
-            this.colDepoKodu.Width = 94;
-            // 
-            // colDepoAdi
-            // 
-            this.colDepoAdi.Caption = "Depo Adı";
-            this.colDepoAdi.FieldName = "DepoAdi";
-            this.colDepoAdi.MinWidth = 25;
-            this.colDepoAdi.Name = "colDepoAdi";
-            this.colDepoAdi.OptionsColumn.AllowEdit = false;
-            this.colDepoAdi.Visible = true;
-            this.colDepoAdi.VisibleIndex = 1;
-            this.colDepoAdi.Width = 94;
-            // 
-            // colYetkiliKodu
-            // 
-            this.colYetkiliKodu.Caption = "Yetkili Kodu";
-            this.colYetkiliKodu.FieldName = "YetkiliKodu";
-            this.colYetkiliKodu.MinWidth = 25;
-            this.colYetkiliKodu.Name = "colYetkiliKodu";
-            this.colYetkiliKodu.OptionsColumn.AllowEdit = false;
-            this.colYetkiliKodu.Visible = true;
-            this.colYetkiliKodu.VisibleIndex = 2;
-            this.colYetkiliKodu.Width = 94;
-            // 
-            // colYetkiliAdi
-            // 
-            this.colYetkiliAdi.Caption = "Yetkili Adi";
-            this.colYetkiliAdi.FieldName = "YetkiliAdi";
-            this.colYetkiliAdi.MinWidth = 25;
-            this.colYetkiliAdi.Name = "colYetkiliAdi";
-            this.colYetkiliAdi.OptionsColumn.AllowEdit = false;
-            this.colYetkiliAdi.Visible = true;
-            this.colYetkiliAdi.VisibleIndex = 3;
-            this.colYetkiliAdi.Width = 94;
-            // 
-            // colIl
-            // 
-            this.colIl.Caption = "İl";
-            this.colIl.FieldName = "Il";
-            this.colIl.MinWidth = 25;
-            this.colIl.Name = "colIl";
-            this.colIl.OptionsColumn.AllowEdit = false;
-            this.colIl.Visible = true;
-            this.colIl.VisibleIndex = 4;
-            this.colIl.Width = 94;
-            // 
-            // colIlce
-            // 
-            this.colIlce.Caption = "İlçe";
-            this.colIlce.FieldName = "Ilce";
-            this.colIlce.MinWidth = 25;
-            this.colIlce.Name = "colIlce";
-            this.colIlce.OptionsColumn.AllowEdit = false;
-            this.colIlce.Visible = true;
-            this.colIlce.VisibleIndex = 5;
-            this.colIlce.Width = 94;
-            // 
-            // colSemt
-            // 
-            this.colSemt.Caption = "Semt";
-            this.colSemt.FieldName = "Semt";
-            this.colSemt.MinWidth = 25;
-            this.colSemt.Name = "colSemt";
-            this.colSemt.OptionsColumn.AllowEdit = false;
-            this.colSemt.Visible = true;
-            this.colSemt.VisibleIndex = 6;
-            this.colSemt.Width = 94;
-            // 
-            // colAdres
-            // 
-            this.colAdres.Caption = "Adres";
-            this.colAdres.FieldName = "Adres";
-            this.colAdres.MinWidth = 25;
-            this.colAdres.Name = "colAdres";
-            this.colAdres.OptionsColumn.AllowEdit = false;
-            this.colAdres.Visible = true;
-            this.colAdres.VisibleIndex = 7;
-            this.colAdres.Width = 94;
-            // 
-            // colTelefon
-            // 
-            this.colTelefon.Caption = "Telefon";
-            this.colTelefon.FieldName = "Telefon";
-            this.colTelefon.MinWidth = 25;
-            this.colTelefon.Name = "colTelefon";
-            this.colTelefon.OptionsColumn.AllowEdit = false;
-            this.colTelefon.Visible = true;
-            this.colTelefon.VisibleIndex = 8;
-            this.colTelefon.Width = 94;
-            // 
-            // colAciklama
-            // 
-            this.colAciklama.Caption = "Açıklama";
-            this.colAciklama.FieldName = "Aciklama";
-            this.colAciklama.MinWidth = 25;
-            this.colAciklama.Name = "colAciklama";
-            this.colAciklama.OptionsColumn.AllowEdit = false;
-            this.colAciklama.Visible = true;
-            this.colAciklama.VisibleIndex = 9;
-            this.colAciklama.Width = 94;
             // 
             // ımageList1
             // 
@@ -315,6 +194,114 @@
             this.btnEkle.TabIndex = 0;
             this.btnEkle.Text = "Ekle";
             // 
+            // colId
+            // 
+            this.colId.FieldName = "Id";
+            this.colId.MinWidth = 25;
+            this.colId.Name = "colId";
+            this.colId.OptionsColumn.AllowEdit = false;
+            this.colId.OptionsColumn.ShowInCustomizationForm = false;
+            this.colId.Width = 94;
+            // 
+            // colDurumu
+            // 
+            this.colDurumu.FieldName = "Durumu";
+            this.colDurumu.MinWidth = 25;
+            this.colDurumu.Name = "colDurumu";
+            this.colDurumu.OptionsColumn.AllowEdit = false;
+            this.colDurumu.OptionsColumn.ShowInCustomizationForm = false;
+            this.colDurumu.Visible = true;
+            this.colDurumu.VisibleIndex = 0;
+            this.colDurumu.Width = 94;
+            // 
+            // colStokKodu
+            // 
+            this.colStokKodu.FieldName = "StokKodu";
+            this.colStokKodu.MinWidth = 25;
+            this.colStokKodu.Name = "colStokKodu";
+            this.colStokKodu.OptionsColumn.AllowEdit = false;
+            this.colStokKodu.OptionsColumn.ShowInCustomizationForm = false;
+            this.colStokKodu.Visible = true;
+            this.colStokKodu.VisibleIndex = 1;
+            this.colStokKodu.Width = 94;
+            // 
+            // colBarkod
+            // 
+            this.colBarkod.FieldName = "Barkod";
+            this.colBarkod.MinWidth = 25;
+            this.colBarkod.Name = "colBarkod";
+            this.colBarkod.OptionsColumn.AllowEdit = false;
+            this.colBarkod.OptionsColumn.ShowInCustomizationForm = false;
+            this.colBarkod.Visible = true;
+            this.colBarkod.VisibleIndex = 2;
+            this.colBarkod.Width = 94;
+            // 
+            // colStokAdi
+            // 
+            this.colStokAdi.FieldName = "StokAdi";
+            this.colStokAdi.MinWidth = 25;
+            this.colStokAdi.Name = "colStokAdi";
+            this.colStokAdi.OptionsColumn.AllowEdit = false;
+            this.colStokAdi.OptionsColumn.ShowInCustomizationForm = false;
+            this.colStokAdi.Visible = true;
+            this.colStokAdi.VisibleIndex = 3;
+            this.colStokAdi.Width = 94;
+            // 
+            // colIndirimTuru
+            // 
+            this.colIndirimTuru.FieldName = "IndirimTuru";
+            this.colIndirimTuru.MinWidth = 25;
+            this.colIndirimTuru.Name = "colIndirimTuru";
+            this.colIndirimTuru.OptionsColumn.AllowEdit = false;
+            this.colIndirimTuru.OptionsColumn.ShowInCustomizationForm = false;
+            this.colIndirimTuru.Visible = true;
+            this.colIndirimTuru.VisibleIndex = 4;
+            this.colIndirimTuru.Width = 94;
+            // 
+            // colBaslangicTarihi
+            // 
+            this.colBaslangicTarihi.FieldName = "BaslangicTarihi";
+            this.colBaslangicTarihi.MinWidth = 25;
+            this.colBaslangicTarihi.Name = "colBaslangicTarihi";
+            this.colBaslangicTarihi.OptionsColumn.AllowEdit = false;
+            this.colBaslangicTarihi.OptionsColumn.ShowInCustomizationForm = false;
+            this.colBaslangicTarihi.Visible = true;
+            this.colBaslangicTarihi.VisibleIndex = 5;
+            this.colBaslangicTarihi.Width = 94;
+            // 
+            // colBitisTarihi
+            // 
+            this.colBitisTarihi.FieldName = "BitisTarihi";
+            this.colBitisTarihi.MinWidth = 25;
+            this.colBitisTarihi.Name = "colBitisTarihi";
+            this.colBitisTarihi.OptionsColumn.AllowEdit = false;
+            this.colBitisTarihi.OptionsColumn.ShowInCustomizationForm = false;
+            this.colBitisTarihi.Visible = true;
+            this.colBitisTarihi.VisibleIndex = 6;
+            this.colBitisTarihi.Width = 94;
+            // 
+            // colIndirimOrani
+            // 
+            this.colIndirimOrani.FieldName = "IndirimOrani";
+            this.colIndirimOrani.MinWidth = 25;
+            this.colIndirimOrani.Name = "colIndirimOrani";
+            this.colIndirimOrani.OptionsColumn.AllowEdit = false;
+            this.colIndirimOrani.OptionsColumn.ShowInCustomizationForm = false;
+            this.colIndirimOrani.Visible = true;
+            this.colIndirimOrani.VisibleIndex = 7;
+            this.colIndirimOrani.Width = 94;
+            // 
+            // colAciklama
+            // 
+            this.colAciklama.FieldName = "Aciklama";
+            this.colAciklama.MinWidth = 25;
+            this.colAciklama.Name = "colAciklama";
+            this.colAciklama.OptionsColumn.AllowEdit = false;
+            this.colAciklama.OptionsColumn.ShowInCustomizationForm = false;
+            this.colAciklama.Visible = true;
+            this.colAciklama.VisibleIndex = 8;
+            this.colAciklama.Width = 94;
+            // 
             // FrmIndirim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -339,17 +326,6 @@
         private DevExpress.XtraEditors.LabelControl lblBaslik;
         private DevExpress.XtraGrid.GridControl gridContDepolar;
         private DevExpress.XtraGrid.Views.Grid.GridView gridDepolar;
-        private DevExpress.XtraGrid.Columns.GridColumn colId;
-        private DevExpress.XtraGrid.Columns.GridColumn colDepoKodu;
-        private DevExpress.XtraGrid.Columns.GridColumn colDepoAdi;
-        private DevExpress.XtraGrid.Columns.GridColumn colYetkiliKodu;
-        private DevExpress.XtraGrid.Columns.GridColumn colYetkiliAdi;
-        private DevExpress.XtraGrid.Columns.GridColumn colIl;
-        private DevExpress.XtraGrid.Columns.GridColumn colIlce;
-        private DevExpress.XtraGrid.Columns.GridColumn colSemt;
-        private DevExpress.XtraGrid.Columns.GridColumn colAdres;
-        private DevExpress.XtraGrid.Columns.GridColumn colTelefon;
-        private DevExpress.XtraGrid.Columns.GridColumn colAciklama;
         private System.Windows.Forms.ImageList ımageList1;
         private DevExpress.XtraEditors.GroupControl grpMenu;
         private DevExpress.XtraEditors.SimpleButton btnKapat;
@@ -358,5 +334,15 @@
         private DevExpress.XtraEditors.SimpleButton btnSil;
         private DevExpress.XtraEditors.SimpleButton btnDuzenle;
         private DevExpress.XtraEditors.SimpleButton btnEkle;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn colDurumu;
+        private DevExpress.XtraGrid.Columns.GridColumn colStokKodu;
+        private DevExpress.XtraGrid.Columns.GridColumn colBarkod;
+        private DevExpress.XtraGrid.Columns.GridColumn colStokAdi;
+        private DevExpress.XtraGrid.Columns.GridColumn colIndirimTuru;
+        private DevExpress.XtraGrid.Columns.GridColumn colBaslangicTarihi;
+        private DevExpress.XtraGrid.Columns.GridColumn colBitisTarihi;
+        private DevExpress.XtraGrid.Columns.GridColumn colIndirimOrani;
+        private DevExpress.XtraGrid.Columns.GridColumn colAciklama;
     }
 }

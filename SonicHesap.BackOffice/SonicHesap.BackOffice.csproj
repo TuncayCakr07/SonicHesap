@@ -47,6 +47,7 @@
     <Reference Include="DevExpress.XtraGrid.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraWizard.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -167,6 +168,12 @@
     </Compile>
     <Compile Include="Indirim\FrmIndirim.Designer.cs">
       <DependentUpon>FrmIndirim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Indirim\FrmIndirimIslem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Indirim\FrmIndirimIslem.Designer.cs">
+      <DependentUpon>FrmIndirimIslem.cs</DependentUpon>
     </Compile>
     <Compile Include="Kasa Hareketleri\FrmKasaHareketleri.cs">
       <SubType>Form</SubType>
@@ -323,6 +330,9 @@
     <EmbeddedResource Include="Indirim\FrmIndirim.resx">
       <DependentUpon>FrmIndirim.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Indirim\FrmIndirimIslem.resx">
+      <DependentUpon>FrmIndirimIslem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Kasa Hareketleri\FrmKasaHareketleri.resx">
       <DependentUpon>FrmKasaHareketleri.cs</DependentUpon>
     </EmbeddedResource>
@@ -389,6 +399,7 @@
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Cari.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Depo.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Fis.datasource" />
+    <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Indirim.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Kasa.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.KasaHareket.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.OdemeTuru.datasource" />

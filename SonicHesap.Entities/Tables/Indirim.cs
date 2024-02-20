@@ -19,6 +19,5 @@ namespace SonicHesap.Entities.Tables
         public DateTime BitisTarihi { get; set; }
         public decimal IndirimOrani { get; set; }
         public string Aciklama { get; set; }
-
     }
 }
