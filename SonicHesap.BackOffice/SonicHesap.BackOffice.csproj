@@ -47,6 +47,9 @@
     <Reference Include="DevExpress.XtraGrid.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v23.1.Core, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v23.1.Core.Desktop, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraWizard.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -162,6 +165,18 @@
     </Compile>
     <Compile Include="Fiyat Degistir\FrmTopluFiyatDeğistir.Designer.cs">
       <DependentUpon>FrmTopluFiyatDeğistir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Indirim\FrmIndirimIslem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Indirim\FrmIndirimIslem.Designer.cs">
+      <DependentUpon>FrmIndirimIslem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Indirim\FrmIndirimislemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Indirim\FrmIndirimislemleri.Designer.cs">
+      <DependentUpon>FrmIndirimislemleri.cs</DependentUpon>
     </Compile>
     <Compile Include="Kasa Hareketleri\FrmKasaHareketleri.cs">
       <SubType>Form</SubType>
@@ -315,6 +330,12 @@
     <EmbeddedResource Include="Fiyat Degistir\FrmTopluFiyatDeğistir.resx">
       <DependentUpon>FrmTopluFiyatDeğistir.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Indirim\FrmIndirimIslem.resx">
+      <DependentUpon>FrmIndirimIslem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Indirim\FrmIndirimislemleri.resx">
+      <DependentUpon>FrmIndirimislemleri.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Kasa Hareketleri\FrmKasaHareketleri.resx">
       <DependentUpon>FrmKasaHareketleri.cs</DependentUpon>
     </EmbeddedResource>
@@ -404,9 +425,7 @@
       <Name>SonicHesap.Entities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Indirim\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
