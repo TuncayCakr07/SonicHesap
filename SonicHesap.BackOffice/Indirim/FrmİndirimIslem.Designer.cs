@@ -1,6 +1,6 @@
 ﻿namespace SonicHesap.BackOffice.Indirim
 {
-    partial class FrmIndirimIslem
+    partial class FrmİndirimIslem
     {
         /// <summary>
         /// Required designer variable.
@@ -29,23 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmIndirimIslem));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmİndirimIslem));
             this.wizardControl1 = new DevExpress.XtraWizard.WizardControl();
             this.welcomeWizardPage1 = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.wizardPage1 = new DevExpress.XtraWizard.WizardPage();
-            this.completionWizardPage1 = new DevExpress.XtraWizard.CompletionWizardPage();
-            this.checkButton1 = new DevExpress.XtraEditors.CheckButton();
             this.checkButton2 = new DevExpress.XtraEditors.CheckButton();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.cmbTarih = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.txtAciklama = new DevExpress.XtraEditors.MemoEdit();
+            this.checkButton1 = new DevExpress.XtraEditors.CheckButton();
+            this.completionWizardPage1 = new DevExpress.XtraWizard.CompletionWizardPage();
             this.wizardPage2 = new DevExpress.XtraWizard.WizardPage();
-            this.gridContDepolar = new DevExpress.XtraGrid.GridControl();
-            this.gridDepolar = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridContIndirim = new DevExpress.XtraGrid.GridControl();
+            this.gridIndirim = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDurumu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStokKodu = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,29 +49,41 @@
             this.colBitisTarihi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIndirimOrani = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.grpMenu = new DevExpress.XtraEditors.GroupControl();
             this.btnAra = new DevExpress.XtraEditors.SimpleButton();
+            this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnGuncelle = new DevExpress.XtraEditors.SimpleButton();
             this.btnCikar = new DevExpress.XtraEditors.SimpleButton();
             this.btnEkle = new DevExpress.XtraEditors.SimpleButton();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.txtAciklama = new DevExpress.XtraEditors.MemoEdit();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.calendarControl2 = new DevExpress.XtraEditors.Controls.CalendarControl();
+            this.calendarControl1 = new DevExpress.XtraEditors.Controls.CalendarControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).BeginInit();
             this.wizardControl1.SuspendLayout();
             this.wizardPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTarih.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTarih.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).BeginInit();
             this.wizardPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridContDepolar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDepolar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridContIndirim)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridIndirim)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
+            this.splitContainerControl1.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
+            this.splitContainerControl1.Panel2.SuspendLayout();
+            this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calendarControl2.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calendarControl1.CalendarTimeProperties)).BeginInit();
             this.SuspendLayout();
             // 
             // wizardControl1
@@ -109,153 +114,68 @@
             // 
             // wizardPage1
             // 
-            this.wizardPage1.Controls.Add(this.groupControl2);
-            this.wizardPage1.Controls.Add(this.groupControl1);
+            this.wizardPage1.Controls.Add(this.splitContainerControl1);
             this.wizardPage1.Controls.Add(this.checkButton2);
             this.wizardPage1.Controls.Add(this.checkButton1);
             this.wizardPage1.Name = "wizardPage1";
             this.wizardPage1.Size = new System.Drawing.Size(1255, 540);
             this.wizardPage1.Text = "İndirim Türünü Seçiniz.";
             // 
-            // completionWizardPage1
-            // 
-            this.completionWizardPage1.Name = "completionWizardPage1";
-            this.completionWizardPage1.Size = new System.Drawing.Size(1255, 540);
-            // 
-            // checkButton1
-            // 
-            this.checkButton1.Appearance.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.checkButton1.Appearance.Options.UseFont = true;
-            this.checkButton1.GroupIndex = 1;
-            this.checkButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("checkButton1.ImageOptions.Image")));
-            this.checkButton1.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.checkButton1.Location = new System.Drawing.Point(386, 8);
-            this.checkButton1.Name = "checkButton1";
-            this.checkButton1.Size = new System.Drawing.Size(243, 226);
-            this.checkButton1.TabIndex = 0;
-            this.checkButton1.Text = "Süresiz İndirim";
-            // 
             // checkButton2
             // 
-            this.checkButton2.Appearance.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.checkButton2.Appearance.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.checkButton2.Appearance.Options.UseFont = true;
             this.checkButton2.GroupIndex = 1;
             this.checkButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("checkButton2.ImageOptions.Image")));
             this.checkButton2.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.checkButton2.Location = new System.Drawing.Point(635, 8);
             this.checkButton2.Name = "checkButton2";
-            this.checkButton2.Size = new System.Drawing.Size(243, 226);
+            this.checkButton2.Size = new System.Drawing.Size(243, 173);
             this.checkButton2.TabIndex = 1;
-            this.checkButton2.Text = "Belirli Tarihler \r\nArasında İndirim";
+            this.checkButton2.TabStop = false;
+            this.checkButton2.Text = "Belirli Tarihler \r\nArasında\r\n";
             // 
-            // groupControl1
+            // checkButton1
             // 
-            this.groupControl1.Controls.Add(this.dateEdit1);
-            this.groupControl1.Controls.Add(this.labelControl2);
-            this.groupControl1.Controls.Add(this.cmbTarih);
-            this.groupControl1.Controls.Add(this.labelControl1);
-            this.groupControl1.Location = new System.Drawing.Point(3, 246);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(626, 288);
-            this.groupControl1.TabIndex = 2;
-            this.groupControl1.Text = "Tarih Bilgisi";
+            this.checkButton1.Appearance.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.checkButton1.Appearance.Options.UseFont = true;
+            this.checkButton1.GroupIndex = 1;
+            this.checkButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("checkButton1.ImageOptions.Image")));
+            this.checkButton1.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.checkButton1.Location = new System.Drawing.Point(386, 8);
+            this.checkButton1.Name = "checkButton1";
+            this.checkButton1.Size = new System.Drawing.Size(243, 173);
+            this.checkButton1.TabIndex = 0;
+            this.checkButton1.TabStop = false;
+            this.checkButton1.Text = "Süresiz İndirim";
             // 
-            // groupControl2
+            // completionWizardPage1
             // 
-            this.groupControl2.Controls.Add(this.txtAciklama);
-            this.groupControl2.Location = new System.Drawing.Point(635, 246);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(617, 288);
-            this.groupControl2.TabIndex = 3;
-            this.groupControl2.Text = "Açıklama";
-            // 
-            // cmbTarih
-            // 
-            this.cmbTarih.EditValue = null;
-            this.cmbTarih.Location = new System.Drawing.Point(3, 65);
-            this.cmbTarih.Name = "cmbTarih";
-            this.cmbTarih.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbTarih.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbTarih.Properties.MaskSettings.Set("mask", "g");
-            this.cmbTarih.Size = new System.Drawing.Size(618, 22);
-            this.cmbTarih.TabIndex = 24;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Appearance.Options.UseTextOptions = true;
-            this.labelControl1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl1.Location = new System.Drawing.Point(3, 35);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(619, 25);
-            this.labelControl1.TabIndex = 23;
-            this.labelControl1.Text = "Başlangıç Tarihi";
-            // 
-            // dateEdit1
-            // 
-            this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(4, 148);
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.MaskSettings.Set("mask", "g");
-            this.dateEdit1.Size = new System.Drawing.Size(618, 22);
-            this.dateEdit1.TabIndex = 26;
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Appearance.Options.UseTextOptions = true;
-            this.labelControl2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl2.Location = new System.Drawing.Point(4, 118);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(619, 25);
-            this.labelControl2.TabIndex = 25;
-            this.labelControl2.Text = "Bitiş Tarihi";
-            // 
-            // txtAciklama
-            // 
-            this.txtAciklama.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtAciklama.Location = new System.Drawing.Point(2, 28);
-            this.txtAciklama.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.txtAciklama.Name = "txtAciklama";
-            this.txtAciklama.Size = new System.Drawing.Size(613, 258);
-            this.txtAciklama.TabIndex = 18;
+            this.completionWizardPage1.Name = "completionWizardPage1";
+            this.completionWizardPage1.Size = new System.Drawing.Size(1255, 540);
             // 
             // wizardPage2
             // 
-            this.wizardPage2.Controls.Add(this.gridContDepolar);
+            this.wizardPage2.Controls.Add(this.gridContIndirim);
             this.wizardPage2.Controls.Add(this.grpMenu);
             this.wizardPage2.Name = "wizardPage2";
             this.wizardPage2.Size = new System.Drawing.Size(1255, 540);
             this.wizardPage2.Text = "Lütfen İndirim Uygulayacağınız Ürünleri Seçiniz!";
             // 
-            // gridContDepolar
+            // gridContIndirim
             // 
-            this.gridContDepolar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridContDepolar.Location = new System.Drawing.Point(0, 0);
-            this.gridContDepolar.MainView = this.gridDepolar;
-            this.gridContDepolar.Name = "gridContDepolar";
-            this.gridContDepolar.Size = new System.Drawing.Size(1255, 457);
-            this.gridContDepolar.TabIndex = 6;
-            this.gridContDepolar.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridDepolar});
+            this.gridContIndirim.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridContIndirim.Location = new System.Drawing.Point(0, 0);
+            this.gridContIndirim.MainView = this.gridIndirim;
+            this.gridContIndirim.Name = "gridContIndirim";
+            this.gridContIndirim.Size = new System.Drawing.Size(1255, 457);
+            this.gridContIndirim.TabIndex = 6;
+            this.gridContIndirim.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridIndirim});
             // 
-            // gridDepolar
+            // gridIndirim
             // 
-            this.gridDepolar.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridIndirim.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
             this.colDurumu,
             this.colStokKodu,
@@ -266,8 +186,8 @@
             this.colBitisTarihi,
             this.colIndirimOrani,
             this.colAciklama});
-            this.gridDepolar.GridControl = this.gridContDepolar;
-            this.gridDepolar.Name = "gridDepolar";
+            this.gridIndirim.GridControl = this.gridContIndirim;
+            this.gridIndirim.Name = "gridIndirim";
             // 
             // colId
             // 
@@ -367,20 +287,6 @@
             this.colAciklama.OptionsColumn.ShowInCustomizationForm = false;
             this.colAciklama.Width = 94;
             // 
-            // ımageList1
-            // 
-            this.ımageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ımageList1.ImageStream")));
-            this.ımageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.ımageList1.Images.SetKeyName(0, "floppy_disk.png");
-            this.ımageList1.Images.SetKeyName(1, "folder_out.png");
-            this.ımageList1.Images.SetKeyName(2, "money2_edit.png");
-            this.ımageList1.Images.SetKeyName(3, "navigate_minus.png");
-            this.ımageList1.Images.SetKeyName(4, "package.png");
-            this.ımageList1.Images.SetKeyName(5, "refresh.png");
-            this.ımageList1.Images.SetKeyName(6, "stok çıkar.png");
-            this.ımageList1.Images.SetKeyName(7, "Stok Ekle.png");
-            this.ımageList1.Images.SetKeyName(8, "view.png");
-            // 
             // grpMenu
             // 
             this.grpMenu.Controls.Add(this.btnAra);
@@ -403,6 +309,20 @@
             this.btnAra.Size = new System.Drawing.Size(111, 53);
             this.btnAra.TabIndex = 0;
             this.btnAra.Text = "Ara";
+            // 
+            // ımageList1
+            // 
+            this.ımageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ımageList1.ImageStream")));
+            this.ımageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.ımageList1.Images.SetKeyName(0, "floppy_disk.png");
+            this.ımageList1.Images.SetKeyName(1, "folder_out.png");
+            this.ımageList1.Images.SetKeyName(2, "money2_edit.png");
+            this.ımageList1.Images.SetKeyName(3, "navigate_minus.png");
+            this.ımageList1.Images.SetKeyName(4, "package.png");
+            this.ımageList1.Images.SetKeyName(5, "refresh.png");
+            this.ımageList1.Images.SetKeyName(6, "stok çıkar.png");
+            this.ımageList1.Images.SetKeyName(7, "Stok Ekle.png");
+            this.ımageList1.Images.SetKeyName(8, "view.png");
             // 
             // btnGuncelle
             // 
@@ -435,6 +355,106 @@
             this.btnEkle.Size = new System.Drawing.Size(111, 53);
             this.btnEkle.TabIndex = 0;
             this.btnEkle.Text = "Ekle";
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
+            // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 190);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            // 
+            // splitContainerControl1.Panel1
+            // 
+            this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            // 
+            // splitContainerControl1.Panel2
+            // 
+            this.splitContainerControl1.Panel2.Controls.Add(this.groupControl2);
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(1255, 350);
+            this.splitContainerControl1.SplitterPosition = 623;
+            this.splitContainerControl1.TabIndex = 4;
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.txtAciklama);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl2.Location = new System.Drawing.Point(0, 0);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(620, 350);
+            this.groupControl2.TabIndex = 4;
+            this.groupControl2.Text = "Açıklama";
+            // 
+            // txtAciklama
+            // 
+            this.txtAciklama.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtAciklama.Location = new System.Drawing.Point(2, 28);
+            this.txtAciklama.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.txtAciklama.Name = "txtAciklama";
+            this.txtAciklama.Size = new System.Drawing.Size(616, 320);
+            this.txtAciklama.TabIndex = 18;
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.calendarControl2);
+            this.groupControl1.Controls.Add(this.calendarControl1);
+            this.groupControl1.Controls.Add(this.labelControl2);
+            this.groupControl1.Controls.Add(this.labelControl1);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(623, 350);
+            this.groupControl1.TabIndex = 3;
+            this.groupControl1.Text = "Tarih Bilgisi";
+            // 
+            // calendarControl2
+            // 
+            this.calendarControl2.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calendarControl2.Location = new System.Drawing.Point(329, 68);
+            this.calendarControl2.Name = "calendarControl2";
+            this.calendarControl2.Size = new System.Drawing.Size(284, 282);
+            this.calendarControl2.TabIndex = 26;
+            // 
+            // calendarControl1
+            // 
+            this.calendarControl1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calendarControl1.Location = new System.Drawing.Point(16, 68);
+            this.calendarControl1.Name = "calendarControl1";
+            this.calendarControl1.Size = new System.Drawing.Size(284, 282);
+            this.calendarControl1.TabIndex = 26;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Appearance.Options.UseTextOptions = true;
+            this.labelControl2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl2.Location = new System.Drawing.Point(329, 35);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(284, 25);
+            this.labelControl2.TabIndex = 25;
+            this.labelControl2.Text = "Bitiş Tarihi";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseTextOptions = true;
+            this.labelControl1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl1.Location = new System.Drawing.Point(16, 35);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(284, 25);
+            this.labelControl1.TabIndex = 23;
+            this.labelControl1.Text = "Başlangıç Tarihi";
             // 
             // FrmIndirimIslem
             // 
@@ -450,20 +470,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).EndInit();
             this.wizardControl1.ResumeLayout(false);
             this.wizardPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTarih.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTarih.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).EndInit();
             this.wizardPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridContDepolar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDepolar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridContIndirim)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridIndirim)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).EndInit();
             this.grpMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
+            this.splitContainerControl1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
+            this.splitContainerControl1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calendarControl2.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calendarControl1.CalendarTimeProperties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -476,16 +501,9 @@
         private DevExpress.XtraWizard.CompletionWizardPage completionWizardPage1;
         private DevExpress.XtraEditors.CheckButton checkButton2;
         private DevExpress.XtraEditors.CheckButton checkButton1;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.DateEdit cmbTarih;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.MemoEdit txtAciklama;
         private DevExpress.XtraWizard.WizardPage wizardPage2;
-        private DevExpress.XtraGrid.GridControl gridContDepolar;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridDepolar;
+        private DevExpress.XtraGrid.GridControl gridContIndirim;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridIndirim;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colDurumu;
         private DevExpress.XtraGrid.Columns.GridColumn colStokKodu;
@@ -502,5 +520,13 @@
         private DevExpress.XtraEditors.SimpleButton btnGuncelle;
         private DevExpress.XtraEditors.SimpleButton btnCikar;
         private DevExpress.XtraEditors.SimpleButton btnEkle;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.Controls.CalendarControl calendarControl2;
+        private DevExpress.XtraEditors.Controls.CalendarControl calendarControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.MemoEdit txtAciklama;
     }
 }
