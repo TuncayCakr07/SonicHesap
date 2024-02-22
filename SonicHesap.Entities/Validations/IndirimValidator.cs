@@ -16,7 +16,6 @@ namespace SonicHesap.Entities.Validations
             RuleFor(x => x.StokKodu).NotEmpty().WithMessage("Stok Kodu boş olamaz.");
             RuleFor(x => x.Barkod).NotEmpty().WithMessage("Barkod boş olamaz.");
             RuleFor(x => x.StokAdi).NotEmpty().WithMessage("Stok Adı boş olamaz.");
-            RuleFor(x => x.IndirimTuru).NotEmpty().WithMessage("Indirim Türü boş olamaz.");
             RuleFor(x => x.BaslangicTarihi).LessThanOrEqualTo(x => x.BitisTarihi).WithMessage("Başlangıç Tarihi, Bitiş Tarihinden büyük olamaz.");
             RuleFor(x => x.IndirimOrani).InclusiveBetween(0, 100).WithMessage("Indirim Oranı 0 ile 100 arasında olmalıdır.");
         }

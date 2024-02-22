@@ -53,7 +53,6 @@ namespace SonicHesap.BackOffice.Indirim
                             var secilenId = context.Indirimler.SingleOrDefault(c => c.StokKodu == itemStok.StokKodu);
                             _entity.Id = secilenId.Id;
                             IndirimDal.AddOrUpdate(context, _entity);
-                            MessageBox.Show("Stok İndirimi Güncellendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     else
@@ -68,6 +67,7 @@ namespace SonicHesap.BackOffice.Indirim
         {
             foreach (var itemIndirim in context.Indirimler.Local.ToList())
             {
+          
                 if (btnSuresiz.Checked)
                 {
                     itemIndirim.IndirimTuru = "Süresiz";
@@ -76,12 +76,12 @@ namespace SonicHesap.BackOffice.Indirim
                 {
                     itemIndirim.BaslangicTarihi = dateBaslangic.DateTime;
                     itemIndirim.BitisTarihi = dateBitis.DateTime;
-                    itemIndirim.IndirimTuru = "Belirli Tarihler Arasında";
+                    itemIndirim.IndirimTuru = "Tarihler Arasında";
                 }
-                itemIndirim.BaslangicTarihi = dateBaslangic.DateTime;
-                itemIndirim.BitisTarihi = dateBitis.DateTime;
                 itemIndirim.Durumu = true;
+                itemIndirim.Aciklama = txtAciklama.Text;
             }
+            MessageBox.Show("İndirim Oranları Güncellendi!","Bilgi",MessageBoxButtons.OK,MessageBoxIcon.Information);
             IndirimDal.Save(context);
         }
 

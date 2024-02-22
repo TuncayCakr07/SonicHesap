@@ -43,7 +43,7 @@
             this.btnStokHareketleri = new DevExpress.XtraBars.BarButtonItem();
             this.btnKasaHareket = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnIndirim = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.btnPersoneller = new DevExpress.XtraBars.BarButtonItem();
@@ -115,7 +115,7 @@
             this.btnStokHareketleri,
             this.btnKasaHareket,
             this.barButtonItem5,
-            this.barButtonItem6,
+            this.btnIndirim,
             this.barButtonItem7,
             this.barButtonItem8,
             this.btnPersoneller,
@@ -256,12 +256,13 @@
             this.barButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
             this.barButtonItem5.Name = "barButtonItem5";
             // 
-            // barButtonItem6
+            // btnIndirim
             // 
-            this.barButtonItem6.Caption = "İndirimler";
-            this.barButtonItem6.Id = 13;
-            this.barButtonItem6.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.LargeImage")));
-            this.barButtonItem6.Name = "barButtonItem6";
+            this.btnIndirim.Caption = "İndirimler";
+            this.btnIndirim.Id = 13;
+            this.btnIndirim.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.LargeImage")));
+            this.btnIndirim.Name = "btnIndirim";
+            this.btnIndirim.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnIndirim_ItemClick);
             // 
             // barButtonItem7
             // 
@@ -521,7 +522,7 @@
             // ribbonPageGroup3
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem5);
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnIndirim);
             this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem7);
             this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem8);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
@@ -676,7 +677,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem btnIndirim;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraBars.BarButtonItem btnPersoneller;

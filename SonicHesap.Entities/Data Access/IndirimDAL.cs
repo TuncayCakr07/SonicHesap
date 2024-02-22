@@ -12,6 +12,43 @@ namespace SonicHesap.Entities.Data_Access
 {
     public class IndirimDAL:EntityRepositoryBase<SonicHesapContext,Indirim,IndirimValidator>
     {
-      
+        public object IndirimListele(SonicHesapContext context)
+        {
+            var result=(from c in context.Indirimler select c).AsEnumerable().Select(c=> new
+            {
+                c.Id,
+                IndirimAktif=Aktif(c.IndirimTuru,Convert.ToDateTime(c.BitisTarihi),c.Durumu),
+                c.Durumu,
+                c.StokKodu,
+                c.Barkod,
+                c.StokAdi,
+                c.IndirimTuru,
+                c.BaslangicTarihi,
+                c.BitisTarihi,
+                c.IndirimOrani,
+                c.Aciklama
+            }).ToList();
+            return result;
+        }
+
+        bool Aktif(string IndirimTuru,DateTime BitisTarihi,bool Durum)
+        {
+            bool result = false;
+            if (Durum)
+            {
+                if (IndirimTuru=="Süresiz")
+                {
+                    result = true;
+                }
+                else
+                {
+                    if (DateTime.Now<=BitisTarihi)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            return result;
+        }
     }
 }

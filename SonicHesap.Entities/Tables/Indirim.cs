@@ -15,8 +15,8 @@ namespace SonicHesap.Entities.Tables
         public string Barkod { get; set; }
         public string StokAdi { get; set; }
         public string IndirimTuru { get; set; }
-        public DateTime BaslangicTarihi { get; set; }
-        public DateTime BitisTarihi { get; set; }
+        public Nullable<DateTime> BaslangicTarihi { get; set; }
+        public Nullable<DateTime> BitisTarihi { get; set; }
         public decimal IndirimOrani { get; set; }
         public string Aciklama { get; set; }
     }

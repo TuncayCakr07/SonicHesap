@@ -36,7 +36,7 @@
             this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
             this.btnAra = new DevExpress.XtraEditors.SimpleButton();
             this.btnGuncelle = new DevExpress.XtraEditors.SimpleButton();
-            this.btnDuzenle = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDurum = new DevExpress.XtraEditors.SimpleButton();
             this.btnEkle = new DevExpress.XtraEditors.SimpleButton();
             this.lblBaslik = new DevExpress.XtraEditors.LabelControl();
             this.gridContIndirim = new DevExpress.XtraGrid.GridControl();
@@ -51,6 +51,7 @@
             this.colBitisTarihi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIndirimOrani = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIndirimAktif = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridContIndirim)).BeginInit();
@@ -63,7 +64,7 @@
             this.grpMenu.Controls.Add(this.btnKapat);
             this.grpMenu.Controls.Add(this.btnAra);
             this.grpMenu.Controls.Add(this.btnGuncelle);
-            this.grpMenu.Controls.Add(this.btnDuzenle);
+            this.grpMenu.Controls.Add(this.btnDurum);
             this.grpMenu.Controls.Add(this.btnEkle);
             this.grpMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.grpMenu.Location = new System.Drawing.Point(0, 641);
@@ -76,11 +77,12 @@
             // 
             this.btnSil.ImageOptions.ImageIndex = 9;
             this.btnSil.ImageOptions.ImageList = this.ımageList1;
-            this.btnSil.Location = new System.Drawing.Point(225, 28);
+            this.btnSil.Location = new System.Drawing.Point(113, 28);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(111, 53);
             this.btnSil.TabIndex = 2;
             this.btnSil.Text = "Sil";
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // ımageList1
             // 
@@ -100,6 +102,9 @@
             this.ımageList1.Images.SetKeyName(11, "stopwatch_run.png");
             this.ımageList1.Images.SetKeyName(12, "view.png");
             this.ımageList1.Images.SetKeyName(13, "refresh.png");
+            this.ımageList1.Images.SetKeyName(14, "check.png");
+            this.ımageList1.Images.SetKeyName(15, "check-mark.png");
+            this.ımageList1.Images.SetKeyName(16, "unchecked.png");
             // 
             // btnKapat
             // 
@@ -111,41 +116,43 @@
             this.btnKapat.Size = new System.Drawing.Size(94, 53);
             this.btnKapat.TabIndex = 0;
             this.btnKapat.Text = "Kapat";
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
             // 
             // btnAra
             // 
             this.btnAra.ImageOptions.ImageIndex = 12;
             this.btnAra.ImageOptions.ImageList = this.ımageList1;
-            this.btnAra.Location = new System.Drawing.Point(449, 28);
+            this.btnAra.Location = new System.Drawing.Point(446, 28);
             this.btnAra.Name = "btnAra";
             this.btnAra.Size = new System.Drawing.Size(111, 53);
             this.btnAra.TabIndex = 0;
             this.btnAra.Text = "Ara";
+            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
             // 
             // btnGuncelle
             // 
             this.btnGuncelle.ImageOptions.ImageIndex = 13;
             this.btnGuncelle.ImageOptions.ImageList = this.ımageList1;
-            this.btnGuncelle.Location = new System.Drawing.Point(337, 28);
+            this.btnGuncelle.Location = new System.Drawing.Point(335, 28);
             this.btnGuncelle.Name = "btnGuncelle";
             this.btnGuncelle.Size = new System.Drawing.Size(111, 53);
             this.btnGuncelle.TabIndex = 0;
             this.btnGuncelle.Text = "Güncelle";
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
-            // btnDuzenle
+            // btnDurum
             // 
-            this.btnDuzenle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnDuzenle.ImageOptions.ImageIndex = 3;
-            this.btnDuzenle.ImageOptions.ImageList = this.ımageList1;
-            this.btnDuzenle.Location = new System.Drawing.Point(113, 28);
-            this.btnDuzenle.Name = "btnDuzenle";
-            this.btnDuzenle.Size = new System.Drawing.Size(111, 53);
-            this.btnDuzenle.TabIndex = 0;
-            this.btnDuzenle.Text = "Düzenle";
+            this.btnDurum.ImageOptions.ImageIndex = 15;
+            this.btnDurum.ImageOptions.ImageList = this.ımageList1;
+            this.btnDurum.Location = new System.Drawing.Point(224, 28);
+            this.btnDurum.Name = "btnDurum";
+            this.btnDurum.Size = new System.Drawing.Size(111, 53);
+            this.btnDurum.TabIndex = 0;
+            this.btnDurum.Text = "Pasif Yap";
+            this.btnDurum.Click += new System.EventHandler(this.btnDurum_Click);
             // 
             // btnEkle
             // 
-            this.btnEkle.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEkle.ImageOptions.ImageIndex = 4;
             this.btnEkle.ImageOptions.ImageList = this.ımageList1;
             this.btnEkle.Location = new System.Drawing.Point(2, 28);
@@ -153,6 +160,7 @@
             this.btnEkle.Size = new System.Drawing.Size(111, 53);
             this.btnEkle.TabIndex = 0;
             this.btnEkle.Text = "Ekle";
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // lblBaslik
             // 
@@ -184,6 +192,7 @@
             // gridIndirim
             // 
             this.gridIndirim.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colIndirimAktif,
             this.colId,
             this.colDurumu,
             this.colStokKodu,
@@ -196,6 +205,7 @@
             this.colAciklama});
             this.gridIndirim.GridControl = this.gridContIndirim;
             this.gridIndirim.Name = "gridIndirim";
+            this.gridIndirim.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridIndirim_FocusedRowChanged);
             // 
             // colId
             // 
@@ -214,7 +224,7 @@
             this.colDurumu.OptionsColumn.AllowEdit = false;
             this.colDurumu.OptionsColumn.ShowInCustomizationForm = false;
             this.colDurumu.Visible = true;
-            this.colDurumu.VisibleIndex = 0;
+            this.colDurumu.VisibleIndex = 1;
             this.colDurumu.Width = 94;
             // 
             // colStokKodu
@@ -225,7 +235,7 @@
             this.colStokKodu.OptionsColumn.AllowEdit = false;
             this.colStokKodu.OptionsColumn.ShowInCustomizationForm = false;
             this.colStokKodu.Visible = true;
-            this.colStokKodu.VisibleIndex = 1;
+            this.colStokKodu.VisibleIndex = 2;
             this.colStokKodu.Width = 94;
             // 
             // colBarkod
@@ -236,7 +246,7 @@
             this.colBarkod.OptionsColumn.AllowEdit = false;
             this.colBarkod.OptionsColumn.ShowInCustomizationForm = false;
             this.colBarkod.Visible = true;
-            this.colBarkod.VisibleIndex = 2;
+            this.colBarkod.VisibleIndex = 3;
             this.colBarkod.Width = 94;
             // 
             // colStokAdi
@@ -247,7 +257,7 @@
             this.colStokAdi.OptionsColumn.AllowEdit = false;
             this.colStokAdi.OptionsColumn.ShowInCustomizationForm = false;
             this.colStokAdi.Visible = true;
-            this.colStokAdi.VisibleIndex = 3;
+            this.colStokAdi.VisibleIndex = 4;
             this.colStokAdi.Width = 94;
             // 
             // colIndirimTuru
@@ -258,7 +268,7 @@
             this.colIndirimTuru.OptionsColumn.AllowEdit = false;
             this.colIndirimTuru.OptionsColumn.ShowInCustomizationForm = false;
             this.colIndirimTuru.Visible = true;
-            this.colIndirimTuru.VisibleIndex = 4;
+            this.colIndirimTuru.VisibleIndex = 5;
             this.colIndirimTuru.Width = 94;
             // 
             // colBaslangicTarihi
@@ -269,7 +279,7 @@
             this.colBaslangicTarihi.OptionsColumn.AllowEdit = false;
             this.colBaslangicTarihi.OptionsColumn.ShowInCustomizationForm = false;
             this.colBaslangicTarihi.Visible = true;
-            this.colBaslangicTarihi.VisibleIndex = 5;
+            this.colBaslangicTarihi.VisibleIndex = 6;
             this.colBaslangicTarihi.Width = 94;
             // 
             // colBitisTarihi
@@ -280,7 +290,7 @@
             this.colBitisTarihi.OptionsColumn.AllowEdit = false;
             this.colBitisTarihi.OptionsColumn.ShowInCustomizationForm = false;
             this.colBitisTarihi.Visible = true;
-            this.colBitisTarihi.VisibleIndex = 6;
+            this.colBitisTarihi.VisibleIndex = 7;
             this.colBitisTarihi.Width = 94;
             // 
             // colIndirimOrani
@@ -291,7 +301,7 @@
             this.colIndirimOrani.OptionsColumn.AllowEdit = false;
             this.colIndirimOrani.OptionsColumn.ShowInCustomizationForm = false;
             this.colIndirimOrani.Visible = true;
-            this.colIndirimOrani.VisibleIndex = 7;
+            this.colIndirimOrani.VisibleIndex = 8;
             this.colIndirimOrani.Width = 94;
             // 
             // colAciklama
@@ -302,8 +312,18 @@
             this.colAciklama.OptionsColumn.AllowEdit = false;
             this.colAciklama.OptionsColumn.ShowInCustomizationForm = false;
             this.colAciklama.Visible = true;
-            this.colAciklama.VisibleIndex = 8;
+            this.colAciklama.VisibleIndex = 9;
             this.colAciklama.Width = 94;
+            // 
+            // colIndirimAktif
+            // 
+            this.colIndirimAktif.Caption = "Indirim Aktif Mi?";
+            this.colIndirimAktif.FieldName = "IndirimAktif";
+            this.colIndirimAktif.MinWidth = 25;
+            this.colIndirimAktif.Name = "colIndirimAktif";
+            this.colIndirimAktif.Visible = true;
+            this.colIndirimAktif.VisibleIndex = 0;
+            this.colIndirimAktif.Width = 94;
             // 
             // FrmIndirimislemleri
             // 
@@ -334,7 +354,7 @@
         private DevExpress.XtraEditors.SimpleButton btnKapat;
         private DevExpress.XtraEditors.SimpleButton btnAra;
         private DevExpress.XtraEditors.SimpleButton btnGuncelle;
-        private DevExpress.XtraEditors.SimpleButton btnDuzenle;
+        private DevExpress.XtraEditors.SimpleButton btnDurum;
         private DevExpress.XtraEditors.SimpleButton btnEkle;
         private DevExpress.XtraEditors.LabelControl lblBaslik;
         private DevExpress.XtraGrid.GridControl gridContIndirim;
@@ -349,5 +369,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colBitisTarihi;
         private DevExpress.XtraGrid.Columns.GridColumn colIndirimOrani;
         private DevExpress.XtraGrid.Columns.GridColumn colAciklama;
+        private DevExpress.XtraGrid.Columns.GridColumn colIndirimAktif;
     }
 }

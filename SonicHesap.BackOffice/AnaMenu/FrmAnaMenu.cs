@@ -3,6 +3,7 @@ using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
 using SonicHesap.BackOffice.Fis;
 using SonicHesap.BackOffice.Fiyat_Degistir;
+using SonicHesap.BackOffice.Indirim;
 using SonicHesap.BackOffice.Kasa;
 using SonicHesap.BackOffice.Kasa_Hareketleri;
 using SonicHesap.BackOffice.Odeme_Turu;
@@ -130,6 +131,13 @@ namespace SonicHesap.BackOffice
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FrmTopluFiyat form = new FrmTopluFiyat();
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void btnIndirim_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmIndirimislemleri form=new FrmIndirimislemleri();
             form.MdiParent = this;
             form.Show();
         }
