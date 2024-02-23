@@ -557,15 +557,17 @@ namespace SonicHesap.BackOffice.Fis
         private StokHareket StokSec(Entities.Tables.Stok entity)
         {
             StokHareket stokHareket = new StokHareket();
+            IndirimDAL indirimDal=new IndirimDAL();
             stokHareket.StokKodu = entity.StokKodu;
             stokHareket.StokAdi = entity.StokAdi;
             stokHareket.Barkod = entity.Barkod;
+            stokHareket.IndirimOrani = indirimDal.StokIndirimi(contex, entity.StokKodu);
             stokHareket.BarkodTuru = entity.BarkodTuru;
             stokHareket.BirimFiyati = txtFisTuru.Text == "Alış Faturası" ? entity.AlisFiyati1 : entity.SatisFiyati1;
             stokHareket.Birimi = entity.Birimi;
             stokHareket.Miktar = txtMiktar.Value;
             stokHareket.Kdv = entity.SatisKdv;
-            stokHareket.IndirimOrani = 0;
+            stokHareket.Tarih = DateTime.Now;
             return stokHareket;
         }
 

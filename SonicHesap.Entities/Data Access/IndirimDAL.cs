@@ -30,6 +30,22 @@ namespace SonicHesap.Entities.Data_Access
             }).ToList();
             return result;
         }
+        public decimal StokIndirimi(SonicHesapContext context,string stokKodu)
+        {
+            decimal sonuc = 0;
+            var result = (from c in context.Indirimler.Where(c => c.StokKodu==stokKodu) select c).AsEnumerable().Select(c => new
+            {
+                IndirimAktif = Aktif(c.IndirimTuru, Convert.ToDateTime(c.BitisTarihi), c.Durumu),
+                c.IndirimOrani,
+            }).SingleOrDefault();
+
+            if (result!=null && result.IndirimAktif==true)
+            {
+                sonuc = result.IndirimOrani;
+            }
+
+            return sonuc;
+        }
 
         bool Aktif(string IndirimTuru,DateTime BitisTarihi,bool Durum)
         {

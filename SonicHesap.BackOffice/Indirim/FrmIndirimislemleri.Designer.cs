@@ -41,6 +41,7 @@
             this.lblBaslik = new DevExpress.XtraEditors.LabelControl();
             this.gridContIndirim = new DevExpress.XtraGrid.GridControl();
             this.gridIndirim = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colIndirimAktif = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDurumu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStokKodu = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,14 +49,19 @@
             this.colStokAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIndirimTuru = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBaslangicTarihi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryBaslangicTarihi = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.colBitisTarihi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIndirimOrani = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIndirimAktif = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryBitisTarihi = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridContIndirim)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridIndirim)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryBaslangicTarihi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryBaslangicTarihi.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryBitisTarihi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryBitisTarihi.CalendarTimeProperties)).BeginInit();
             this.SuspendLayout();
             // 
             // grpMenu
@@ -184,6 +190,9 @@
             this.gridContIndirim.Location = new System.Drawing.Point(0, 66);
             this.gridContIndirim.MainView = this.gridIndirim;
             this.gridContIndirim.Name = "gridContIndirim";
+            this.gridContIndirim.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryBaslangicTarihi,
+            this.repositoryBitisTarihi});
             this.gridContIndirim.Size = new System.Drawing.Size(1338, 575);
             this.gridContIndirim.TabIndex = 5;
             this.gridContIndirim.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -206,6 +215,16 @@
             this.gridIndirim.GridControl = this.gridContIndirim;
             this.gridIndirim.Name = "gridIndirim";
             this.gridIndirim.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridIndirim_FocusedRowChanged);
+            // 
+            // colIndirimAktif
+            // 
+            this.colIndirimAktif.Caption = "Indirim Aktif Mi?";
+            this.colIndirimAktif.FieldName = "IndirimAktif";
+            this.colIndirimAktif.MinWidth = 25;
+            this.colIndirimAktif.Name = "colIndirimAktif";
+            this.colIndirimAktif.Visible = true;
+            this.colIndirimAktif.VisibleIndex = 0;
+            this.colIndirimAktif.Width = 94;
             // 
             // colId
             // 
@@ -251,6 +270,7 @@
             // 
             // colStokAdi
             // 
+            this.colStokAdi.Caption = "Stok Adı";
             this.colStokAdi.FieldName = "StokAdi";
             this.colStokAdi.MinWidth = 25;
             this.colStokAdi.Name = "colStokAdi";
@@ -262,6 +282,7 @@
             // 
             // colIndirimTuru
             // 
+            this.colIndirimTuru.Caption = "İndirim Türü";
             this.colIndirimTuru.FieldName = "IndirimTuru";
             this.colIndirimTuru.MinWidth = 25;
             this.colIndirimTuru.Name = "colIndirimTuru";
@@ -273,6 +294,8 @@
             // 
             // colBaslangicTarihi
             // 
+            this.colBaslangicTarihi.Caption = "Başlangıç Tarihi";
+            this.colBaslangicTarihi.ColumnEdit = this.repositoryBaslangicTarihi;
             this.colBaslangicTarihi.FieldName = "BaslangicTarihi";
             this.colBaslangicTarihi.MinWidth = 25;
             this.colBaslangicTarihi.Name = "colBaslangicTarihi";
@@ -282,8 +305,20 @@
             this.colBaslangicTarihi.VisibleIndex = 6;
             this.colBaslangicTarihi.Width = 94;
             // 
+            // repositoryBaslangicTarihi
+            // 
+            this.repositoryBaslangicTarihi.AutoHeight = false;
+            this.repositoryBaslangicTarihi.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryBaslangicTarihi.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryBaslangicTarihi.Name = "repositoryBaslangicTarihi";
+            this.repositoryBaslangicTarihi.NullText = "Tarih Bilgisi Bulunamadı.";
+            // 
             // colBitisTarihi
             // 
+            this.colBitisTarihi.Caption = "Bitiş Tarihi";
+            this.colBitisTarihi.ColumnEdit = this.repositoryBitisTarihi;
             this.colBitisTarihi.FieldName = "BitisTarihi";
             this.colBitisTarihi.MinWidth = 25;
             this.colBitisTarihi.Name = "colBitisTarihi";
@@ -295,6 +330,7 @@
             // 
             // colIndirimOrani
             // 
+            this.colIndirimOrani.Caption = "İndirim Oranı";
             this.colIndirimOrani.FieldName = "IndirimOrani";
             this.colIndirimOrani.MinWidth = 25;
             this.colIndirimOrani.Name = "colIndirimOrani";
@@ -306,6 +342,7 @@
             // 
             // colAciklama
             // 
+            this.colAciklama.Caption = "Açıklama";
             this.colAciklama.FieldName = "Aciklama";
             this.colAciklama.MinWidth = 25;
             this.colAciklama.Name = "colAciklama";
@@ -315,15 +352,15 @@
             this.colAciklama.VisibleIndex = 9;
             this.colAciklama.Width = 94;
             // 
-            // colIndirimAktif
+            // repositoryBitisTarihi
             // 
-            this.colIndirimAktif.Caption = "Indirim Aktif Mi?";
-            this.colIndirimAktif.FieldName = "IndirimAktif";
-            this.colIndirimAktif.MinWidth = 25;
-            this.colIndirimAktif.Name = "colIndirimAktif";
-            this.colIndirimAktif.Visible = true;
-            this.colIndirimAktif.VisibleIndex = 0;
-            this.colIndirimAktif.Width = 94;
+            this.repositoryBitisTarihi.AutoHeight = false;
+            this.repositoryBitisTarihi.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryBitisTarihi.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryBitisTarihi.Name = "repositoryBitisTarihi";
+            this.repositoryBitisTarihi.NullText = "Tarih Bilgisi Bulunamadı.";
             // 
             // FrmIndirimislemleri
             // 
@@ -342,6 +379,10 @@
             this.grpMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridContIndirim)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridIndirim)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryBaslangicTarihi.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryBaslangicTarihi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryBitisTarihi.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryBitisTarihi)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -370,5 +411,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colIndirimOrani;
         private DevExpress.XtraGrid.Columns.GridColumn colAciklama;
         private DevExpress.XtraGrid.Columns.GridColumn colIndirimAktif;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryBaslangicTarihi;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryBitisTarihi;
     }
 }

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SonicHesap.BackOffice", "So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SonicHesap.FrontOffice", "SonicHesap.FrontOffice\SonicHesap.FrontOffice.csproj", "{A9EE3BBA-AA9B-4798-A18E-ECD4B8F02B1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SonicHesap.Reports", "SonicHesap.Reports\SonicHesap.Reports.csproj", "{5B87D2FC-B5FE-43C2-8FF4-F580F8E35E44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A9EE3BBA-AA9B-4798-A18E-ECD4B8F02B1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9EE3BBA-AA9B-4798-A18E-ECD4B8F02B1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9EE3BBA-AA9B-4798-A18E-ECD4B8F02B1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B87D2FC-B5FE-43C2-8FF4-F580F8E35E44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B87D2FC-B5FE-43C2-8FF4-F580F8E35E44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B87D2FC-B5FE-43C2-8FF4-F580F8E35E44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B87D2FC-B5FE-43C2-8FF4-F580F8E35E44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
