@@ -29,7 +29,7 @@ namespace SonicHesap.BackOffice.Stok
         }
         public void GetAll() 
         {
-            gridControl1.DataSource=StokDAL.GetAllJoin(context);
+            gridControl1.DataSource = StokDAL.StokListele(context);
         }
 
         private void btnKapat_Click(object sender, EventArgs e)

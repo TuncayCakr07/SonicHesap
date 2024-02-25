@@ -1,4 +1,5 @@
-﻿using SonicHesap.BackOffice.AnaMenu;
+﻿using DevExpress.XtraReports.UI;
+using SonicHesap.BackOffice.AnaMenu;
 using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
 using SonicHesap.BackOffice.Fis;
@@ -8,10 +9,12 @@ using SonicHesap.BackOffice.Kasa;
 using SonicHesap.BackOffice.Kasa_Hareketleri;
 using SonicHesap.BackOffice.Odeme_Turu;
 using SonicHesap.BackOffice.Personel;
+using SonicHesap.BackOffice.Raporlar;
 using SonicHesap.BackOffice.Stok;
 using SonicHesap.BackOffice.Stok_Hareketleri;
 using SonicHesap.BackOffice.Tanimlar;
 using SonicHesap.Entities.Context;
+using SonicHesap.Report.Stok;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -139,6 +142,14 @@ namespace SonicHesap.BackOffice
         {
             FrmIndirimislemleri form=new FrmIndirimislemleri();
             form.MdiParent = this;
+            form.Show();
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            rpStokDurum report = new rpStokDurum();   
+            FrmRaporGoruntuleme form = new FrmRaporGoruntuleme(report);
+            form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
     }

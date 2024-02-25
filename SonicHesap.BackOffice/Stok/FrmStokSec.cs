@@ -31,7 +31,7 @@ namespace SonicHesap.BackOffice.Stok
         }
         private void FrmStokSec_Load(object sender, EventArgs e)
         {
-            gridContStoklar.DataSource = stokDal.GetAllJoin(context);
+            gridContStoklar.DataSource = stokDal.StokListele(context);
         }
         private void btnKapat_Click(object sender, EventArgs e)
         {

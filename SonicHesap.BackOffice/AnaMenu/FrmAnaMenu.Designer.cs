@@ -255,12 +255,13 @@
             this.barButtonItem5.Id = 12;
             this.barButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
             this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // btnIndirim
             // 
             this.btnIndirim.Caption = "İndirimler";
             this.btnIndirim.Id = 13;
-            this.btnIndirim.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.LargeImage")));
+            this.btnIndirim.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnIndirim.ImageOptions.LargeImage")));
             this.btnIndirim.Name = "btnIndirim";
             this.btnIndirim.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnIndirim_ItemClick);
             // 
