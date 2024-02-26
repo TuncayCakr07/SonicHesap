@@ -147,7 +147,7 @@ namespace SonicHesap.BackOffice
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            rpStokDurum report = new rpStokDurum();   
+            rpCariDurum report = new rpCariDurum();   
             FrmRaporGoruntuleme form = new FrmRaporGoruntuleme(report);
             form.WindowState = FormWindowState.Maximized;
             form.Show();

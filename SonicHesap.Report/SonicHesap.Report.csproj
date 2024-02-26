@@ -58,17 +58,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stok\rpCariDurum.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Stok\rpCariDurum.Designer.cs">
+      <DependentUpon>rpCariDurum.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stok\rpStokDurum.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Stok\rpStokDurum.Designer.cs">
       <DependentUpon>rpStokDurum.cs</DependentUpon>
     </Compile>
+    <Compile Include="Stok\rptStokHareketleri.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Stok\rptStokHareketleri.Designer.cs">
+      <DependentUpon>rptStokHareketleri.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Stok\rpCariDurum.resx">
+      <DependentUpon>rpCariDurum.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Stok\rpStokDurum.resx">
       <DependentUpon>rpStokDurum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stok\rptStokHareketleri.resx">
+      <DependentUpon>rptStokHareketleri.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
