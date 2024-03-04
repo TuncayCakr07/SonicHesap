@@ -14,6 +14,7 @@ using SonicHesap.BackOffice.Stok;
 using SonicHesap.BackOffice.Stok_Hareketleri;
 using SonicHesap.BackOffice.Tanimlar;
 using SonicHesap.Entities.Context;
+using SonicHesap.Report.Fatura_Ve_Fiş;
 using SonicHesap.Report.Stok;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace SonicHesap.BackOffice
         public FrmAnaMenu()
         {
             InitializeComponent();
-            using (var context=new SonicHesapContext())
+            using (var context = new SonicHesapContext())
             {
                 context.Database.CreateIfNotExists();
             }
@@ -39,7 +40,7 @@ namespace SonicHesap.BackOffice
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmStok form=new FrmStok();
+            FrmStok form = new FrmStok();
             form.MdiParent = this;
             form.Show();
         }
@@ -79,7 +80,7 @@ namespace SonicHesap.BackOffice
 
         private void btnFis_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           FrmFis form = new FrmFis();
+            FrmFis form = new FrmFis();
             form.MdiParent = this;
             form.Show();
         }
@@ -108,7 +109,7 @@ namespace SonicHesap.BackOffice
         {
             FrmKasaHareketleri form = new FrmKasaHareketleri();
             form.MdiParent = this;
-            form.Show();    
+            form.Show();
         }
 
         private void btnPersoneller_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -127,8 +128,8 @@ namespace SonicHesap.BackOffice
 
         private void FisIslem_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           FrmFisIslem form = new FrmFisIslem(null,e.Item.Caption);
-           form.ShowDialog();
+            FrmFisIslem form = new FrmFisIslem(null, e.Item.Caption);
+            form.ShowDialog();
         }
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -140,17 +141,43 @@ namespace SonicHesap.BackOffice
 
         private void btnIndirim_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmIndirimislemleri form=new FrmIndirimislemleri();
+            FrmIndirimislemleri form = new FrmIndirimislemleri();
             form.MdiParent = this;
             form.Show();
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            rpCariDurum report = new rpCariDurum();   
+            rptFatura report = new rptFatura("7");
             FrmRaporGoruntuleme form = new FrmRaporGoruntuleme(report);
             form.WindowState = FormWindowState.Maximized;
             form.Show();
+        }
+
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmRaporListesi form = new FrmRaporListesi();
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmRaporDuzenle form = new FrmRaporDuzenle();
+            form.WindowState=FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmEtiketOlustur form = new FrmEtiketOlustur();
+            form.ShowDialog();
+        }
+
+        private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmOzgunRaporHazirla form = new FrmOzgunRaporHazirla();
+            form.ShowDialog();
         }
     }
 }
