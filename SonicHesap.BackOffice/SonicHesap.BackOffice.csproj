@@ -83,6 +83,7 @@
     <Reference Include="DevExpress.XtraScheduler.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v23.1.Core, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraScheduler.v23.1.Core.Desktop, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v23.1.Extensions, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeMap.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeMap.v23.1.UI, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -111,6 +112,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ajanda\FrmAjanda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajanda\FrmAjanda.Designer.cs">
+      <DependentUpon>FrmAjanda.cs</DependentUpon>
+    </Compile>
     <Compile Include="AnaMenu\FrmAnaMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +177,12 @@
     </Compile>
     <Compile Include="Depo\FrmDepoSec.Designer.cs">
       <DependentUpon>FrmDepoSec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Email\FrmEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Email\FrmEmail.Designer.cs">
+      <DependentUpon>FrmEmail.cs</DependentUpon>
     </Compile>
     <Compile Include="Fis\FrmFis.cs">
       <SubType>Form</SubType>
@@ -359,6 +372,9 @@
     <Compile Include="Tanimlar\FrmTanim.Designer.cs">
       <DependentUpon>FrmTanim.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ajanda\FrmAjanda.resx">
+      <DependentUpon>FrmAjanda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AnaMenu\FrmAnaMenu.resx">
       <DependentUpon>FrmAnaMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -388,6 +404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Depo\FrmDepoSec.resx">
       <DependentUpon>FrmDepoSec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Email\FrmEmail.resx">
+      <DependentUpon>FrmEmail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fis\FrmFis.resx">
       <DependentUpon>FrmFis.cs</DependentUpon>
@@ -496,6 +515,8 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Cari.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Depo.datasource" />
+    <None Include="Properties\DataSources\SonicHesap.Entities.Tables.EFAppointment.datasource" />
+    <None Include="Properties\DataSources\SonicHesap.Entities.Tables.EFResource.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Fis.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Indirim.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Kasa.datasource" />

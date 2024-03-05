@@ -1,7 +1,9 @@
 ﻿using DevExpress.XtraReports.UI;
+using SonicHesap.BackOffice.Ajanda;
 using SonicHesap.BackOffice.AnaMenu;
 using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
+using SonicHesap.BackOffice.Email;
 using SonicHesap.BackOffice.Fis;
 using SonicHesap.BackOffice.Fiyat_Degistir;
 using SonicHesap.BackOffice.Indirim;
@@ -178,6 +180,19 @@ namespace SonicHesap.BackOffice
         {
             FrmOzgunRaporHazirla form = new FrmOzgunRaporHazirla();
             form.ShowDialog();
+        }
+
+        private void barButtonItem15_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmAjanda form = new FrmAjanda();
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmEmail form=new FrmEmail();
+            form.Show();
         }
     }
 }

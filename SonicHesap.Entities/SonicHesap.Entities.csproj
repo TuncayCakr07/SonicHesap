@@ -94,6 +94,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EntityRepositoryBase.cs" />
     <Compile Include="Tables\Cari.cs" />
+    <Compile Include="Tables\EFAppointment.cs" />
+    <Compile Include="Tables\EFResource.cs" />
     <Compile Include="Tables\Indirim.cs" />
     <Compile Include="Tables\OtherTables\CariBakiye.cs" />
     <Compile Include="Tables\Depo.cs" />
