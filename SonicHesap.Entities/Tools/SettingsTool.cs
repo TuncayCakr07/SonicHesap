@@ -9,37 +9,37 @@ using System.Windows.Forms;
 
 namespace SonicHesap.Entities.Tools
 {
-    public class SettingsTool
+    public static class SettingsTool
     {
-        FileIniDataParser parser = new FileIniDataParser();
-        private IniData data;
-        private string dosyaAdi = "Settings.ini";
+        private static FileIniDataParser parser = new FileIniDataParser();
+        private static IniData data;
+        private static string dosyaAdi = "Settings.ini";
 
-        public SettingsTool() 
+        static SettingsTool()
         {
-            if (System.IO.File.Exists(Application.StartupPath + "\\" + dosyaAdi)==true)
+            if (System.IO.File.Exists(Application.StartupPath + "\\" + dosyaAdi))
             {
-               data=parser.ReadFile(dosyaAdi);
+                data = parser.ReadFile(dosyaAdi);
             }
             else
             {
-                using ( System.IO.File.Create(Application.StartupPath + "\\" + dosyaAdi))
+                using (System.IO.File.Create(Application.StartupPath + "\\" + dosyaAdi))
                 {
 
                 }
                 System.IO.File.Create(Application.StartupPath + "\\" + dosyaAdi);
                 data = parser.ReadFile(dosyaAdi);
             }
-            
         }
 
         public enum Ayarlar
         {
             KullaniciAyarlari_KullanıcıAdı,
-            KullaniciAyarlari_Parola
+            KullaniciAyarlari_Parola,
+            SatisAyarlari_VarsayilanDepo
         }
 
-        public void AyarDegistir(Ayarlar ayar, string value)
+        public static void AyarDegistir(Ayarlar ayar, string value)
         {
             string[] gelenAyar = ayar.ToString().Split(Convert.ToChar("_"));
             if (data != null)
@@ -57,13 +57,13 @@ namespace SonicHesap.Entities.Tools
             }
         }
 
-        public string AyarOku(Ayarlar ayar)
+        public static string AyarOku(Ayarlar ayar)
         {
             string[] gelenAyar = ayar.ToString().Split(Convert.ToChar("_"));
             return data[gelenAyar[0]][gelenAyar[1]];
         }
 
-        public void Save()
+        public static void Save()
         {
             parser.WriteFile(dosyaAdi, data);
         }

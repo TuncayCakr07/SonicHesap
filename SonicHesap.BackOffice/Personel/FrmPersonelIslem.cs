@@ -69,27 +69,25 @@ namespace SonicHesap.BackOffice.Personel
                 {
                     if (personelDal.AddOrUpdate(context, _entity))
                     {
-                        SettingsTool ayarlar = new SettingsTool();
-                        ayarlar.AyarDegistir(SettingsTool.Ayarlar.KullaniciAyarlari_KullanıcıAdı,txtPersonelAdi.Text);
-                        ayarlar.AyarDegistir(SettingsTool.Ayarlar.KullaniciAyarlari_Parola,txtPersonelKodu.Text);
-                        saved = true;
+                        SettingsTool.AyarDegistir(SettingsTool.Ayarlar.KullaniciAyarlari_KullanıcıAdı, txtPersonelAdi.Text);
+                        SettingsTool.AyarDegistir(SettingsTool.Ayarlar.KullaniciAyarlari_Parola, txtPersonelKodu.Text);
                         personelDal.Save(context);
                         MessageBox.Show("Personel Kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        saved = true;
                         this.Close();
                     }
                 }
                 else if (result == DialogResult.No)
                 {
-                    this.Close(); 
+                    this.Close();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
+
 
         private void btnUnvani_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {

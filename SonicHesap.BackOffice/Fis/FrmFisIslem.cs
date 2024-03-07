@@ -10,6 +10,7 @@ using SonicHesap.Entities.Data_Access;
 using SonicHesap.Entities.Interfaces;
 using SonicHesap.Entities.Tables;
 using SonicHesap.Entities.Tables.OtherTables;
+using SonicHesap.Entities.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -562,6 +563,8 @@ namespace SonicHesap.BackOffice.Fis
             stokHareket.StokAdi = entity.StokAdi;
             stokHareket.Barkod = entity.Barkod;
             stokHareket.IndirimOrani = indirimDal.StokIndirimi(contex, entity.StokKodu);
+            stokHareket.DepoKodu = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepo);
+            stokHareket.DepoAdi = contex.Depolar.SingleOrDefault(x => x.DepoKodu == stokHareket.DepoKodu).DepoAdi;
             stokHareket.BarkodTuru = entity.BarkodTuru;
             stokHareket.BirimFiyati = txtFisTuru.Text == "Alış Faturası" ? entity.AlisFiyati1 : entity.SatisFiyati1;
             stokHareket.Birimi = entity.Birimi;

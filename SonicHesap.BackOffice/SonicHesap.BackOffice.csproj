@@ -130,6 +130,12 @@
     <Compile Include="AnaMenu\FrmAnaMenuBilgi.Designer.cs">
       <DependentUpon>FrmAnaMenuBilgi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ayarlar\FrmAyarlar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ayarlar\FrmAyarlar.Designer.cs">
+      <DependentUpon>FrmAyarlar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cari\FrmCari.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -386,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AnaMenu\FrmAnaMenuBilgi.resx">
       <DependentUpon>FrmAnaMenuBilgi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ayarlar\FrmAyarlar.resx">
+      <DependentUpon>FrmAyarlar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cari\FrmCari.resx">
       <DependentUpon>FrmCari.cs</DependentUpon>

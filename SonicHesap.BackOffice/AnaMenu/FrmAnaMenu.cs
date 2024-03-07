@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraReports.UI;
 using SonicHesap.BackOffice.Ajanda;
 using SonicHesap.BackOffice.AnaMenu;
+using SonicHesap.BackOffice.Ayarlar;
 using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
 using SonicHesap.BackOffice.Doviz_Kurlari;
@@ -199,6 +200,12 @@ namespace SonicHesap.BackOffice
         private void barButtonItem28_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FrmDovizKurlari form = new FrmDovizKurlari();
+            form.ShowDialog();
+        }
+
+        private void barButtonItem29_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmAyarlar form = new FrmAyarlar();
             form.ShowDialog();
         }
     }
