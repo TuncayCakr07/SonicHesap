@@ -450,6 +450,7 @@
             this.barButtonItem28.Id = 37;
             this.barButtonItem28.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem28.ImageOptions.LargeImage")));
             this.barButtonItem28.Name = "barButtonItem28";
+            this.barButtonItem28.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem28_ItemClick);
             // 
             // barButtonItem29
             // 

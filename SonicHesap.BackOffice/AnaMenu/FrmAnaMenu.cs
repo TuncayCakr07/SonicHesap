@@ -3,6 +3,7 @@ using SonicHesap.BackOffice.Ajanda;
 using SonicHesap.BackOffice.AnaMenu;
 using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
+using SonicHesap.BackOffice.Doviz_Kurlari;
 using SonicHesap.BackOffice.Email;
 using SonicHesap.BackOffice.Fis;
 using SonicHesap.BackOffice.Fiyat_Degistir;
@@ -193,6 +194,12 @@ namespace SonicHesap.BackOffice
         {
             FrmEmail form=new FrmEmail();
             form.Show();
+        }
+
+        private void barButtonItem28_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmDovizKurlari form = new FrmDovizKurlari();
+            form.ShowDialog();
         }
     }
 }

@@ -43,6 +43,9 @@
     <Reference Include="FluentValidation, Version=11.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentValidation.11.9.0\lib\netstandard2.0\FluentValidation.dll</HintPath>
     </Reference>
+    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -100,6 +103,7 @@
     <Compile Include="Tables\OtherTables\CariBakiye.cs" />
     <Compile Include="Tables\Depo.cs" />
     <Compile Include="Tables\Fis.cs" />
+    <Compile Include="Tables\OtherTables\DovizKurlari.cs" />
     <Compile Include="Tables\OtherTables\FisAyarlari.cs" />
     <Compile Include="Tables\OtherTables\FiyatDegistir.cs" />
     <Compile Include="Tables\OtherTables\GenelToplam.cs" />
@@ -110,6 +114,7 @@
     <Compile Include="Tables\Stok.cs" />
     <Compile Include="Tables\StokHareket.cs" />
     <Compile Include="Tables\Tanim.cs" />
+    <Compile Include="Tools\SettingsTool.cs" />
     <Compile Include="Tools\ValidatorTool.cs" />
     <Compile Include="Validations\CariValidator.cs" />
     <Compile Include="Validations\DepoValidator.cs" />

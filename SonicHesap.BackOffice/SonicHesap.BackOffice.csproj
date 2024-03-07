@@ -178,6 +178,12 @@
     <Compile Include="Depo\FrmDepoSec.Designer.cs">
       <DependentUpon>FrmDepoSec.cs</DependentUpon>
     </Compile>
+    <Compile Include="Doviz Kurlari\FrmDovizKurlari.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doviz Kurlari\FrmDovizKurlari.Designer.cs">
+      <DependentUpon>FrmDovizKurlari.cs</DependentUpon>
+    </Compile>
     <Compile Include="Email\FrmEmail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -404,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Depo\FrmDepoSec.resx">
       <DependentUpon>FrmDepoSec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doviz Kurlari\FrmDovizKurlari.resx">
+      <DependentUpon>FrmDovizKurlari.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Email\FrmEmail.resx">
       <DependentUpon>FrmEmail.cs</DependentUpon>

@@ -2,6 +2,7 @@
 using SonicHesap.BackOffice.Tanimlar;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
+using SonicHesap.Entities.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,6 +69,9 @@ namespace SonicHesap.BackOffice.Personel
                 {
                     if (personelDal.AddOrUpdate(context, _entity))
                     {
+                        SettingsTool ayarlar = new SettingsTool();
+                        ayarlar.AyarDegistir(SettingsTool.Ayarlar.KullaniciAyarlari_KullanıcıAdı,txtPersonelAdi.Text);
+                        ayarlar.AyarDegistir(SettingsTool.Ayarlar.KullaniciAyarlari_Parola,txtPersonelKodu.Text);
                         saved = true;
                         personelDal.Save(context);
                         MessageBox.Show("Personel Kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -83,6 +87,8 @@ namespace SonicHesap.BackOffice.Personel
             {
                 MessageBox.Show("Hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
         }
 
         private void btnUnvani_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
