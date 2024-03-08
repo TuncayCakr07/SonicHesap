@@ -566,6 +566,10 @@
       <Project>{F22364E4-32CD-4BFC-A10D-CEFA2377D2CC}</Project>
       <Name>SonicHesap.Report</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SonicHesap.Update\SonicHesap.Update.csproj">
+      <Project>{E1C0B471-7961-4969-ABBD-BB754C6A4581}</Project>
+      <Name>SonicHesap.Update</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -21,10 +21,12 @@ using SonicHesap.Backup;
 using SonicHesap.Entities.Context;
 using SonicHesap.Report.Fatura_Ve_Fiş;
 using SonicHesap.Report.Stok;
+using SonicHesap.Update;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -214,6 +216,11 @@ namespace SonicHesap.BackOffice
         {
             FrmBackup form = new FrmBackup();
             form.ShowDialog();
+        }
+
+        private void barButtonItem31_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Process.Start($"{Application.StartupPath}\\SonicHesap.Update.exe");
         }
     }
 }
