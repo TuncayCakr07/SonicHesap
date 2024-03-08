@@ -17,6 +17,7 @@ using SonicHesap.BackOffice.Raporlar;
 using SonicHesap.BackOffice.Stok;
 using SonicHesap.BackOffice.Stok_Hareketleri;
 using SonicHesap.BackOffice.Tanimlar;
+using SonicHesap.Backup;
 using SonicHesap.Entities.Context;
 using SonicHesap.Report.Fatura_Ve_Fiş;
 using SonicHesap.Report.Stok;
@@ -206,6 +207,12 @@ namespace SonicHesap.BackOffice
         private void barButtonItem29_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FrmAyarlar form = new FrmAyarlar();
+            form.ShowDialog();
+        }
+
+        private void barButtonItem30_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmBackup form = new FrmBackup();
             form.ShowDialog();
         }
     }

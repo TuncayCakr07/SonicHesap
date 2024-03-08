@@ -1,4 +1,4 @@
-﻿using IniParser;
+﻿    using IniParser;
 using IniParser.Model;
 using System;
 using System.Collections.Generic;
@@ -36,7 +36,8 @@ namespace SonicHesap.Entities.Tools
         {
             KullaniciAyarlari_KullanıcıAdı,
             KullaniciAyarlari_Parola,
-            SatisAyarlari_VarsayilanDepo
+            SatisAyarlari_VarsayilanDepo,
+            YedeklemeAyarlari_YedeklemeKonumu
         }
 
         public static void AyarDegistir(Ayarlar ayar, string value)

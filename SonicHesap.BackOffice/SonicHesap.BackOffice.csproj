@@ -554,6 +554,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SonicHesap.Backup\SonicHesap.Backup.csproj">
+      <Project>{ABC116A7-0E87-4894-B32F-49A0D355946C}</Project>
+      <Name>SonicHesap.Backup</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SonicHesap.Entities\SonicHesap.Entities.csproj">
       <Project>{28160b92-cfc5-4a3b-9a16-2906492d4a07}</Project>
       <Name>SonicHesap.Entities</Name>

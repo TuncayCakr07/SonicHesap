@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SonicHesap.FrontOffice", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SonicHesap.Report", "SonicHesap.Report\SonicHesap.Report.csproj", "{F22364E4-32CD-4BFC-A10D-CEFA2377D2CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SonicHesap.Backup", "SonicHesap.Backup\SonicHesap.Backup.csproj", "{ABC116A7-0E87-4894-B32F-49A0D355946C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F22364E4-32CD-4BFC-A10D-CEFA2377D2CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F22364E4-32CD-4BFC-A10D-CEFA2377D2CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F22364E4-32CD-4BFC-A10D-CEFA2377D2CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABC116A7-0E87-4894-B32F-49A0D355946C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC116A7-0E87-4894-B32F-49A0D355946C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABC116A7-0E87-4894-B32F-49A0D355946C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC116A7-0E87-4894-B32F-49A0D355946C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
