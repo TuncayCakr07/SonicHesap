@@ -1,4 +1,4 @@
-﻿    using IniParser;
+﻿using IniParser;
 using IniParser.Model;
 using System;
 using System.Collections.Generic;
@@ -17,17 +17,19 @@ namespace SonicHesap.Entities.Tools
 
         static SettingsTool()
         {
-            if (System.IO.File.Exists(Application.StartupPath + "\\" + dosyaAdi))
+            // Dosya yoksa oluştur
+            if (!System.IO.File.Exists(Application.StartupPath + "\\" + dosyaAdi))
             {
-                data = parser.ReadFile(dosyaAdi);
+                data = new IniData();
+                // İlk ayarları burada varsayılan olarak belirleyebilirsiniz
+                data["KullaniciAyarlari"]["KullaniciAdi"] = "default_user";
+                data["KullaniciAyarlari"]["Parola"] = "default_password";
+                data["SatisAyarlari"]["VarsayilanDepo"] = "default_depo";
+                data["YedeklemeAyarlari"]["YedeklemeKonumu"] = "default_yedekleme_konumu";
+                parser.WriteFile(Application.StartupPath + "\\" + dosyaAdi, data);
             }
             else
             {
-                using (System.IO.File.Create(Application.StartupPath + "\\" + dosyaAdi))
-                {
-
-                }
-                System.IO.File.Create(Application.StartupPath + "\\" + dosyaAdi);
                 data = parser.ReadFile(dosyaAdi);
             }
         }
@@ -37,7 +39,10 @@ namespace SonicHesap.Entities.Tools
             KullaniciAyarlari_KullanıcıAdı,
             KullaniciAyarlari_Parola,
             SatisAyarlari_VarsayilanDepo,
-            YedeklemeAyarlari_YedeklemeKonumu
+            YedeklemeAyarlari_YedeklemeKonumu,
+            YedeklemeAyarlari_OtomatikYedekleme,
+            YedeklemeAyarlari_OtomatikYedekAl,
+            YedeklemeAyarlari_KaydedilmisTarih
         }
 
         public static void AyarDegistir(Ayarlar ayar, string value)
