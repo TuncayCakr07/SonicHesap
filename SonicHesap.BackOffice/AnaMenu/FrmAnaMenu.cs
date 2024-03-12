@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraReports.Design;
+using DevExpress.XtraReports.UI;
 using SonicHesap.BackOffice.Ajanda;
 using SonicHesap.BackOffice.AnaMenu;
 using SonicHesap.BackOffice.Ayarlar;
@@ -29,8 +30,16 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
+using WebBrowser = DevExpress.XtraReports.Design.WebBrowser;
 
 namespace SonicHesap.BackOffice
 {
@@ -224,10 +233,83 @@ namespace SonicHesap.BackOffice
                 MessageBox.Show("Form açılırken bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void barButtonItem31_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        public static async Task VersionCheck()
         {
-            Process.Start($"{Application.StartupPath}\\SonicHesap.Update.exe");
+            try//çalıştır bakalım
+            {
+                string SunucuVersion = "https://www.softcakir.com/versiyonn.txt";
+                string ProgramVersiyon = Assembly.Load("SonicHesap.BackOffice").GetName().Version.ToString().Trim();
+
+                using (HttpClient client = new HttpClient())
+                {
+                    HttpResponseMessage response = await client.GetAsync(SunucuVersion);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string content = await response.Content.ReadAsStringAsync();
+                        if (content != ProgramVersiyon)
+                        {
+                            DialogResult result = MessageBox.Show("Sunucuda Yeni Bir Güncel Versiyon Mevcut. Güncellemek ister misiniz?", "Yeni Versiyon Güncelleme", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                            if (result == DialogResult.Yes)
+                            {
+                                // Kullanıcı eveti seçerse güncelleme formunu aç
+                                Process.Start($"{Application.StartupPath}\\SonicHesap.Update.exe");
+                            }
+                            else
+                            {
+                                // Kullanıcı hayır derse bilgi ver
+                                MessageBox.Show("Güncelleme İşlemi İptal edildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Versiyonunuz En Son Yazılım Güncellemelerini İçermektedir!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        throw new HttpRequestException($"HTTP Error: {response.StatusCode}");
+                    }
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"HTTP Error: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+        private string ParseGuncelVersion(string txtContent)
+        {
+            try
+            {
+                // Versiyon numarasını içeren satırı bulma
+                string[] lines = txtContent.Split('\n');
+                foreach (var line in lines)
+                {
+                    if (line.Contains("Version Number:"))
+                    {
+                        // Satır içinde versiyon numarasını alıp temizleme
+                        string versionText = line.Replace("Version Number:", "").Trim();
+                        return versionText;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Hata: {ex.Message}");
+            }
+
+            return null;
+        }
+
+        private async void barButtonItem31_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            await VersionCheck();
+        }
+
     }
 }
