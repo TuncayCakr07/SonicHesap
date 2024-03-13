@@ -233,9 +233,9 @@ namespace SonicHesap.BackOffice
                 MessageBox.Show("Form açılırken bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public static async Task VersionCheck()
+        public static async Task<string> VersionCheck()
         {
-            try//çalıştır bakalım
+            try
             {
                 string SunucuVersion = "https://www.softcakir.com/versiyonn.txt";
                 string ProgramVersiyon = Assembly.Load("SonicHesap.BackOffice").GetName().Version.ToString().Trim();
@@ -249,22 +249,22 @@ namespace SonicHesap.BackOffice
                         string content = await response.Content.ReadAsStringAsync();
                         if (content != ProgramVersiyon)
                         {
-                            DialogResult result = MessageBox.Show("Sunucuda Yeni Bir Güncel Versiyon Mevcut. Güncellemek ister misiniz?", "Yeni Versiyon Güncelleme", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            DialogResult result = MessageBox.Show("Sunucuda Yeni Bir Güncel Versiyon Mevcut. Güncellemek ister misiniz?", "Yeni Versiyon Güncelleme", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                             if (result == DialogResult.Yes)
                             {
-                                // Kullanıcı eveti seçerse güncelleme formunu aç
-                                Process.Start($"{Application.StartupPath}\\SonicHesap.Update.exe");
+                                return "UpdateRequired";
                             }
                             else
                             {
-                                // Kullanıcı hayır derse bilgi ver
-                                MessageBox.Show("Güncelleme İşlemi İptal edildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Güncelleme İşlemi İptal edildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return "NoUpdate";
                             }
                         }
                         else
                         {
                             MessageBox.Show("Versiyonunuz En Son Yazılım Güncellemelerini İçermektedir!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return "NoUpdate";
                         }
                     }
                     else
@@ -276,39 +276,44 @@ namespace SonicHesap.BackOffice
             catch (HttpRequestException ex)
             {
                 MessageBox.Show($"HTTP Error: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "NoUpdate";
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "NoUpdate";
             }
-        }
-        private string ParseGuncelVersion(string txtContent)
-        {
-            try
-            {
-                // Versiyon numarasını içeren satırı bulma
-                string[] lines = txtContent.Split('\n');
-                foreach (var line in lines)
-                {
-                    if (line.Contains("Version Number:"))
-                    {
-                        // Satır içinde versiyon numarasını alıp temizleme
-                        string versionText = line.Replace("Version Number:", "").Trim();
-                        return versionText;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Hata: {ex.Message}");
-            }
-
-            return null;
         }
 
         private async void barButtonItem31_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            await VersionCheck();
+            string updateStatus = await VersionCheck();
+
+            if (updateStatus == "UpdateRequired")
+            {
+                DialogResult closeResult = MessageBox.Show("Güncelleme başlamadan önce BackOffice uygulamasını kapatmak istiyor musunuz?", "Uygulama Kapat", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (closeResult == DialogResult.Yes)
+                {
+                    // BackOffice formunu kapat
+                    foreach (Form frm in Application.OpenForms)
+                    {
+                        if (frm is FrmAnaMenu)
+                        {
+                            frm.Close();
+                            break;
+                        }
+                    }
+
+                    // Güncelleme formunu aç
+                    FrmGuncelleme frmGuncelleme = new FrmGuncelleme();
+                    frmGuncelleme.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Güncelleme İşlemi İptal Edildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
     }

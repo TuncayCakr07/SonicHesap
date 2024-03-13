@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace SonicHesap.FrontOffice
 {
-    public partial class Form1 : DevExpress.XtraEditors.XtraForm
+    public partial class FrmFrontOffice : DevExpress.XtraEditors.XtraForm
     {
-        public Form1()
+        public FrmFrontOffice()
         {
             InitializeComponent();
         }
