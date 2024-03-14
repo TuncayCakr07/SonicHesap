@@ -69,7 +69,7 @@ namespace SonicHesap.BackOffice.Fis
             Toplamlar();
             OdenenTutarGuncelle();
 
-            ButonlariYükle();
+            ButonlariYukle();
         }
 
         private void databinding()
@@ -91,7 +91,7 @@ namespace SonicHesap.BackOffice.Fis
             txtVergiNo.DataBindings.Add("Text", _fisEntity, "VergiNo", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
-        private void ButonlariYükle()
+        private void ButonlariYukle()
         {
             foreach (var item in contex.OdemeTurleri.ToList())
             {
