@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
@@ -11,11 +12,13 @@ namespace SonicHesap.Update
     public partial class FrmGuncelleme : DevExpress.XtraEditors.XtraForm
     {
         WebClient indir = new WebClient();
-        private bool indirmeTamamlandi = false;
+        public bool IsGuncellemeTamamlandi { get; set; }
 
         public FrmGuncelleme()
         {
             InitializeComponent();
+            IsGuncellemeTamamlandi = false;
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         private async void simpleButton1_Click(object sender, EventArgs e)
@@ -50,8 +53,8 @@ namespace SonicHesap.Update
                 }
 
                 string tempFolderPath = @"C:\Users\T.ÇAKIROĞLU\source\repos\SonicHesap\SonicHesap.BackOffice\bin\Debug\Temp";
-                string zipFilePath = Path.Combine(tempFolderPath, "update.zip");
-                string xmlFilePath = Path.Combine(tempFolderPath, "Liste.xml");
+                string zipFilePath = Path.Combine(tempFolderPath, "update.zip").TrimStart('\\');
+                string xmlFilePath = Path.Combine(tempFolderPath, "Liste.xml").TrimStart('\\');
 
                 ZipFile.ExtractToDirectory(zipFilePath, tempFolderPath);
 
@@ -81,21 +84,21 @@ namespace SonicHesap.Update
                         File.Copy(sourceFile, destinationFile);
                     }
                 }
-
+                IsGuncellemeTamamlandi = true;
                 Directory.Delete(tempFolderPath, true);
                 MessageBox.Show("Güncelleme Ve Versiyon Yenileme İşlemi Tamamlandı!", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                indirmeTamamlandi = true;
-                this.Close(); // Güncelleme tamamlandığında formu kapat
+                this.Close();
             }
             catch (Exception ex)
             {
+                IsGuncellemeTamamlandi = false;
                 MessageBox.Show($"Bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void FrmGuncelleme_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!indirmeTamamlandi)
+            if (!IsGuncellemeTamamlandi)
             {
                 e.Cancel = true;
                 MessageBox.Show("Güncelleme işlemi tamamlanana kadar formu kapatamazsınız.", "Bekleyin", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -104,7 +107,13 @@ namespace SonicHesap.Update
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
+            IsGuncellemeTamamlandi = false;
             this.Close();
+        }
+
+        private void FrmGuncelleme_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

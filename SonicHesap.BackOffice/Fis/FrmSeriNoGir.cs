@@ -14,8 +14,8 @@ namespace SonicHesap.BackOffice.Fis
     public partial class FrmSeriNoGir : DevExpress.XtraEditors.XtraForm
     {
         public string veriSeriNo;
-        public bool kilitli = true;
-        public FrmSeriNoGir(string veri)
+
+        public FrmSeriNoGir(string veri,bool kilitli=true)
         {
             InitializeComponent();
             if (veri != null)

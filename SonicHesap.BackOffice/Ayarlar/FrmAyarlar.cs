@@ -23,6 +23,7 @@ namespace SonicHesap.BackOffice.Ayarlar
             InitializeComponent();
             lookupDepo.Properties.DataSource = depoDAL.GetAll(context);
             lookupDepo.EditValue = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepo);
+            toggleGuncelle.IsOn = Convert.ToBoolean(SettingsTool.AyarOku(SettingsTool.Ayarlar.GenelAyarlar_GuncellemeKontrol));
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
@@ -32,9 +33,22 @@ namespace SonicHesap.BackOffice.Ayarlar
             if (result == DialogResult.Yes)
             {
                 SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepo, lookupDepo.EditValue.ToString());
+                SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepoAdi, lookupDepo.Text.ToString());
+                SettingsTool.AyarDegistir(SettingsTool.Ayarlar.GenelAyarlar_GuncellemeKontrol, toggleGuncelle.IsOn.ToString());
                 SettingsTool.Save();
                 MessageBox.Show("Ayarlar başarıyla kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
+        }
+
+        private void btnKapat_Click(object sender, EventArgs e)
+        {
+            this.Close();   
+        }
+
+        private void FrmAyarlar_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

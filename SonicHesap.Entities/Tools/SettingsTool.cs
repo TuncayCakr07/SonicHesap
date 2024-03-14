@@ -39,10 +39,12 @@ namespace SonicHesap.Entities.Tools
             KullaniciAyarlari_KullanıcıAdı,
             KullaniciAyarlari_Parola,
             SatisAyarlari_VarsayilanDepo,
+            SatisAyarlari_VarsayilanDepoAdi,
             YedeklemeAyarlari_YedeklemeKonumu,
             YedeklemeAyarlari_OtomatikYedekleme,
             YedeklemeAyarlari_OtomatikYedekAl,
-            YedeklemeAyarlari_KaydedilmisTarih
+            YedeklemeAyarlari_KaydedilmisTarih,
+            GenelAyarlar_GuncellemeKontrol
         }
 
         public static void AyarDegistir(Ayarlar ayar, string value)

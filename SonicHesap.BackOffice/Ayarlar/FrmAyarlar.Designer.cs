@@ -37,24 +37,28 @@
             this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
             this.navigationPane1 = new DevExpress.XtraBars.Navigation.NavigationPane();
             this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.toggleGuncelle = new DevExpress.XtraEditors.ToggleSwitch();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.lookupDepo = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.depoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colDepoKodu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDepoAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYetkiliKodu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYetkiliAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.depoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
             this.navigationPane1.SuspendLayout();
+            this.navigationPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleGuncelle.Properties)).BeginInit();
             this.navigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookupDepo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBaslik
@@ -117,6 +121,7 @@
             this.btnKapat.Size = new System.Drawing.Size(106, 59);
             this.btnKapat.TabIndex = 0;
             this.btnKapat.Text = "Kapat";
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
             // 
             // navigationPane1
             // 
@@ -137,8 +142,31 @@
             // navigationPage1
             // 
             this.navigationPage1.Caption = "Genel Ayarlar";
+            this.navigationPage1.Controls.Add(this.labelControl1);
+            this.navigationPage1.Controls.Add(this.toggleGuncelle);
             this.navigationPage1.Name = "navigationPage1";
-            this.navigationPage1.Size = new System.Drawing.Size(929, 385);
+            this.navigationPage1.Size = new System.Drawing.Size(928, 385);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(135, 18);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(376, 18);
+            this.labelControl1.TabIndex = 1;
+            this.labelControl1.Text = "Program Her Açıldığında Güncellemeleri Kontrol Et.";
+            // 
+            // toggleGuncelle
+            // 
+            this.toggleGuncelle.Location = new System.Drawing.Point(20, 16);
+            this.toggleGuncelle.Name = "toggleGuncelle";
+            this.toggleGuncelle.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.toggleGuncelle.Properties.Appearance.Options.UseFont = true;
+            this.toggleGuncelle.Properties.OffText = "Hayır";
+            this.toggleGuncelle.Properties.OnText = "Evet";
+            this.toggleGuncelle.Size = new System.Drawing.Size(109, 24);
+            this.toggleGuncelle.TabIndex = 0;
             // 
             // navigationPage2
             // 
@@ -146,7 +174,7 @@
             this.navigationPage2.Controls.Add(this.labelControl3);
             this.navigationPage2.Controls.Add(this.lookupDepo);
             this.navigationPage2.Name = "navigationPage2";
-            this.navigationPage2.Size = new System.Drawing.Size(929, 385);
+            this.navigationPage2.Size = new System.Drawing.Size(928, 385);
             // 
             // labelControl3
             // 
@@ -173,6 +201,10 @@
             this.lookupDepo.Properties.ValueMember = "DepoKodu";
             this.lookupDepo.Size = new System.Drawing.Size(568, 22);
             this.lookupDepo.TabIndex = 2;
+            // 
+            // depoBindingSource
+            // 
+            this.depoBindingSource.DataSource = typeof(SonicHesap.Entities.Tables.Depo);
             // 
             // gridLookUpEdit1View
             // 
@@ -222,10 +254,6 @@
             this.colAciklama.Visible = true;
             this.colAciklama.VisibleIndex = 4;
             // 
-            // depoBindingSource
-            // 
-            this.depoBindingSource.DataSource = typeof(SonicHesap.Entities.Tables.Depo);
-            // 
             // FrmAyarlar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -240,14 +268,18 @@
             this.Name = "FrmAyarlar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAyarlar";
+            this.Load += new System.EventHandler(this.FrmAyarlar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).EndInit();
             this.grpMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).EndInit();
             this.navigationPane1.ResumeLayout(false);
+            this.navigationPage1.ResumeLayout(false);
+            this.navigationPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleGuncelle.Properties)).EndInit();
             this.navigationPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lookupDepo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -271,5 +303,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colYetkiliKodu;
         private DevExpress.XtraGrid.Columns.GridColumn colYetkiliAdi;
         private DevExpress.XtraGrid.Columns.GridColumn colAciklama;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.ToggleSwitch toggleGuncelle;
     }
 }

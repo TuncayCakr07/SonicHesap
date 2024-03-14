@@ -114,6 +114,7 @@
     <Compile Include="Tables\Stok.cs" />
     <Compile Include="Tables\StokHareket.cs" />
     <Compile Include="Tables\Tanim.cs" />
+    <Compile Include="Tools\ConverterTool.cs" />
     <Compile Include="Tools\SettingsTool.cs" />
     <Compile Include="Tools\ValidatorTool.cs" />
     <Compile Include="Validations\CariValidator.cs" />

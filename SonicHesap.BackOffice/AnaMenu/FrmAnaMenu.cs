@@ -20,6 +20,7 @@ using SonicHesap.BackOffice.Stok_Hareketleri;
 using SonicHesap.BackOffice.Tanimlar;
 using SonicHesap.Backup;
 using SonicHesap.Entities.Context;
+using SonicHesap.Entities.Tools;
 using SonicHesap.Report.Fatura_Ve_Fiş;
 using SonicHesap.Report.Stok;
 using SonicHesap.Update;
@@ -48,6 +49,20 @@ namespace SonicHesap.BackOffice
         public FrmAnaMenu()
         {
             InitializeComponent();
+            string SunucuVersion = "https://www.softcakir.com/versiyonn.txt";
+            string ProgramVersiyon = Assembly.Load("SonicHesap.BackOffice").GetName().Version.ToString().Trim();
+            if (ProgramVersiyon!=SunucuVersion)
+            {
+                            if (Convert.ToBoolean(SettingsTool.AyarOku(SettingsTool.Ayarlar.GenelAyarlar_GuncellemeKontrol)))
+            {
+                if (MessageBox.Show("Programın Yeni Bir Versiyon Güncellemesi Mevcut  Güncellemek İstiyor musunuz?", "Güncel Versiyon Uyarısı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question)==DialogResult.Yes)
+                {
+                    FrmGuncelleme form = new FrmGuncelleme();
+                    form.ShowDialog();
+                }
+            }
+            }
+
             using (var context = new SonicHesapContext())
             {
                 context.Database.CreateIfNotExists();
@@ -164,10 +179,7 @@ namespace SonicHesap.BackOffice
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            rptFatura report = new rptFatura("7");
-            FrmRaporGoruntuleme form = new FrmRaporGoruntuleme(report);
-            form.WindowState = FormWindowState.Maximized;
-            form.Show();
+            Process.Start($"{Application.StartupPath}\\SonicHesap.FrontOffice.exe");
         }
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -180,7 +192,7 @@ namespace SonicHesap.BackOffice
         private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FrmRaporDuzenle form = new FrmRaporDuzenle();
-            form.WindowState=FormWindowState.Maximized;
+            form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
 
@@ -205,7 +217,7 @@ namespace SonicHesap.BackOffice
 
         private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmEmail form=new FrmEmail();
+            FrmEmail form = new FrmEmail();
             form.Show();
         }
 
@@ -284,37 +296,49 @@ namespace SonicHesap.BackOffice
                 return "NoUpdate";
             }
         }
-
+        public static bool IsRunning(string programAdi)
+        {
+            Process[] processes = Process.GetProcesses();
+            foreach (Process process in processes)
+            {
+                if (process.ProcessName.Contains(programAdi))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         private async void barButtonItem31_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string updateStatus = await VersionCheck();
 
             if (updateStatus == "UpdateRequired")
             {
-                DialogResult closeResult = MessageBox.Show("Güncelleme başlamadan önce BackOffice uygulamasını kapatmak istiyor musunuz?", "Uygulama Kapat", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult closeResult = MessageBox.Show("Güncelleme başlamadan önce açık olan tüm formları kapatmak istiyor musunuz?", "Form Kapat", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (closeResult == DialogResult.Yes)
                 {
-                    // BackOffice formunu kapat
-                    foreach (Form frm in Application.OpenForms)
+                    // Ana formun MdiChildren özelliği ile açık olan tüm formları kontrol ediyoruz
+                    foreach (Form frm in this.MdiChildren)
                     {
-                        if (frm is FrmAnaMenu)
-                        {
-                            frm.Close();
-                            break;
-                        }
+                        frm.Close();
                     }
 
-                    // Güncelleme formunu aç
-                    FrmGuncelleme frmGuncelleme = new FrmGuncelleme();
-                    frmGuncelleme.Show();
+                    await Task.Run(() =>
+                    {
+                        FrmGuncelleme form = new FrmGuncelleme();
+                        form.ShowDialog();
+                    });
                 }
                 else
                 {
                     MessageBox.Show("Güncelleme İşlemi İptal Edildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            else
+            {
+                MessageBox.Show("Versiyonunuz en son sürümdedir.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
-
     }
 }

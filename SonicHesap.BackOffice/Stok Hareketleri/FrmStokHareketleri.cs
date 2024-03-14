@@ -68,7 +68,6 @@ namespace SonicHesap.BackOffice.Stok_Hareketleri
         {
             string veri = Convert.ToString(gridStokHareket.GetFocusedRowCellValue(colSeriNo));
             FrmSeriNoGir form = new FrmSeriNoGir(veri);
-            form.kilitli = true;
             form.ShowDialog();
         }
 
