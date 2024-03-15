@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace SonicHesap.Entities.Tools
 {
-    public class ConverterTool
+    public static class ConverterTool
     {
-        private StokHareket StokToStokHareket(SonicHesapContext contex,Entities.Tables.Stok entity,decimal miktar)
+        private static StokHareket StokToStokHareket(SonicHesapContext contex,Entities.Tables.Stok entity,decimal miktar)
         {
             StokHareket stokHareket = new StokHareket();
             IndirimDAL indirimDal = new IndirimDAL();
@@ -29,6 +29,12 @@ namespace SonicHesap.Entities.Tools
             stokHareket.Kdv = entity.SatisKdv;
             stokHareket.Tarih = DateTime.Now;
             return stokHareket;
+        }
+
+        public static decimal StringToDecimal(string ifade,string ondalikAyrac)
+        {
+            string ondalikKarakter=System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator.ToString();
+            return Convert.ToDecimal(ifade.Replace(ondalikAyrac, ondalikKarakter));
         }
     }
 }

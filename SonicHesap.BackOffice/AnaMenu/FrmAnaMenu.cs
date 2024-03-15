@@ -9,6 +9,7 @@ using SonicHesap.BackOffice.Doviz_Kurlari;
 using SonicHesap.BackOffice.Email;
 using SonicHesap.BackOffice.Fis;
 using SonicHesap.BackOffice.Fiyat_Degistir;
+using SonicHesap.BackOffice.HizliSatis;
 using SonicHesap.BackOffice.Indirim;
 using SonicHesap.BackOffice.Kasa;
 using SonicHesap.BackOffice.Kasa_Hareketleri;
@@ -339,6 +340,12 @@ namespace SonicHesap.BackOffice
             {
                 MessageBox.Show("Versiyonunuz en son sürümdedir.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmHizliSatis form=new FrmHizliSatis(); 
+            form.ShowDialog();
         }
     }
 }

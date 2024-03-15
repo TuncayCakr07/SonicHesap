@@ -237,6 +237,12 @@
     <Compile Include="Fiyat Degistir\FrmTopluFiyatDeğistir.Designer.cs">
       <DependentUpon>FrmTopluFiyatDeğistir.cs</DependentUpon>
     </Compile>
+    <Compile Include="HizliSatis\FrmHizliSatis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HizliSatis\FrmHizliSatis.Designer.cs">
+      <DependentUpon>FrmHizliSatis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Indirim\FrmIndirimIslem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -449,6 +455,9 @@
     <EmbeddedResource Include="Fiyat Degistir\FrmTopluFiyatDeğistir.resx">
       <DependentUpon>FrmTopluFiyatDeğistir.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HizliSatis\FrmHizliSatis.resx">
+      <DependentUpon>FrmHizliSatis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Indirim\FrmIndirimIslem.resx">
       <DependentUpon>FrmIndirimIslem.cs</DependentUpon>
     </EmbeddedResource>
@@ -541,6 +550,8 @@
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.EFAppointment.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.EFResource.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Fis.datasource" />
+    <None Include="Properties\DataSources\SonicHesap.Entities.Tables.HizliSatis.datasource" />
+    <None Include="Properties\DataSources\SonicHesap.Entities.Tables.HizliSatisGrup.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Indirim.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Kasa.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.KasaHareket.datasource" />

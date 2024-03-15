@@ -38,8 +38,8 @@ namespace SonicHesap.FrontOffice
             txtFisKodu.DataBindings.Add("Text", _fisEntity, "FisKodu", false, DataSourceUpdateMode.OnPropertyChanged);
             txtBelgeNo.DataBindings.Add("Text", _fisEntity, "BelgeNo", false, DataSourceUpdateMode.OnPropertyChanged);
             txtAciklama.DataBindings.Add("Text", _fisEntity, "Aciklama", false, DataSourceUpdateMode.OnPropertyChanged);
-            lblCariKodu.DataBindings.Add("Text", _fisEntity, "CariKodu", false, DataSourceUpdateMode.OnPropertyChanged);
-            lblCariAdi.DataBindings.Add("Text", _fisEntity, "CariAdi", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtCariKodu.DataBindings.Add("Text", _fisEntity, "CariKodu", false, DataSourceUpdateMode.OnPropertyChanged,null);
+            txtCariAdi.DataBindings.Add("Text", _fisEntity, "CariAdi", false, DataSourceUpdateMode.OnPropertyChanged,null);
             txtFaturaUnvani.DataBindings.Add("Text", _fisEntity, "FaturaUnvani", false, DataSourceUpdateMode.OnPropertyChanged);
             txtCepTelefonu.DataBindings.Add("Text", _fisEntity, "CepTelefonu", false, DataSourceUpdateMode.OnPropertyChanged);
             txtIl.DataBindings.Add("Text", _fisEntity, "Il", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -49,6 +49,8 @@ namespace SonicHesap.FrontOffice
             txtVergiDairesi.DataBindings.Add("Text", _fisEntity, "VergiDairesi", false, DataSourceUpdateMode.OnPropertyChanged);
             txtVergiNo.DataBindings.Add("Text", _fisEntity, "VergiNo", false, DataSourceUpdateMode.OnPropertyChanged);
             ButonlariYukle();
+            txtIslem.Text = "SATIŞ";
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void ButonlariYukle()
@@ -142,23 +144,18 @@ namespace SonicHesap.FrontOffice
         }
         private void Toplamlar()
         {
-            //gridStokHareket.UpdateSummary();
-            //txtIskontoTutar.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) / 100 * txtIskontoOrani.Value;
-            //txtToplam.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) - txtIskontoTutar.Value;
-            //txtKdvToplam.Value = Convert.ToDecimal(colKdvToplam.SummaryItem.SummaryValue);
-            //txtIndirimToplam.Value = Convert.ToDecimal(colIndirimtutari.SummaryItem.SummaryValue);
-            //txtOdenmesiGereken.Value = txtToplam.Value - txtOdenenTutar.Value;
+            gridStokHareket.UpdateSummary();
+            txtIskontoTutar.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) / 100 * txtIskontoOrani.Value;
+            txtToplam.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) - txtIskontoTutar.Value;
+            txtKDVToplam.Value = Convert.ToDecimal(colKdvToplam.SummaryItem.SummaryValue);
+            txtIndirimToplam.Value = Convert.ToDecimal(colIndirimtutari.SummaryItem.SummaryValue);
+            txtParaUstu.Value=txtOdenenTutar.Value-txtToplam.Value;
+            txtAraToplam.Value = txtToplam.Value - txtKDVToplam.Value;
         }
 
         private void simpleButton13_Click(object sender, EventArgs e)
         {
-            FrmStokSec form = new FrmStokSec();
-            form.ShowDialog();
-            if (form.secildi)
-            {
-                stokHareketDal.AddOrUpdate(contex, StokSec(form.secilen.First()));
-                ///*Toplamlar*/();
-            }
+          
         }
 
         private void btnBul_Click(object sender, EventArgs e)
@@ -171,8 +168,8 @@ namespace SonicHesap.FrontOffice
                 Entities.Tables.Cari entity = form.secilen.FirstOrDefault();
                 entityBakiye = cariDal.CariBakiyesi(contex, entity.CariKodu);
 
-                lblCariKodu.Text = entity.CariKodu;
-                lblCariAdi.Text = entity.CariAdi;
+                txtCariKodu.Text = entity.CariKodu;
+                txtCariAdi.Text = entity.CariAdi;
                 txtFaturaUnvani.Text = entity.FaturaUnvani;
                 txtVergiDairesi.Text = entity.VergiDairesi;
                 txtVergiNo.Text = entity.VergiNo;
@@ -192,8 +189,8 @@ namespace SonicHesap.FrontOffice
         }
         private void btnTemizle_Click(object sender, EventArgs e)
         {
-            lblCariKodu.Text = "Cari Bilgisi Görüntülenemiyor";
-            lblCariAdi.Text = "Cari Bilgisi Görüntülenemiyor";
+            txtCariKodu.Text = null;
+            txtCariAdi.Text = null;
             txtFaturaUnvani.Text = null;
             txtVergiDairesi.Text = null;
             txtVergiNo.Text = null;
@@ -202,9 +199,9 @@ namespace SonicHesap.FrontOffice
             txtIlce.Text = null;
             txtSemt.Text = null;
             txtAdres.Text = null;
-            lblAlacak.Text = "Görüntülenemiyor";
-            lblBorc.Text = "Görüntülenemiyor";
-            lblBakiye.Text = "Görüntülenemiyor";
+            lblAlacak.Text = "Alacak Görüntülenemiyor";
+            lblBorc.Text = "Borç Görüntülenemiyor";
+            lblBakiye.Text = "Bakiye Görüntülenemiyor";
         }
 
         private void repoSil_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -251,27 +248,12 @@ namespace SonicHesap.FrontOffice
 
         private void simpleButton14_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                gridStokHareket.DeleteSelectedRows();
-                Toplamlar();
-            }
+           
         }
 
         private void simpleButton16_Click(object sender, EventArgs e)
         {
-            if (gridStokHareket.RowCount!=0)
-            {
-                if (MessageBox.Show("Mevcut Satışı İptal İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    _fisEntity = new Fis();
-                    contex.StokHareketleri.Local.Clear();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Mevcutta Bir İşlem Bulunamadı!","Uyarı!",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
+        
 
         }
 
@@ -284,8 +266,8 @@ namespace SonicHesap.FrontOffice
                 Entities.Tables.Cari entity = form.secilen.FirstOrDefault();
                 entityBakiye = cariDal.CariBakiyesi(contex, entity.CariKodu);
 
-                lblCariKodu.Text = entity.CariKodu;
-                lblCariAdi.Text = entity.CariAdi;
+                txtCariKodu.Text = entity.CariKodu;
+                txtCariAdi.Text = entity.CariAdi;
                 txtFaturaUnvani.Text = entity.FaturaUnvani;
                 txtVergiDairesi.Text = entity.VergiDairesi;
                 txtVergiNo.Text = entity.VergiNo;
@@ -300,21 +282,103 @@ namespace SonicHesap.FrontOffice
             }
         }
 
-        private void btnTemizle_Click_1(object sender, EventArgs e)
+        private void chUrunBul_Click(object sender, EventArgs e)
         {
-            lblCariKodu.Text = null;
-            lblCariAdi.Text = null;
-            txtFaturaUnvani.Text = null;
-            txtVergiDairesi.Text = null;
-            txtVergiNo.Text = null;
-            txtCepTelefonu.Text = null;
-            txtIl.Text = null;
-            txtIlce.Text = null;
-            txtSemt.Text = null;
-            txtAdres.Text = null;
-            lblAlacak.Text = "Görüntülenemiyor";
-            lblBorc.Text = "Görüntülenemiyor";
-            lblBakiye.Text = "Görüntülenemiyor";
+            FrmStokSec form = new FrmStokSec();
+            form.ShowDialog();
+            if (form.secildi)
+            {
+                stokHareketDal.AddOrUpdate(contex, StokSec(form.secilen.First()));
+                Toplamlar();
+            }
+        }
+
+        private void chSatirSil_Click(object sender, EventArgs e)
+        {
+            if (gridStokHareket.RowCount != 0)
+            {
+                if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    gridStokHareket.DeleteSelectedRows();
+                    Toplamlar();
+                }
+            }
+        }
+
+        private void chSatisIptal_Click(object sender, EventArgs e)
+        {
+            if (gridStokHareket.RowCount != 0)
+            {
+                if (MessageBox.Show("Mevcut Satışı İptal İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    _fisEntity = new Fis();
+                    _fisEntity.BelgeNo = null;
+                    _fisEntity.Aciklama = null;
+                    btnTemizle_Click(sender, e);
+                    contex.StokHareketleri.Local.Clear();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Mevcutta Bir İşlem Bulunamadı!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ChIade_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ChIade.Checked)
+            {
+                txtIslem.Text = "İADE";
+                txtIslem.BackColor = Color.Red;
+            }
+            else
+            {
+                txtIslem.Text = "SATIŞ";
+                txtIslem.BackColor = Color.Green;
+            }
+        }
+
+        private void ParaEkle_Click(object sender, EventArgs e)
+        {
+            var buton = (sender as SimpleButton);
+            txtOdenenTutar.Value += ConverterTool.StringToDecimal(buton.Tag.ToString(),".");
+            Toplamlar();
+        }
+
+        private void txtOdenenTutar_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            txtOdenenTutar.Value = 0;
+        }
+
+        private void gridStokHareket_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            Toplamlar();
+        }
+
+        private void txtBarkod_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Entities.Tables.Stok entity;
+                entity = contex.Stoklar.Where(c => c.Barkod == txtBarkod.Text).SingleOrDefault();
+                if (entity != null)
+                {
+                    stokHareketDal.AddOrUpdate(contex, StokSec(entity));
+                    Toplamlar();
+                }
+                else
+                {
+                    MessageBox.Show("Aradığınız Barkod Numarasına Ait Ürün Bulunamadı!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                txtBarkod.Text = null;
+                txtMiktar.Text = null;
+                txtBarkod.Focus();
+            }
+        }
+
+        private void txtIskontoOrani_Validated(object sender, EventArgs e)
+        {
+            Toplamlar();
         }
     }
 }

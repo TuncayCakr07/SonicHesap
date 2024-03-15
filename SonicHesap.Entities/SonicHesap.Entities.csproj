@@ -68,6 +68,8 @@
     <Compile Include="Data Access\CariDAL.cs" />
     <Compile Include="Data Access\DepoDAL.cs" />
     <Compile Include="Data Access\FisDAL.cs" />
+    <Compile Include="Data Access\HizliSatisDAL.cs" />
+    <Compile Include="Data Access\HizliSatisGrupDAL.cs" />
     <Compile Include="Data Access\IndirimDAL.cs" />
     <Compile Include="Data Access\KasaDAL.cs" />
     <Compile Include="Data Access\KasaHareketDAL.cs" />
@@ -81,6 +83,8 @@
     <Compile Include="Mapping\CariMap.cs" />
     <Compile Include="Mapping\DepoMap.cs" />
     <Compile Include="Mapping\FisMap.cs" />
+    <Compile Include="Mapping\HizliSatisGrupMap.cs" />
+    <Compile Include="Mapping\HizliSatisMap.cs" />
     <Compile Include="Mapping\IndirimMap.cs" />
     <Compile Include="Mapping\KasaHareketMap.cs" />
     <Compile Include="Mapping\KasaMap.cs" />
@@ -89,9 +93,9 @@
     <Compile Include="Mapping\StokHareketMap.cs" />
     <Compile Include="Mapping\StokMap.cs" />
     <Compile Include="Mapping\TanimMap.cs" />
-    <Compile Include="Migrations\202401011424573_InitialCreate.cs" />
-    <Compile Include="Migrations\202401011424573_InitialCreate.designer.cs">
-      <DependentUpon>202401011424573_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202403151715575_InitialCreate.cs" />
+    <Compile Include="Migrations\202403151715575_InitialCreate.designer.cs">
+      <DependentUpon>202403151715575_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +103,8 @@
     <Compile Include="Tables\Cari.cs" />
     <Compile Include="Tables\EFAppointment.cs" />
     <Compile Include="Tables\EFResource.cs" />
+    <Compile Include="Tables\HizliSatis.cs" />
+    <Compile Include="Tables\HizliSatisGrup.cs" />
     <Compile Include="Tables\Indirim.cs" />
     <Compile Include="Tables\OtherTables\CariBakiye.cs" />
     <Compile Include="Tables\Depo.cs" />
@@ -120,6 +126,8 @@
     <Compile Include="Validations\CariValidator.cs" />
     <Compile Include="Validations\DepoValidator.cs" />
     <Compile Include="Validations\FisValidator.cs" />
+    <Compile Include="Validations\HizliSatisGrupValidator.cs" />
+    <Compile Include="Validations\HizliSatisValidator.cs" />
     <Compile Include="Validations\IndirimValidator.cs" />
     <Compile Include="Validations\KasaHareketValidator.cs" />
     <Compile Include="Validations\KasaValidator.cs" />
@@ -134,8 +142,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202401011424573_InitialCreate.resx">
-      <DependentUpon>202401011424573_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202403151715575_InitialCreate.resx">
+      <DependentUpon>202403151715575_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

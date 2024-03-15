@@ -22,6 +22,8 @@ namespace SonicHesap.Entities.Context
         public DbSet<Tanim> Tanimlar { get; set; }
         public DbSet<Personel> Personeller { get; set; }
         public DbSet<Indirim> Indirimler { get; set; }
+        public DbSet<HizliSatis> HizliSatislar { get; set; }
+        public DbSet<HizliSatisGrup> HizliSatisGruplari { get; set; }
         public DbSet<EFAppointment> EFAppointments { get; set; }
         public DbSet<EFResource> EFResources { get; set; }
 
@@ -39,6 +41,8 @@ namespace SonicHesap.Entities.Context
             modelBuilder.Configurations.Add(new TanimMap());
             modelBuilder.Configurations.Add(new PersonelMap());
             modelBuilder.Configurations.Add(new IndirimMap());
+            modelBuilder.Configurations.Add(new HizliSatisMap());
+            modelBuilder.Configurations.Add(new HizliSatisGrupMap());
         }
     }
 }

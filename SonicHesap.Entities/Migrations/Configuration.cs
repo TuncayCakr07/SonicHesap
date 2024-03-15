@@ -9,9 +9,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true; 
-            ContextKey = "SonicHesap.Entities.Context.SonicHesapContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(SonicHesap.Entities.Context.SonicHesapContext context)
