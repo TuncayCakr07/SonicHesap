@@ -1,6 +1,8 @@
 ﻿using DevExpress.XtraEditors;
+using SonicHesap.BackOffice.Stok;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
+using SonicHesap.Entities.Tables;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -92,6 +94,8 @@ namespace SonicHesap.BackOffice.HizliSatis
 
         private void btnFormKapat_Click(object sender, EventArgs e)
         {
+            txtAciklama.Text = null;
+            txtGrupAdi.Text = null;
             this.Close();
         }
 
@@ -112,5 +116,52 @@ namespace SonicHesap.BackOffice.HizliSatis
             }
         }
 
+        private void btnUrunEkle_Click(object sender, EventArgs e)
+        {
+            FrmStokSec form = new FrmStokSec(true);
+            form.ShowDialog();
+            if (form.secildi)
+            {
+                foreach (var itemStok in form.secilen)
+                {
+                    if (context.HizliSatislar.Count(c => c.Barkod == itemStok.Barkod) != 0)
+                    {
+                        hizliSatisDal.AddOrUpdate(context, new Entities.Tables.HizliSatis
+                        {
+                            Barkod = itemStok.Barkod,
+                            UrunAdi = itemStok.StokAdi,
+                            GrupId = (int)gridGrupEkle.GetFocusedRowCellValue(colId)
+                        });
+                    }
+                    else
+                    {
+                        hizliSatisDal.AddOrUpdate(context, new Entities.Tables.HizliSatis
+                        {
+                            Barkod = itemStok.Barkod,
+                            UrunAdi = itemStok.StokAdi,
+                            GrupId = (int)gridGrupEkle.GetFocusedRowCellValue(colId)
+                        });
+                    }
+                }
+                hizliSatisDal.Save(context);
+                MessageBox.Show("Ürünler Hızlı Satış Gruplarına Eklenmiştir.!","Bilgi",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+        }
+
+
+        private void btnUrunSil_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Seçili Gruptaki Ürün Listeden Çıkarılacaktır. Emin Misiniz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                gridUrunEkle.DeleteSelectedRows();
+                hizliSatisDal.Save(context);
+                MessageBox.Show("Seçili Ürün Gruptan Çıkarıldı!","Bilgi",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }

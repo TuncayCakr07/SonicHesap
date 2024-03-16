@@ -38,8 +38,9 @@
             this.colGrupAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grpGrupMenu = new DevExpress.XtraEditors.GroupControl();
-            this.btnYeni = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSil = new DevExpress.XtraEditors.SimpleButton();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btnYeni = new DevExpress.XtraEditors.SimpleButton();
             this.btnKaydet = new DevExpress.XtraEditors.SimpleButton();
             this.btnVazgec = new DevExpress.XtraEditors.SimpleButton();
             this.grpBilgi = new DevExpress.XtraEditors.GroupControl();
@@ -57,7 +58,6 @@
             this.btnUrunEkle = new DevExpress.XtraEditors.SimpleButton();
             this.btnFormKapat = new DevExpress.XtraEditors.SimpleButton();
             this.ımageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.btnSil = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             this.splitContainerControl1.Panel1.SuspendLayout();
@@ -177,6 +177,31 @@
             this.grpGrupMenu.TabIndex = 9;
             this.grpGrupMenu.Text = "Menü";
             // 
+            // btnSil
+            // 
+            this.btnSil.Appearance.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSil.Appearance.Options.UseFont = true;
+            this.btnSil.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSil.ImageOptions.ImageIndex = 3;
+            this.btnSil.ImageOptions.ImageList = this.ımageList1;
+            this.btnSil.Location = new System.Drawing.Point(106, 28);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(104, 59);
+            this.btnSil.TabIndex = 3;
+            this.btnSil.Text = "Sil";
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
+            // 
+            // ımageList1
+            // 
+            this.ımageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ımageList1.ImageStream")));
+            this.ımageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.ımageList1.Images.SetKeyName(0, "floppy_disk.png");
+            this.ımageList1.Images.SetKeyName(1, "folder_out.png");
+            this.ımageList1.Images.SetKeyName(2, "add.png");
+            this.ımageList1.Images.SetKeyName(3, "delete.png");
+            this.ımageList1.Images.SetKeyName(4, "floppy_disk.png");
+            this.ımageList1.Images.SetKeyName(5, "floppy_disk_delete.png");
+            // 
             // btnYeni
             // 
             this.btnYeni.Appearance.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -190,17 +215,6 @@
             this.btnYeni.TabIndex = 2;
             this.btnYeni.Text = "Yeni";
             this.btnYeni.Click += new System.EventHandler(this.btnYeni_Click);
-            // 
-            // ımageList1
-            // 
-            this.ımageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ımageList1.ImageStream")));
-            this.ımageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.ımageList1.Images.SetKeyName(0, "floppy_disk.png");
-            this.ımageList1.Images.SetKeyName(1, "folder_out.png");
-            this.ımageList1.Images.SetKeyName(2, "add.png");
-            this.ımageList1.Images.SetKeyName(3, "delete.png");
-            this.ımageList1.Images.SetKeyName(4, "floppy_disk.png");
-            this.ımageList1.Images.SetKeyName(5, "floppy_disk_delete.png");
             // 
             // btnKaydet
             // 
@@ -357,6 +371,7 @@
             this.btnUrunSil.Size = new System.Drawing.Size(104, 59);
             this.btnUrunSil.TabIndex = 3;
             this.btnUrunSil.Text = "Sil";
+            this.btnUrunSil.Click += new System.EventHandler(this.btnUrunSil_Click);
             // 
             // btnUrunEkle
             // 
@@ -370,6 +385,7 @@
             this.btnUrunEkle.Size = new System.Drawing.Size(104, 59);
             this.btnUrunEkle.TabIndex = 2;
             this.btnUrunEkle.Text = "Ekle";
+            this.btnUrunEkle.Click += new System.EventHandler(this.btnUrunEkle_Click);
             // 
             // btnFormKapat
             // 
@@ -392,20 +408,6 @@
             this.ımageList2.Images.SetKeyName(0, "add.png");
             this.ımageList2.Images.SetKeyName(1, "delete.png");
             // 
-            // btnSil
-            // 
-            this.btnSil.Appearance.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSil.Appearance.Options.UseFont = true;
-            this.btnSil.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnSil.ImageOptions.ImageIndex = 3;
-            this.btnSil.ImageOptions.ImageList = this.ımageList1;
-            this.btnSil.Location = new System.Drawing.Point(106, 28);
-            this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(104, 59);
-            this.btnSil.TabIndex = 3;
-            this.btnSil.Text = "Sil";
-            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
-            // 
             // FrmHizliSatis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -414,7 +416,8 @@
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.lblBaslik);
             this.Name = "FrmHizliSatis";
-            this.Text = "FrmHizliSatis";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Hızlı Satış İşlemleri Menüsü";
             this.Load += new System.EventHandler(this.FrmHizliSatis_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
             this.splitContainerControl1.Panel1.ResumeLayout(false);

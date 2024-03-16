@@ -52,7 +52,8 @@ namespace SonicHesap.BackOffice.Stok
             }
             else
             {
-                MessageBox.Show("Seçili Bir Ürün Bulunamadı!","Uyarı!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Seçili Bir Ürün Bulunamadı!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
     }

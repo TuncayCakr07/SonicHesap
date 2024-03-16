@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraTab;
 using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
 using SonicHesap.BackOffice.Fis;
@@ -25,7 +26,7 @@ namespace SonicHesap.FrontOffice
         Entities.Tables.Fis _fisEntity = new Entities.Tables.Fis();
         FisAyarlari ayarlar = new FisAyarlari();
         CariDAL cariDal = new CariDAL();
-        SonicHesapContext contex = new SonicHesapContext();
+        SonicHesapContext context = new SonicHesapContext();
         CariBakiye entityBakiye = new CariBakiye();
         FisDAL fisDal = new FisDAL();
         KasaHareketDAL kasaHareketDal = new KasaHareketDAL();
@@ -34,7 +35,7 @@ namespace SonicHesap.FrontOffice
         public FrmFrontOffice()
         {
             InitializeComponent();
-            gridContStokHareket.DataSource = contex.StokHareketleri.Local.ToBindingList();
+            gridContStokHareket.DataSource = context.StokHareketleri.Local.ToBindingList();
             txtFisKodu.DataBindings.Add("Text", _fisEntity, "FisKodu", false, DataSourceUpdateMode.OnPropertyChanged);
             txtBelgeNo.DataBindings.Add("Text", _fisEntity, "BelgeNo", false, DataSourceUpdateMode.OnPropertyChanged);
             txtAciklama.DataBindings.Add("Text", _fisEntity, "Aciklama", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -52,9 +53,46 @@ namespace SonicHesap.FrontOffice
             txtIslem.Text = "SATIŞ";
             this.WindowState = FormWindowState.Maximized;
         }
-
+        private void HizliSatis_Click(object sender, EventArgs e)
+        {
+            var buton = sender as SimpleButton;
+            Stok entity=new Stok();
+            entity = context.Stoklar.SingleOrDefault(c => c.Barkod == buton.Name);
+            if (entity != null)
+            {
+                stokHareketDal.AddOrUpdate(context, StokSec(entity));
+                Toplamlar();
+            }
+            else
+            {
+                MessageBox.Show("Aradığınız Barkod Numarasına Ait Ürün Bulunamadı!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            txtMiktar.Value = 1;
+        }
         private void ButonlariYukle()
         {
+
+            foreach (var hizliSatisGrup in context.HizliSatisGruplari.ToList())
+            {
+                XtraTabPage page = new XtraTabPage { Name = hizliSatisGrup.Id.ToString(), Text = hizliSatisGrup.GrupAdi };
+                FlowLayoutPanel panel = new FlowLayoutPanel();
+                panel.Dock = DockStyle.Fill;
+                page.Controls.Add(panel);
+                foreach (var hizliSatis in context.HizliSatislar.Where(c=>c.GrupId==hizliSatisGrup.Id).ToList())
+                {
+                    SimpleButton buton=new SimpleButton 
+                    {
+                        Name=hizliSatis.Barkod,
+                        Text=hizliSatis.UrunAdi,
+                        Height=150,
+                        Width=150,
+                    };
+                    buton.Click += HizliSatis_Click;
+                    panel.Controls.Add(buton);   
+                }
+                xtraTabControl1.TabPages.Add(page);
+            }
+
             //foreach (var item in contex.OdemeTurleri.ToList())
             //{
             //    var buton = new SimpleButton
@@ -79,7 +117,7 @@ namespace SonicHesap.FrontOffice
             SecimTemizle.Click += PersonelEkle_Click;
             flowPersonel.Controls.Add(SecimTemizle);
 
-            foreach (var item in contex.Personeller.ToList())
+            foreach (var item in context.Personeller.ToList())
             {
                 var buton = new CheckButton
                 {
@@ -119,7 +157,7 @@ namespace SonicHesap.FrontOffice
             form.ShowDialog();
             if (form.secildi)
             {
-                stokHareketDal.AddOrUpdate(contex, StokSec(form.secilen.First()));
+                stokHareketDal.AddOrUpdate(context, StokSec(form.secilen.First()));
                 Toplamlar();
             }
         }
@@ -131,9 +169,9 @@ namespace SonicHesap.FrontOffice
             stokHareket.StokKodu = entity.StokKodu;
             stokHareket.StokAdi = entity.StokAdi;
             stokHareket.Barkod = entity.Barkod;
-            stokHareket.IndirimOrani = indirimDal.StokIndirimi(contex, entity.StokKodu);
+            stokHareket.IndirimOrani = indirimDal.StokIndirimi(context, entity.StokKodu);
             stokHareket.DepoKodu = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepo);
-            stokHareket.DepoAdi = contex.Depolar.SingleOrDefault(x => x.DepoKodu == stokHareket.DepoKodu).DepoAdi;
+            stokHareket.DepoAdi = context.Depolar.SingleOrDefault(x => x.DepoKodu == stokHareket.DepoKodu).DepoAdi;
             stokHareket.BarkodTuru = entity.BarkodTuru;
             stokHareket.BirimFiyati = _fisEntity.FisTuru == "Alış Faturası" ? entity.AlisFiyati1 : entity.SatisFiyati1;
             stokHareket.Birimi = entity.Birimi;
@@ -166,7 +204,7 @@ namespace SonicHesap.FrontOffice
             if (form.secildi)
             {
                 Entities.Tables.Cari entity = form.secilen.FirstOrDefault();
-                entityBakiye = cariDal.CariBakiyesi(contex, entity.CariKodu);
+                entityBakiye = cariDal.CariBakiyesi(context, entity.CariKodu);
 
                 txtCariKodu.Text = entity.CariKodu;
                 txtCariAdi.Text = entity.CariAdi;
@@ -235,7 +273,7 @@ namespace SonicHesap.FrontOffice
         private void repoBirimFiyat_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             string fiyatSecilen = gridStokHareket.GetFocusedRowCellValue(colStokKodu).ToString();
-            Entities.Tables.Stok fiyatEntity = contex.Stoklar.Where(c => c.StokKodu == fiyatSecilen).SingleOrDefault();
+            Entities.Tables.Stok fiyatEntity = context.Stoklar.Where(c => c.StokKodu == fiyatSecilen).SingleOrDefault();
 
             barFiyat1.Tag = _fisEntity.FisTuru == "Alış Faturası" ? fiyatEntity.AlisFiyati1 ?? 0 : fiyatEntity.SatisFiyati1 ?? 0;
             barFiyat2.Tag = _fisEntity.FisTuru == "Alış Faturası" ? fiyatEntity.AlisFiyati2 ?? 0 : fiyatEntity.SatisFiyati2 ?? 0;
@@ -264,7 +302,7 @@ namespace SonicHesap.FrontOffice
             if (form.secildi)
             {
                 Entities.Tables.Cari entity = form.secilen.FirstOrDefault();
-                entityBakiye = cariDal.CariBakiyesi(contex, entity.CariKodu);
+                entityBakiye = cariDal.CariBakiyesi(context, entity.CariKodu);
 
                 txtCariKodu.Text = entity.CariKodu;
                 txtCariAdi.Text = entity.CariAdi;
@@ -288,7 +326,7 @@ namespace SonicHesap.FrontOffice
             form.ShowDialog();
             if (form.secildi)
             {
-                stokHareketDal.AddOrUpdate(contex, StokSec(form.secilen.First()));
+                stokHareketDal.AddOrUpdate(context, StokSec(form.secilen.First()));
                 Toplamlar();
             }
         }
@@ -315,7 +353,7 @@ namespace SonicHesap.FrontOffice
                     _fisEntity.BelgeNo = null;
                     _fisEntity.Aciklama = null;
                     btnTemizle_Click(sender, e);
-                    contex.StokHareketleri.Local.Clear();
+                    context.StokHareketleri.Local.Clear();
                 }
             }
             else
@@ -360,10 +398,10 @@ namespace SonicHesap.FrontOffice
             if (e.KeyCode == Keys.Enter)
             {
                 Entities.Tables.Stok entity;
-                entity = contex.Stoklar.Where(c => c.Barkod == txtBarkod.Text).SingleOrDefault();
+                entity = context.Stoklar.Where(c => c.Barkod == txtBarkod.Text).SingleOrDefault();
                 if (entity != null)
                 {
-                    stokHareketDal.AddOrUpdate(contex, StokSec(entity));
+                    stokHareketDal.AddOrUpdate(context, StokSec(entity));
                     Toplamlar();
                 }
                 else
