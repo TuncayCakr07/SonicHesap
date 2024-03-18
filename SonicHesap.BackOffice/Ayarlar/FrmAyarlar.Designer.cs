@@ -42,13 +42,21 @@
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.lookupDepo = new DevExpress.XtraEditors.GridLookUpEdit();
-            this.depoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colDepoKodu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDepoAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYetkiliKodu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYetkiliAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.LookUpKasa = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.depoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
@@ -57,8 +65,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.toggleGuncelle.Properties)).BeginInit();
             this.navigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookupDepo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LookUpKasa.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBaslik
@@ -171,7 +181,9 @@
             // navigationPage2
             // 
             this.navigationPage2.Caption = "Satış Ayarları";
+            this.navigationPage2.Controls.Add(this.labelControl2);
             this.navigationPage2.Controls.Add(this.labelControl3);
+            this.navigationPage2.Controls.Add(this.LookUpKasa);
             this.navigationPage2.Controls.Add(this.lookupDepo);
             this.navigationPage2.Name = "navigationPage2";
             this.navigationPage2.Size = new System.Drawing.Size(928, 385);
@@ -201,10 +213,6 @@
             this.lookupDepo.Properties.ValueMember = "DepoKodu";
             this.lookupDepo.Size = new System.Drawing.Size(568, 22);
             this.lookupDepo.TabIndex = 2;
-            // 
-            // depoBindingSource
-            // 
-            this.depoBindingSource.DataSource = typeof(SonicHesap.Entities.Tables.Depo);
             // 
             // gridLookUpEdit1View
             // 
@@ -254,6 +262,83 @@
             this.colAciklama.Visible = true;
             this.colAciklama.VisibleIndex = 4;
             // 
+            // LookUpKasa
+            // 
+            this.LookUpKasa.Location = new System.Drawing.Point(133, 35);
+            this.LookUpKasa.Name = "LookUpKasa";
+            this.LookUpKasa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.LookUpKasa.Properties.DisplayMember = "KasaAdi";
+            this.LookUpKasa.Properties.NullText = "Kasa Seçiniz..";
+            this.LookUpKasa.Properties.PopupView = this.gridView1;
+            this.LookUpKasa.Properties.ValueMember = "KasaKodu";
+            this.LookUpKasa.Size = new System.Drawing.Size(568, 22);
+            this.LookUpKasa.TabIndex = 2;
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Options.UseTextOptions = true;
+            this.labelControl2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl2.Location = new System.Drawing.Point(4, 33);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(123, 24);
+            this.labelControl2.TabIndex = 1;
+            this.labelControl2.Text = "Varsayılan Kasa :";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.FieldName = "KasaKodu";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.FieldName = "KasaAdi";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.FieldName = "YetkiliKodu";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.FieldName = "YetkiliAdi";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.FieldName = "Aciklama";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 4;
+            // 
+            // depoBindingSource
+            // 
+            this.depoBindingSource.DataSource = typeof(SonicHesap.Entities.Tables.Depo);
+            // 
             // FrmAyarlar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -278,8 +363,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.toggleGuncelle.Properties)).EndInit();
             this.navigationPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lookupDepo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LookUpKasa.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -305,5 +392,13 @@
         private DevExpress.XtraGrid.Columns.GridColumn colAciklama;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.ToggleSwitch toggleGuncelle;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.GridLookUpEdit LookUpKasa;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
     }
 }

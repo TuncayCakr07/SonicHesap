@@ -18,11 +18,14 @@ namespace SonicHesap.BackOffice.Ayarlar
     {
         SonicHesapContext context = new SonicHesapContext();
         DepoDAL depoDAL = new DepoDAL();
+        KasaDAL kasaDAL = new KasaDAL();
         public FrmAyarlar()
         {
             InitializeComponent();
             lookupDepo.Properties.DataSource = depoDAL.GetAll(context);
             lookupDepo.EditValue = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepo);
+            LookUpKasa.Properties.DataSource = kasaDAL.GetAll(context);
+            LookUpKasa.EditValue = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa);
             toggleGuncelle.IsOn = Convert.ToBoolean(SettingsTool.AyarOku(SettingsTool.Ayarlar.GenelAyarlar_GuncellemeKontrol));
         }
 
@@ -34,6 +37,8 @@ namespace SonicHesap.BackOffice.Ayarlar
             {
                 SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepo, lookupDepo.EditValue.ToString());
                 SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepoAdi, lookupDepo.Text.ToString());
+                SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa, LookUpKasa.EditValue.ToString());
+                SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasaAdi, LookUpKasa.Text.ToString());
                 SettingsTool.AyarDegistir(SettingsTool.Ayarlar.GenelAyarlar_GuncellemeKontrol, toggleGuncelle.IsOn.ToString());
                 SettingsTool.Save();
                 MessageBox.Show("Ayarlar başarıyla kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);

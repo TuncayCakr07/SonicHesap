@@ -1,4 +1,4 @@
-﻿using IniParser;
+﻿    using IniParser;
 using IniParser.Model;
 using System;
 using System.Collections.Generic;
@@ -40,6 +40,8 @@ namespace SonicHesap.Entities.Tools
             KullaniciAyarlari_Parola,
             SatisAyarlari_VarsayilanDepo,
             SatisAyarlari_VarsayilanDepoAdi,
+            SatisAyarlari_VarsayilanKasa,
+            SatisAyarlari_VarsayilanKasaAdi,
             YedeklemeAyarlari_YedeklemeKonumu,
             YedeklemeAyarlari_OtomatikYedekleme,
             YedeklemeAyarlari_OtomatikYedekAl,

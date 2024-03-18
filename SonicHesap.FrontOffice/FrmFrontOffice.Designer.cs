@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFrontOffice));
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -55,7 +54,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
-            this.ımageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.ımageList2 = new System.Windows.Forms.ImageList();
             this.navigationPane1 = new DevExpress.XtraBars.Navigation.NavigationPane();
             this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -115,7 +114,7 @@
             this.btnCariSec = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.txtAciklama = new DevExpress.XtraEditors.MemoEdit();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -161,7 +160,8 @@
             this.txtBarkod = new DevExpress.XtraEditors.TextEdit();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.radialFiyat = new DevExpress.XtraBars.Ribbon.RadialMenu(this.components);
+            this.radialFiyat = new DevExpress.XtraBars.Ribbon.RadialMenu();
+            this.flowOdemeTurleri = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
             this.navigationPane1.SuspendLayout();
             this.navigationPage1.SuspendLayout();
@@ -1248,6 +1248,7 @@
             // splitContainerControl1.Panel1
             // 
             this.splitContainerControl1.Panel1.Controls.Add(this.gridContStokHareket);
+            this.splitContainerControl1.Panel1.Controls.Add(this.flowOdemeTurleri);
             this.splitContainerControl1.Panel1.Controls.Add(this.panelControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             // 
@@ -1256,14 +1257,14 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(969, 883);
-            this.splitContainerControl1.SplitterPosition = 288;
+            this.splitContainerControl1.SplitterPosition = 365;
             this.splitContainerControl1.TabIndex = 1;
             // 
             // gridContStokHareket
             // 
             this.gridContStokHareket.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridContStokHareket.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.gridContStokHareket.Location = new System.Drawing.Point(0, 69);
+            this.gridContStokHareket.Location = new System.Drawing.Point(0, 132);
             this.gridContStokHareket.MainView = this.gridStokHareket;
             this.gridContStokHareket.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.gridContStokHareket.Name = "gridContStokHareket";
@@ -1272,7 +1273,7 @@
             this.repoBirimFiyat,
             this.repoDepoSecim,
             this.repoSeriNo});
-            this.gridContStokHareket.Size = new System.Drawing.Size(969, 219);
+            this.gridContStokHareket.Size = new System.Drawing.Size(969, 233);
             this.gridContStokHareket.TabIndex = 3;
             this.gridContStokHareket.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridStokHareket});
@@ -1657,7 +1658,7 @@
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.Size = new System.Drawing.Size(969, 583);
+            this.xtraTabControl1.Size = new System.Drawing.Size(969, 506);
             this.xtraTabControl1.TabIndex = 0;
             // 
             // radialFiyat
@@ -1671,6 +1672,15 @@
             this.radialFiyat.Manager = this.barManager1;
             this.radialFiyat.Name = "radialFiyat";
             this.radialFiyat.PaintStyle = DevExpress.XtraBars.Ribbon.PaintStyle.Classic;
+            // 
+            // flowOdemeTurleri
+            // 
+            this.flowOdemeTurleri.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowOdemeTurleri.Location = new System.Drawing.Point(0, 69);
+            this.flowOdemeTurleri.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.flowOdemeTurleri.Name = "flowOdemeTurleri";
+            this.flowOdemeTurleri.Size = new System.Drawing.Size(969, 63);
+            this.flowOdemeTurleri.TabIndex = 5;
             // 
             // FrmFrontOffice
             // 
@@ -1857,6 +1867,7 @@
         private DevExpress.XtraEditors.CheckButton chSatisIptal;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.CalcEdit txtIndirimToplam;
+        private System.Windows.Forms.FlowLayoutPanel flowOdemeTurleri;
     }
 }
 

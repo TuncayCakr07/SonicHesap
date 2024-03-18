@@ -39,8 +39,8 @@ namespace SonicHesap.FrontOffice
             txtFisKodu.DataBindings.Add("Text", _fisEntity, "FisKodu", false, DataSourceUpdateMode.OnPropertyChanged);
             txtBelgeNo.DataBindings.Add("Text", _fisEntity, "BelgeNo", false, DataSourceUpdateMode.OnPropertyChanged);
             txtAciklama.DataBindings.Add("Text", _fisEntity, "Aciklama", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtCariKodu.DataBindings.Add("Text", _fisEntity, "CariKodu", false, DataSourceUpdateMode.OnPropertyChanged,null);
-            txtCariAdi.DataBindings.Add("Text", _fisEntity, "CariAdi", false, DataSourceUpdateMode.OnPropertyChanged,null);
+            txtCariKodu.DataBindings.Add("Text", _fisEntity, "CariKodu", false, DataSourceUpdateMode.OnPropertyChanged, null);
+            txtCariAdi.DataBindings.Add("Text", _fisEntity, "CariAdi", false, DataSourceUpdateMode.OnPropertyChanged, null);
             txtFaturaUnvani.DataBindings.Add("Text", _fisEntity, "FaturaUnvani", false, DataSourceUpdateMode.OnPropertyChanged);
             txtCepTelefonu.DataBindings.Add("Text", _fisEntity, "CepTelefonu", false, DataSourceUpdateMode.OnPropertyChanged);
             txtIl.DataBindings.Add("Text", _fisEntity, "Il", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -56,7 +56,7 @@ namespace SonicHesap.FrontOffice
         private void HizliSatis_Click(object sender, EventArgs e)
         {
             var buton = sender as SimpleButton;
-            Stok entity=new Stok();
+            Stok entity = new Stok();
             entity = context.Stoklar.SingleOrDefault(c => c.Barkod == buton.Name);
             if (entity != null)
             {
@@ -78,33 +78,36 @@ namespace SonicHesap.FrontOffice
                 FlowLayoutPanel panel = new FlowLayoutPanel();
                 panel.Dock = DockStyle.Fill;
                 page.Controls.Add(panel);
-                foreach (var hizliSatis in context.HizliSatislar.Where(c=>c.GrupId==hizliSatisGrup.Id).ToList())
+                foreach (var hizliSatis in context.HizliSatislar.Where(c => c.GrupId == hizliSatisGrup.Id).ToList())
                 {
-                    SimpleButton buton=new SimpleButton 
+                    SimpleButton buton = new SimpleButton
                     {
-                        Name=hizliSatis.Barkod,
-                        Text=hizliSatis.UrunAdi,
-                        Height=150,
-                        Width=150,
+                        Name = hizliSatis.Barkod,
+                        Text = hizliSatis.UrunAdi,
+                        Height = 150,
+                        Width = 150,
                     };
                     buton.Click += HizliSatis_Click;
-                    panel.Controls.Add(buton);   
+                    panel.Controls.Add(buton);
                 }
                 xtraTabControl1.TabPages.Add(page);
             }
 
-            //foreach (var item in contex.OdemeTurleri.ToList())
-            //{
-            //    var buton = new SimpleButton
-            //    {
-            //        Name = item.OdemeTuruKodu,
-            //        Text = item.OdemeTuruAdi,
-            //        Height = 55,
-            //        Width = 110,
-            //    };
-            //    buton.Click += OdemeEkle_Click;
-            //    flowOdemeTurleri.Controls.Add(buton);
-            //}
+            foreach (var item in context.OdemeTurleri.ToList())
+            {
+                var buton = new SimpleButton
+                {
+                    Name = item.OdemeTuruKodu,
+                    Text = item.OdemeTuruAdi,
+                    Height = 55,
+                    Width = 110,
+                };
+                buton.Click += OdemeEkle_Click;
+                flowOdemeTurleri.Controls.Add(buton);
+            }
+
+
+
             var SecimTemizle = new CheckButton
             {
                 Name = "Temizle",
@@ -112,7 +115,7 @@ namespace SonicHesap.FrontOffice
                 GroupIndex = 1,
                 Height = 70,
                 Width = 150,
-                Checked =true,
+                Checked = true,
             };
             SecimTemizle.Click += PersonelEkle_Click;
             flowPersonel.Controls.Add(SecimTemizle);
@@ -149,7 +152,92 @@ namespace SonicHesap.FrontOffice
             }
 
         }
+        private void OdemeEkle_Click(object sender, EventArgs e)
+        {
+            var buton = (sender as SimpleButton);
+            string kasaKodu = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa);
+            _fisEntity.FisTuru = txtIslem.Text == "İADE" ? "Satış İade Faturası" : "Perakende Satış Faturası";
+            kasaHareketDal.AddOrUpdate(context, new KasaHareket
+            {
+                CariKodu = txtCariKodu.Text,
+                CariAdi = txtCariAdi.Text,
+                FisKodu = txtFisKodu.Text,
+                Hareket = txtIslem.Text == "İADE" ? "Kasa Çıkış" : "Kasa Giriş",
+                KasaKodu = kasaKodu,
+                KasaAdi = context.Kasalar.SingleOrDefault(x => x.KasaKodu == kasaKodu).KasaAdi,
+                OdemeTuruKodu = buton.Name,
+                OdemeTuruAdi = buton.Text,
+                Tarih=DateTime.Now,
+                Tutar=txtToplam.Value,
+            });
 
+            foreach (var stokVeri in context.StokHareketleri.Local.ToList())
+            {
+                stokVeri.Tarih = DateTime.Now;
+                stokVeri.FisKodu = txtFisKodu.Text;
+                stokVeri.Hareket = txtIslem.Text == "İADE" ? "Stok Giriş" : "Stok Çıkış";
+            }
+            _fisEntity.ToplamTutar = txtToplam.Value;
+            _fisEntity.IskontoOrani = txtIskontoOrani.Value;
+            _fisEntity.IskontoTutar = txtIskontoTutar.Value;
+            _fisEntity.Tarih = DateTime.Now;
+            fisDal.AddOrUpdate(context,_fisEntity);
+            context.SaveChanges();
+            //if (ayarlar.SatisEkrani == false)
+            //{
+            //    FrmOdemeEkrani form = new FrmOdemeEkrani(buton.Text, buton.Name);
+            //    form.ShowDialog();
+            //    if (form.entity != null)
+            //    {
+            //        // Ödeme türü adını da ekleyin
+            //        form.entity.OdemeTuruAdi = buton.Text;
+            //        kasaHareketDal.AddOrUpdate(context, form.entity);
+            //        OdenenTutarGuncelle();
+            //    }
+            //}
+            //else
+            //{
+            //    string odemeTuruKodu = buton.Name;
+            //    string odemeTuruAdi = buton.Text;
+
+            //    if (string.IsNullOrEmpty(odemeTuruKodu) || string.IsNullOrEmpty(odemeTuruAdi))
+            //    {
+            //        MessageBox.Show("Ödeme Türü ve Adı Boş Olamaz!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        return;
+            //    }
+
+            //    KasaHareket entitykasaHareket = new KasaHareket
+            //    {
+            //        OdemeTuruKodu = odemeTuruKodu,
+            //        OdemeTuruAdi = odemeTuruAdi,
+            //        Tutar = txtOdenmesiGereken.Value
+            //    };
+            //    if (txtOdenmesiGereken.Value <= 0)
+            //    {
+            //        MessageBox.Show("Ödeme Yapılacak Tutar Bulunamadı!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //    else
+            //    {
+            //        kasaHareketDal.AddOrUpdate(context, entitykasaHareket);
+            //        OdenenTutarGuncelle();
+            //    }
+            //}
+        }
+
+        //private void OdenenTutarGuncelle()
+        //{
+        //    gridKasaHareket.UpdateSummary();
+        //    if (ayarlar.SatisEkrani)
+        //    {
+        //        txtOdenenTutar.Value = Convert.ToDecimal(colTutar.SummaryItem.SummaryValue);
+        //        txtOdenmesiGereken.Value = txtToplam.Value - txtOdenenTutar.Value;
+        //    }
+        //    else
+        //    {
+        //        txtToplam.Value = Convert.ToDecimal(colTutar.SummaryItem.SummaryValue);
+        //    }
+
+        //}
 
         private void btnStokSec_Click(object sender, EventArgs e)
         {
@@ -187,13 +275,13 @@ namespace SonicHesap.FrontOffice
             txtToplam.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) - txtIskontoTutar.Value;
             txtKDVToplam.Value = Convert.ToDecimal(colKdvToplam.SummaryItem.SummaryValue);
             txtIndirimToplam.Value = Convert.ToDecimal(colIndirimtutari.SummaryItem.SummaryValue);
-            txtParaUstu.Value=txtOdenenTutar.Value-txtToplam.Value;
+            txtParaUstu.Value = txtOdenenTutar.Value - txtToplam.Value;
             txtAraToplam.Value = txtToplam.Value - txtKDVToplam.Value;
         }
 
         private void simpleButton13_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void btnBul_Click(object sender, EventArgs e)
@@ -286,12 +374,12 @@ namespace SonicHesap.FrontOffice
 
         private void simpleButton14_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void simpleButton16_Click(object sender, EventArgs e)
         {
-        
+
 
         }
 
@@ -379,7 +467,7 @@ namespace SonicHesap.FrontOffice
         private void ParaEkle_Click(object sender, EventArgs e)
         {
             var buton = (sender as SimpleButton);
-            txtOdenenTutar.Value += ConverterTool.StringToDecimal(buton.Tag.ToString(),".");
+            txtOdenenTutar.Value += ConverterTool.StringToDecimal(buton.Tag.ToString(), ".");
             Toplamlar();
         }
 
