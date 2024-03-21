@@ -36,6 +36,7 @@ namespace SonicHesap.FrontOffice
         {
             InitializeComponent();
             gridContStokHareket.DataSource = context.StokHareketleri.Local.ToBindingList();
+            gridContKasaHareket.DataSource = context.KasaHareketleri.Local.ToBindingList();
             txtFisKodu.DataBindings.Add("Text", _fisEntity, "FisKodu", false, DataSourceUpdateMode.OnPropertyChanged);
             txtBelgeNo.DataBindings.Add("Text", _fisEntity, "BelgeNo", false, DataSourceUpdateMode.OnPropertyChanged);
             txtAciklama.DataBindings.Add("Text", _fisEntity, "Aciklama", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -156,88 +157,152 @@ namespace SonicHesap.FrontOffice
         {
             var buton = (sender as SimpleButton);
             string kasaKodu = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa);
-            _fisEntity.FisTuru = txtIslem.Text == "İADE" ? "Satış İade Faturası" : "Perakende Satış Faturası";
-            kasaHareketDal.AddOrUpdate(context, new KasaHareket
+            if (chOdemeBol.Checked)
             {
-                CariKodu = txtCariKodu.Text,
-                CariAdi = txtCariAdi.Text,
-                FisKodu = txtFisKodu.Text,
-                Hareket = txtIslem.Text == "İADE" ? "Kasa Çıkış" : "Kasa Giriş",
-                KasaKodu = kasaKodu,
-                KasaAdi = context.Kasalar.SingleOrDefault(x => x.KasaKodu == kasaKodu).KasaAdi,
-                OdemeTuruKodu = buton.Name,
-                OdemeTuruAdi = buton.Text,
-                Tarih=DateTime.Now,
-                Tutar=txtToplam.Value,
-            });
+                if (txtOdenmesiGereken.Value == 0)
+                {
+                    MessageBox.Show("Ödenmesi Gereken Herhangi Bir Tutar Bulunamadı!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    FrmOdemeEkrani form = new FrmOdemeEkrani(buton.Text, buton.Name, txtOdenmesiGereken.Value);
+                    form.ShowDialog();
+                    if (form.entity != null)
+                    {
+                        kasaHareketDal.AddOrUpdate(context, form.entity);
+                        OdenenTutarGuncelle();
+                    }
+                }
+            }
+            else
+            {
+                kasaHareketDal.AddOrUpdate(context, new KasaHareket
+                {
+                    CariKodu = txtCariKodu.Text,
+                    CariAdi = txtCariAdi.Text,
+                    FisKodu = txtFisKodu.Text,
+                    Hareket = txtIslem.Text == "İADE" ? "Kasa Çıkış" : "Kasa Giriş",
+                    KasaKodu = kasaKodu,
+                    KasaAdi = context.Kasalar.SingleOrDefault(x => x.KasaKodu == kasaKodu).KasaAdi,
+                    OdemeTuruKodu = buton.Name,
+                    OdemeTuruAdi = buton.Text,
+                    Tarih = DateTime.Now,
+                    Tutar = txtToplam.Value,
+                });
+                FisiKaydet(sender, e);
+            }
+        }
 
+        private void FisiKaydet(object sender, EventArgs e)
+        {
+            int StokHata = context.StokHareketleri.Local.Where(c => c.DepoKodu == null).Count();
+            int KasaHata = context.KasaHareketleri.Local.Where(c => c.KasaKodu == null).Count();
+            string message = null;
+            int hata = 0;
+
+            if (gridStokHareket.RowCount == 0 && ayarlar.SatisEkrani == true)
+            {
+                message += ("Satış Ekranında Eklenmiş Bir Ürün Bulunamadı!") + System.Environment.NewLine;
+                hata++;
+            }
+
+            if (gridKasaHareket.RowCount == 0 && ayarlar.SatisEkrani == false)
+            {
+                message += ("Herhangi Bir Ödeme Bulunamadı!") + System.Environment.NewLine;
+                hata++;
+            }
+
+            if (string.IsNullOrEmpty(txtFisKodu.Text))
+            {
+                message += ("Fiş Kodu Alanı Boş Geçilemez!") + System.Environment.NewLine;
+                hata++;
+            }
+
+            if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani == true)
+            {
+                message += ("Ödenmesi Gereken Tutar Ödenmemiş Gözüküyor!") + System.Environment.NewLine;
+                hata++;
+            }
+            if (StokHata != 0)
+            {
+                message += ("Satış Ekranındaki Ürünlerin Depo Seçimlerinde Eksiklikler Var!") + System.Environment.NewLine;
+                hata++;
+            }
+            if (KasaHata != 0) // Burada StokHata yerine KasaHata kullanılmalı
+            {
+                message += ("Ödeme Ekranındaki Ödemelerin Kasa Seçimlerinde Eksiklikler Var!");
+                hata++;
+            }
+
+            if (hata != 0) // Burada StokHata yerine KasaHata kullanılmalı
+            {
+                MessageBox.Show(message, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            _fisEntity.FisTuru = txtIslem.Text == "İADE" ? "Satış İade Faturası" : "Perakende Satış Faturası";
             foreach (var stokVeri in context.StokHareketleri.Local.ToList())
             {
                 stokVeri.Tarih = DateTime.Now;
                 stokVeri.FisKodu = txtFisKodu.Text;
                 stokVeri.Hareket = txtIslem.Text == "İADE" ? "Stok Giriş" : "Stok Çıkış";
             }
+            foreach (var kasaVeri in context.KasaHareketleri.Local.ToList())
+            {
+                kasaVeri.Tarih = DateTime.Now;
+                kasaVeri.FisKodu = txtFisKodu.Text;
+                kasaVeri.Hareket = ayarlar.KasaHareketi;
+                kasaVeri.CariKodu = txtCariKodu.Text;
+                kasaVeri.CariAdi = txtCariAdi.Text;
+                kasaVeri.Tutar = txtToplam.Value;
+            }
             _fisEntity.ToplamTutar = txtToplam.Value;
             _fisEntity.IskontoOrani = txtIskontoOrani.Value;
             _fisEntity.IskontoTutar = txtIskontoTutar.Value;
             _fisEntity.Tarih = DateTime.Now;
-            fisDal.AddOrUpdate(context,_fisEntity);
+            fisDal.AddOrUpdate(context, _fisEntity);
             context.SaveChanges();
-            //if (ayarlar.SatisEkrani == false)
-            //{
-            //    FrmOdemeEkrani form = new FrmOdemeEkrani(buton.Text, buton.Name);
-            //    form.ShowDialog();
-            //    if (form.entity != null)
-            //    {
-            //        // Ödeme türü adını da ekleyin
-            //        form.entity.OdemeTuruAdi = buton.Text;
-            //        kasaHareketDal.AddOrUpdate(context, form.entity);
-            //        OdenenTutarGuncelle();
-            //    }
-            //}
-            //else
-            //{
-            //    string odemeTuruKodu = buton.Name;
-            //    string odemeTuruAdi = buton.Text;
-
-            //    if (string.IsNullOrEmpty(odemeTuruKodu) || string.IsNullOrEmpty(odemeTuruAdi))
-            //    {
-            //        MessageBox.Show("Ödeme Türü ve Adı Boş Olamaz!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //        return;
-            //    }
-
-            //    KasaHareket entitykasaHareket = new KasaHareket
-            //    {
-            //        OdemeTuruKodu = odemeTuruKodu,
-            //        OdemeTuruAdi = odemeTuruAdi,
-            //        Tutar = txtOdenmesiGereken.Value
-            //    };
-            //    if (txtOdenmesiGereken.Value <= 0)
-            //    {
-            //        MessageBox.Show("Ödeme Yapılacak Tutar Bulunamadı!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    }
-            //    else
-            //    {
-            //        kasaHareketDal.AddOrUpdate(context, entitykasaHareket);
-            //        OdenenTutarGuncelle();
-            //    }
-            //}
+            chOdemeBol.Checked = false;
+            FisTemizle();
         }
 
-        //private void OdenenTutarGuncelle()
-        //{
-        //    gridKasaHareket.UpdateSummary();
-        //    if (ayarlar.SatisEkrani)
-        //    {
-        //        txtOdenenTutar.Value = Convert.ToDecimal(colTutar.SummaryItem.SummaryValue);
-        //        txtOdenmesiGereken.Value = txtToplam.Value - txtOdenenTutar.Value;
-        //    }
-        //    else
-        //    {
-        //        txtToplam.Value = Convert.ToDecimal(colTutar.SummaryItem.SummaryValue);
-        //    }
+        private void OdenenTutarGuncelle()
+        {
+            gridKasaHareket.UpdateSummary();
+            txtOdenenTutar.Value = Convert.ToDecimal(colTutar.SummaryItem.SummaryValue);
+            txtOdenmesiGereken.Value = txtToplam.Value - txtOdenenTutar.Value;
+        }
 
-        //}
+        private void FisTemizle()
+        {
+
+            txtToplam.Text = null;
+            txtAraToplam.Text = null;
+            txtKDVToplam.Text = null;
+            txtIndirimToplam.Text = null;
+            txtIskontoOrani.Text = null;
+            txtIskontoTutar.Text = null;
+            txtOdenenTutar.Text = null;
+            txtParaUstu.Text = null;
+            txtCariKodu.Text = null;
+            txtCariAdi.Text = null;
+            txtFaturaUnvani.Text = null;
+            txtVergiDairesi.Text = null;
+            txtVergiNo.Text = null;
+            txtCepTelefonu.Text = null;
+            txtIl.Text = null;
+            txtIlce.Text = null;
+            txtSemt.Text = null;
+            txtAdres.Text = null;
+            lblAlacak.Text = "Alacak Görüntülenemiyor";
+            lblBorc.Text = "Borç Görüntülenemiyor";
+            lblBakiye.Text = "Bakiye Görüntülenemiyor";
+            _fisEntity.FisKodu = null;
+            _fisEntity.BelgeNo = null;
+            _fisEntity.Aciklama = null;
+            btnTemizle.PerformClick();
+            context.StokHareketleri.Local.Clear();
+        }
+
 
         private void btnStokSec_Click(object sender, EventArgs e)
         {
@@ -277,6 +342,7 @@ namespace SonicHesap.FrontOffice
             txtIndirimToplam.Value = Convert.ToDecimal(colIndirimtutari.SummaryItem.SummaryValue);
             txtParaUstu.Value = txtOdenenTutar.Value - txtToplam.Value;
             txtAraToplam.Value = txtToplam.Value - txtKDVToplam.Value;
+            txtOdenmesiGereken.Value = txtToplam.Value - txtOdenenTutar.Value;
         }
 
         private void simpleButton13_Click(object sender, EventArgs e)
@@ -505,6 +571,25 @@ namespace SonicHesap.FrontOffice
         private void txtIskontoOrani_Validated(object sender, EventArgs e)
         {
             Toplamlar();
+        }
+
+        private void chOdemeBol_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chOdemeBol.Checked)
+            {
+                navigationFrame1.SelectedPage = navOdeme;
+            }
+            else
+            {
+                navigationFrame1.SelectedPage = navStokHareket;
+            }
+        }
+
+        private void BtnFisKaydet_Click(object sender, EventArgs e)
+        {
+            FisiKaydet(sender, e);
+            MessageBox.Show("Satış Kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            FisTemizle();
         }
     }
 }

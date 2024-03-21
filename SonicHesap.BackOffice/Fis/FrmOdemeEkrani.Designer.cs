@@ -35,10 +35,21 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.grpBilgi = new DevExpress.XtraEditors.GroupControl();
+            this.txtAciklama = new DevExpress.XtraEditors.MemoEdit();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.txtTutar = new DevExpress.XtraEditors.CalcEdit();
             this.btnKasaSec = new DevExpress.XtraEditors.SimpleButton();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.txtKasaAdi = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtKasaKodu = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtOdemeTuru = new DevExpress.XtraEditors.TextEdit();
@@ -46,21 +57,15 @@
             this.groupAltMenu = new DevExpress.XtraEditors.GroupControl();
             this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
             this.btnKaydet = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.txtKasaAdi = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txtTutar = new DevExpress.XtraEditors.CalcEdit();
-            this.txtAciklama = new DevExpress.XtraEditors.MemoEdit();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.grpBilgi)).BeginInit();
             this.grpBilgi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTutar.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKasaAdi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKasaKodu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOdemeTuru.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupAltMenu)).BeginInit();
             this.groupAltMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKasaAdi.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTutar.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl16
@@ -100,11 +105,58 @@
             this.grpBilgi.TabIndex = 17;
             this.grpBilgi.Text = "Bilgiler";
             // 
+            // txtAciklama
+            // 
+            this.txtAciklama.Location = new System.Drawing.Point(113, 179);
+            this.txtAciklama.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.txtAciklama.Name = "txtAciklama";
+            this.txtAciklama.Size = new System.Drawing.Size(563, 115);
+            this.txtAciklama.TabIndex = 31;
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl11.Appearance.Options.UseFont = true;
+            this.labelControl11.Appearance.Options.UseTextOptions = true;
+            this.labelControl11.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl11.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl11.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl11.Location = new System.Drawing.Point(8, 179);
+            this.labelControl11.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(98, 115);
+            this.labelControl11.TabIndex = 30;
+            this.labelControl11.Text = "Açıklama :";
+            // 
+            // txtTutar
+            // 
+            this.txtTutar.Location = new System.Drawing.Point(113, 116);
+            this.txtTutar.Name = "txtTutar";
+            this.txtTutar.Properties.Appearance.BackColor = System.Drawing.Color.Green;
+            this.txtTutar.Properties.Appearance.Font = new System.Drawing.Font("DS-Digital", 22.2F, System.Drawing.FontStyle.Bold);
+            this.txtTutar.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.txtTutar.Properties.Appearance.Options.UseBackColor = true;
+            this.txtTutar.Properties.Appearance.Options.UseFont = true;
+            this.txtTutar.Properties.Appearance.Options.UseForeColor = true;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            this.txtTutar.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.txtTutar.Properties.DisplayFormat.FormatString = "C2";
+            this.txtTutar.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtTutar.Properties.EditFormat.FormatString = "\"C2\"";
+            this.txtTutar.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtTutar.Properties.NullText = "0,00₺";
+            this.txtTutar.Size = new System.Drawing.Size(564, 58);
+            this.txtTutar.TabIndex = 29;
+            this.txtTutar.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtTutar_ButtonClick);
+            // 
             // btnKasaSec
             // 
             this.btnKasaSec.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnKasaSec.Appearance.Options.UseFont = true;
-            this.btnKasaSec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnKasaSec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnKasaSec.ImageOptions.Image")));
             this.btnKasaSec.ImageOptions.ImageIndex = 3;
             this.btnKasaSec.ImageOptions.ImageList = this.ımageList1;
             this.btnKasaSec.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
@@ -124,6 +176,42 @@
             this.ımageList1.Images.SetKeyName(2, "delete.png");
             this.ımageList1.Images.SetKeyName(3, "floppy_disk.png");
             this.ımageList1.Images.SetKeyName(4, "floppy_disk_delete.png");
+            // 
+            // txtKasaAdi
+            // 
+            this.txtKasaAdi.Location = new System.Drawing.Point(113, 88);
+            this.txtKasaAdi.Name = "txtKasaAdi";
+            this.txtKasaAdi.Properties.ReadOnly = true;
+            this.txtKasaAdi.Size = new System.Drawing.Size(475, 22);
+            this.txtKasaAdi.TabIndex = 1;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Appearance.Options.UseTextOptions = true;
+            this.labelControl3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl3.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl3.Location = new System.Drawing.Point(8, 117);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(98, 57);
+            this.labelControl3.TabIndex = 0;
+            this.labelControl3.Text = "Tutar :";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Appearance.Options.UseTextOptions = true;
+            this.labelControl2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl2.Location = new System.Drawing.Point(8, 87);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(98, 24);
+            this.labelControl2.TabIndex = 0;
+            this.labelControl2.Text = "Kasa Adı :";
             // 
             // txtKasaKodu
             // 
@@ -209,86 +297,6 @@
             this.btnKaydet.Text = "Kaydet";
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Appearance.Options.UseTextOptions = true;
-            this.labelControl2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl2.Location = new System.Drawing.Point(8, 87);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(98, 24);
-            this.labelControl2.TabIndex = 0;
-            this.labelControl2.Text = "Kasa Adı :";
-            // 
-            // txtKasaAdi
-            // 
-            this.txtKasaAdi.Location = new System.Drawing.Point(113, 88);
-            this.txtKasaAdi.Name = "txtKasaAdi";
-            this.txtKasaAdi.Properties.ReadOnly = true;
-            this.txtKasaAdi.Size = new System.Drawing.Size(475, 22);
-            this.txtKasaAdi.TabIndex = 1;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Appearance.Options.UseTextOptions = true;
-            this.labelControl3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.labelControl3.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl3.Location = new System.Drawing.Point(8, 117);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(98, 57);
-            this.labelControl3.TabIndex = 0;
-            this.labelControl3.Text = "Tutar :";
-            // 
-            // txtTutar
-            // 
-            this.txtTutar.Location = new System.Drawing.Point(113, 116);
-            this.txtTutar.Name = "txtTutar";
-            this.txtTutar.Properties.Appearance.BackColor = System.Drawing.Color.Green;
-            this.txtTutar.Properties.Appearance.Font = new System.Drawing.Font("DS-Digital", 22.2F, System.Drawing.FontStyle.Bold);
-            this.txtTutar.Properties.Appearance.ForeColor = System.Drawing.Color.White;
-            this.txtTutar.Properties.Appearance.Options.UseBackColor = true;
-            this.txtTutar.Properties.Appearance.Options.UseFont = true;
-            this.txtTutar.Properties.Appearance.Options.UseForeColor = true;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
-            this.txtTutar.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.txtTutar.Properties.DisplayFormat.FormatString = "C2";
-            this.txtTutar.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtTutar.Properties.EditFormat.FormatString = "\"C2\"";
-            this.txtTutar.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtTutar.Properties.NullText = "0,00₺";
-            this.txtTutar.Size = new System.Drawing.Size(564, 58);
-            this.txtTutar.TabIndex = 29;
-            // 
-            // txtAciklama
-            // 
-            this.txtAciklama.Location = new System.Drawing.Point(113, 179);
-            this.txtAciklama.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.txtAciklama.Name = "txtAciklama";
-            this.txtAciklama.Size = new System.Drawing.Size(563, 115);
-            this.txtAciklama.TabIndex = 31;
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelControl11.Appearance.Options.UseFont = true;
-            this.labelControl11.Appearance.Options.UseTextOptions = true;
-            this.labelControl11.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.labelControl11.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl11.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl11.Location = new System.Drawing.Point(8, 179);
-            this.labelControl11.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(98, 115);
-            this.labelControl11.TabIndex = 30;
-            this.labelControl11.Text = "Açıklama :";
-            // 
             // FrmOdemeEkrani
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -305,13 +313,13 @@
             this.Load += new System.EventHandler(this.FrmOdemeEkrani_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grpBilgi)).EndInit();
             this.grpBilgi.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTutar.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKasaAdi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKasaKodu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOdemeTuru.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupAltMenu)).EndInit();
             this.groupAltMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtKasaAdi.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTutar.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using SonicHesap.BackOffice.Kasa;
 using SonicHesap.Entities.Tables;
+using SonicHesap.Entities.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,11 +18,22 @@ namespace SonicHesap.BackOffice.Fis
     {
         public KasaHareket entity;
         private string _odemeTuruKodu = null;
-        public FrmOdemeEkrani(string odemeTuru,string odemeTuruKodu)
+        private Nullable<decimal> gelenTutar;
+        public FrmOdemeEkrani(string odemeTuru,string odemeTuruKodu,Nullable<decimal>odenmesiGereken=null)
         {
             InitializeComponent();
             txtOdemeTuru.Text = odemeTuru;
             _odemeTuruKodu=odemeTuruKodu;
+            txtKasaKodu.Text = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa);
+            txtKasaAdi.Text = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasaAdi);
+            if (odenmesiGereken != null)
+            {
+                gelenTutar = odenmesiGereken.Value;
+            }
+            else 
+            {
+                txtTutar.Properties.Buttons[1].Visible = false;
+            }
         }
 
         private void FrmOdemeEkrani_Load(object sender, EventArgs e)
@@ -63,11 +75,18 @@ namespace SonicHesap.BackOffice.Fis
                 error++;
             }
 
+            if (txtTutar.Value > gelenTutar && gelenTutar!=null)
+            {
+                message += "Eklenen Tutar Ödenmesi Gereken Tutardan Büyük Olamaz!" + System.Environment.NewLine;
+                error++;
+            }
+
             if (error!=0)
             {
                 MessageBox.Show(message, "Hata!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             entity=new KasaHareket();
             entity.OdemeTuruKodu = _odemeTuruKodu;
             entity.KasaKodu = txtKasaKodu.Text;
@@ -75,6 +94,14 @@ namespace SonicHesap.BackOffice.Fis
             entity.Tutar=txtTutar.Value;
             entity.Aciklama=txtAciklama.Text;
             this.Close();
+        }
+
+        private void txtTutar_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index==1)
+            {
+                txtTutar.Value = gelenTutar.Value;
+            }
         }
     }
 }

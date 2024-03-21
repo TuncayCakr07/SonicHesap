@@ -473,7 +473,6 @@ namespace SonicHesap.BackOffice.Fis
             {
                 txtToplam.Value = Convert.ToDecimal(colTutar.SummaryItem.SummaryValue);
             }
-
         }
 
         private void PersonelEkle_Click(object sender, EventArgs e)
