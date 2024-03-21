@@ -9,6 +9,7 @@ using SonicHesap.Entities.Data_Access;
 using SonicHesap.Entities.Tables;
 using SonicHesap.Entities.Tables.OtherTables;
 using SonicHesap.Entities.Tools;
+using SonicHesap.Report.Fatura_Ve_Fiş;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,6 @@ namespace SonicHesap.FrontOffice
     public partial class FrmFrontOffice : DevExpress.XtraEditors.XtraForm
     {
         Entities.Tables.Fis _fisEntity = new Entities.Tables.Fis();
-        FisAyarlari ayarlar = new FisAyarlari();
         CariDAL cariDal = new CariDAL();
         SonicHesapContext context = new SonicHesapContext();
         CariBakiye entityBakiye = new CariBakiye();
@@ -189,6 +189,7 @@ namespace SonicHesap.FrontOffice
                     Tarih = DateTime.Now,
                     Tutar = txtToplam.Value,
                 });
+                OdenenTutarGuncelle();
                 FisiKaydet(sender, e);
             }
         }
@@ -200,13 +201,13 @@ namespace SonicHesap.FrontOffice
             string message = null;
             int hata = 0;
 
-            if (gridStokHareket.RowCount == 0 && ayarlar.SatisEkrani == true)
+            if (gridStokHareket.RowCount == 0)
             {
                 message += ("Satış Ekranında Eklenmiş Bir Ürün Bulunamadı!") + System.Environment.NewLine;
                 hata++;
             }
 
-            if (gridKasaHareket.RowCount == 0 && ayarlar.SatisEkrani == false)
+            if (gridKasaHareket.RowCount == 0)
             {
                 message += ("Herhangi Bir Ödeme Bulunamadı!") + System.Environment.NewLine;
                 hata++;
@@ -218,7 +219,7 @@ namespace SonicHesap.FrontOffice
                 hata++;
             }
 
-            if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani == true)
+            if (txtOdenmesiGereken.Value != 0)
             {
                 message += ("Ödenmesi Gereken Tutar Ödenmemiş Gözüküyor!") + System.Environment.NewLine;
                 hata++;
@@ -250,7 +251,7 @@ namespace SonicHesap.FrontOffice
             {
                 kasaVeri.Tarih = DateTime.Now;
                 kasaVeri.FisKodu = txtFisKodu.Text;
-                kasaVeri.Hareket = ayarlar.KasaHareketi;
+                kasaVeri.Hareket = txtIslem.Text == "İADE" ? "Kasa Çıkış" : "Kasa Giriş";
                 kasaVeri.CariKodu = txtCariKodu.Text;
                 kasaVeri.CariAdi = txtCariAdi.Text;
                 kasaVeri.Tutar = txtToplam.Value;
@@ -262,6 +263,9 @@ namespace SonicHesap.FrontOffice
             fisDal.AddOrUpdate(context, _fisEntity);
             context.SaveChanges();
             chOdemeBol.Checked = false;
+            ReportsPrintTool yazdir = new ReportsPrintTool();
+            rptFatura fatura = new rptFatura(txtFisKodu.Text);
+            yazdir.RaporYazdir(fatura);
             FisTemizle();
         }
 

@@ -47,6 +47,7 @@
     <Reference Include="DevExpress.XtraGrid.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -107,6 +108,10 @@
     <ProjectReference Include="..\SonicHesap.Entities\SonicHesap.Entities.csproj">
       <Project>{28160B92-CFC5-4A3B-9A16-2906492D4A07}</Project>
       <Name>SonicHesap.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SonicHesap.Report\SonicHesap.Report.csproj">
+      <Project>{F22364E4-32CD-4BFC-A10D-CEFA2377D2CC}</Project>
+      <Name>SonicHesap.Report</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

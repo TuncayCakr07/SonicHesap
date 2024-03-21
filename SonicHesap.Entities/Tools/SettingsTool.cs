@@ -42,6 +42,7 @@ namespace SonicHesap.Entities.Tools
             SatisAyarlari_VarsayilanDepoAdi,
             SatisAyarlari_VarsayilanKasa,
             SatisAyarlari_VarsayilanKasaAdi,
+            SatisAyarlari_FaturaYazdirmaAyari,
             YedeklemeAyarlari_YedeklemeKonumu,
             YedeklemeAyarlari_OtomatikYedekleme,
             YedeklemeAyarlari_OtomatikYedekAl,
