@@ -40,6 +40,8 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.toggleGuncelle = new DevExpress.XtraEditors.ToggleSwitch();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.LookUpKasa = new DevExpress.XtraEditors.GridLookUpEdit();
@@ -57,8 +59,8 @@
             this.colYetkiliKodu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYetkiliAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
@@ -66,12 +68,13 @@
             this.navigationPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleGuncelle.Properties)).BeginInit();
             this.navigationPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpKasa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupDepo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBaslik
@@ -184,7 +187,9 @@
             // navigationPage2
             // 
             this.navigationPage2.Caption = "Satış Ayarları";
+            this.navigationPage2.Controls.Add(this.comboBoxEdit2);
             this.navigationPage2.Controls.Add(this.comboBoxEdit1);
+            this.navigationPage2.Controls.Add(this.labelControl5);
             this.navigationPage2.Controls.Add(this.labelControl4);
             this.navigationPage2.Controls.Add(this.labelControl2);
             this.navigationPage2.Controls.Add(this.labelControl3);
@@ -192,6 +197,31 @@
             this.navigationPage2.Controls.Add(this.lookupDepo);
             this.navigationPage2.Name = "navigationPage2";
             this.navigationPage2.Size = new System.Drawing.Size(928, 385);
+            // 
+            // comboBoxEdit1
+            // 
+            this.comboBoxEdit1.Location = new System.Drawing.Point(172, 63);
+            this.comboBoxEdit1.Name = "comboBoxEdit1";
+            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
+            "Hemen Yazdır",
+            "Yazıcı Dialog Formunu Açarak Yazdır",
+            "Ön İzleme Göstererek Yazdır"});
+            this.comboBoxEdit1.Size = new System.Drawing.Size(365, 22);
+            this.comboBoxEdit1.TabIndex = 3;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Options.UseTextOptions = true;
+            this.labelControl4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl4.Location = new System.Drawing.Point(4, 61);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(162, 24);
+            this.labelControl4.TabIndex = 1;
+            this.labelControl4.Text = "Fatura Yazdırma Ayarı :";
             // 
             // labelControl2
             // 
@@ -344,30 +374,30 @@
             this.colAciklama.Visible = true;
             this.colAciklama.VisibleIndex = 4;
             // 
-            // comboBoxEdit1
+            // labelControl5
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(172, 63);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.labelControl5.Appearance.Options.UseTextOptions = true;
+            this.labelControl5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl5.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl5.Location = new System.Drawing.Point(4, 91);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(162, 24);
+            this.labelControl5.TabIndex = 1;
+            this.labelControl5.Text = "Bilgi Fişi Yazdırma Ayarı :";
+            // 
+            // comboBoxEdit2
+            // 
+            this.comboBoxEdit2.Location = new System.Drawing.Point(172, 93);
+            this.comboBoxEdit2.Name = "comboBoxEdit2";
+            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
+            this.comboBoxEdit2.Properties.Items.AddRange(new object[] {
             "Hemen Yazdır",
             "Yazıcı Dialog Formunu Açarak Yazdır",
             "Ön İzleme Göstererek Yazdır"});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(365, 22);
-            this.comboBoxEdit1.TabIndex = 3;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Appearance.Options.UseTextOptions = true;
-            this.labelControl4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl4.Location = new System.Drawing.Point(4, 61);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(162, 24);
-            this.labelControl4.TabIndex = 1;
-            this.labelControl4.Text = "Fatura Yazdırma Ayarı :";
+            this.comboBoxEdit2.Size = new System.Drawing.Size(365, 22);
+            this.comboBoxEdit2.TabIndex = 3;
             // 
             // FrmAyarlar
             // 
@@ -392,12 +422,13 @@
             this.navigationPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleGuncelle.Properties)).EndInit();
             this.navigationPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpKasa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupDepo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -433,5 +464,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
     }
 }

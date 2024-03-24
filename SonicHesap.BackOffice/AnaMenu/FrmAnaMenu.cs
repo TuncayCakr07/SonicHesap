@@ -347,5 +347,13 @@ namespace SonicHesap.BackOffice
             FrmHizliSatis form=new FrmHizliSatis(); 
             form.ShowDialog();
         }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            rptBilgiFisi report = new rptBilgiFisi("8987654321");
+            FrmRaporGoruntuleme form = new FrmRaporGoruntuleme(report);
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
     }
 }

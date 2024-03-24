@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraPrinting;
 using DevExpress.XtraTab;
 using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
@@ -263,9 +264,9 @@ namespace SonicHesap.FrontOffice
             fisDal.AddOrUpdate(context, _fisEntity);
             context.SaveChanges();
             chOdemeBol.Checked = false;
-            ReportsPrintTool yazdir = new ReportsPrintTool();
-            rptFatura fatura = new rptFatura(txtFisKodu.Text);
-            yazdir.RaporYazdir(fatura);
+            radialYazdir.ShowPopup(MousePosition);
+
+
             FisTemizle();
         }
 
@@ -594,6 +595,46 @@ namespace SonicHesap.FrontOffice
             FisiKaydet(sender, e);
             MessageBox.Show("Satış Kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             FisTemizle();
+        }
+
+        private void Fatura_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ReportsPrintTool yazdir = new ReportsPrintTool();
+            rptFatura fatura = new rptFatura(txtFisKodu.Text);
+            yazdir.RaporYazdir(fatura,ReportsPrintTool.Belge.Fatura);
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            // Eğer txtFisKodu.Text değeri boş veya null ise uyarı ver ve işlemi sonlandır
+            if (string.IsNullOrWhiteSpace(txtFisKodu.Text))
+            {
+                MessageBox.Show("Lütfen geçerli bir fiş kodu girin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Bilgi fişi oluştur ve yazdır
+            FisOlustur(txtFisKodu.Text);
+        }
+
+        private void FisOlustur(string fisKodu)
+        {
+            // Belirtilen fisKodu ile bir bilgi fişi oluştur
+            rptBilgiFisi bilgiFisi = new rptBilgiFisi(fisKodu);
+
+            // Raporu yazdırmak için ReportsPrintTool aracını kullan
+            ReportsPrintTool yazdir = new ReportsPrintTool();
+            yazdir.RaporYazdir(bilgiFisi, ReportsPrintTool.Belge.BilgiFisi);
+        }
+
+
+        private void repoOHSil_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                gridKasaHareket.DeleteSelectedRows();
+                Toplamlar();
+            }
         }
     }
 }
