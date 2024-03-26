@@ -31,23 +31,23 @@
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
-            this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
-            this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
-            this.lblCariAdi = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblAdres = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblIkametgah = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblTarih = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
             this.colStokAdi = new DevExpress.XtraReports.UI.XRTableCell();
             this.colMiktar = new DevExpress.XtraReports.UI.XRTableCell();
             this.colBirimFiyat = new DevExpress.XtraReports.UI.XRTableCell();
             this.colToplamTutar = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
+            this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.lblfisKodu = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblTarih = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblAdres = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblCariAdi = new DevExpress.XtraReports.UI.XRLabel();
+            this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
             this.lblGenelToplam = new DevExpress.XtraReports.UI.XRLabel();
             this.lblKdvToplam = new DevExpress.XtraReports.UI.XRLabel();
             this.lblAraToplam = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblfisKodu = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
+            this.lblKullanici = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -74,93 +74,6 @@
             this.Detail.MultiColumn.Mode = DevExpress.XtraReports.UI.MultiColumnMode.UseColumnCount;
             this.Detail.Name = "Detail";
             this.Detail.StylePriority.UseBorders = false;
-            // 
-            // ReportHeader
-            // 
-            this.ReportHeader.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.lblfisKodu,
-            this.lblIkametgah,
-            this.lblTarih,
-            this.lblAdres,
-            this.lblCariAdi});
-            this.ReportHeader.Dpi = 254F;
-            this.ReportHeader.HeightF = 323.85F;
-            this.ReportHeader.Name = "ReportHeader";
-            this.ReportHeader.StylePriority.UseBorders = false;
-            // 
-            // ReportFooter
-            // 
-            this.ReportFooter.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.lblGenelToplam,
-            this.lblKdvToplam,
-            this.lblAraToplam,
-            this.xrPageInfo1});
-            this.ReportFooter.Dpi = 254F;
-            this.ReportFooter.HeightF = 254F;
-            this.ReportFooter.Name = "ReportFooter";
-            this.ReportFooter.StylePriority.UseBorders = false;
-            // 
-            // lblCariAdi
-            // 
-            this.lblCariAdi.Dpi = 254F;
-            this.lblCariAdi.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblCariAdi.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
-            this.lblCariAdi.Multiline = true;
-            this.lblCariAdi.Name = "lblCariAdi";
-            this.lblCariAdi.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.lblCariAdi.SizeF = new System.Drawing.SizeF(705F, 58.42F);
-            this.lblCariAdi.StylePriority.UseFont = false;
-            this.lblCariAdi.StylePriority.UseTextAlignment = false;
-            this.lblCariAdi.Text = "Cari Adı";
-            this.lblCariAdi.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            // 
-            // lblAdres
-            // 
-            this.lblAdres.Dpi = 254F;
-            this.lblAdres.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblAdres.LocationFloat = new DevExpress.Utils.PointFloat(0F, 58.42F);
-            this.lblAdres.Multiline = true;
-            this.lblAdres.Name = "lblAdres";
-            this.lblAdres.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.lblAdres.SizeF = new System.Drawing.SizeF(705F, 58.42F);
-            this.lblAdres.StylePriority.UseFont = false;
-            this.lblAdres.StylePriority.UseTextAlignment = false;
-            this.lblAdres.Text = "Adres";
-            this.lblAdres.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            // 
-            // lblIkametgah
-            // 
-            this.lblIkametgah.Dpi = 254F;
-            this.lblIkametgah.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblIkametgah.LocationFloat = new DevExpress.Utils.PointFloat(133.0997F, 199.58F);
-            this.lblIkametgah.Multiline = true;
-            this.lblIkametgah.Name = "lblIkametgah";
-            this.lblIkametgah.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.lblIkametgah.SizeF = new System.Drawing.SizeF(571.9003F, 58.42001F);
-            this.lblIkametgah.StylePriority.UseFont = false;
-            this.lblIkametgah.StylePriority.UseTextAlignment = false;
-            this.lblIkametgah.Text = "[Semt]\\[Ilce]\\[Il]";
-            this.lblIkametgah.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            // 
-            // lblTarih
-            // 
-            this.lblTarih.Dpi = 254F;
-            this.lblTarih.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblTarih.LocationFloat = new DevExpress.Utils.PointFloat(133.0997F, 265.43F);
-            this.lblTarih.Multiline = true;
-            this.lblTarih.Name = "lblTarih";
-            this.lblTarih.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.lblTarih.SizeF = new System.Drawing.SizeF(571.9003F, 58.42001F);
-            this.lblTarih.StylePriority.UseFont = false;
-            this.lblTarih.StylePriority.UseTextAlignment = false;
-            this.lblTarih.Text = "Fatura Tarihi";
-            this.lblTarih.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             // 
             // xrTable1
             // 
@@ -229,13 +142,92 @@
             this.colToplamTutar.TextFormatString = "{0:C2}";
             this.colToplamTutar.Weight = 1D;
             // 
-            // xrPageInfo1
+            // ReportHeader
             // 
-            this.xrPageInfo1.Dpi = 254F;
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(451F, 195.58F);
-            this.xrPageInfo1.Name = "xrPageInfo1";
-            this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(254F, 58.42F);
+            this.ReportHeader.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.lblKullanici,
+            this.lblfisKodu,
+            this.lblTarih,
+            this.lblAdres,
+            this.lblCariAdi});
+            this.ReportHeader.Dpi = 254F;
+            this.ReportHeader.HeightF = 323.85F;
+            this.ReportHeader.Name = "ReportHeader";
+            this.ReportHeader.StylePriority.UseBorders = false;
+            // 
+            // lblfisKodu
+            // 
+            this.lblfisKodu.Dpi = 254F;
+            this.lblfisKodu.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.lblfisKodu.LocationFloat = new DevExpress.Utils.PointFloat(406.8003F, 116.84F);
+            this.lblfisKodu.Multiline = true;
+            this.lblfisKodu.Name = "lblfisKodu";
+            this.lblfisKodu.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.lblfisKodu.SizeF = new System.Drawing.SizeF(298.1997F, 58.41998F);
+            this.lblfisKodu.StylePriority.UseFont = false;
+            this.lblfisKodu.StylePriority.UseTextAlignment = false;
+            this.lblfisKodu.Text = "Fiş Kodu";
+            this.lblfisKodu.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // lblTarih
+            // 
+            this.lblTarih.Dpi = 254F;
+            this.lblTarih.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.lblTarih.LocationFloat = new DevExpress.Utils.PointFloat(0F, 265.43F);
+            this.lblTarih.Multiline = true;
+            this.lblTarih.Name = "lblTarih";
+            this.lblTarih.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.lblTarih.SizeF = new System.Drawing.SizeF(705F, 58.42001F);
+            this.lblTarih.StylePriority.UseFont = false;
+            this.lblTarih.StylePriority.UseTextAlignment = false;
+            this.lblTarih.Text = "Fatura Tarihi";
+            this.lblTarih.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            // 
+            // lblAdres
+            // 
+            this.lblAdres.Dpi = 254F;
+            this.lblAdres.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.lblAdres.LocationFloat = new DevExpress.Utils.PointFloat(3.229777E-05F, 58.42001F);
+            this.lblAdres.Multiline = true;
+            this.lblAdres.Name = "lblAdres";
+            this.lblAdres.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.lblAdres.SizeF = new System.Drawing.SizeF(705F, 58.42F);
+            this.lblAdres.StylePriority.UseFont = false;
+            this.lblAdres.StylePriority.UseTextAlignment = false;
+            this.lblAdres.Text = "Adres";
+            this.lblAdres.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // lblCariAdi
+            // 
+            this.lblCariAdi.Dpi = 254F;
+            this.lblCariAdi.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.lblCariAdi.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.lblCariAdi.Multiline = true;
+            this.lblCariAdi.Name = "lblCariAdi";
+            this.lblCariAdi.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.lblCariAdi.SizeF = new System.Drawing.SizeF(705F, 58.42F);
+            this.lblCariAdi.StylePriority.UseFont = false;
+            this.lblCariAdi.StylePriority.UseTextAlignment = false;
+            this.lblCariAdi.Text = "Cari Adı";
+            this.lblCariAdi.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // ReportFooter
+            // 
+            this.ReportFooter.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.lblGenelToplam,
+            this.lblKdvToplam,
+            this.lblAraToplam,
+            this.xrPageInfo1});
+            this.ReportFooter.Dpi = 254F;
+            this.ReportFooter.HeightF = 254F;
+            this.ReportFooter.Name = "ReportFooter";
+            this.ReportFooter.StylePriority.UseBorders = false;
             // 
             // lblGenelToplam
             // 
@@ -273,19 +265,27 @@
             this.lblAraToplam.Text = "Fatura Tarihi";
             this.lblAraToplam.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             // 
-            // lblfisKodu
+            // xrPageInfo1
             // 
-            this.lblfisKodu.Dpi = 254F;
-            this.lblfisKodu.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblfisKodu.LocationFloat = new DevExpress.Utils.PointFloat(0F, 124.0367F);
-            this.lblfisKodu.Multiline = true;
-            this.lblfisKodu.Name = "lblfisKodu";
-            this.lblfisKodu.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.lblfisKodu.SizeF = new System.Drawing.SizeF(705F, 58.42F);
-            this.lblfisKodu.StylePriority.UseFont = false;
-            this.lblfisKodu.StylePriority.UseTextAlignment = false;
-            this.lblfisKodu.Text = "Fiş Kodu";
-            this.lblfisKodu.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            this.xrPageInfo1.Dpi = 254F;
+            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(451F, 195.58F);
+            this.xrPageInfo1.Name = "xrPageInfo1";
+            this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(254F, 58.42F);
+            // 
+            // lblKullanici
+            // 
+            this.lblKullanici.Dpi = 254F;
+            this.lblKullanici.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.lblKullanici.LocationFloat = new DevExpress.Utils.PointFloat(0F, 207.01F);
+            this.lblKullanici.Multiline = true;
+            this.lblKullanici.Name = "lblKullanici";
+            this.lblKullanici.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.lblKullanici.SizeF = new System.Drawing.SizeF(370.823F, 58.42001F);
+            this.lblKullanici.StylePriority.UseFont = false;
+            this.lblKullanici.StylePriority.UseTextAlignment = false;
+            this.lblKullanici.Text = "Kullanıcı bilgi";
+            this.lblKullanici.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // rptBilgiFisi
             // 
@@ -319,7 +319,6 @@
         private DevExpress.XtraReports.UI.XRLabel lblCariAdi;
         private DevExpress.XtraReports.UI.ReportFooterBand ReportFooter;
         private DevExpress.XtraReports.UI.XRLabel lblAdres;
-        private DevExpress.XtraReports.UI.XRLabel lblIkametgah;
         private DevExpress.XtraReports.UI.XRLabel lblTarih;
         private DevExpress.XtraReports.UI.XRTable xrTable1;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow1;
@@ -332,5 +331,6 @@
         private DevExpress.XtraReports.UI.XRLabel lblKdvToplam;
         private DevExpress.XtraReports.UI.XRLabel lblAraToplam;
         private DevExpress.XtraReports.UI.XRLabel lblfisKodu;
+        private DevExpress.XtraReports.UI.XRLabel lblKullanici;
     }
 }

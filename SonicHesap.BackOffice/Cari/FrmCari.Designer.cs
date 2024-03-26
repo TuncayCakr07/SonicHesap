@@ -492,7 +492,7 @@
             // simpleButton1
             // 
             this.simpleButton1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.simpleButton1.ImageOptions.ImageIndex = 3;
+            this.simpleButton1.ImageOptions.ImageIndex = 0;
             this.simpleButton1.ImageOptions.ImageList = this.ımageList1;
             this.simpleButton1.Location = new System.Drawing.Point(557, 28);
             this.simpleButton1.Name = "simpleButton1";
@@ -516,7 +516,7 @@
             // btnGuncelle
             // 
             this.btnGuncelle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnGuncelle.ImageOptions.ImageIndex = 1;
+            this.btnGuncelle.ImageOptions.ImageIndex = 3;
             this.btnGuncelle.ImageOptions.ImageList = this.ımageList1;
             this.btnGuncelle.Location = new System.Drawing.Point(446, 28);
             this.btnGuncelle.Name = "btnGuncelle";
@@ -552,7 +552,7 @@
             // btnDuzenle
             // 
             this.btnDuzenle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnDuzenle.ImageOptions.ImageIndex = 2;
+            this.btnDuzenle.ImageOptions.ImageIndex = 1;
             this.btnDuzenle.ImageOptions.ImageList = this.ımageList1;
             this.btnDuzenle.Location = new System.Drawing.Point(113, 28);
             this.btnDuzenle.Name = "btnDuzenle";
@@ -564,7 +564,7 @@
             // btnEkle
             // 
             this.btnEkle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnEkle.ImageOptions.ImageIndex = 3;
+            this.btnEkle.ImageOptions.ImageIndex = 2;
             this.btnEkle.ImageOptions.ImageList = this.ımageList1;
             this.btnEkle.Location = new System.Drawing.Point(2, 28);
             this.btnEkle.Name = "btnEkle";

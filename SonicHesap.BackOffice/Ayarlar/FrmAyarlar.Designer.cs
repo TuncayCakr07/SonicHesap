@@ -40,27 +40,31 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.toggleGuncelle = new DevExpress.XtraEditors.ToggleSwitch();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cmbBilgiFisiAyar = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cmbFaturaAyar = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.LookUpKasa = new DevExpress.XtraEditors.GridLookUpEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lookupDepo = new DevExpress.XtraEditors.GridLookUpEdit();
-            this.depoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colDepoKodu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDepoAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYetkiliKodu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYetkiliAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.cmbFaturaYazici = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cmbBilgiFisiYazici = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.depoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
@@ -68,13 +72,15 @@
             this.navigationPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleGuncelle.Properties)).BeginInit();
             this.navigationPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBilgiFisiAyar.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFaturaAyar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpKasa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupDepo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFaturaYazici.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBilgiFisiYazici.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBaslik
@@ -91,7 +97,7 @@
             this.lblBaslik.Name = "lblBaslik";
             this.lblBaslik.Size = new System.Drawing.Size(1073, 66);
             this.lblBaslik.TabIndex = 8;
-            this.lblBaslik.Text = "Cari Kartı İşlemleri";
+            this.lblBaslik.Text = "Genel Ayarlar";
             // 
             // ımageList1
             // 
@@ -187,8 +193,12 @@
             // navigationPage2
             // 
             this.navigationPage2.Caption = "Satış Ayarları";
-            this.navigationPage2.Controls.Add(this.comboBoxEdit2);
-            this.navigationPage2.Controls.Add(this.comboBoxEdit1);
+            this.navigationPage2.Controls.Add(this.cmbBilgiFisiYazici);
+            this.navigationPage2.Controls.Add(this.cmbFaturaYazici);
+            this.navigationPage2.Controls.Add(this.cmbBilgiFisiAyar);
+            this.navigationPage2.Controls.Add(this.labelControl7);
+            this.navigationPage2.Controls.Add(this.cmbFaturaAyar);
+            this.navigationPage2.Controls.Add(this.labelControl6);
             this.navigationPage2.Controls.Add(this.labelControl5);
             this.navigationPage2.Controls.Add(this.labelControl4);
             this.navigationPage2.Controls.Add(this.labelControl2);
@@ -198,18 +208,43 @@
             this.navigationPage2.Name = "navigationPage2";
             this.navigationPage2.Size = new System.Drawing.Size(928, 385);
             // 
-            // comboBoxEdit1
+            // cmbBilgiFisiAyar
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(172, 63);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cmbBilgiFisiAyar.Location = new System.Drawing.Point(172, 123);
+            this.cmbBilgiFisiAyar.Name = "cmbBilgiFisiAyar";
+            this.cmbBilgiFisiAyar.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
+            this.cmbBilgiFisiAyar.Properties.Items.AddRange(new object[] {
             "Hemen Yazdır",
             "Yazıcı Dialog Formunu Açarak Yazdır",
             "Ön İzleme Göstererek Yazdır"});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(365, 22);
-            this.comboBoxEdit1.TabIndex = 3;
+            this.cmbBilgiFisiAyar.Size = new System.Drawing.Size(365, 22);
+            this.cmbBilgiFisiAyar.TabIndex = 3;
+            // 
+            // cmbFaturaAyar
+            // 
+            this.cmbFaturaAyar.Location = new System.Drawing.Point(172, 63);
+            this.cmbFaturaAyar.Name = "cmbFaturaAyar";
+            this.cmbFaturaAyar.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbFaturaAyar.Properties.Items.AddRange(new object[] {
+            "Hemen Yazdır",
+            "Yazıcı Dialog Formunu Açarak Yazdır",
+            "Ön İzleme Göstererek Yazdır"});
+            this.cmbFaturaAyar.Size = new System.Drawing.Size(365, 22);
+            this.cmbFaturaAyar.TabIndex = 3;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.Options.UseTextOptions = true;
+            this.labelControl5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl5.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl5.Location = new System.Drawing.Point(4, 121);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(162, 24);
+            this.labelControl5.TabIndex = 1;
+            this.labelControl5.Text = "Bilgi Fişi Yazdırma Ayarı :";
             // 
             // labelControl4
             // 
@@ -273,41 +308,6 @@
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
-            // gridColumn1
-            // 
-            this.gridColumn1.FieldName = "KasaKodu";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.FieldName = "KasaAdi";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.FieldName = "YetkiliKodu";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.FieldName = "YetkiliAdi";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.FieldName = "Aciklama";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
-            // 
             // lookupDepo
             // 
             this.lookupDepo.Location = new System.Drawing.Point(172, 7);
@@ -321,10 +321,6 @@
             this.lookupDepo.Properties.ValueMember = "DepoKodu";
             this.lookupDepo.Size = new System.Drawing.Size(365, 22);
             this.lookupDepo.TabIndex = 2;
-            // 
-            // depoBindingSource
-            // 
-            this.depoBindingSource.DataSource = typeof(SonicHesap.Entities.Tables.Depo);
             // 
             // gridLookUpEdit1View
             // 
@@ -374,30 +370,86 @@
             this.colAciklama.Visible = true;
             this.colAciklama.VisibleIndex = 4;
             // 
-            // labelControl5
+            // labelControl6
             // 
-            this.labelControl5.Appearance.Options.UseTextOptions = true;
-            this.labelControl5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.labelControl5.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl5.Location = new System.Drawing.Point(4, 91);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(162, 24);
-            this.labelControl5.TabIndex = 1;
-            this.labelControl5.Text = "Bilgi Fişi Yazdırma Ayarı :";
+            this.labelControl6.Appearance.Options.UseTextOptions = true;
+            this.labelControl6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl6.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl6.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl6.Location = new System.Drawing.Point(4, 91);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(162, 24);
+            this.labelControl6.TabIndex = 1;
+            this.labelControl6.Text = "Fatura Yazıcısı :";
             // 
-            // comboBoxEdit2
+            // labelControl7
             // 
-            this.comboBoxEdit2.Location = new System.Drawing.Point(172, 93);
-            this.comboBoxEdit2.Name = "comboBoxEdit2";
-            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.labelControl7.Appearance.Options.UseTextOptions = true;
+            this.labelControl7.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl7.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl7.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl7.Location = new System.Drawing.Point(4, 152);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(162, 24);
+            this.labelControl7.TabIndex = 1;
+            this.labelControl7.Text = "Bilgi Fişi Yazıcısı :";
+            // 
+            // cmbFaturaYazici
+            // 
+            this.cmbFaturaYazici.Location = new System.Drawing.Point(172, 93);
+            this.cmbFaturaYazici.Name = "cmbFaturaYazici";
+            this.cmbFaturaYazici.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit2.Properties.Items.AddRange(new object[] {
-            "Hemen Yazdır",
-            "Yazıcı Dialog Formunu Açarak Yazdır",
-            "Ön İzleme Göstererek Yazdır"});
-            this.comboBoxEdit2.Size = new System.Drawing.Size(365, 22);
-            this.comboBoxEdit2.TabIndex = 3;
+            this.cmbFaturaYazici.Size = new System.Drawing.Size(365, 22);
+            this.cmbFaturaYazici.TabIndex = 3;
+            // 
+            // cmbBilgiFisiYazici
+            // 
+            this.cmbBilgiFisiYazici.Location = new System.Drawing.Point(172, 154);
+            this.cmbBilgiFisiYazici.Name = "cmbBilgiFisiYazici";
+            this.cmbBilgiFisiYazici.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbBilgiFisiYazici.Size = new System.Drawing.Size(365, 22);
+            this.cmbBilgiFisiYazici.TabIndex = 3;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.FieldName = "KasaKodu";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.FieldName = "KasaAdi";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.FieldName = "YetkiliKodu";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.FieldName = "YetkiliAdi";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.FieldName = "Aciklama";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 4;
+            // 
+            // depoBindingSource
+            // 
+            this.depoBindingSource.DataSource = typeof(SonicHesap.Entities.Tables.Depo);
             // 
             // FrmAyarlar
             // 
@@ -412,7 +464,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmAyarlar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmAyarlar";
+            this.Text = "Kullanıcı Ayarları";
             this.Load += new System.EventHandler(this.FrmAyarlar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).EndInit();
             this.grpMenu.ResumeLayout(false);
@@ -422,13 +474,15 @@
             this.navigationPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleGuncelle.Properties)).EndInit();
             this.navigationPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBilgiFisiAyar.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFaturaAyar.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpKasa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupDepo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFaturaYazici.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBilgiFisiYazici.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -462,9 +516,13 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbFaturaAyar;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbBilgiFisiAyar;
         private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbBilgiFisiYazici;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbFaturaYazici;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
     }
 }

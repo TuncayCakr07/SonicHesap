@@ -21,14 +21,17 @@ namespace SonicHesap.Entities.Tools
         public void RaporYazdir(XtraReport rapor, Belge belge)
         {
             ReportPrintTool raporYazdir = new ReportPrintTool(rapor);
+            string yaziciAdi=null;
             int ayar = 0;
             switch (belge)
             {
                 case Belge.Fatura:
                     ayar = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FaturaYazdirmaAyari));
+                    yaziciAdi = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FaturaYazici);
                     break;
                 case Belge.BilgiFisi:
                     ayar = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_BilgiFisiYazdirmaAyari));
+                    yaziciAdi = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_BilgiFisiYazici);
                     break;
                 case Belge.Diger:
                     break;
@@ -39,7 +42,7 @@ namespace SonicHesap.Entities.Tools
             switch (ayar)
             {
                 case 0:
-                    raporYazdir.Print();
+                    raporYazdir.Print(yaziciAdi);
                     break;
                 case 1:
                     raporYazdir.PrintDialog();

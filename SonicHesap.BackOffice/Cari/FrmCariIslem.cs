@@ -21,6 +21,7 @@ namespace SonicHesap.BackOffice.Cari
         private CariDAL cariDAL=new CariDAL();
         private SonicHesapContext context=new SonicHesapContext();
         public bool saved=false;
+
         public FrmCariIslem(Entities.Tables.Cari entity)
         {
             InitializeComponent();

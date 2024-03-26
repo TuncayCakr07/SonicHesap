@@ -18,6 +18,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Windows.Forms;
 
@@ -32,7 +33,7 @@ namespace SonicHesap.FrontOffice
         FisDAL fisDal = new FisDAL();
         KasaHareketDAL kasaHareketDal = new KasaHareketDAL();
         StokHareketDAL stokHareketDal = new StokHareketDAL();
-
+        private string odemeTuruKodu, odemeTuruAdi;
         public FrmFrontOffice()
         {
             InitializeComponent();
@@ -177,26 +178,15 @@ namespace SonicHesap.FrontOffice
             }
             else
             {
-                kasaHareketDal.AddOrUpdate(context, new KasaHareket
-                {
-                    CariKodu = txtCariKodu.Text,
-                    CariAdi = txtCariAdi.Text,
-                    FisKodu = txtFisKodu.Text,
-                    Hareket = txtIslem.Text == "İADE" ? "Kasa Çıkış" : "Kasa Giriş",
-                    KasaKodu = kasaKodu,
-                    KasaAdi = context.Kasalar.SingleOrDefault(x => x.KasaKodu == kasaKodu).KasaAdi,
-                    OdemeTuruKodu = buton.Name,
-                    OdemeTuruAdi = buton.Text,
-                    Tarih = DateTime.Now,
-                    Tutar = txtToplam.Value,
-                });
-                OdenenTutarGuncelle();
-                FisiKaydet(sender, e);
+                odemeTuruKodu = buton.Name;
+                odemeTuruAdi = buton.Text;
+                radialYazdir.ShowPopup(MousePosition);
             }
         }
 
-        private void FisiKaydet(object sender, EventArgs e)
+        private void FisiKaydet(ReportsPrintTool.Belge belge)
         {
+        
             int StokHata = context.StokHareketleri.Local.Where(c => c.DepoKodu == null).Count();
             int KasaHata = context.KasaHareketleri.Local.Where(c => c.KasaKodu == null).Count();
             string message = null;
@@ -208,7 +198,7 @@ namespace SonicHesap.FrontOffice
                 hata++;
             }
 
-            if (gridKasaHareket.RowCount == 0)
+            if (gridKasaHareket.RowCount == 0 && chOdemeBol.Checked)
             {
                 message += ("Herhangi Bir Ödeme Bulunamadı!") + System.Environment.NewLine;
                 hata++;
@@ -220,11 +210,7 @@ namespace SonicHesap.FrontOffice
                 hata++;
             }
 
-            if (txtOdenmesiGereken.Value != 0)
-            {
-                message += ("Ödenmesi Gereken Tutar Ödenmemiş Gözüküyor!") + System.Environment.NewLine;
-                hata++;
-            }
+
             if (StokHata != 0)
             {
                 message += ("Satış Ekranındaki Ürünlerin Depo Seçimlerinde Eksiklikler Var!") + System.Environment.NewLine;
@@ -233,6 +219,12 @@ namespace SonicHesap.FrontOffice
             if (KasaHata != 0) // Burada StokHata yerine KasaHata kullanılmalı
             {
                 message += ("Ödeme Ekranındaki Ödemelerin Kasa Seçimlerinde Eksiklikler Var!");
+                hata++;
+            }
+
+            if (txtOdenmesiGereken.Value != 0 && chOdemeBol.Checked)
+            {
+                message += ("Ödenmesi Gereken Tutar Ödenmemiş Gözüküyor!") + System.Environment.NewLine;
                 hata++;
             }
 
@@ -262,11 +254,40 @@ namespace SonicHesap.FrontOffice
             _fisEntity.IskontoTutar = txtIskontoTutar.Value;
             _fisEntity.Tarih = DateTime.Now;
             fisDal.AddOrUpdate(context, _fisEntity);
+            string kasaKodu = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa);
+            if (!chOdemeBol.Checked)
+            {
+                kasaHareketDal.AddOrUpdate(context, new KasaHareket
+                {
+                    CariKodu = txtCariKodu.Text,
+                    CariAdi = txtCariAdi.Text,
+                    FisKodu = txtFisKodu.Text,
+                    Hareket = txtIslem.Text == "İADE" ? "Kasa Çıkış" : "Kasa Giriş",
+                    KasaKodu = kasaKodu,
+                    KasaAdi = context.Kasalar.SingleOrDefault(x => x.KasaKodu == kasaKodu).KasaAdi,
+                    OdemeTuruKodu = odemeTuruKodu,
+                    OdemeTuruAdi = odemeTuruAdi,
+                    Tarih = DateTime.Now,
+                    Tutar = txtToplam.Value,
+                });
+                OdenenTutarGuncelle();
+            }
             context.SaveChanges();
             chOdemeBol.Checked = false;
-            radialYazdir.ShowPopup(MousePosition);
-
-
+            radialYazdir.HidePopup();
+            switch (belge)
+            {
+                case ReportsPrintTool.Belge.Fatura:
+                    ReportsPrintTool yazdir = new ReportsPrintTool();
+                    rptFatura fatura = new rptFatura(txtFisKodu.Text);
+                    yazdir.RaporYazdir(fatura, belge);
+                    break;
+                case ReportsPrintTool.Belge.BilgiFisi:
+                    rptBilgiFisi bilgiFisi = new rptBilgiFisi(txtFisKodu.Text);
+                    ReportsPrintTool yazdirBilgiFisi = new ReportsPrintTool();
+                    yazdirBilgiFisi.RaporYazdir(bilgiFisi, belge);
+                    break;
+            }
             FisTemizle();
         }
 
@@ -306,6 +327,9 @@ namespace SonicHesap.FrontOffice
             _fisEntity.Aciklama = null;
             btnTemizle.PerformClick();
             context.StokHareketleri.Local.Clear();
+            context.KasaHareketleri.Local.Clear();
+            OdenenTutarGuncelle();
+            Toplamlar();
         }
 
 
@@ -315,8 +339,27 @@ namespace SonicHesap.FrontOffice
             form.ShowDialog();
             if (form.secildi)
             {
-                stokHareketDal.AddOrUpdate(context, StokSec(form.secilen.First()));
-                Toplamlar();
+                if (StokKontrol(form.secilen.SingleOrDefault()))
+                {
+                    stokHareketDal.AddOrUpdate(context, StokSec(form.secilen.First()));
+                    Toplamlar();
+                }
+            }
+        }
+
+        private bool StokKontrol(Stok entity)
+        {
+            var MevcutStok = context.StokHareketleri.Where(c => c.Hareket == "Stok Giriş" && c.Barkod==entity.Barkod).Sum(c => c.Miktar) ?? 0 -
+                             context.StokHareketleri.Where(c => c.Hareket == "Stok Çıkış" && c.Barkod == entity.Barkod).Sum(c => c.Miktar) ?? 0;
+
+            if (txtIslem.Text=="SATIŞ" && entity.MinStokMiktari>MevcutStok-(txtMiktar.Value+context.StokHareketleri.Where(c=>c.Barkod==entity.Barkod).Sum(c=>c.Miktar)))
+            {
+                MessageBox.Show("Satış Yapmak İstediğiniz Ürünün Stok Durumu Minimum Düzeydedir!\nSatış Yapabilmek İçin Stok Durumunu Kontrol Ediniz!","Minimum Stok Uyarısı!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
 
@@ -592,39 +635,32 @@ namespace SonicHesap.FrontOffice
 
         private void BtnFisKaydet_Click(object sender, EventArgs e)
         {
-            FisiKaydet(sender, e);
+            radialYazdir.ShowPopup(MousePosition);
             MessageBox.Show("Satış Kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             FisTemizle();
         }
 
         private void Fatura_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ReportsPrintTool yazdir = new ReportsPrintTool();
-            rptFatura fatura = new rptFatura(txtFisKodu.Text);
-            yazdir.RaporYazdir(fatura,ReportsPrintTool.Belge.Fatura);
+            FisiKaydet(ReportsPrintTool.Belge.Fatura);
+            //Fatura
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // Eğer txtFisKodu.Text değeri boş veya null ise uyarı ver ve işlemi sonlandır
             if (string.IsNullOrWhiteSpace(txtFisKodu.Text))
             {
                 MessageBox.Show("Lütfen geçerli bir fiş kodu girin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // Bilgi fişi oluştur ve yazdır
             FisOlustur(txtFisKodu.Text);
         }
 
         private void FisOlustur(string fisKodu)
         {
-            // Belirtilen fisKodu ile bir bilgi fişi oluştur
-            rptBilgiFisi bilgiFisi = new rptBilgiFisi(fisKodu);
-
-            // Raporu yazdırmak için ReportsPrintTool aracını kullan
-            ReportsPrintTool yazdir = new ReportsPrintTool();
-            yazdir.RaporYazdir(bilgiFisi, ReportsPrintTool.Belge.BilgiFisi);
+            FisiKaydet(ReportsPrintTool.Belge.BilgiFisi);
+            //Bilgifisi
+            FisTemizle();
         }
 
 

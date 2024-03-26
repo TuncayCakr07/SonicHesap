@@ -651,6 +651,10 @@
             this.cmbCariTuru.Name = "cmbCariTuru";
             this.cmbCariTuru.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbCariTuru.Properties.Items.AddRange(new object[] {
+            "Alici",
+            "Alici+Satici",
+            "Satici"});
             this.cmbCariTuru.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbCariTuru.Size = new System.Drawing.Size(250, 22);
             this.cmbCariTuru.TabIndex = 4;

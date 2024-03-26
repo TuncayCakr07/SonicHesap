@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 
 namespace SonicHesap.Report.Fatura_Ve_Fiş
 {
@@ -21,11 +22,12 @@ namespace SonicHesap.Report.Fatura_Ve_Fiş
 
             Fis fisBilgi = fisDal.GetByFilter(context, c => c.FisKodu == fiskodu);
             ObjectDataSource stokHareketDataSource = new ObjectDataSource { DataSource = stokHareketDal.GetAll(context, c => c.FisKodu == fiskodu) };
-
-            lblfisKodu.Text = "Fiş Kodu: " + fisBilgi.FisKodu;
-            lblCariAdi.Text = "Müşteri: " + fisBilgi.CariAdi;
-            lblAdres.Text = "Adres: " + fisBilgi.Il + " " + fisBilgi.Ilce + " " + fisBilgi.Semt;
-            lblTarih.Text = "Tarih: " + fisBilgi.Tarih.ToString();
+            var kullaniciAdi = context.Personeller .Where(c => c.PersonelKodu ==fisBilgi.PlasiyerKodu).Select(c => c.PersonelAdi).FirstOrDefault();
+            lblfisKodu.Text =   "Fiş Kodu  :" + fisBilgi.FisKodu;
+            lblKullanici.Text = "Personel  :" + fisBilgi.PlasiyerAdi;
+            lblCariAdi.Text =   "Müşteri   :" + fisBilgi.CariAdi;
+            lblAdres.Text =     "Adres     :" + fisBilgi.Il + " " + fisBilgi.Ilce + " " + fisBilgi.Semt;
+            lblTarih.Text =     "Tarih     :" + fisBilgi.Tarih.ToString();
 
             this.DataSource = stokHareketDataSource;
             colStokAdi.DataBindings.Add("Text", this.DataSource, "StokAdi");
