@@ -33,9 +33,9 @@ namespace SonicHesap.FrontOffice
         FisDAL fisDal = new FisDAL();
         KasaHareketDAL kasaHareketDal = new KasaHareketDAL();
         StokHareketDAL stokHareketDal = new StokHareketDAL();
-        ExchangeTool doviz=new ExchangeTool();
+        ExchangeTool doviz = new ExchangeTool();
         private string odemeTuruKodu, odemeTuruAdi;
-        decimal eskifiyat=0;
+        decimal eskifiyat = 0;
 
         int BekleyenSatisId = 0;
         List<BekleyenSatis> _bekleyenSatis = new List<BekleyenSatis>();
@@ -333,7 +333,7 @@ namespace SonicHesap.FrontOffice
 
         private void FisTemizle()
         {
-
+            CariTemizle();
             txtToplam.Text = null;
             txtAraToplam.Text = null;
             txtKDVToplam.Text = null;
@@ -358,13 +358,27 @@ namespace SonicHesap.FrontOffice
             _fisEntity.FisKodu = null;
             _fisEntity.BelgeNo = null;
             _fisEntity.Aciklama = null;
-            btnTemizle.PerformClick();
             context.StokHareketleri.Local.Clear();
             context.KasaHareketleri.Local.Clear();
             OdenenTutarGuncelle();
             Toplamlar();
         }
-
+        private void CariTemizle()
+        {
+            txtCariKodu.Text = null;
+            txtCariAdi.Text = null;
+            txtFaturaUnvani.Text = null;
+            txtVergiDairesi.Text = null;
+            txtVergiNo.Text = null;
+            txtCepTelefonu.Text = null;
+            txtIl.Text = null;
+            txtIlce.Text = null;
+            txtSemt.Text = null;
+            txtAdres.Text = null;
+            lblAlacak.Text = "Alacak Görüntülenemiyor";
+            lblBorc.Text = "Borç Görüntülenemiyor";
+            lblBakiye.Text = "Bakiye Görüntülenemiyor";
+        }
 
         private void btnStokSec_Click(object sender, EventArgs e)
         {
@@ -469,20 +483,10 @@ namespace SonicHesap.FrontOffice
         }
         private void btnTemizle_Click(object sender, EventArgs e)
         {
-            txtCariKodu.Text = null;
-            txtCariAdi.Text = null;
-            txtFaturaUnvani.Text = null;
-            txtVergiDairesi.Text = null;
-            txtVergiNo.Text = null;
-            txtCepTelefonu.Text = null;
-            txtIl.Text = null;
-            txtIlce.Text = null;
-            txtSemt.Text = null;
-            txtAdres.Text = null;
-            lblAlacak.Text = "Alacak Görüntülenemiyor";
-            lblBorc.Text = "Borç Görüntülenemiyor";
-            lblBakiye.Text = "Bakiye Görüntülenemiyor";
+            CariTemizle();
         }
+
+
 
         private void repoSil_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
@@ -695,7 +699,7 @@ namespace SonicHesap.FrontOffice
 
         private void gridStokHareket_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            if (gridStokHareket.FocusedColumn==colMiktar)
+            if (gridStokHareket.FocusedColumn == colMiktar)
             {
                 txtMiktar.Value = 0;
                 decimal deger = (decimal)e.Value;
@@ -727,14 +731,62 @@ namespace SonicHesap.FrontOffice
                 }
                 catch (Exception ex)
                 {
-                  
+
                     MessageBox.Show(ex.Message + " Döviz Kuru Hatası Oluştu!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
         }
+        private void btnSatisBeklet_Click(object sender, EventArgs e)
+        {
+            _bekleyenSatis.Add(new BekleyenSatis
+            {
+                Id = BekleyenSatisId,
+                BekleyenFis = _fisEntity,
+                StokHareketi = context.StokHareketleri.Local.ToList(),
+                KasaHareketi = context.KasaHareketleri.Local.ToList(),
+            });
+
+            SimpleButton Bekleyenbuton = new SimpleButton
+            {
+                Name = BekleyenSatisId.ToString(),
+                Text = txtCariKodu.Text + " - " + txtCariAdi.Text + "\n" + _fisEntity.PlasiyerKodu + " - " + _fisEntity.PlasiyerAdi + "\n" + context.StokHareketleri.Local.Count + " " + "Adet Ürün Eklendi." + "\n" + txtToplam.Value.ToString("C2"),
+                Height = 150,
+                Width = flowBekleyenSatis.Width - 5,
+                BackColor = Color.SteelBlue,
+                ForeColor = Color.White,
+                Appearance = {
+                        BackColor = Color.SteelBlue,
+                        ForeColor = Color.White
+                    }
+            };
+            Bekleyenbuton.Click += BekleyenSatis_Click;
+            flowBekleyenSatis.Controls.Add(Bekleyenbuton);
+            FisTemizle();
+            btnTemizle_Click(sender, e);
+            BekleyenSatisId++;
+        }
 
 
+        private void BekleyenSatis_Click(object sender, EventArgs e)
+        {
+            var buton = new SimpleButton();
+            BekleyenSatisYukle(Convert.ToInt32(buton.Name));
+        }
+
+        private void BekleyenSatisYukle(int Id)
+        {
+            FisTemizle();
+            _fisEntity=_bekleyenSatis.SingleOrDefault(c=>c.Id == Id).BekleyenFis;
+            foreach(var item in _bekleyenSatis.SingleOrDefault(c=>c.Id==Id).StokHareketi)
+            {
+              context.StokHareketleri.Local.Add(item);
+            }
+            foreach (var item in _bekleyenSatis.SingleOrDefault(c => c.Id == Id).KasaHareketi)
+            {
+                context.KasaHareketleri.Local.Add(item);
+            }
+        }
 
         private void repoOHSil_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
