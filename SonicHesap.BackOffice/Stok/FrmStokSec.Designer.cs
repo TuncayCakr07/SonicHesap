@@ -110,7 +110,7 @@
             this.lblUyari.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblUyari.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.lblUyari.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblUyari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("labelControl1.ImageOptions.Image")));
+            this.lblUyari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("lblUyari.ImageOptions.Image")));
             this.lblUyari.Location = new System.Drawing.Point(5, 32);
             this.lblUyari.Name = "lblUyari";
             this.lblUyari.Size = new System.Drawing.Size(531, 47);
@@ -450,7 +450,7 @@
             // colMinStokMiktarı
             // 
             this.colMinStokMiktarı.Caption = "Min. Stok Miktarı";
-            this.colMinStokMiktarı.FieldName = "MinStokMiktarı";
+            this.colMinStokMiktarı.FieldName = "MinStokMiktari";
             this.colMinStokMiktarı.MinWidth = 25;
             this.colMinStokMiktarı.Name = "colMinStokMiktarı";
             this.colMinStokMiktarı.OptionsColumn.AllowEdit = false;
@@ -461,7 +461,7 @@
             // colMaxStokMiktarı
             // 
             this.colMaxStokMiktarı.Caption = "Max. Stok Miktarı";
-            this.colMaxStokMiktarı.FieldName = "MaxStokMiktarı";
+            this.colMaxStokMiktarı.FieldName = "MaxStokMiktari";
             this.colMaxStokMiktarı.MinWidth = 25;
             this.colMaxStokMiktarı.Name = "colMaxStokMiktarı";
             this.colMaxStokMiktarı.OptionsColumn.AllowEdit = false;

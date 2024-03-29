@@ -620,7 +620,7 @@
             // colMinStokMiktarı
             // 
             this.colMinStokMiktarı.Caption = "Min. Stok Miktarı";
-            this.colMinStokMiktarı.FieldName = "MinStokMiktarı";
+            this.colMinStokMiktarı.FieldName = "MinStokMiktari";
             this.colMinStokMiktarı.MinWidth = 25;
             this.colMinStokMiktarı.Name = "colMinStokMiktarı";
             this.colMinStokMiktarı.OptionsColumn.AllowEdit = false;
@@ -631,7 +631,7 @@
             // colMaxStokMiktarı
             // 
             this.colMaxStokMiktarı.Caption = "Max. Stok Miktarı";
-            this.colMaxStokMiktarı.FieldName = "MaxStokMiktarı";
+            this.colMaxStokMiktarı.FieldName = "MaxStokMiktari";
             this.colMaxStokMiktarı.MinWidth = 25;
             this.colMaxStokMiktarı.Name = "colMaxStokMiktarı";
             this.colMaxStokMiktarı.OptionsColumn.AllowEdit = false;

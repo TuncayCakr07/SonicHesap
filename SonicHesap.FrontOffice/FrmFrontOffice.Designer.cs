@@ -30,39 +30,60 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFrontOffice));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions13 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject49 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject50 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject51 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject52 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions14 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject53 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject54 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject55 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject56 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions15 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject57 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject58 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject59 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject60 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions16 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject61 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject62 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject63 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject64 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions17 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject65 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject66 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject67 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject68 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions18 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject69 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject70 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject71 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject72 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ımageList2 = new System.Windows.Forms.ImageList(this.components);
             this.navigationPane1 = new DevExpress.XtraBars.Navigation.NavigationPane();
             this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.gridLookUpEdit1 = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barFiyat1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barFiyat2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barFiyat3 = new DevExpress.XtraBars.BarButtonItem();
+            this.Fatura = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.dovizKurlariBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colIsim = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCurrencyCode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBanknoteBuying = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBanknoteSelling = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtDovizTutar = new DevExpress.XtraEditors.CalcEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
@@ -121,17 +142,6 @@
             this.btnCariSec = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.txtAciklama = new DevExpress.XtraEditors.MemoEdit();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barFiyat1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barFiyat2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barFiyat3 = new DevExpress.XtraBars.BarButtonItem();
-            this.Fatura = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.txtBelgeNo = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -205,9 +215,19 @@
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSatisBeklet = new DevExpress.XtraEditors.CheckButton();
+            this.navigationPage5 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.flowBekleyenSatis = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
             this.navigationPane1.SuspendLayout();
             this.navigationPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
+            this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dovizKurlariBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDovizTutar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtParaUstu.Properties)).BeginInit();
@@ -239,7 +259,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBelgeNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFisKodu.Properties)).BeginInit();
             this.navigationPage4.SuspendLayout();
@@ -278,6 +297,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radialFiyat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radialYazdir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).BeginInit();
+            this.navigationPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // ımageList2
@@ -296,6 +316,7 @@
             this.navigationPane1.Controls.Add(this.navigationPage2);
             this.navigationPane1.Controls.Add(this.navigationPage3);
             this.navigationPane1.Controls.Add(this.navigationPage4);
+            this.navigationPane1.Controls.Add(this.navigationPage5);
             this.navigationPane1.Dock = System.Windows.Forms.DockStyle.Right;
             this.navigationPane1.Location = new System.Drawing.Point(969, 0);
             this.navigationPane1.Name = "navigationPane1";
@@ -305,7 +326,8 @@
             this.navigationPage1,
             this.navigationPage2,
             this.navigationPage3,
-            this.navigationPage4});
+            this.navigationPage4,
+            this.navigationPage5});
             this.navigationPane1.RegularSize = new System.Drawing.Size(554, 883);
             this.navigationPane1.SelectedPage = this.navigationPage1;
             this.navigationPane1.Size = new System.Drawing.Size(554, 883);
@@ -315,12 +337,224 @@
             // navigationPage1
             // 
             this.navigationPage1.Caption = "Genel Bilgiler";
+            this.navigationPage1.Controls.Add(this.groupControl5);
             this.navigationPage1.Controls.Add(this.groupControl1);
             this.navigationPage1.Controls.Add(this.groupIskonto);
             this.navigationPage1.Controls.Add(this.groupToplamlar);
             this.navigationPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("navigationPage1.ImageOptions.Image")));
             this.navigationPage1.Name = "navigationPage1";
             this.navigationPage1.Size = new System.Drawing.Size(438, 803);
+            // 
+            // groupControl5
+            // 
+            this.groupControl5.Controls.Add(this.gridLookUpEdit1);
+            this.groupControl5.Controls.Add(this.txtDovizTutar);
+            this.groupControl5.Controls.Add(this.labelControl9);
+            this.groupControl5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl5.Location = new System.Drawing.Point(0, 578);
+            this.groupControl5.Name = "groupControl5";
+            this.groupControl5.Size = new System.Drawing.Size(438, 101);
+            this.groupControl5.TabIndex = 32;
+            this.groupControl5.Text = "Döviz Tutar Hesaplama";
+            // 
+            // gridLookUpEdit1
+            // 
+            this.gridLookUpEdit1.Location = new System.Drawing.Point(5, 31);
+            this.gridLookUpEdit1.MenuManager = this.barManager1;
+            this.gridLookUpEdit1.Name = "gridLookUpEdit1";
+            this.gridLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.gridLookUpEdit1.Properties.DataSource = this.dovizKurlariBindingSource;
+            this.gridLookUpEdit1.Properties.DisplayMember = "Isim";
+            this.gridLookUpEdit1.Properties.NullText = "Lütfen Döviz Kurunu Seçiniz..";
+            this.gridLookUpEdit1.Properties.PopupView = this.gridLookUpEdit1View;
+            this.gridLookUpEdit1.Properties.ValueMember = "BanknoteSelling";
+            this.gridLookUpEdit1.Size = new System.Drawing.Size(428, 22);
+            this.gridLookUpEdit1.TabIndex = 0;
+            // 
+            // barManager1
+            // 
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barFiyat1,
+            this.barFiyat2,
+            this.barFiyat3,
+            this.Fatura,
+            this.barButtonItem1,
+            this.barButtonItem2});
+            this.barManager1.MaxItemId = 6;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1523, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 883);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1523, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 883);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1523, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 883);
+            // 
+            // barFiyat1
+            // 
+            this.barFiyat1.Id = 0;
+            this.barFiyat1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barFiyat1.ImageOptions.Image")));
+            this.barFiyat1.ItemAppearance.Normal.Font = new System.Drawing.Font("DS-Digital", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barFiyat1.ItemAppearance.Normal.Options.UseFont = true;
+            this.barFiyat1.ItemInMenuAppearance.Normal.Font = new System.Drawing.Font("DS-Digital", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barFiyat1.ItemInMenuAppearance.Normal.Options.UseFont = true;
+            this.barFiyat1.Name = "barFiyat1";
+            this.barFiyat1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
+            // 
+            // barFiyat2
+            // 
+            this.barFiyat2.Id = 1;
+            this.barFiyat2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barFiyat2.ImageOptions.Image")));
+            this.barFiyat2.ItemAppearance.Normal.Font = new System.Drawing.Font("DS-Digital", 12F, System.Drawing.FontStyle.Bold);
+            this.barFiyat2.ItemAppearance.Normal.Options.UseFont = true;
+            this.barFiyat2.Name = "barFiyat2";
+            this.barFiyat2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
+            // 
+            // barFiyat3
+            // 
+            this.barFiyat3.Id = 2;
+            this.barFiyat3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barFiyat3.ImageOptions.Image")));
+            this.barFiyat3.ItemAppearance.Normal.Font = new System.Drawing.Font("DS-Digital", 12F, System.Drawing.FontStyle.Bold);
+            this.barFiyat3.ItemAppearance.Normal.Options.UseFont = true;
+            this.barFiyat3.Name = "barFiyat3";
+            this.barFiyat3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
+            // 
+            // Fatura
+            // 
+            this.Fatura.Caption = "Fatura";
+            this.Fatura.Id = 3;
+            this.Fatura.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Fatura.ImageOptions.Image")));
+            this.Fatura.ItemAppearance.Normal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Fatura.ItemAppearance.Normal.Options.UseFont = true;
+            this.Fatura.Name = "Fatura";
+            this.Fatura.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Fatura_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Bilgi Fişi";
+            this.barButtonItem1.Id = 4;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ItemAppearance.Normal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.barButtonItem1.ItemAppearance.Normal.Options.UseFont = true;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Belgesiz";
+            this.barButtonItem2.Id = 5;
+            this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.barButtonItem2.ItemAppearance.Normal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.barButtonItem2.ItemAppearance.Normal.Options.UseFont = true;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // dovizKurlariBindingSource
+            // 
+            this.dovizKurlariBindingSource.DataSource = typeof(SonicHesap.Entities.Tables.OtherTables.DovizKurlari);
+            // 
+            // gridLookUpEdit1View
+            // 
+            this.gridLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colIsim,
+            this.colCurrencyCode,
+            this.colBanknoteBuying,
+            this.colBanknoteSelling});
+            this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
+            this.gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            this.gridLookUpEdit1View.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridLookUpEdit1View_FocusedRowChanged);
+            // 
+            // colIsim
+            // 
+            this.colIsim.FieldName = "Isim";
+            this.colIsim.Name = "colIsim";
+            this.colIsim.Visible = true;
+            this.colIsim.VisibleIndex = 0;
+            // 
+            // colCurrencyCode
+            // 
+            this.colCurrencyCode.FieldName = "CurrencyCode";
+            this.colCurrencyCode.Name = "colCurrencyCode";
+            this.colCurrencyCode.Visible = true;
+            this.colCurrencyCode.VisibleIndex = 1;
+            // 
+            // colBanknoteBuying
+            // 
+            this.colBanknoteBuying.FieldName = "BanknoteBuying";
+            this.colBanknoteBuying.Name = "colBanknoteBuying";
+            this.colBanknoteBuying.Visible = true;
+            this.colBanknoteBuying.VisibleIndex = 2;
+            // 
+            // colBanknoteSelling
+            // 
+            this.colBanknoteSelling.FieldName = "BanknoteSelling";
+            this.colBanknoteSelling.Name = "colBanknoteSelling";
+            this.colBanknoteSelling.Visible = true;
+            this.colBanknoteSelling.VisibleIndex = 3;
+            // 
+            // txtDovizTutar
+            // 
+            this.txtDovizTutar.Location = new System.Drawing.Point(114, 59);
+            this.txtDovizTutar.Name = "txtDovizTutar";
+            this.txtDovizTutar.Properties.Appearance.BackColor = System.Drawing.Color.Green;
+            this.txtDovizTutar.Properties.Appearance.Font = new System.Drawing.Font("DS-Digital", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDovizTutar.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.txtDovizTutar.Properties.Appearance.Options.UseBackColor = true;
+            this.txtDovizTutar.Properties.Appearance.Options.UseFont = true;
+            this.txtDovizTutar.Properties.Appearance.Options.UseForeColor = true;
+            this.txtDovizTutar.Properties.DisplayFormat.FormatString = "N4";
+            this.txtDovizTutar.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtDovizTutar.Properties.EditFormat.FormatString = "N4";
+            this.txtDovizTutar.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtDovizTutar.Properties.NullText = "0";
+            this.txtDovizTutar.Size = new System.Drawing.Size(319, 34);
+            this.txtDovizTutar.TabIndex = 38;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.labelControl9.Appearance.Options.UseFont = true;
+            this.labelControl9.Appearance.Options.UseTextOptions = true;
+            this.labelControl9.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl9.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl9.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl9.Location = new System.Drawing.Point(3, 57);
+            this.labelControl9.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(108, 36);
+            this.labelControl9.TabIndex = 37;
+            this.labelControl9.Text = "Döviz";
             // 
             // groupControl1
             // 
@@ -759,6 +993,7 @@
             // navigationPage2
             // 
             this.navigationPage2.Caption = "Menü";
+            this.navigationPage2.Controls.Add(this.btnSatisBeklet);
             this.navigationPage2.Controls.Add(this.chSatisIptal);
             this.navigationPage2.Controls.Add(this.chOdemeBol);
             this.navigationPage2.Controls.Add(this.ChIade);
@@ -774,7 +1009,7 @@
             this.chSatisIptal.Appearance.Options.UseFont = true;
             this.chSatisIptal.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("chSatisIptal.ImageOptions.Image")));
             this.chSatisIptal.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.chSatisIptal.Location = new System.Drawing.Point(4, 121);
+            this.chSatisIptal.Location = new System.Drawing.Point(113, 121);
             this.chSatisIptal.Name = "chSatisIptal";
             this.chSatisIptal.Size = new System.Drawing.Size(103, 112);
             this.chSatisIptal.TabIndex = 4;
@@ -841,7 +1076,7 @@
             this.navigationPage3.Controls.Add(this.groupControl3);
             this.navigationPage3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("navigationPage3.ImageOptions.Image")));
             this.navigationPage3.Name = "navigationPage3";
-            this.navigationPage3.Size = new System.Drawing.Size(438, 803);
+            this.navigationPage3.Size = new System.Drawing.Size(554, 883);
             // 
             // groupControl2
             // 
@@ -866,7 +1101,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl2.Location = new System.Drawing.Point(0, 173);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(438, 535);
+            this.groupControl2.Size = new System.Drawing.Size(554, 535);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Cari Bilgileri";
             // 
@@ -1143,7 +1378,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl3.Location = new System.Drawing.Point(0, 0);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(438, 173);
+            this.groupControl3.Size = new System.Drawing.Size(554, 173);
             this.groupControl3.TabIndex = 1;
             this.groupControl3.Text = "Fiş Bilgileri";
             // 
@@ -1156,112 +1391,6 @@
             this.txtAciklama.Properties.NullValuePrompt = "Açıklama Giriniz.";
             this.txtAciklama.Size = new System.Drawing.Size(338, 79);
             this.txtAciklama.TabIndex = 27;
-            // 
-            // barManager1
-            // 
-            this.barManager1.DockControls.Add(this.barDockControlTop);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.Form = this;
-            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barFiyat1,
-            this.barFiyat2,
-            this.barFiyat3,
-            this.Fatura,
-            this.barButtonItem1,
-            this.barButtonItem2});
-            this.barManager1.MaxItemId = 6;
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1523, 0);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 883);
-            this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1523, 0);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 883);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1523, 0);
-            this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 883);
-            // 
-            // barFiyat1
-            // 
-            this.barFiyat1.Id = 0;
-            this.barFiyat1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barFiyat1.ImageOptions.Image")));
-            this.barFiyat1.ItemAppearance.Normal.Font = new System.Drawing.Font("DS-Digital", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barFiyat1.ItemAppearance.Normal.Options.UseFont = true;
-            this.barFiyat1.ItemInMenuAppearance.Normal.Font = new System.Drawing.Font("DS-Digital", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barFiyat1.ItemInMenuAppearance.Normal.Options.UseFont = true;
-            this.barFiyat1.Name = "barFiyat1";
-            this.barFiyat1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
-            // 
-            // barFiyat2
-            // 
-            this.barFiyat2.Id = 1;
-            this.barFiyat2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barFiyat2.ImageOptions.Image")));
-            this.barFiyat2.ItemAppearance.Normal.Font = new System.Drawing.Font("DS-Digital", 12F, System.Drawing.FontStyle.Bold);
-            this.barFiyat2.ItemAppearance.Normal.Options.UseFont = true;
-            this.barFiyat2.Name = "barFiyat2";
-            this.barFiyat2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
-            // 
-            // barFiyat3
-            // 
-            this.barFiyat3.Id = 2;
-            this.barFiyat3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barFiyat3.ImageOptions.Image")));
-            this.barFiyat3.ItemAppearance.Normal.Font = new System.Drawing.Font("DS-Digital", 12F, System.Drawing.FontStyle.Bold);
-            this.barFiyat3.ItemAppearance.Normal.Options.UseFont = true;
-            this.barFiyat3.Name = "barFiyat3";
-            this.barFiyat3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FiyatSec);
-            // 
-            // Fatura
-            // 
-            this.Fatura.Caption = "Fatura";
-            this.Fatura.Id = 3;
-            this.Fatura.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Fatura.ImageOptions.Image")));
-            this.Fatura.ItemAppearance.Normal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Fatura.ItemAppearance.Normal.Options.UseFont = true;
-            this.Fatura.Name = "Fatura";
-            this.Fatura.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Fatura_ItemClick);
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Bilgi Fişi";
-            this.barButtonItem1.Id = 4;
-            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.barButtonItem1.ItemAppearance.Normal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.barButtonItem1.ItemAppearance.Normal.Options.UseFont = true;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Belgesiz";
-            this.barButtonItem2.Id = 5;
-            this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.barButtonItem2.ItemAppearance.Normal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.barButtonItem2.ItemAppearance.Normal.Options.UseFont = true;
-            this.barButtonItem2.Name = "barButtonItem2";
             // 
             // labelControl11
             // 
@@ -1332,14 +1461,14 @@
             this.navigationPage4.Controls.Add(this.flowPersonel);
             this.navigationPage4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("navigationPage4.ImageOptions.Image")));
             this.navigationPage4.Name = "navigationPage4";
-            this.navigationPage4.Size = new System.Drawing.Size(438, 803);
+            this.navigationPage4.Size = new System.Drawing.Size(554, 883);
             // 
             // flowPersonel
             // 
             this.flowPersonel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowPersonel.Location = new System.Drawing.Point(0, 0);
             this.flowPersonel.Name = "flowPersonel";
-            this.flowPersonel.Size = new System.Drawing.Size(438, 803);
+            this.flowPersonel.Size = new System.Drawing.Size(554, 883);
             this.flowPersonel.TabIndex = 1;
             // 
             // splitContainerControl1
@@ -1427,6 +1556,8 @@
             this.gridStokHareket.GridControl = this.gridContStokHareket;
             this.gridStokHareket.Name = "gridStokHareket";
             this.gridStokHareket.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
+            this.gridStokHareket.ShownEditor += new System.EventHandler(this.gridStokHareket_ShownEditor);
+            this.gridStokHareket.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridStokHareket_CellValueChanged);
             // 
             // colId
             // 
@@ -1539,10 +1670,10 @@
             // repoBirimFiyat
             // 
             this.repoBirimFiyat.AutoHeight = false;
-            editorButtonImageOptions13.ImageIndex = 2;
-            editorButtonImageOptions13.ImageList = this.ımageList2;
+            editorButtonImageOptions1.ImageIndex = 2;
+            editorButtonImageOptions1.ImageList = this.ımageList2;
             this.repoBirimFiyat.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions13, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject49, serializableAppearanceObject50, serializableAppearanceObject51, serializableAppearanceObject52, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repoBirimFiyat.Name = "repoBirimFiyat";
             // 
             // colIndirimOrani
@@ -1582,10 +1713,10 @@
             // repoDepoSecim
             // 
             this.repoDepoSecim.AutoHeight = false;
-            editorButtonImageOptions14.ImageIndex = 1;
-            editorButtonImageOptions14.ImageList = this.ımageList2;
+            editorButtonImageOptions2.ImageIndex = 1;
+            editorButtonImageOptions2.ImageList = this.ımageList2;
             this.repoDepoSecim.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions14, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject53, serializableAppearanceObject54, serializableAppearanceObject55, serializableAppearanceObject56, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repoDepoSecim.Name = "repoDepoSecim";
             // 
             // colSeriNo
@@ -1602,11 +1733,11 @@
             // repoSeriNo
             // 
             this.repoSeriNo.AutoHeight = false;
-            editorButtonImageOptions15.ImageIndex = 4;
-            editorButtonImageOptions15.ImageList = this.ımageList2;
-            editorButtonImageOptions15.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            editorButtonImageOptions3.ImageIndex = 4;
+            editorButtonImageOptions3.ImageList = this.ımageList2;
+            editorButtonImageOptions3.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.repoSeriNo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Seri No", -1, true, true, false, editorButtonImageOptions15, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject57, serializableAppearanceObject58, serializableAppearanceObject59, serializableAppearanceObject60, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Seri No", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repoSeriNo.Name = "repoSeriNo";
             // 
             // colAciklama
@@ -1631,10 +1762,10 @@
             // repoSil
             // 
             this.repoSil.AutoHeight = false;
-            editorButtonImageOptions16.ImageIndex = 0;
-            editorButtonImageOptions16.ImageList = this.ımageList2;
+            editorButtonImageOptions4.ImageIndex = 0;
+            editorButtonImageOptions4.ImageList = this.ımageList2;
             this.repoSil.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions16, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject61, serializableAppearanceObject62, serializableAppearanceObject63, serializableAppearanceObject64, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repoSil.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.repoSil.Name = "repoSil";
             this.repoSil.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -1746,10 +1877,10 @@
             // repoKasa
             // 
             this.repoKasa.AutoHeight = false;
-            editorButtonImageOptions17.ImageIndex = 3;
-            editorButtonImageOptions17.ImageList = this.ımageList2;
+            editorButtonImageOptions5.ImageIndex = 3;
+            editorButtonImageOptions5.ImageList = this.ımageList2;
             this.repoKasa.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions17, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject65, serializableAppearanceObject66, serializableAppearanceObject67, serializableAppearanceObject68, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repoKasa.Name = "repoKasa";
             this.repoKasa.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
@@ -1812,10 +1943,10 @@
             // repoOHSil
             // 
             this.repoOHSil.AutoHeight = false;
-            editorButtonImageOptions18.ImageIndex = 0;
-            editorButtonImageOptions18.ImageList = this.ımageList2;
+            editorButtonImageOptions6.ImageIndex = 0;
+            editorButtonImageOptions6.ImageList = this.ımageList2;
             this.repoOHSil.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions18, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject69, serializableAppearanceObject70, serializableAppearanceObject71, serializableAppearanceObject72, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repoOHSil.Name = "repoOHSil";
             this.repoOHSil.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repoOHSil.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repoOHSil_ButtonClick);
@@ -1962,7 +2093,7 @@
             this.txtMiktar.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtMiktar.Properties.EditFormat.FormatString = "N2";
             this.txtMiktar.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtMiktar.Properties.MaskSettings.Set("mask", "c");
+            this.txtMiktar.Properties.MaskSettings.Set("mask", "d");
             this.txtMiktar.Properties.NullText = "1,00";
             this.txtMiktar.Size = new System.Drawing.Size(227, 50);
             this.txtMiktar.TabIndex = 27;
@@ -2149,6 +2280,35 @@
             this.barButtonItem8.ItemAppearance.Normal.Options.UseFont = true;
             this.barButtonItem8.Name = "barButtonItem8";
             // 
+            // btnSatisBeklet
+            // 
+            this.btnSatisBeklet.Appearance.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSatisBeklet.Appearance.Options.UseFont = true;
+            this.btnSatisBeklet.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("checkButton1.ImageOptions.Image")));
+            this.btnSatisBeklet.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.btnSatisBeklet.Location = new System.Drawing.Point(4, 121);
+            this.btnSatisBeklet.Name = "btnSatisBeklet";
+            this.btnSatisBeklet.Size = new System.Drawing.Size(103, 112);
+            this.btnSatisBeklet.TabIndex = 4;
+            this.btnSatisBeklet.Text = "Satış Beklet";
+            this.btnSatisBeklet.Click += new System.EventHandler(this.chSatisIptal_Click);
+            // 
+            // navigationPage5
+            // 
+            this.navigationPage5.Caption = "Bekleyen Satışlar";
+            this.navigationPage5.Controls.Add(this.flowBekleyenSatis);
+            this.navigationPage5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("navigationPage5.ImageOptions.Image")));
+            this.navigationPage5.Name = "navigationPage5";
+            this.navigationPage5.Size = new System.Drawing.Size(438, 803);
+            // 
+            // flowBekleyenSatis
+            // 
+            this.flowBekleyenSatis.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowBekleyenSatis.Location = new System.Drawing.Point(0, 0);
+            this.flowBekleyenSatis.Name = "flowBekleyenSatis";
+            this.flowBekleyenSatis.Size = new System.Drawing.Size(438, 803);
+            this.flowBekleyenSatis.TabIndex = 0;
+            // 
             // FrmFrontOffice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -2170,6 +2330,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).EndInit();
             this.navigationPane1.ResumeLayout(false);
             this.navigationPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
+            this.groupControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dovizKurlariBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDovizTutar.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtParaUstu.Properties)).EndInit();
@@ -2201,7 +2368,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBelgeNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFisKodu.Properties)).EndInit();
             this.navigationPage4.ResumeLayout(false);
@@ -2240,6 +2406,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radialFiyat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radialYazdir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).EndInit();
+            this.navigationPage5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2392,6 +2559,19 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraEditors.GroupControl groupControl5;
+        private DevExpress.XtraEditors.GridLookUpEdit gridLookUpEdit1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
+        private System.Windows.Forms.BindingSource dovizKurlariBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsim;
+        private DevExpress.XtraGrid.Columns.GridColumn colCurrencyCode;
+        private DevExpress.XtraGrid.Columns.GridColumn colBanknoteBuying;
+        private DevExpress.XtraGrid.Columns.GridColumn colBanknoteSelling;
+        private DevExpress.XtraEditors.CalcEdit txtDovizTutar;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.CheckButton btnSatisBeklet;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage5;
+        private System.Windows.Forms.FlowLayoutPanel flowBekleyenSatis;
     }
 }
 

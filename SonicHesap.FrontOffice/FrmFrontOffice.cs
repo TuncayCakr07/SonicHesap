@@ -33,12 +33,20 @@ namespace SonicHesap.FrontOffice
         FisDAL fisDal = new FisDAL();
         KasaHareketDAL kasaHareketDal = new KasaHareketDAL();
         StokHareketDAL stokHareketDal = new StokHareketDAL();
+        ExchangeTool doviz=new ExchangeTool();
         private string odemeTuruKodu, odemeTuruAdi;
+        decimal eskifiyat=0;
+
+        int BekleyenSatisId = 0;
+        List<BekleyenSatis> _bekleyenSatis = new List<BekleyenSatis>();
+
+
         public FrmFrontOffice()
         {
             InitializeComponent();
             gridContStokHareket.DataSource = context.StokHareketleri.Local.ToBindingList();
             gridContKasaHareket.DataSource = context.KasaHareketleri.Local.ToBindingList();
+            gridLookUpEdit1.Properties.DataSource = doviz.DovizKuruCek();
             txtFisKodu.DataBindings.Add("Text", _fisEntity, "FisKodu", false, DataSourceUpdateMode.OnPropertyChanged);
             txtBelgeNo.DataBindings.Add("Text", _fisEntity, "BelgeNo", false, DataSourceUpdateMode.OnPropertyChanged);
             txtAciklama.DataBindings.Add("Text", _fisEntity, "Aciklama", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -63,8 +71,11 @@ namespace SonicHesap.FrontOffice
             entity = context.Stoklar.SingleOrDefault(c => c.Barkod == buton.Name);
             if (entity != null)
             {
-                stokHareketDal.AddOrUpdate(context, StokSec(entity));
-                Toplamlar();
+                if (StokKontrol(entity))
+                {
+                    stokHareketDal.AddOrUpdate(context, StokSec(entity));
+                    Toplamlar();
+                }
             }
             else
             {
@@ -89,6 +100,12 @@ namespace SonicHesap.FrontOffice
                         Text = hizliSatis.UrunAdi,
                         Height = 150,
                         Width = 150,
+                        BackColor = Color.SteelBlue,
+                        ForeColor = Color.White,
+                        Appearance = {
+                        BackColor = Color.SteelBlue,
+                        ForeColor = Color.White
+                                     }
                     };
                     buton.Click += HizliSatis_Click;
                     panel.Controls.Add(buton);
@@ -104,12 +121,16 @@ namespace SonicHesap.FrontOffice
                     Text = item.OdemeTuruAdi,
                     Height = 55,
                     Width = 110,
+                    BackColor = Color.SteelBlue,
+                    ForeColor = Color.White,
+                    Appearance = {
+                        BackColor = Color.SteelBlue,
+                        ForeColor = Color.White
+                                     }
                 };
                 buton.Click += OdemeEkle_Click;
                 flowOdemeTurleri.Controls.Add(buton);
             }
-
-
 
             var SecimTemizle = new CheckButton
             {
@@ -118,6 +139,12 @@ namespace SonicHesap.FrontOffice
                 GroupIndex = 1,
                 Height = 70,
                 Width = 150,
+                BackColor = Color.SteelBlue,
+                ForeColor = Color.White,
+                Appearance = {
+                        BackColor = Color.SteelBlue,
+                        ForeColor = Color.White
+                                     },
                 Checked = true,
             };
             SecimTemizle.Click += PersonelEkle_Click;
@@ -132,6 +159,12 @@ namespace SonicHesap.FrontOffice
                     GroupIndex = 1,
                     Height = 70,
                     Width = 150,
+                    BackColor = Color.SteelBlue,
+                    ForeColor = Color.White,
+                    Appearance = {
+                        BackColor = Color.SteelBlue,
+                        ForeColor = Color.White
+                    },
                     Checked = false,
                 };
                 buton.Click += PersonelEkle_Click;
@@ -186,7 +219,7 @@ namespace SonicHesap.FrontOffice
 
         private void FisiKaydet(ReportsPrintTool.Belge belge)
         {
-        
+
             int StokHata = context.StokHareketleri.Local.Where(c => c.DepoKodu == null).Count();
             int KasaHata = context.KasaHareketleri.Local.Where(c => c.KasaKodu == null).Count();
             string message = null;
@@ -349,12 +382,22 @@ namespace SonicHesap.FrontOffice
 
         private bool StokKontrol(Stok entity)
         {
-            var MevcutStok = context.StokHareketleri.Where(c => c.Hareket == "Stok Giriş" && c.Barkod==entity.Barkod).Sum(c => c.Miktar) ?? 0 -
-                             context.StokHareketleri.Where(c => c.Hareket == "Stok Çıkış" && c.Barkod == entity.Barkod).Sum(c => c.Miktar) ?? 0;
+            // Stok Girişlerinden toplam miktar
+            var stokGiris = context.StokHareketleri
+                                  .Where(c => c.Hareket == "Stok Giriş" && c.Barkod == entity.Barkod)
+                                  .Sum(c => c.Miktar) ?? 0;
 
-            if (txtIslem.Text=="SATIŞ" && entity.MinStokMiktari>MevcutStok-(txtMiktar.Value+context.StokHareketleri.Where(c=>c.Barkod==entity.Barkod).Sum(c=>c.Miktar)))
+            // Stok Çıkışlarından toplam miktar
+            var stokCikis = context.StokHareketleri
+                                  .Where(c => c.Hareket == "Stok Çıkış" && c.Barkod == entity.Barkod)
+                                  .Sum(c => c.Miktar) ?? 0;
+
+            // Mevcut Stok Miktarı
+            var mevcutStok = stokGiris - stokCikis;
+
+            if (txtIslem.Text == "SATIŞ" && entity.MinStokMiktari > mevcutStok - (txtMiktar.Value))
             {
-                MessageBox.Show("Satış Yapmak İstediğiniz Ürünün Stok Durumu Minimum Düzeydedir!\nSatış Yapabilmek İçin Stok Durumunu Kontrol Ediniz!","Minimum Stok Uyarısı!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Satış Yapmak İstediğiniz Ürünün Stok Durumu Minimum Düzeydedir!\nSatış Yapabilmek İçin Stok Durumunu Kontrol Ediniz!", "Minimum Stok Uyarısı!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             else
@@ -362,6 +405,8 @@ namespace SonicHesap.FrontOffice
                 return true;
             }
         }
+
+
 
         private StokHareket StokSec(Entities.Tables.Stok entity)
         {
@@ -391,11 +436,6 @@ namespace SonicHesap.FrontOffice
             txtParaUstu.Value = txtOdenenTutar.Value - txtToplam.Value;
             txtAraToplam.Value = txtToplam.Value - txtKDVToplam.Value;
             txtOdenmesiGereken.Value = txtToplam.Value - txtOdenenTutar.Value;
-        }
-
-        private void simpleButton13_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnBul_Click(object sender, EventArgs e)
@@ -486,17 +526,6 @@ namespace SonicHesap.FrontOffice
             radialFiyat.ShowPopup(MousePosition);
         }
 
-        private void simpleButton14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void simpleButton16_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void btnCariSec_Click(object sender, EventArgs e)
         {
             FrmCariSec form = new FrmCariSec();
@@ -528,8 +557,11 @@ namespace SonicHesap.FrontOffice
             form.ShowDialog();
             if (form.secildi)
             {
-                stokHareketDal.AddOrUpdate(context, StokSec(form.secilen.First()));
-                Toplamlar();
+                if (StokKontrol(form.secilen.SingleOrDefault()))
+                {
+                    stokHareketDal.AddOrUpdate(context, StokSec(form.secilen.First()));
+                    Toplamlar();
+                }
             }
         }
 
@@ -590,11 +622,6 @@ namespace SonicHesap.FrontOffice
             txtOdenenTutar.Value = 0;
         }
 
-        private void gridStokHareket_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            Toplamlar();
-        }
-
         private void txtBarkod_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -603,8 +630,11 @@ namespace SonicHesap.FrontOffice
                 entity = context.Stoklar.Where(c => c.Barkod == txtBarkod.Text).SingleOrDefault();
                 if (entity != null)
                 {
-                    stokHareketDal.AddOrUpdate(context, StokSec(entity));
-                    Toplamlar();
+                    if (StokKontrol(entity))
+                    {
+                        stokHareketDal.AddOrUpdate(context, StokSec(entity));
+                        Toplamlar();
+                    }
                 }
                 else
                 {
@@ -662,6 +692,48 @@ namespace SonicHesap.FrontOffice
             //Bilgifisi
             FisTemizle();
         }
+
+        private void gridStokHareket_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (gridStokHareket.FocusedColumn==colMiktar)
+            {
+                txtMiktar.Value = 0;
+                decimal deger = (decimal)e.Value;
+                string barkod = gridStokHareket.GetFocusedRowCellValue(colBarkod).ToString();
+                if (!StokKontrol(context.Stoklar.SingleOrDefault(c => c.Barkod == barkod)))
+                {
+                    gridStokHareket.SetFocusedRowCellValue(colMiktar, eskifiyat);
+                }
+                txtMiktar.Value = 1;
+                Toplamlar();
+            }
+        }
+
+        private void gridStokHareket_ShownEditor(object sender, EventArgs e)
+        {
+            if (gridStokHareket.FocusedColumn == colMiktar)
+            {
+                eskifiyat = (decimal)gridStokHareket.GetFocusedRowCellValue(colMiktar);
+            }
+        }
+
+        private void gridLookUpEdit1View_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (gridLookUpEdit1View.GetFocusedRow() != null && gridLookUpEdit1View.GetFocusedRowCellValue(colBanknoteSelling) != null)
+            {
+                try
+                {
+                    txtDovizTutar.Value = txtToplam.Value / Convert.ToDecimal(gridLookUpEdit1View.GetFocusedRowCellValue(colBanknoteSelling));
+                }
+                catch (Exception ex)
+                {
+                  
+                    MessageBox.Show(ex.Message + " Döviz Kuru Hatası Oluştu!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+        }
+
 
 
         private void repoOHSil_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)

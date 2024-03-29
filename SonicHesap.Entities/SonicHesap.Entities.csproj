@@ -114,6 +114,7 @@
     <Compile Include="Tables\HizliSatis.cs" />
     <Compile Include="Tables\HizliSatisGrup.cs" />
     <Compile Include="Tables\Indirim.cs" />
+    <Compile Include="Tables\OtherTables\BekleyenSatis.cs" />
     <Compile Include="Tables\OtherTables\CariBakiye.cs" />
     <Compile Include="Tables\Depo.cs" />
     <Compile Include="Tables\Fis.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Tables\StokHareket.cs" />
     <Compile Include="Tables\Tanim.cs" />
     <Compile Include="Tools\ConverterTool.cs" />
+    <Compile Include="Tools\ExchangeTool.cs" />
     <Compile Include="Tools\ReportPrintTool.cs" />
     <Compile Include="Tools\SettingsTool.cs" />
     <Compile Include="Tools\ValidatorTool.cs" />
@@ -149,6 +151,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SonicHesap.Entities.Tables.OtherTables.DovizKurlari.datasource" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202403151715575_InitialCreate.resx">

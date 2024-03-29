@@ -1,6 +1,7 @@
 ﻿using DevExpress.Utils.About;
 using DevExpress.XtraEditors;
 using SonicHesap.Entities.Tables.OtherTables;
+using SonicHesap.Entities.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,25 +40,9 @@ namespace SonicHesap.BackOffice.Doviz_Kurlari
                 }
                 lblUyari.Text = "Son Güncelleme Tarihi  :" + DateTime.Now.ToString();
             }
+            ExchangeTool doviz=new ExchangeTool();
 
-            XElement kurlar = XElement.Load("https://www.tcmb.gov.tr/kurlar/today.xml");
-            List<DovizKurlari> listKurlar = new List<DovizKurlari>();
-
-            foreach (var itemElement in kurlar.Elements().Where(c => c.Attribute("CurrencyCode").Value != "XDR").ToList())
-            {
-                listKurlar.Add(new DovizKurlari
-                {
-                    CurrencyCode = itemElement.Attribute("CurrencyCode").Value,
-                    Isim = itemElement.Element("Isim").Value,
-                    ForexBuying = Convert.ToDecimal(itemElement.Element("ForexBuying").Value.Replace(".", ",")),
-                    ForexSelling = Convert.ToDecimal(itemElement.Element("ForexSelling").Value.Replace(".", ",")),
-                    BanknoteBuying = itemElement.Element("BanknoteBuying").Value == "" ? 0 : Convert.ToDecimal(itemElement.Element("BanknoteBuying").Value.Replace(".", ",")),
-                    BanknoteSelling = itemElement.Element("BanknoteSelling").Value == "" ? 0 : Convert.ToDecimal(itemElement.Element("BanknoteSelling").Value.Replace(".", ",")),
-
-                });
-            }
-
-            gridControl1.DataSource = listKurlar;
+            gridControl1.DataSource = doviz.DovizKuruCek();
         }
 
         private void btnKapat_Click(object sender, EventArgs e)
