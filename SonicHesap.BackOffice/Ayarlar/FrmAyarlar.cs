@@ -37,6 +37,7 @@ namespace SonicHesap.BackOffice.Ayarlar
             cmbBilgiFisiAyar.SelectedIndex = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_BilgiFisiYazdirmaAyari));
             cmbBilgiFisiYazici.Text = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_BilgiFisiYazici);
             toggleGuncelle.IsOn = Convert.ToBoolean(SettingsTool.AyarOku(SettingsTool.Ayarlar.GenelAyarlar_GuncellemeKontrol));
+            calcEdit1.Value = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu));
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
@@ -45,6 +46,7 @@ namespace SonicHesap.BackOffice.Ayarlar
 
             if (result == DialogResult.Yes)
             {
+                SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SatisAyarlari_FisKodu, calcEdit1.Value.ToString());
                 SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SatisAyarlari_FaturaYazici, cmbFaturaYazici.Text);
                 SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SatisAyarlari_BilgiFisiYazici, cmbBilgiFisiYazici.Text);
                 SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SatisAyarlari_FaturaYazdirmaAyari, cmbFaturaAyar.SelectedIndex.ToString());
