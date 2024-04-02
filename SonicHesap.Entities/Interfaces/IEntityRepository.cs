@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SonicHesap.Entities.Interfaces
 {
-    public interface IEntityRepository<TContext,TEntity> 
+    public interface IEntityRepositoryBase<TContext,TEntity> 
     where TContext:DbContext, new()
     where TEntity : class,IEntity,new()
 

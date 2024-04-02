@@ -13,7 +13,7 @@ namespace SonicHesap.Entities.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202403151715575_InitialCreate"; }
+            get { return "202404022237489_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

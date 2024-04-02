@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace SonicHesap.Entities.Repositories
 {
-    public class EntityRepositoryBase<TContext, TEntity,TValidator> : IEntityRepository<TContext, TEntity>
+    public class EntityRepositoryBase<TContext, TEntity,TValidator> : IEntityRepositoryBase<TContext, TEntity>
     where TContext : DbContext, new()
     where TEntity : class, IEntity, new()
     where TValidator:IValidator,new()

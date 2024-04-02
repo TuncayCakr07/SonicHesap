@@ -83,6 +83,7 @@
     <Compile Include="Data Access\KasaHareketDAL.cs" />
     <Compile Include="Data Access\OdemeTuruDAL.cs" />
     <Compile Include="Data Access\PersonelDAL.cs" />
+    <Compile Include="Data Access\PersonelHareketDAL.cs" />
     <Compile Include="Data Access\StokDAL.cs" />
     <Compile Include="Data Access\StokHareketDAL.cs" />
     <Compile Include="Data Access\TanimDAL.cs" />
@@ -97,13 +98,14 @@
     <Compile Include="Mapping\KasaHareketMap.cs" />
     <Compile Include="Mapping\KasaMap.cs" />
     <Compile Include="Mapping\OdemeTuruMap.cs" />
+    <Compile Include="Mapping\PersonelHareketMap.cs" />
     <Compile Include="Mapping\PersonelMap.cs" />
     <Compile Include="Mapping\StokHareketMap.cs" />
     <Compile Include="Mapping\StokMap.cs" />
     <Compile Include="Mapping\TanimMap.cs" />
-    <Compile Include="Migrations\202403151715575_InitialCreate.cs" />
-    <Compile Include="Migrations\202403151715575_InitialCreate.designer.cs">
-      <DependentUpon>202403151715575_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202404022237489_InitialCreate.cs" />
+    <Compile Include="Migrations\202404022237489_InitialCreate.designer.cs">
+      <DependentUpon>202404022237489_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,6 +128,7 @@
     <Compile Include="Tables\KasaHareket.cs" />
     <Compile Include="Tables\OdemeTuru.cs" />
     <Compile Include="Tables\Personel.cs" />
+    <Compile Include="Tables\PersonelHareket.cs" />
     <Compile Include="Tables\Stok.cs" />
     <Compile Include="Tables\StokHareket.cs" />
     <Compile Include="Tables\Tanim.cs" />
@@ -144,6 +147,7 @@
     <Compile Include="Validations\KasaHareketValidator.cs" />
     <Compile Include="Validations\KasaValidator.cs" />
     <Compile Include="Validations\OdemeTuruValidator.cs" />
+    <Compile Include="Validations\PersonelHareketValidator.cs" />
     <Compile Include="Validations\PersonelValidator.cs" />
     <Compile Include="Validations\StokHareketValidator.cs" />
     <Compile Include="Validations\StokValidator.cs" />
@@ -155,8 +159,8 @@
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.OtherTables.DovizKurlari.datasource" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202403151715575_InitialCreate.resx">
-      <DependentUpon>202403151715575_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202404022237489_InitialCreate.resx">
+      <DependentUpon>202404022237489_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
