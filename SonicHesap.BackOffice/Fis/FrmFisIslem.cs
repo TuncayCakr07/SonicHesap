@@ -4,6 +4,7 @@ using DevExpress.XtraEditors;
 using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
 using SonicHesap.BackOffice.Kasa;
+using SonicHesap.BackOffice.Personel;
 using SonicHesap.BackOffice.Stok;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
@@ -35,6 +36,7 @@ namespace SonicHesap.BackOffice.Fis
         FisDAL fisDal = new FisDAL();
         KasaHareketDAL kasaHareketDal = new KasaHareketDAL();
         StokHareketDAL stokHareketDal = new StokHareketDAL();
+        PersonelHareketDAL personelHareketDal = new PersonelHareketDAL();
 
         public FrmFisIslem(string fisKodu = null, string fisTuru = null)
         {
@@ -65,6 +67,14 @@ namespace SonicHesap.BackOffice.Fis
             databinding();
             gridContStokHareket.DataSource = contex.StokHareketleri.Local.ToBindingList();
             gridContKasaHareket.DataSource = contex.KasaHareketleri.Local.ToBindingList();
+            gridContPersonelHareket.DataSource = contex.PersonelHareketleri.Local.ToBindingList();
+
+            cmbAy.Month=DateTime.Now.Month;
+            for (int i = DateTime.Now.Year-2; i <= DateTime.Now.Year+36; i++)
+            {
+                cmbYil.Properties.Items.Add(i);
+            }
+            cmbYil.Text=DateTime.Now.Year.ToString();
             FisAyar();
             Toplamlar();
             OdenenTutarGuncelle();
@@ -618,6 +628,21 @@ namespace SonicHesap.BackOffice.Fis
         private void txtToplam_EditValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnPersonelBul_Click(object sender, EventArgs e)
+        {
+            DateTime time =new DateTime(Convert.ToInt32(cmbYil.Text), cmbAy.Month, 1);
+            FrmPersonelSec form = new FrmPersonelSec(time);
+            form.ShowDialog();
+            if (form.secildi)
+            {
+                foreach (var item in form.secilen.ToList())
+                {
+                    personelHareketDal.AddOrUpdate(contex,item);
+                }
+             
+            }
         }
     }
 }
