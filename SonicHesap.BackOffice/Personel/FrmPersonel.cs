@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using SonicHesap.BackOffice.Cari;
+using SonicHesap.BackOffice.Fis;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
 using SonicHesap.Entities.Mapping;
@@ -107,6 +108,12 @@ namespace SonicHesap.BackOffice.Personel
             _secilen = gridPersonelHareket.GetFocusedRowCellValue(colPersonelKodu).ToString();
             FrmPersonelHareket form = new FrmPersonelHareket(_secilen, gridPersonelHareket.GetFocusedRowCellValue(colPersonelAdi).ToString());
             form.ShowDialog();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            FrmFisIslem form = new FrmFisIslem(null,"Hakediş Fişi");
+            form.ShowDialog();  
         }
     }
 }

@@ -102,8 +102,8 @@
             // 
             // splitContainerControl1.Panel2
             // 
-            this.splitContainerControl1.Panel2.Controls.Add(this.grpMenu);
             this.splitContainerControl1.Panel2.Controls.Add(this.gridContKasaHareket);
+            this.splitContainerControl1.Panel2.Controls.Add(this.grpMenu);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1327, 754);
             this.splitContainerControl1.SplitterPosition = 242;
@@ -197,7 +197,7 @@
             this.gridContKasaHareket.Location = new System.Drawing.Point(0, 0);
             this.gridContKasaHareket.MainView = this.gridKasaHareket;
             this.gridContKasaHareket.Name = "gridContKasaHareket";
-            this.gridContKasaHareket.Size = new System.Drawing.Size(1327, 500);
+            this.gridContKasaHareket.Size = new System.Drawing.Size(1327, 420);
             this.gridContKasaHareket.TabIndex = 2;
             this.gridContKasaHareket.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridKasaHareket});

@@ -46,6 +46,7 @@ namespace SonicHesap.BackOffice.Fis
                 _fisEntity = contex.fisler.Where(c => c.FisKodu == fisKodu).SingleOrDefault();
                 contex.StokHareketleri.Where(c => c.FisKodu == fisKodu).Load();
                 contex.KasaHareketleri.Where(c => c.FisKodu == fisKodu).Load();
+                contex.PersonelHareketleri.Where(c => c.FisKodu == fisKodu).Load();
 
                 toggleBakiye.IsOn = contex.KasaHareketleri.Count(c => c.FisKodu == fisKodu && c.Hareket == "Kasa Giriş") == 0;
 
@@ -69,12 +70,12 @@ namespace SonicHesap.BackOffice.Fis
             gridContKasaHareket.DataSource = contex.KasaHareketleri.Local.ToBindingList();
             gridContPersonelHareket.DataSource = contex.PersonelHareketleri.Local.ToBindingList();
 
-            cmbAy.Month=DateTime.Now.Month;
-            for (int i = DateTime.Now.Year-2; i <= DateTime.Now.Year+36; i++)
+            cmbAy.Month = DateTime.Now.Month;
+            for (int i = DateTime.Now.Year - 2; i <= DateTime.Now.Year + 36; i++)
             {
                 cmbYil.Properties.Items.Add(i);
             }
-            cmbYil.Text=DateTime.Now.Year.ToString();
+            cmbYil.Text = DateTime.Now.Year.ToString();
             FisAyar();
             Toplamlar();
             OdenenTutarGuncelle();
@@ -136,7 +137,7 @@ namespace SonicHesap.BackOffice.Fis
                     GroupIndex = 1,
                     Height = 70,
                     Width = 150,
-                    Checked=item.PersonelKodu==_fisEntity.PlasiyerKodu
+                    Checked = item.PersonelKodu == _fisEntity.PlasiyerKodu
                 };
                 buton.Click += PersonelEkle_Click;
                 flowPersonel.Controls.Add(buton);
@@ -170,7 +171,7 @@ namespace SonicHesap.BackOffice.Fis
 
         private void btnKapat_Click(object sender, EventArgs e)
         {
-      
+
             if (gridStokHareket.RowCount != 0)
             {
                 DialogResult result = MessageBox.Show("Satış Ekranında Belgeye Kaydedilmemiş Ürünler Var. Bu İşlemi İptal Edip Belgeyi Kapatmak İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -206,7 +207,7 @@ namespace SonicHesap.BackOffice.Fis
                 hata++;
             }
 
-            if (_fisEntity.CariKodu == null && ayarlar.SatisEkrani == false)
+            if (_fisEntity.CariKodu == null && ayarlar.SatisEkrani == false && txtFisTuru.Text!="Hakediş Fişi")
             {
                 message += (txtFisTuru.Text + " " + "Türünde Cari Seçimi Zorunludur!") + System.Environment.NewLine;
                 hata++;
@@ -254,6 +255,11 @@ namespace SonicHesap.BackOffice.Fis
                 stokVeri.Hareket = ayarlar.StokHareketi;
             }
 
+            foreach (var item in contex.PersonelHareketleri.Local.ToList())
+            {
+                item.FisKodu = txtFisKodu.Text;
+            }
+
             if (ayarlar.OdemeEkrani)
             {
                 foreach (var kasaVeri in contex.KasaHareketleri.Local.ToList())
@@ -261,8 +267,11 @@ namespace SonicHesap.BackOffice.Fis
                     kasaVeri.Tarih = kasaVeri.Tarih == null ? Convert.ToDateTime(cmbTarih.DateTime) : Convert.ToDateTime(kasaVeri.Tarih);
                     kasaVeri.FisKodu = txtFisKodu.Text;
                     kasaVeri.Hareket = ayarlar.KasaHareketi;
-                    kasaVeri.CariKodu = lblCariKodu.Text;
-                    kasaVeri.CariAdi = lblCariAdi.Text;
+                    if (txtFisTuru.Text!="Hakediş Fişi")
+                    {
+                        kasaVeri.CariKodu = lblCariKodu.Text;
+                        kasaVeri.CariAdi = lblCariAdi.Text;
+                    }
                     kasaVeri.Tutar = txtToplam.Value;
                 }
             }
@@ -314,6 +323,7 @@ namespace SonicHesap.BackOffice.Fis
                     ayarlar.OdemeEkrani = true;
                     ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 0;
+                    navPersonelIslem.Dispose();
                     break;
                 case "Perakende Satış Faturası":
                     ayarlar.StokHareketi = "Stok Çıkış";
@@ -321,6 +331,7 @@ namespace SonicHesap.BackOffice.Fis
                     ayarlar.OdemeEkrani = true;
                     ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 1;
+                    navPersonelIslem.Dispose();
                     break;
                 case "Toptan Satış Faturası":
                     ayarlar.StokHareketi = "Stok Çıkış";
@@ -328,6 +339,7 @@ namespace SonicHesap.BackOffice.Fis
                     ayarlar.OdemeEkrani = true;
                     ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 2;
+                    navPersonelIslem.Dispose();
                     break;
                 case "Alış İade Faturası":
                     ayarlar.StokHareketi = "Stok Çıkış";
@@ -335,6 +347,7 @@ namespace SonicHesap.BackOffice.Fis
                     ayarlar.OdemeEkrani = true;
                     ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 3;
+                    navPersonelIslem.Dispose();
                     break;
                 case "Satış İade Faturası":
                     ayarlar.StokHareketi = "Stok Giriş";
@@ -342,6 +355,7 @@ namespace SonicHesap.BackOffice.Fis
                     ayarlar.OdemeEkrani = true;
                     ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 4;
+                    navPersonelIslem.Dispose();
                     break;
                 case "Sayım Fazlası Fişi":
                     ayarlar.StokHareketi = "Stok Giriş";
@@ -350,6 +364,7 @@ namespace SonicHesap.BackOffice.Fis
                     lblBaslik.ImageOptions.ImageIndex = 5;
                     navOdemeEkrani.Dispose();
                     navCariBilgi.Dispose();
+                    navPersonelIslem.Dispose();
                     panelOdeme.Visible = false;
                     break;
                 case "Sayım Eksiği Fişi":
@@ -360,6 +375,7 @@ namespace SonicHesap.BackOffice.Fis
                     panelOdeme.Visible = false;
                     navOdemeEkrani.Dispose();
                     navCariBilgi.Dispose();
+                    navPersonelIslem.Dispose();
                     break;
                 case "Stok Devir Fişi":
                     ayarlar.StokHareketi = "Stok Giriş";
@@ -369,12 +385,14 @@ namespace SonicHesap.BackOffice.Fis
                     panelOdeme.Visible = false;
                     navOdemeEkrani.Dispose();
                     navCariBilgi.Dispose();
+                    navPersonelIslem.Dispose();
                     break;
                 case "Tahsilat Fişi":
                     ayarlar.KasaHareketi = "Kasa Giriş";
                     ayarlar.OdemeEkrani = true;
                     ayarlar.SatisEkrani = false;
                     navSatisEkrani.Dispose();
+                    navPersonelIslem.Dispose();
                     panelOdeme.Visible = false;
                     panelIskontoIndirim.Visible = false;
                     panelKdv.Visible = false;
@@ -392,6 +410,7 @@ namespace SonicHesap.BackOffice.Fis
                     groupToplamlar.Height = 164;
                     panelToplam.Top = 28;
                     navSatisEkrani.Dispose();
+                    navPersonelIslem.Dispose();
                     navigationPane2.SelectedPage = navOdemeEkrani;
                     break;
 
@@ -405,9 +424,23 @@ namespace SonicHesap.BackOffice.Fis
                     groupToplamlar.Height = 164;
                     panelToplam.Top = 28;
                     navSatisEkrani.Dispose();
+                    navPersonelIslem.Dispose();
                     txtFisKodu.Width = 386;
                     navigationPane2.SelectedPage = navOdemeEkrani; // ya da navCariBilgi, ihtiyaca göre// Kasa hareketinin açıklamasını belirt // Kasa hareketini kaydet
                     break;
+
+                case "Hakediş Fişi":
+                    ayarlar.KasaHareketi = "Kasa Çıkış";
+                    ayarlar.OdemeEkrani = true;
+                    ayarlar.SatisEkrani = false;
+                    panelIskontoIndirim.Visible = false;
+                    panelKdv.Visible = false;
+                    navSatisEkrani.Dispose();
+                    navCariBilgi.Dispose();
+                    navPlasiyerBilgi.Dispose();
+                    navigationPane2.SelectedPage = navPersonelIslem; // ya da navCariBilgi, ihtiyaca göre// Kasa hareketinin açıklamasını belirt // Kasa hareketini kaydet
+                    break;
+
             }
         }
 
@@ -430,7 +463,7 @@ namespace SonicHesap.BackOffice.Fis
         private void OdemeEkle_Click(object sender, EventArgs e)
         {
             var buton = (sender as SimpleButton);
-            if (ayarlar.SatisEkrani == false)
+            if (ayarlar.SatisEkrani == false && txtFisTuru.Text!="Hakediş Fişi")
             {
                 FrmOdemeEkrani form = new FrmOdemeEkrani(buton.Text, buton.Name);
                 form.ShowDialog();
@@ -447,26 +480,40 @@ namespace SonicHesap.BackOffice.Fis
                 string odemeTuruKodu = buton.Name;
                 string odemeTuruAdi = buton.Text;
 
-                if (string.IsNullOrEmpty(odemeTuruKodu) || string.IsNullOrEmpty(odemeTuruAdi))
-                {
-                    MessageBox.Show("Ödeme Türü ve Adı Boş Olamaz!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                KasaHareket entitykasaHareket = new KasaHareket
-                {
-                    OdemeTuruKodu = odemeTuruKodu,
-                    OdemeTuruAdi = odemeTuruAdi,
-                    Tutar = txtOdenmesiGereken.Value
-                };
                 if (txtOdenmesiGereken.Value <= 0)
                 {
                     MessageBox.Show("Ödeme Yapılacak Tutar Bulunamadı!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    kasaHareketDal.AddOrUpdate(contex, entitykasaHareket);
-                    OdenenTutarGuncelle();
+                    if (txtFisTuru.Text != "Hakediş Fişi")
+                    {
+                        KasaHareket entitykasaHareket = new KasaHareket
+                        {
+                            OdemeTuruKodu = odemeTuruKodu,
+                            OdemeTuruAdi = odemeTuruAdi,
+                            Tutar = txtOdenmesiGereken.Value
+                        };
+                        kasaHareketDal.AddOrUpdate(contex, entitykasaHareket);
+                        OdenenTutarGuncelle();
+                    }
+                    else
+                    {
+                        for (int i = 0; i < gridPersonelHareket.RowCount; i++)
+                        {
+                            KasaHareket entitykasaHareket = new KasaHareket
+                            {
+                                CariKodu= gridPersonelHareket.GetRowCellValue(i, colPersonelKodu).ToString(),
+                                CariAdi = gridPersonelHareket.GetRowCellValue(i, colPersonelAdi).ToString(),
+                                OdemeTuruKodu = odemeTuruKodu,
+                                OdemeTuruAdi = odemeTuruAdi,
+                                Tutar = Convert.ToDecimal(gridPersonelHareket.GetRowCellValue(i,colOdenecekTutar)),
+                                Aciklama=$"{gridPersonelHareket.GetRowCellValue(i, colPersonelKodu).ToString()} - {gridPersonelHareket.GetRowCellValue(i, colPersonelAdi).ToString()} - Aylık Maaş : {Convert.ToDecimal(gridPersonelHareket.GetRowCellValue(i, colAylikMaasi)).ToString("C2")} || Prim Tutarı : {Convert.ToDecimal(gridPersonelHareket.GetRowCellValue(i, colPrimTutari)).ToString("C2")}"
+                            };
+                            kasaHareketDal.AddOrUpdate(contex, entitykasaHareket);
+                        }
+                        OdenenTutarGuncelle();
+                    }
                 }
             }
         }
@@ -474,7 +521,7 @@ namespace SonicHesap.BackOffice.Fis
         private void OdenenTutarGuncelle()
         {
             gridKasaHareket.UpdateSummary();
-            if (ayarlar.SatisEkrani)
+            if (ayarlar.SatisEkrani || _fisEntity.FisTuru=="Hakediş Fişi")
             {
                 txtOdenenTutar.Value = Convert.ToDecimal(colTutar.SummaryItem.SummaryValue);
                 txtOdenmesiGereken.Value = txtToplam.Value - txtOdenenTutar.Value;
@@ -567,7 +614,7 @@ namespace SonicHesap.BackOffice.Fis
         private StokHareket StokSec(Entities.Tables.Stok entity)
         {
             StokHareket stokHareket = new StokHareket();
-            IndirimDAL indirimDal=new IndirimDAL();
+            IndirimDAL indirimDal = new IndirimDAL();
             stokHareket.StokKodu = entity.StokKodu;
             stokHareket.StokAdi = entity.StokAdi;
             stokHareket.Barkod = entity.Barkod;
@@ -587,7 +634,14 @@ namespace SonicHesap.BackOffice.Fis
         {
             gridStokHareket.UpdateSummary();
             txtIskontoTutar.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) / 100 * txtIskontoOrani.Value;
-            txtToplam.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) - txtIskontoTutar.Value;
+            if (_fisEntity.FisTuru == "Hakediş Fişi")
+            {
+                txtToplam.Value = Convert.ToDecimal(colOdenecekTutar.SummaryItem.SummaryValue);
+            }
+            else
+            {
+                txtToplam.Value = Convert.ToDecimal(colToplamTutar.SummaryItem.SummaryValue) - txtIskontoTutar.Value;
+            }
             txtKdvToplam.Value = Convert.ToDecimal(colKdvToplam.SummaryItem.SummaryValue);
             txtIndirimToplam.Value = Convert.ToDecimal(colIndirimtutari.SummaryItem.SummaryValue);
             txtOdenmesiGereken.Value = txtToplam.Value - txtOdenenTutar.Value;
@@ -632,16 +686,23 @@ namespace SonicHesap.BackOffice.Fis
 
         private void btnPersonelBul_Click(object sender, EventArgs e)
         {
-            DateTime time =new DateTime(Convert.ToInt32(cmbYil.Text), cmbAy.Month, 1);
+            DateTime time = new DateTime(Convert.ToInt32(cmbYil.Text), cmbAy.Month, 1);
             FrmPersonelSec form = new FrmPersonelSec(time);
             form.ShowDialog();
             if (form.secildi)
             {
                 foreach (var item in form.secilen.ToList())
                 {
-                    personelHareketDal.AddOrUpdate(contex,item);
+                    if (contex.PersonelHareketleri.Local.Count(c => c.Donemi==time && c.PersonelKodu == item.PersonelKodu) == 0)
+                    {
+                        personelHareketDal.AddOrUpdate(contex, item);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Personel Daha Önce Eklenmiş!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-             
+                Toplamlar();
             }
         }
     }

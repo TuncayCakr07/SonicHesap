@@ -2059,6 +2059,7 @@
             this.colId1.FieldName = "Id";
             this.colId1.MinWidth = 25;
             this.colId1.Name = "colId1";
+            this.colId1.OptionsColumn.AllowEdit = false;
             this.colId1.Width = 94;
             // 
             // colFisKodu
@@ -2066,6 +2067,7 @@
             this.colFisKodu.FieldName = "FisKodu";
             this.colFisKodu.MinWidth = 25;
             this.colFisKodu.Name = "colFisKodu";
+            this.colFisKodu.OptionsColumn.AllowEdit = false;
             this.colFisKodu.Width = 94;
             // 
             // colUnvani
@@ -2073,6 +2075,7 @@
             this.colUnvani.FieldName = "Unvani";
             this.colUnvani.MinWidth = 25;
             this.colUnvani.Name = "colUnvani";
+            this.colUnvani.OptionsColumn.AllowEdit = false;
             this.colUnvani.Visible = true;
             this.colUnvani.VisibleIndex = 0;
             this.colUnvani.Width = 135;
@@ -2082,6 +2085,7 @@
             this.colPersonelKodu.FieldName = "PersonelKodu";
             this.colPersonelKodu.MinWidth = 25;
             this.colPersonelKodu.Name = "colPersonelKodu";
+            this.colPersonelKodu.OptionsColumn.AllowEdit = false;
             this.colPersonelKodu.Visible = true;
             this.colPersonelKodu.VisibleIndex = 1;
             this.colPersonelKodu.Width = 135;
@@ -2091,6 +2095,7 @@
             this.colPersonelAdi.FieldName = "PersonelAdi";
             this.colPersonelAdi.MinWidth = 25;
             this.colPersonelAdi.Name = "colPersonelAdi";
+            this.colPersonelAdi.OptionsColumn.AllowEdit = false;
             this.colPersonelAdi.Visible = true;
             this.colPersonelAdi.VisibleIndex = 2;
             this.colPersonelAdi.Width = 135;
@@ -2100,6 +2105,7 @@
             this.colTCKimlikNo.FieldName = "TCKimlikNo";
             this.colTCKimlikNo.MinWidth = 25;
             this.colTCKimlikNo.Name = "colTCKimlikNo";
+            this.colTCKimlikNo.OptionsColumn.AllowEdit = false;
             this.colTCKimlikNo.Visible = true;
             this.colTCKimlikNo.VisibleIndex = 3;
             this.colTCKimlikNo.Width = 135;
@@ -2111,6 +2117,7 @@
             this.colDonemi.FieldName = "Donemi";
             this.colDonemi.MinWidth = 25;
             this.colDonemi.Name = "colDonemi";
+            this.colDonemi.OptionsColumn.AllowEdit = false;
             this.colDonemi.Visible = true;
             this.colDonemi.VisibleIndex = 4;
             this.colDonemi.Width = 135;
@@ -2122,6 +2129,7 @@
             this.colPrimOrani.FieldName = "PrimOrani";
             this.colPrimOrani.MinWidth = 25;
             this.colPrimOrani.Name = "colPrimOrani";
+            this.colPrimOrani.OptionsColumn.AllowEdit = false;
             this.colPrimOrani.Visible = true;
             this.colPrimOrani.VisibleIndex = 6;
             this.colPrimOrani.Width = 78;
@@ -2133,6 +2141,7 @@
             this.colToplamSatis.FieldName = "ToplamSatis";
             this.colToplamSatis.MinWidth = 25;
             this.colToplamSatis.Name = "colToplamSatis";
+            this.colToplamSatis.OptionsColumn.AllowEdit = false;
             this.colToplamSatis.Visible = true;
             this.colToplamSatis.VisibleIndex = 7;
             this.colToplamSatis.Width = 92;
@@ -2144,6 +2153,7 @@
             this.colAylikMaasi.FieldName = "AylikMaasi";
             this.colAylikMaasi.MinWidth = 25;
             this.colAylikMaasi.Name = "colAylikMaasi";
+            this.colAylikMaasi.OptionsColumn.AllowEdit = false;
             this.colAylikMaasi.Visible = true;
             this.colAylikMaasi.VisibleIndex = 8;
             this.colAylikMaasi.Width = 240;
@@ -2153,6 +2163,7 @@
             this.colAciklama2.FieldName = "Aciklama";
             this.colAciklama2.MinWidth = 25;
             this.colAciklama2.Name = "colAciklama2";
+            this.colAciklama2.OptionsColumn.AllowEdit = false;
             this.colAciklama2.Visible = true;
             this.colAciklama2.VisibleIndex = 5;
             this.colAciklama2.Width = 135;
@@ -2165,6 +2176,7 @@
             this.colPrimTutari.FieldName = "colPrimTutari";
             this.colPrimTutari.MinWidth = 25;
             this.colPrimTutari.Name = "colPrimTutari";
+            this.colPrimTutari.OptionsColumn.AllowEdit = false;
             this.colPrimTutari.UnboundDataType = typeof(decimal);
             this.colPrimTutari.UnboundExpression = "[ToplamSatis] / 100 * [PrimOrani]";
             this.colPrimTutari.Visible = true;
@@ -2179,6 +2191,9 @@
             this.colOdenecekTutar.FieldName = "colOdenecekTutar";
             this.colOdenecekTutar.MinWidth = 25;
             this.colOdenecekTutar.Name = "colOdenecekTutar";
+            this.colOdenecekTutar.OptionsColumn.AllowEdit = false;
+            this.colOdenecekTutar.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "colOdenecekTutar", "C2")});
             this.colOdenecekTutar.UnboundDataType = typeof(decimal);
             this.colOdenecekTutar.UnboundExpression = "[AylikMaasi] + [colPrimTutari]";
             this.colOdenecekTutar.Visible = true;

@@ -71,6 +71,7 @@
             this.colToplamSatis = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrimTutar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lblBaslik = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -85,6 +86,7 @@
             // 
             // grpMenu
             // 
+            this.grpMenu.Controls.Add(this.simpleButton1);
             this.grpMenu.Controls.Add(this.btnAra);
             this.grpMenu.Controls.Add(this.btnPersonelHareket);
             this.grpMenu.Controls.Add(this.btnKapat);
@@ -130,6 +132,7 @@
             this.ımageList1.Images.SetKeyName(10, "Ekle.png");
             this.ımageList1.Images.SetKeyName(11, "hareket.png");
             this.ımageList1.Images.SetKeyName(12, "sil.png");
+            this.ımageList1.Images.SetKeyName(13, "hakediş.png");
             // 
             // btnPersonelHareket
             // 
@@ -621,6 +624,20 @@
             this.lblBaslik.TabIndex = 6;
             this.lblBaslik.Text = "Personel Kartları";
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.simpleButton1.ImageOptions.ImageIndex = 13;
+            this.simpleButton1.ImageOptions.ImageList = this.ımageList1;
+            this.simpleButton1.Location = new System.Drawing.Point(677, 28);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(111, 53);
+            this.simpleButton1.TabIndex = 3;
+            this.simpleButton1.Text = "Personel\r\nHakediş\r\n";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // FrmPersonel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -689,5 +706,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colAciklama;
         private DevExpress.XtraGrid.Columns.GridColumn colToplamSatis;
         private DevExpress.XtraGrid.Columns.GridColumn colPrimTutar;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

@@ -31,7 +31,7 @@ namespace SonicHesap.BackOffice.Personel
                 gridPersonelHareket.OptionsSelection.MultiSelect = true;
             }
             _donem = donemi;
-            gridContPersonelHareket.DataSource = personelDal.PersonelListele(context);
+            gridContPersonelHareket.DataSource = personelDal.TarihePersonelListele(context,donemi.Month,donemi.Year);
         }
 
         private void btnKapat_Click(object sender, EventArgs e)

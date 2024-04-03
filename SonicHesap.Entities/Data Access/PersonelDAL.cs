@@ -39,11 +39,44 @@ namespace SonicHesap.Entities.Data_Access
                 personel.PrimOrani,
                 personel.AylikMaasi,
                 personel.Aciklama,
-                ToplamSatis=fis.Where(c=>c.FisTuru=="Perakende Satış Faturası").Sum(c=>c.ToplamTutar) ?? 0,
-                PrimTutari=(fis.Where(c => c.FisTuru == "Perakende Satış Faturası").Sum(c => c.ToplamTutar) ?? 0)/100*personel.PrimOrani,
+                ToplamSatis=fis.Where(c=>c.FisTuru=="Perakende Satış Faturası" || c.FisTuru=="Toptan Satış Faturası").Sum(c=>c.ToplamTutar) ?? 0,
+                PrimTutari=(fis.Where(c => c.FisTuru == "Perakende Satış Faturası" || c.FisTuru == "Toptan Satış Faturası").Sum(c => c.ToplamTutar) ?? 0)/100*personel.PrimOrani,
             }).ToList();
             return result;
         }
+
+        public object TarihePersonelListele(SonicHesapContext context,int Ay,int Yil)
+        {
+            var result = context.Personeller.GroupJoin(context.fisler, c => c.PersonelKodu, c => c.PlasiyerKodu, (personel, fis) => new
+            {
+                personel.Id,
+                personel.Calisiyor,
+                personel.PersonelKodu,
+                personel.PersonelAdi,
+                personel.Unvani,
+                personel.TcKimlikNo,
+                personel.IseGirisTarihi,
+                personel.IstenCikisTarihi,
+                personel.VergiDairesi,
+                personel.VergiNo,
+                personel.CepTelefonu,
+                personel.Telefon,
+                personel.Fax,
+                personel.Il,
+                personel.Ilce,
+                personel.Semt,
+                personel.Adres,
+                personel.EMail,
+                personel.Web,
+                personel.PrimOrani,
+                personel.AylikMaasi,
+                personel.Aciklama,
+                ToplamSatis = fis.Where(c => c.FisTuru == "Perakende Satış Faturası" || c.FisTuru == "Toptan Satış Faturası" && c.Tarih.Month==Ay && c.Tarih.Year==Yil).Sum(c => c.ToplamTutar) ?? 0,
+                PrimTutari = (fis.Where(c => c.FisTuru == "Perakende Satış Faturası" || c.FisTuru == "Toptan Satış Faturası" && c.Tarih.Month == Ay && c.Tarih.Year == Yil).Sum(c => c.ToplamTutar) ?? 0) / 100 * personel.PrimOrani,
+            }).ToList();
+            return result;
+        }
+
         public object PersonelFisToplam(SonicHesapContext context,string personelKodu)
         {
             var result = (from c in context.fisler.Where(c => c.PlasiyerKodu == personelKodu)
