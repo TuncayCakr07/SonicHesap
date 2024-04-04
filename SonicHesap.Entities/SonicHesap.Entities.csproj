@@ -57,6 +57,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.8\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
@@ -81,6 +84,8 @@
     <Compile Include="Data Access\IndirimDAL.cs" />
     <Compile Include="Data Access\KasaDAL.cs" />
     <Compile Include="Data Access\KasaHareketDAL.cs" />
+    <Compile Include="Data Access\KullaniciDAL.cs" />
+    <Compile Include="Data Access\KullaniciRolDAL.cs" />
     <Compile Include="Data Access\OdemeTuruDAL.cs" />
     <Compile Include="Data Access\PersonelDAL.cs" />
     <Compile Include="Data Access\PersonelHareketDAL.cs" />
@@ -97,6 +102,8 @@
     <Compile Include="Mapping\IndirimMap.cs" />
     <Compile Include="Mapping\KasaHareketMap.cs" />
     <Compile Include="Mapping\KasaMap.cs" />
+    <Compile Include="Mapping\KullaniciMap.cs" />
+    <Compile Include="Mapping\KullaniciRolMap.cs" />
     <Compile Include="Mapping\OdemeTuruMap.cs" />
     <Compile Include="Mapping\PersonelHareketMap.cs" />
     <Compile Include="Mapping\PersonelMap.cs" />
@@ -116,6 +123,8 @@
     <Compile Include="Tables\HizliSatis.cs" />
     <Compile Include="Tables\HizliSatisGrup.cs" />
     <Compile Include="Tables\Indirim.cs" />
+    <Compile Include="Tables\Kullanici.cs" />
+    <Compile Include="Tables\KullaniciRol.cs" />
     <Compile Include="Tables\OtherTables\BekleyenSatis.cs" />
     <Compile Include="Tables\OtherTables\CariBakiye.cs" />
     <Compile Include="Tables\Depo.cs" />
@@ -146,6 +155,8 @@
     <Compile Include="Validations\IndirimValidator.cs" />
     <Compile Include="Validations\KasaHareketValidator.cs" />
     <Compile Include="Validations\KasaValidator.cs" />
+    <Compile Include="Validations\KullaniciRolValidator.cs" />
+    <Compile Include="Validations\KullaniciValidator.cs" />
     <Compile Include="Validations\OdemeTuruValidator.cs" />
     <Compile Include="Validations\PersonelHareketValidator.cs" />
     <Compile Include="Validations\PersonelValidator.cs" />

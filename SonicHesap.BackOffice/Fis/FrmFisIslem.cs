@@ -213,7 +213,7 @@ namespace SonicHesap.BackOffice.Fis
                 hata++;
             }
 
-            if (gridKasaHareket.RowCount == 0 && ayarlar.SatisEkrani == false)
+            if (gridKasaHareket.RowCount == 0 && ayarlar.SatisEkrani == false && txtFisTuru.Text != "Hakediş Fişi")
             {
                 message += ("Herhangi Bir Ödeme Bulunamadı!") + System.Environment.NewLine;
                 hata++;
@@ -225,9 +225,9 @@ namespace SonicHesap.BackOffice.Fis
                 hata++;
             }
 
-            if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani == true)
+            if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani == true && String.IsNullOrEmpty(lblCariKodu.Text) && txtFisTuru.Text != "Hakediş Fişi")
             {
-                message += ("Ödenmesi Gereken Tutar Ödenmemiş Gözüküyor!") + System.Environment.NewLine;
+                message += ("Ödenmesi Gereken Tutar Ödenmemiş Gözüküyor. Ödenmeyen Kısmı Açık Hesaba Aktarabilmek İçin Cari Seçmek Zorunludur!") + System.Environment.NewLine;
                 hata++;
             }
 
@@ -246,6 +246,15 @@ namespace SonicHesap.BackOffice.Fis
             {
                 MessageBox.Show(message, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+
+            if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani==true)
+            {
+                if (MessageBox.Show($"Ödemenin {txtOdenmesiGereken.Value.ToString("C2")} Tutarındaki Kısmı Açık Hesap Bakiyesi Olarak Kaydedilecektir.Devam Etmek İstiyor Musunuz?", "Uyarı!", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    MessageBox.Show("İstek Kullanıcı Tarafından İptal Edildi!");
+                    return;
+                }
             }
 
             foreach (var stokVeri in contex.StokHareketleri.Local.ToList())

@@ -1134,7 +1134,7 @@
             this.navFisBilgi.Name = "navFisBilgi";
             this.navFisBilgi.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.navFisBilgi.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
-            this.navFisBilgi.Size = new System.Drawing.Size(1250, 194);
+            this.navFisBilgi.Size = new System.Drawing.Size(1249, 194);
             // 
             // panelCariDevir
             // 
@@ -1469,7 +1469,7 @@
             this.navSatisEkrani.Name = "navSatisEkrani";
             this.navSatisEkrani.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.navSatisEkrani.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
-            this.navSatisEkrani.Size = new System.Drawing.Size(1250, 213);
+            this.navSatisEkrani.Size = new System.Drawing.Size(1249, 213);
             // 
             // gridContStokHareket
             // 
@@ -1484,7 +1484,7 @@
             this.repoBirimFiyat,
             this.repoDepoSecim,
             this.repoSeriNo});
-            this.gridContStokHareket.Size = new System.Drawing.Size(1250, 144);
+            this.gridContStokHareket.Size = new System.Drawing.Size(1249, 144);
             this.gridContStokHareket.TabIndex = 1;
             this.gridContStokHareket.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridStokHareket});
@@ -1787,7 +1787,7 @@
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1250, 69);
+            this.panelControl1.Size = new System.Drawing.Size(1249, 69);
             this.panelControl1.TabIndex = 2;
             // 
             // txtMiktar

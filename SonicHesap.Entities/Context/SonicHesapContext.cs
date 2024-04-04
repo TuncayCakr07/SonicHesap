@@ -27,6 +27,8 @@ namespace SonicHesap.Entities.Context
         public DbSet<HizliSatisGrup> HizliSatisGruplari { get; set; }
         public DbSet<EFAppointment> EFAppointments { get; set; }
         public DbSet<EFResource> EFResources { get; set; }
+        public DbSet<Kullanici> Kullanicilar { get; set; }
+        public DbSet<KullaniciRol> KullaniciRolleri { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -45,6 +47,8 @@ namespace SonicHesap.Entities.Context
             modelBuilder.Configurations.Add(new IndirimMap());
             modelBuilder.Configurations.Add(new HizliSatisMap());
             modelBuilder.Configurations.Add(new HizliSatisGrupMap());
+            modelBuilder.Configurations.Add(new KullaniciMap());
+            modelBuilder.Configurations.Add(new KullaniciRolMap());
         }
     }
 }

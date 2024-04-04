@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Tables;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,13 @@ namespace SonicHesap.Entities.Validations
             RuleFor(x => x.EMail).EmailAddress().WithMessage("Girdiğiniz E-Mail Adresi Geçersizdir!");
             RuleFor(x => x.IskontoOranı).GreaterThanOrEqualTo(0).WithMessage("İskonto Oranı Alanı 0'dan Küçük Olamaz!");
             RuleFor(x => x.RiskLimiti).GreaterThanOrEqualTo(0).WithMessage("Risk Limiti Alanı 0'dan Küçük Olamaz!");
+        }
+        private bool IsUnique(string arg)
+        {
+            using (var context = new SonicHesapContext())
+            {
+                return context.Cariler.Count(c => c.CariKodu == arg) == 0;
+            }
         }
     }
 }

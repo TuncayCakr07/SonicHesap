@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Tables;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,15 @@ namespace SonicHesap.Entities.Validations
         {
             RuleFor(x => x.DepoKodu).NotEmpty().WithMessage("Depo Kodu Alanı Boş Geçilemez!");
             RuleFor(x => x.DepoAdi).NotEmpty().WithMessage("Depo Adı Alanı Boş Geçilemez!");
+            RuleFor(x => x.DepoAdi).Must(IsUnique).WithMessage("Bu Depo Kodu Daha Önce Eklenmiştir.Lütfen Düzenleme Yapınız!");
+        }
 
+        private bool IsUnique(string arg)
+        {
+            using (var context=new SonicHesapContext())
+            {
+                return context.Depolar.Count(c => c.DepoKodu == arg) == 0;
+            }
         }
     }
 }
