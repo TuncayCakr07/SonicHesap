@@ -41,7 +41,6 @@
             this.btnEkle = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.kullaniciBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colKullaniciAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSoyadi = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -52,7 +51,6 @@
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kullaniciBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBaslik
@@ -163,10 +161,10 @@
             this.btnEkle.Size = new System.Drawing.Size(111, 53);
             this.btnEkle.TabIndex = 0;
             this.btnEkle.Text = "Ekle";
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // gridControl1
             // 
-            this.gridControl1.DataSource = this.kullaniciBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.Location = new System.Drawing.Point(0, 66);
             this.gridControl1.MainView = this.gridView1;
@@ -187,10 +185,6 @@
             this.colSonGirisTarihi});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            // 
-            // kullaniciBindingSource
-            // 
-            this.kullaniciBindingSource.DataSource = typeof(SonicHesap.Entities.Tables.Kullanici);
             // 
             // colKullaniciAdi
             // 
@@ -277,7 +271,6 @@
             this.grpMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kullaniciBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -295,7 +288,6 @@
         private DevExpress.XtraEditors.SimpleButton btnGuncelle;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private System.Windows.Forms.BindingSource kullaniciBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colKullaniciAdi;
         private DevExpress.XtraGrid.Columns.GridColumn colAdi;
         private DevExpress.XtraGrid.Columns.GridColumn colSoyadi;
