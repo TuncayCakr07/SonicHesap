@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAnaMenu));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnStok = new DevExpress.XtraBars.BarButtonItem();
             this.btnCari = new DevExpress.XtraBars.BarButtonItem();
             this.btnKasa = new DevExpress.XtraBars.BarButtonItem();
             this.btnDepo = new DevExpress.XtraBars.BarButtonItem();
@@ -95,6 +95,8 @@
             this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.barKullaniciAdi = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -105,7 +107,7 @@
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
-            this.barButtonItem1,
+            this.btnStok,
             this.btnCari,
             this.btnKasa,
             this.btnDepo,
@@ -150,10 +152,11 @@
             this.barButtonItem34,
             this.barButtonItem35,
             this.barButtonItem2,
-            this.barButtonItem3});
+            this.barButtonItem3,
+            this.barKullaniciAdi});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 47;
+            this.ribbonControl1.MaxItemId = 48;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 385;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -161,14 +164,15 @@
             this.ribbonPage2,
             this.ribbonPage3});
             this.ribbonControl1.Size = new System.Drawing.Size(1564, 193);
+            this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
-            // barButtonItem1
+            // btnStok
             // 
-            this.barButtonItem1.Caption = "Stoklar";
-            this.barButtonItem1.Id = 1;
-            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            this.btnStok.Caption = "Stoklar";
+            this.btnStok.Id = 1;
+            this.btnStok.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnStok.ImageOptions.LargeImage")));
+            this.btnStok.Name = "btnStok";
+            this.btnStok.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // btnCari
             // 
@@ -536,7 +540,7 @@
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnStok);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnCari);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnFaturaVeFis);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
@@ -667,16 +671,32 @@
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
+            // ribbonStatusBar1
+            // 
+            this.ribbonStatusBar1.ItemLinks.Add(this.barKullaniciAdi);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 654);
+            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
+            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1564, 30);
+            // 
+            // barKullaniciAdi
+            // 
+            this.barKullaniciAdi.Caption = "barStaticItem1";
+            this.barKullaniciAdi.Id = 47;
+            this.barKullaniciAdi.Name = "barKullaniciAdi";
+            // 
             // FrmAnaMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1564, 684);
+            this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmAnaMenu";
             this.Ribbon = this.ribbonControl1;
+            this.StatusBar = this.ribbonStatusBar1;
             this.Text = "SonicHesap Ön Muhasebe Programı V.01.01";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmAnaMenu_Load);
@@ -692,7 +712,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem btnStok;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraBars.BarButtonItem btnCari;
         private DevExpress.XtraBars.BarButtonItem btnKasa;
@@ -754,6 +774,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup14;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarStaticItem barKullaniciAdi;
+        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
     }
 }
 

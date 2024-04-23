@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraReports.Design;
 using DevExpress.XtraReports.UI;
+using SonicHesap.Admin;
 using SonicHesap.BackOffice.Ajanda;
 using SonicHesap.BackOffice.AnaMenu;
 using SonicHesap.BackOffice.Ayarlar;
@@ -50,24 +51,38 @@ namespace SonicHesap.BackOffice
         public FrmAnaMenu()
         {
             InitializeComponent();
-            string SunucuVersion = "https://www.softcakir.com/versiyonn.txt";
-            string ProgramVersiyon = Assembly.Load("SonicHesap.BackOffice").GetName().Version.ToString().Trim();
-            if (ProgramVersiyon!=SunucuVersion)
-            {
-                            if (Convert.ToBoolean(SettingsTool.AyarOku(SettingsTool.Ayarlar.GenelAyarlar_GuncellemeKontrol)))
-            {
-                if (MessageBox.Show("Programın Yeni Bir Versiyon Güncellemesi Mevcut  Güncellemek İstiyor musunuz?", "Güncel Versiyon Uyarısı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question)==DialogResult.Yes)
-                {
-                    FrmGuncelleme form = new FrmGuncelleme();
-                    form.ShowDialog();
-                }
-            }
-            }
-
             using (var context = new SonicHesapContext())
             {
                 context.Database.CreateIfNotExists();
+                if (context.Kullanicilar.Any(c=>c.KullaniciAdi=="Yönetici"))
+                {
+                    context.Kullanicilar.Add(new Entities.Tables.Kullanici
+                    {
+                        KullaniciAdi = "Yönetici",
+                        Parola = "1234",
+
+                    });
+                    context.SaveChanges();
+                }
             }
+            FrmKullaniciGiris girisform = new FrmKullaniciGiris();
+            girisform.ShowDialog();
+            barKullaniciAdi.Caption =$"Aktif Kullanıcı: {RoleTool.KullaniciEntity.KullaniciAdi}";
+            string SunucuVersion = "https://www.softcakir.com/versiyonn.txt";
+            string ProgramVersiyon = Assembly.Load("SonicHesap.BackOffice").GetName().Version.ToString().Trim();
+            if (ProgramVersiyon != SunucuVersion)
+            {
+                if (Convert.ToBoolean(SettingsTool.AyarOku(SettingsTool.Ayarlar.GenelAyarlar_GuncellemeKontrol)))
+                {
+                    if (MessageBox.Show("Programın Yeni Bir Versiyon Güncellemesi Mevcut  Güncellemek İstiyor musunuz?", "Güncel Versiyon Uyarısı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        FrmGuncelleme form = new FrmGuncelleme();
+                        form.ShowDialog();
+                    }
+                }
+            }
+
+
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -128,6 +143,8 @@ namespace SonicHesap.BackOffice
             FrmAnaMenuBilgi form = new FrmAnaMenuBilgi();
             form.MdiParent = this;
             form.Show();
+
+            RoleTool.RooleriYukle(ribbonControl1);
         }
 
         private void btnStokHareketleri_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -344,7 +361,7 @@ namespace SonicHesap.BackOffice
 
         private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmHizliSatis form=new FrmHizliSatis(); 
+            FrmHizliSatis form = new FrmHizliSatis();
             form.ShowDialog();
         }
 

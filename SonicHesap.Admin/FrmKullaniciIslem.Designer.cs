@@ -51,7 +51,12 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.ımageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.txtParola = new DevExpress.XtraEditors.TextEdit();
+            this.txtParolaTekrar = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupGenel)).BeginInit();
@@ -65,6 +70,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtParola.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtParolaTekrar.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBaslik
@@ -106,6 +113,7 @@
             this.btnKaydet.Size = new System.Drawing.Size(104, 59);
             this.btnKaydet.TabIndex = 0;
             this.btnKaydet.Text = "Kaydet";
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
             // ımageList1
             // 
@@ -130,13 +138,17 @@
             // 
             // groupGenel
             // 
+            this.groupGenel.Controls.Add(this.txtParolaTekrar);
             this.groupGenel.Controls.Add(this.txtCevap);
+            this.groupGenel.Controls.Add(this.txtParola);
             this.groupGenel.Controls.Add(this.txtHatirlatma);
             this.groupGenel.Controls.Add(this.txtGorevi);
             this.groupGenel.Controls.Add(this.txtSoyadi);
             this.groupGenel.Controls.Add(this.txtAdi);
+            this.groupGenel.Controls.Add(this.labelControl8);
             this.groupGenel.Controls.Add(this.labelControl4);
             this.groupGenel.Controls.Add(this.txtKullaniciAdi);
+            this.groupGenel.Controls.Add(this.labelControl6);
             this.groupGenel.Controls.Add(this.labelControl1);
             this.groupGenel.Controls.Add(this.labelControl7);
             this.groupGenel.Controls.Add(this.labelControl5);
@@ -145,21 +157,22 @@
             this.groupGenel.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupGenel.Location = new System.Drawing.Point(0, 66);
             this.groupGenel.Name = "groupGenel";
-            this.groupGenel.Size = new System.Drawing.Size(534, 218);
+            this.groupGenel.Size = new System.Drawing.Size(534, 276);
             this.groupGenel.TabIndex = 10;
             this.groupGenel.Text = "Genel Bilgiler";
             // 
             // txtCevap
             // 
-            this.txtCevap.Location = new System.Drawing.Point(143, 186);
+            this.txtCevap.Location = new System.Drawing.Point(143, 243);
             this.txtCevap.Name = "txtCevap";
             this.txtCevap.Size = new System.Drawing.Size(379, 22);
             this.txtCevap.TabIndex = 2;
             // 
             // txtHatirlatma
             // 
-            this.txtHatirlatma.Location = new System.Drawing.Point(143, 155);
+            this.txtHatirlatma.Location = new System.Drawing.Point(143, 212);
             this.txtHatirlatma.Name = "txtHatirlatma";
+            this.txtHatirlatma.Properties.PasswordChar = '*';
             this.txtHatirlatma.Size = new System.Drawing.Size(379, 22);
             this.txtHatirlatma.TabIndex = 2;
             // 
@@ -190,7 +203,7 @@
             this.labelControl4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl4.Location = new System.Drawing.Point(5, 183);
+            this.labelControl4.Location = new System.Drawing.Point(5, 240);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(132, 24);
             this.labelControl4.TabIndex = 0;
@@ -209,7 +222,7 @@
             this.labelControl1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl1.Location = new System.Drawing.Point(5, 153);
+            this.labelControl1.Location = new System.Drawing.Point(5, 210);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(132, 24);
             this.labelControl1.TabIndex = 0;
@@ -267,48 +280,63 @@
             // 
             this.groupControl1.Controls.Add(this.treeList1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(0, 284);
+            this.groupControl1.Location = new System.Drawing.Point(0, 342);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(534, 385);
+            this.groupControl1.Size = new System.Drawing.Size(534, 327);
             this.groupControl1.TabIndex = 11;
             this.groupControl1.Text = "Yetkiler";
             // 
             // treeList1
             // 
             this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.treeListColumn1});
+            this.treeListColumn1,
+            this.treeListColumn2});
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.Location = new System.Drawing.Point(2, 28);
             this.treeList1.Name = "treeList1";
             this.treeList1.BeginUnboundLoad();
             this.treeList1.AppendNode(new object[] {
-            "Stoklar"}, -1, 0, 0, 5);
+            "Stoklar",
+            "FrmStoklar"}, -1, 0, 0, 5);
             this.treeList1.AppendNode(new object[] {
-            "Göster"}, 0, 0, 0, 7);
+            "Göster",
+            "btnStok"}, 0, 0, 0, 7);
             this.treeList1.AppendNode(new object[] {
-            "Ekle"}, 0, 0, 0, 0);
+            "Ekle",
+            "btnEkle"}, 0, 0, 0, 0);
             this.treeList1.AppendNode(new object[] {
-            "Düzenle"}, 0, 0, 0, 2);
+            "Düzenle",
+            "btnDuzenle"}, 0, 0, 0, 2);
             this.treeList1.AppendNode(new object[] {
-            "Sil"}, 0, 0, 0, 1);
+            "Sil",
+            "btnSil"}, 0, 0, 0, 1);
             this.treeList1.AppendNode(new object[] {
-            "Kopyala"}, 0, 0, 0, 3);
+            "Kopyala",
+            "btnKopyala"}, 0, 0, 0, 3);
             this.treeList1.AppendNode(new object[] {
-            "Hareket Görüntüle"}, 0, 0, 0, 6);
+            "Hareket Görüntüle",
+            "btnHareket"}, 0, 0, 0, 6);
             this.treeList1.AppendNode(new object[] {
-            "Cariler"}, -1, 0, 0, 4);
+            "Cariler",
+            "FrmCariler"}, -1, 0, 0, 4);
             this.treeList1.AppendNode(new object[] {
-            "Göster"}, 7, 0, 0, 7);
+            "Göster",
+            "btnCari"}, 7, 0, 0, 7);
             this.treeList1.AppendNode(new object[] {
-            "Ekle"}, 7, 0, 0, 0);
+            "Ekle",
+            "btnEkle"}, 7, 0, 0, 0);
             this.treeList1.AppendNode(new object[] {
-            "Düzenle"}, 7, 0, 0, 2);
+            "Düzenle",
+            "btnDuzenle"}, 7, 0, 0, 2);
             this.treeList1.AppendNode(new object[] {
-            "Sil"}, 7, 0, 0, 1);
+            "Sil",
+            "btnSil"}, 7, 0, 0, 1);
             this.treeList1.AppendNode(new object[] {
-            "Kopyala"}, 7, 0, 0, 3);
+            "Kopyala",
+            "btnKopyala"}, 7, 0, 0, 3);
             this.treeList1.AppendNode(new object[] {
-            "Hareket Görüntüle"}, 7, 0, 0, 6);
+            "Hareket Görüntüle",
+            "btnHareket"}, 7, 0, 0, 6);
             this.treeList1.EndUnboundLoad();
             this.treeList1.OptionsBehavior.AllowRecursiveNodeChecking = true;
             this.treeList1.OptionsView.CheckBoxStyle = DevExpress.XtraTreeList.DefaultNodeCheckBoxStyle.Check;
@@ -317,7 +345,7 @@
             this.treeList1.OptionsView.ShowHorzLines = false;
             this.treeList1.OptionsView.ShowIndicator = false;
             this.treeList1.OptionsView.ShowVertLines = false;
-            this.treeList1.Size = new System.Drawing.Size(530, 355);
+            this.treeList1.Size = new System.Drawing.Size(530, 297);
             this.treeList1.StateImageList = this.ımageList2;
             this.treeList1.TabIndex = 0;
             // 
@@ -329,6 +357,14 @@
             this.treeListColumn1.OptionsColumn.AllowEdit = false;
             this.treeListColumn1.Visible = true;
             this.treeListColumn1.VisibleIndex = 0;
+            // 
+            // treeListColumn2
+            // 
+            this.treeListColumn2.Caption = "treeListColumn2";
+            this.treeListColumn2.FieldName = "treeListColumn2";
+            this.treeListColumn2.Name = "treeListColumn2";
+            this.treeListColumn2.Visible = true;
+            this.treeListColumn2.VisibleIndex = 1;
             // 
             // ımageList2
             // 
@@ -342,6 +378,46 @@
             this.ımageList2.Images.SetKeyName(5, "package.png");
             this.ımageList2.Images.SetKeyName(6, "replace2.png");
             this.ımageList2.Images.SetKeyName(7, "view.png");
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Options.UseTextOptions = true;
+            this.labelControl6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl6.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl6.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl6.Location = new System.Drawing.Point(5, 152);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(132, 24);
+            this.labelControl6.TabIndex = 0;
+            this.labelControl6.Text = "Parola :";
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Options.UseTextOptions = true;
+            this.labelControl8.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl8.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl8.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl8.Location = new System.Drawing.Point(5, 182);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(132, 24);
+            this.labelControl8.TabIndex = 0;
+            this.labelControl8.Text = "Parola Tekrar :";
+            // 
+            // txtParola
+            // 
+            this.txtParola.Location = new System.Drawing.Point(143, 154);
+            this.txtParola.Name = "txtParola";
+            this.txtParola.Properties.PasswordChar = '*';
+            this.txtParola.Size = new System.Drawing.Size(379, 22);
+            this.txtParola.TabIndex = 2;
+            // 
+            // txtParolaTekrar
+            // 
+            this.txtParolaTekrar.Location = new System.Drawing.Point(143, 185);
+            this.txtParolaTekrar.Name = "txtParolaTekrar";
+            this.txtParolaTekrar.Properties.PasswordChar = '*';
+            this.txtParolaTekrar.Size = new System.Drawing.Size(379, 22);
+            this.txtParolaTekrar.TabIndex = 2;
             // 
             // FrmKullaniciIslem
             // 
@@ -371,6 +447,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtParola.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtParolaTekrar.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -399,5 +477,10 @@
         private DevExpress.XtraTreeList.TreeList treeList1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private System.Windows.Forms.ImageList ımageList2;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
+        private DevExpress.XtraEditors.TextEdit txtParolaTekrar;
+        private DevExpress.XtraEditors.TextEdit txtParola;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
     }
 }

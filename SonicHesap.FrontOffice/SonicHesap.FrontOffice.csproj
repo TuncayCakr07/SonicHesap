@@ -101,6 +101,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SonicHesap.Admin\SonicHesap.Admin.csproj">
+      <Project>{C61827A3-23E8-4AC7-A41F-835FD8ACA9AB}</Project>
+      <Name>SonicHesap.Admin</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SonicHesap.BackOffice\SonicHesap.BackOffice.csproj">
       <Project>{78473091-cfdf-4803-b34d-cda9c75a4627}</Project>
       <Name>SonicHesap.BackOffice</Name>

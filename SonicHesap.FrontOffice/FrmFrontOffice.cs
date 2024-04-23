@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraTab;
+using SonicHesap.Admin;
 using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
 using SonicHesap.BackOffice.Fis;
@@ -37,7 +38,7 @@ namespace SonicHesap.FrontOffice
         ExchangeTool doviz = new ExchangeTool();
         private string odemeTuruKodu, odemeTuruAdi;
         decimal eskifiyat = 0;
-        private bool tekparca=false;
+        private bool tekparca = false;
 
         int BekleyenSatisId = 0;
         private int cagirilanSatisId = -1;
@@ -47,6 +48,10 @@ namespace SonicHesap.FrontOffice
         public FrmFrontOffice()
         {
             InitializeComponent();
+
+            FrmKullaniciGiris girisform = new FrmKullaniciGiris();
+            girisform.ShowDialog();
+
             gridContStokHareket.DataSource = context.StokHareketleri.Local.ToBindingList();
             gridContKasaHareket.DataSource = context.KasaHareketleri.Local.ToBindingList();
             gridLookUpEdit1.Properties.DataSource = doviz.DovizKuruCek();
@@ -228,7 +233,7 @@ namespace SonicHesap.FrontOffice
         {
             var buton = (sender as SimpleButton);
             string kasaKodu = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa);
-            if (chOdemeBol.Checked && tekparca==false)
+            if (chOdemeBol.Checked && tekparca == false)
             {
                 if (txtOdenmesiGereken.Value == 0)
                 {
@@ -289,17 +294,17 @@ namespace SonicHesap.FrontOffice
 
             if (KasaHata != 0)
             {
-                message += ("Ödeme Ekranındaki Ödemelerin Kasa Seçimlerinde Eksiklikler Var!"+System.Environment.NewLine);
+                message += ("Ödeme Ekranındaki Ödemelerin Kasa Seçimlerinde Eksiklikler Var!" + System.Environment.NewLine);
                 hata++;
             }
 
-            if (txtOdenmesiGereken.Value != 0 && String.IsNullOrEmpty(txtCariKodu.Text) && tekparca==false)
+            if (txtOdenmesiGereken.Value != 0 && String.IsNullOrEmpty(txtCariKodu.Text) && tekparca == false)
             {
-                    message += ("Ödenmesi Gereken Tutar Ödenmemiş Gözüküyor! \n Ödenmeyen Kısmı Açık Hesaba Aktarabilmeniz İçin Cari Seçmeniz Gerekmektedir!") + System.Environment.NewLine;
-                    hata++;
+                message += ("Ödenmesi Gereken Tutar Ödenmemiş Gözüküyor! \n Ödenmeyen Kısmı Açık Hesaba Aktarabilmeniz İçin Cari Seçmeniz Gerekmektedir!") + System.Environment.NewLine;
+                hata++;
             }
 
-            if (!String.IsNullOrEmpty(txtCariKodu.Text) && (entityBakiye.Bakiye-txtOdenmesiGereken.Value)<0 && ((entityBakiye.Bakiye - txtOdenmesiGereken.Value)*-1)>entityBakiye.RiskLimiti)
+            if (!String.IsNullOrEmpty(txtCariKodu.Text) && (entityBakiye.Bakiye - txtOdenmesiGereken.Value) < 0 && ((entityBakiye.Bakiye - txtOdenmesiGereken.Value) * -1) > entityBakiye.RiskLimiti)
             {
                 message += "Cari Risk Limiti Aşılıyor!\n Satış Yapılamaz!" + System.Environment.NewLine;
                 hata++;
@@ -311,9 +316,9 @@ namespace SonicHesap.FrontOffice
                 return;
             }
 
-            if (chOdemeBol.Checked && txtOdenmesiGereken.Value!=0)
+            if (chOdemeBol.Checked && txtOdenmesiGereken.Value != 0)
             {
-                if (MessageBox.Show($"Ödemenin {txtOdenmesiGereken.Value.ToString("C2")} Tutarındaki Kısmı Açık Hesap Bakiyesi Olarak Kaydedilecektir.Devam Etmek İstiyor Musunuz?","Uyarı!",MessageBoxButtons.YesNo)==DialogResult.No)
+                if (MessageBox.Show($"Ödemenin {txtOdenmesiGereken.Value.ToString("C2")} Tutarındaki Kısmı Açık Hesap Bakiyesi Olarak Kaydedilecektir.Devam Etmek İstiyor Musunuz?", "Uyarı!", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
                     MessageBox.Show("İstek Kullanıcı Tarafından İptal Edildi!");
                     return;
@@ -528,7 +533,7 @@ namespace SonicHesap.FrontOffice
 
         private void btnBul_Click(object sender, EventArgs e)
         {
-            if (txtFisKodu.Text=="")
+            if (txtFisKodu.Text == "")
             {
                 txtFisKodu.Text = CodeTool.KodOlustur("FI", SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu));
             }
@@ -631,7 +636,7 @@ namespace SonicHesap.FrontOffice
                 lblBorc.Text = entityBakiye.Borc.ToString("C2");
                 lblBakiye.Text = entityBakiye.Bakiye.ToString("C2");
             }
-            if (txtFisKodu.Text=="")
+            if (txtFisKodu.Text == "")
             {
                 txtFisKodu.Text = CodeTool.KodOlustur("FI", SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu));
             }
@@ -742,7 +747,7 @@ namespace SonicHesap.FrontOffice
             if (chOdemeBol.Checked)
             {
                 navigationFrame1.SelectedPage = navOdeme;
-                flowOdemeTurleri.Controls.Find("AcikHesap",false).SingleOrDefault().Enabled = false;
+                flowOdemeTurleri.Controls.Find("AcikHesap", false).SingleOrDefault().Enabled = false;
             }
             else
             {

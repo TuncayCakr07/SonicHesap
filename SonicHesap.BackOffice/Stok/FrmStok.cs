@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
+using SonicHesap.Entities.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ namespace SonicHesap.BackOffice.Stok
         public FrmStok()
         {
             InitializeComponent();
+            RoleTool.RooleriYukle(this);
         }
 
         private void FrmStok_Load(object sender, EventArgs e)

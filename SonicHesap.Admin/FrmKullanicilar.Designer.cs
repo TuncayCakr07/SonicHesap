@@ -117,6 +117,7 @@
             this.btnKapat.Size = new System.Drawing.Size(94, 53);
             this.btnKapat.TabIndex = 0;
             this.btnKapat.Text = "Kapat";
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
             // 
             // btnGuncelle
             // 
@@ -128,6 +129,7 @@
             this.btnGuncelle.Size = new System.Drawing.Size(111, 53);
             this.btnGuncelle.TabIndex = 0;
             this.btnGuncelle.Text = "Güncelle";
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // btnSil
             // 
@@ -150,6 +152,7 @@
             this.btnDuzenle.Size = new System.Drawing.Size(111, 53);
             this.btnDuzenle.TabIndex = 0;
             this.btnDuzenle.Text = "Düzenle";
+            this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
             // 
             // btnEkle
             // 

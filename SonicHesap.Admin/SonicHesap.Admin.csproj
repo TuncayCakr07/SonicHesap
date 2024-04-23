@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmKullaniciGiris.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKullaniciGiris.Designer.cs">
+      <DependentUpon>FrmKullaniciGiris.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmKullaniciIslem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,13 +84,25 @@
     <Compile Include="FrmKullanicilar.Designer.cs">
       <DependentUpon>FrmKullanicilar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmParolaHatirlat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmParolaHatirlat.Designer.cs">
+      <DependentUpon>FrmParolaHatirlat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmKullaniciGiris.resx">
+      <DependentUpon>FrmKullaniciGiris.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmKullaniciIslem.resx">
       <DependentUpon>FrmKullaniciIslem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmKullanicilar.resx">
       <DependentUpon>FrmKullanicilar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmParolaHatirlat.resx">
+      <DependentUpon>FrmParolaHatirlat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

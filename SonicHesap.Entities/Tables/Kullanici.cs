@@ -17,7 +17,7 @@ namespace SonicHesap.Entities.Tables
         public string Parola { get; set; }
         public string HatirlatmaSorusu { get; set; }
         public string Cevap { get; set; }
-        public DateTime KayitTarihi { get; set; }
-        public DateTime SonGirisTarihi { get; set; }
+        public Nullable<DateTime> KayitTarihi { get; set; }
+        public Nullable<DateTime> SonGirisTarihi { get; set; }
     }
 }

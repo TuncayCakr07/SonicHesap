@@ -15,6 +15,7 @@ namespace SonicHesap.Admin
     {
         SonicHesapContext context = new SonicHesapContext();
         KullaniciDAL kullaniciDal = new KullaniciDAL();
+        string secilen;
         public FrmKullanicilar()
         {
             InitializeComponent();
@@ -28,13 +29,36 @@ namespace SonicHesap.Admin
 
         private void FrmKullanicilar_Load(object sender, EventArgs e)
         {
-
+            Guncelle();
+            FrmKullaniciGiris form=new FrmKullaniciGiris();
+            form.ShowDialog();
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
             FrmKullaniciIslem form=new FrmKullaniciIslem(new Entities.Tables.Kullanici());
             form.ShowDialog();
+        }
+
+        private void btnKapat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnGuncelle_Click(object sender, EventArgs e)
+        {
+            Guncelle();
+        }
+
+        private void btnDuzenle_Click(object sender, EventArgs e)
+        {
+            secilen=gridView1.GetFocusedRowCellValue(colKullaniciAdi).ToString();
+            FrmKullaniciIslem form=new FrmKullaniciIslem(kullaniciDal.GetByFilter(context,c=>c.KullaniciAdi==secilen));
+            form.ShowDialog();
+            if (form.saved)
+            {
+                Guncelle();
+            }
         }
     }
 }

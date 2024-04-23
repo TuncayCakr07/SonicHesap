@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStok));
             this.lblBaslik = new DevExpress.XtraEditors.LabelControl();
             this.grpMenu = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnHareket = new DevExpress.XtraEditors.SimpleButton();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
             this.btnAra = new DevExpress.XtraEditors.SimpleButton();
@@ -109,7 +109,7 @@
             // 
             // grpMenu
             // 
-            this.grpMenu.Controls.Add(this.simpleButton1);
+            this.grpMenu.Controls.Add(this.btnHareket);
             this.grpMenu.Controls.Add(this.btnKapat);
             this.grpMenu.Controls.Add(this.btnAra);
             this.grpMenu.Controls.Add(this.btnGuncelle);
@@ -124,17 +124,17 @@
             this.grpMenu.TabIndex = 1;
             this.grpMenu.Text = "Menü";
             // 
-            // simpleButton1
+            // btnHareket
             // 
-            this.simpleButton1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.simpleButton1.ImageOptions.ImageIndex = 10;
-            this.simpleButton1.ImageOptions.ImageList = this.ımageList1;
-            this.simpleButton1.Location = new System.Drawing.Point(668, 28);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(120, 53);
-            this.simpleButton1.TabIndex = 1;
-            this.simpleButton1.Text = "Stok Hareket";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.btnHareket.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnHareket.ImageOptions.ImageIndex = 10;
+            this.btnHareket.ImageOptions.ImageList = this.ımageList1;
+            this.btnHareket.Location = new System.Drawing.Point(668, 28);
+            this.btnHareket.Name = "btnHareket";
+            this.btnHareket.Size = new System.Drawing.Size(120, 53);
+            this.btnHareket.TabIndex = 1;
+            this.btnHareket.Text = "Stok Hareket";
+            this.btnHareket.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // ımageList1
             // 
@@ -755,6 +755,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colStokGiris;
         private DevExpress.XtraGrid.Columns.GridColumn colStokCikis;
         private DevExpress.XtraGrid.Columns.GridColumn colMevcutStok;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnHareket;
     }
 }
