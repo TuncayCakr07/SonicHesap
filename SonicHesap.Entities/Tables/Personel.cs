@@ -31,5 +31,6 @@ namespace SonicHesap.Entities.Tables
         public Nullable<decimal> PrimOrani { get; set; }
         public Nullable<decimal> AylikMaasi { get; set; }
         public string Aciklama { get; set; }
+        public virtual ICollection<Fis> Fis { get; set; }
     }
 }

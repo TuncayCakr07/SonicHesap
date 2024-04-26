@@ -18,12 +18,13 @@ namespace SonicHesap.BackOffice.Odeme_Turu
     {
         SonicHesapContext context = new SonicHesapContext();
         OdemeTuruDAL odemeTuruDal = new OdemeTuruDAL();
-        private string _odemeTuruKodu;
-        public FrmOdemeTuruHareket(string odemeTuruKodu, string odemeTuruAdi)
+        private int _odemeTuruId;
+        public FrmOdemeTuruHareket(int odemeTuruId)
         {
             InitializeComponent();
-            _odemeTuruKodu = odemeTuruKodu;
-            lblBaslik.Text= odemeTuruKodu + " - "+ odemeTuruAdi + "Hareketleri";
+            _odemeTuruId = odemeTuruId;
+            var odemeTuruBilgi=context.OdemeTurleri.SingleOrDefault(c=>c.Id==odemeTuruId);  
+            lblBaslik.Text= odemeTuruBilgi.OdemeTuruKodu + " - "+ odemeTuruBilgi.OdemeTuruAdi + "Hareketleri";
         }
 
         private void FrmOdemeTuruHareket_Load(object sender, EventArgs e)
@@ -33,9 +34,9 @@ namespace SonicHesap.BackOffice.Odeme_Turu
 
         void Listele()
         {
-            gridContOdemeHareket.DataSource = odemeTuruDal.GetAll(context, c => c.OdemeTuruKodu == _odemeTuruKodu);
-            gridContKasaBakiye.DataSource = odemeTuruDal.KasaToplamListele(context, _odemeTuruKodu);
-            gridContGenelToplam.DataSource = odemeTuruDal.GenelToplamListele(context, _odemeTuruKodu); 
+            gridContOdemeHareket.DataSource = odemeTuruDal.GetAll(context, c => c.Id == _odemeTuruId);
+            gridContKasaBakiye.DataSource = odemeTuruDal.KasaToplamListele(context, _odemeTuruId);
+            gridContGenelToplam.DataSource = odemeTuruDal.GenelToplamListele(context, _odemeTuruId); 
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)

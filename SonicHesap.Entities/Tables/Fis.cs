@@ -12,8 +12,7 @@ namespace SonicHesap.Entities.Tables
         public int Id { get; set; }
         public string FisKodu { get; set; }
         public string FisTuru { get; set; }
-        public string CariKodu { get; set; }
-        public string CariAdi { get; set; }
+        public Nullable<int> CariId { get; set; }
         public string FaturaUnvani { get; set; }
         public string CepTelefonu { get; set; }
         public string Il { get; set; }
@@ -24,11 +23,13 @@ namespace SonicHesap.Entities.Tables
         public string VergiNo { get; set; }
         public string BelgeNo { get; set; }
         public DateTime Tarih { get; set; }
-        public string PlasiyerKodu { get; set; }
-        public string PlasiyerAdi { get; set; }
+        public Nullable<int> PlasiyerId { get; set; }
         public Nullable<decimal> IskontoOrani { get; set; }
         public Nullable<decimal> IskontoTutar { get; set; }
         public Nullable<decimal> ToplamTutar { get; set; }
         public string Aciklama { get; set; }
+
+        public virtual Cari Cari { get; set; }
+        public virtual Personel Personel { get; set; }
     }
 }

@@ -40,9 +40,11 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.toggleGuncelle = new DevExpress.XtraEditors.ToggleSwitch();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
             this.cmbBilgiFisiYazici = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cmbFaturaYazici = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cmbBilgiFisiAyar = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.cmbFaturaAyar = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
@@ -65,8 +67,6 @@
             this.colYetkiliKodu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYetkiliAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
@@ -74,6 +74,7 @@
             this.navigationPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleGuncelle.Properties)).BeginInit();
             this.navigationPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBilgiFisiYazici.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFaturaYazici.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBilgiFisiAyar.Properties)).BeginInit();
@@ -83,7 +84,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookupDepo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBaslik
@@ -213,6 +213,15 @@
             this.navigationPage2.Name = "navigationPage2";
             this.navigationPage2.Size = new System.Drawing.Size(928, 385);
             // 
+            // calcEdit1
+            // 
+            this.calcEdit1.Location = new System.Drawing.Point(173, 182);
+            this.calcEdit1.Name = "calcEdit1";
+            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit1.Size = new System.Drawing.Size(364, 22);
+            this.calcEdit1.TabIndex = 4;
+            // 
             // cmbBilgiFisiYazici
             // 
             this.cmbBilgiFisiYazici.Location = new System.Drawing.Point(172, 154);
@@ -243,6 +252,18 @@
             "Ön İzleme Göstererek Yazdır"});
             this.cmbBilgiFisiAyar.Size = new System.Drawing.Size(365, 22);
             this.cmbBilgiFisiAyar.TabIndex = 3;
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Options.UseTextOptions = true;
+            this.labelControl8.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl8.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl8.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl8.Location = new System.Drawing.Point(4, 182);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(162, 24);
+            this.labelControl8.TabIndex = 1;
+            this.labelControl8.Text = "Fiş Kodu :";
             // 
             // labelControl7
             // 
@@ -338,7 +359,7 @@
             this.LookUpKasa.Properties.DisplayMember = "KasaAdi";
             this.LookUpKasa.Properties.NullText = "Kasa Seçiniz..";
             this.LookUpKasa.Properties.PopupView = this.gridView1;
-            this.LookUpKasa.Properties.ValueMember = "KasaKodu";
+            this.LookUpKasa.Properties.ValueMember = "Id";
             this.LookUpKasa.Size = new System.Drawing.Size(365, 22);
             this.LookUpKasa.TabIndex = 2;
             // 
@@ -400,7 +421,7 @@
             this.lookupDepo.Properties.DisplayMember = "DepoAdi";
             this.lookupDepo.Properties.NullText = "Depo Seçiniz..";
             this.lookupDepo.Properties.PopupView = this.gridLookUpEdit1View;
-            this.lookupDepo.Properties.ValueMember = "DepoKodu";
+            this.lookupDepo.Properties.ValueMember = "Id";
             this.lookupDepo.Size = new System.Drawing.Size(365, 22);
             this.lookupDepo.TabIndex = 2;
             // 
@@ -456,27 +477,6 @@
             this.colAciklama.Visible = true;
             this.colAciklama.VisibleIndex = 4;
             // 
-            // labelControl8
-            // 
-            this.labelControl8.Appearance.Options.UseTextOptions = true;
-            this.labelControl8.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.labelControl8.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl8.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl8.Location = new System.Drawing.Point(4, 182);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(162, 24);
-            this.labelControl8.TabIndex = 1;
-            this.labelControl8.Text = "Fiş Kodu :";
-            // 
-            // calcEdit1
-            // 
-            this.calcEdit1.Location = new System.Drawing.Point(173, 182);
-            this.calcEdit1.Name = "calcEdit1";
-            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit1.Size = new System.Drawing.Size(364, 22);
-            this.calcEdit1.TabIndex = 4;
-            // 
             // FrmAyarlar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -500,6 +500,7 @@
             this.navigationPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleGuncelle.Properties)).EndInit();
             this.navigationPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBilgiFisiYazici.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFaturaYazici.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBilgiFisiAyar.Properties)).EndInit();
@@ -509,7 +510,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookupDepo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

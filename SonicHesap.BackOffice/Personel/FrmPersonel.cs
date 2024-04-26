@@ -20,7 +20,7 @@ namespace SonicHesap.BackOffice.Personel
     {
         SonicHesapContext context=new SonicHesapContext();
         PersonelDAL personelDal=new PersonelDAL();
-        string _secilen = null;
+        int _secilen;
         public FrmPersonel()
         {
             InitializeComponent();
@@ -69,13 +69,13 @@ namespace SonicHesap.BackOffice.Personel
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            _secilen = gridPersonelHareket.GetFocusedRowCellValue(colPersonelKodu).ToString();
+            _secilen = Convert.ToInt32(gridPersonelHareket.GetFocusedRowCellValue(colId));
 
             DialogResult result = MessageBox.Show("Seçili Olan Kaydı Silmek İstediğinize Emin Misiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
-                personelDal.Delete(context, c => c.PersonelKodu == _secilen);
+                personelDal.Delete(context, c => c.Id == _secilen);
                 personelDal.Save(context);
                 MessageBox.Show("Seçili Kayıt Silindi!", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Listele();
@@ -94,8 +94,8 @@ namespace SonicHesap.BackOffice.Personel
 
         private void btnDuzenle_Click(object sender, EventArgs e)
         {
-            _secilen = gridPersonelHareket.GetFocusedRowCellValue(colPersonelKodu).ToString();
-            FrmPersonelIslem form = new FrmPersonelIslem(personelDal.GetByFilter(context, c => c.PersonelKodu == _secilen));
+            _secilen = Convert.ToInt32(gridPersonelHareket.GetFocusedRowCellValue(colId));
+            FrmPersonelIslem form = new FrmPersonelIslem(personelDal.GetByFilter(context, c => c.Id == _secilen));
             form.ShowDialog();
             if (form.saved)
             {
@@ -105,8 +105,8 @@ namespace SonicHesap.BackOffice.Personel
 
         private void btnPersonelHareket_Click(object sender, EventArgs e)
         {
-            _secilen = gridPersonelHareket.GetFocusedRowCellValue(colPersonelKodu).ToString();
-            FrmPersonelHareket form = new FrmPersonelHareket(_secilen, gridPersonelHareket.GetFocusedRowCellValue(colPersonelAdi).ToString());
+            _secilen = Convert.ToInt32(gridPersonelHareket.GetFocusedRowCellValue(colId));
+            FrmPersonelHareket form = new FrmPersonelHareket(_secilen);
             form.ShowDialog();
         }
 

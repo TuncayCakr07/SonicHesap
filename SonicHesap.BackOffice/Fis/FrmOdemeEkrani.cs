@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using SonicHesap.BackOffice.Kasa;
+using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Tables;
 using SonicHesap.Entities.Tools;
 using System;
@@ -16,16 +17,20 @@ namespace SonicHesap.BackOffice.Fis
 {
     public partial class FrmOdemeEkrani : DevExpress.XtraEditors.XtraForm
     {
+        SonicHesapContext context = new SonicHesapContext();
         public KasaHareket entity;
-        private string _odemeTuruKodu = null;
         private Nullable<decimal> gelenTutar;
-        public FrmOdemeEkrani(string odemeTuru,string odemeTuruKodu,Nullable<decimal>odenmesiGereken=null)
+        private Entities.Tables.Kasa _kasaBilgi;
+        OdemeTuru _odemeTuruBilgi;
+        public FrmOdemeEkrani(int odemeTuruId,Nullable<decimal>odenmesiGereken=null)
         {
             InitializeComponent();
-            txtOdemeTuru.Text = odemeTuru;
-            _odemeTuruKodu=odemeTuruKodu;
-            txtKasaKodu.Text = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa);
-            txtKasaAdi.Text = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasaAdi);
+            int kasaId = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa));
+            var _kasaBilgi = context.Kasalar.SingleOrDefault(c=>c.Id==kasaId);
+            var _odemeTuruBilgi = context.OdemeTurleri.SingleOrDefault(c => c.Id == odemeTuruId);
+            txtKasaKodu.Text = _kasaBilgi.KasaKodu;
+            txtOdemeTuru.Text = _odemeTuruBilgi.OdemeTuruAdi;
+            txtKasaAdi.Text = _kasaBilgi.KasaAdi;
             if (odenmesiGereken != null)
             {
                 gelenTutar = odenmesiGereken.Value;
@@ -88,9 +93,8 @@ namespace SonicHesap.BackOffice.Fis
             }
 
             entity=new KasaHareket();
-            entity.OdemeTuruKodu = _odemeTuruKodu;
-            entity.KasaKodu = txtKasaKodu.Text;
-            entity.KasaAdi=txtKasaAdi.Text;
+            entity.OdemeTuruId = _odemeTuruBilgi.Id;
+            entity.KasaId = _kasaBilgi.Id;
             entity.Tutar=txtTutar.Value;
             entity.Aciklama=txtAciklama.Text;
             this.Close();

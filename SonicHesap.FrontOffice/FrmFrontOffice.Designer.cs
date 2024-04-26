@@ -220,6 +220,7 @@
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
             this.navigationPane1.SuspendLayout();
             this.navigationPage1.SuspendLayout();
@@ -2347,6 +2348,12 @@
             this.barButtonItem8.ItemAppearance.Normal.Options.UseFont = true;
             this.barButtonItem8.Name = "barButtonItem8";
             // 
+            // ribbonStatusBar1
+            // 
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(1, 452);
+            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(967, 20);
+            // 
             // FrmFrontOffice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -2613,6 +2620,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowBekleyenSatis;
         private DevExpress.XtraEditors.LabelControl lblRiskLimiti;
         private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
     }
 }
 

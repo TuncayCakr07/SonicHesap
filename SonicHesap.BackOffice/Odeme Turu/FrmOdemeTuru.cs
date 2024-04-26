@@ -19,6 +19,7 @@ namespace SonicHesap.BackOffice.Odeme_Turu
     {
         SonicHesapContext context=new SonicHesapContext();
         OdemeTuruDAL OdemeTuruDAL = new OdemeTuruDAL();
+        int secilen;
         public FrmOdemeTuru()
         {
             InitializeComponent();
@@ -83,16 +84,15 @@ namespace SonicHesap.BackOffice.Odeme_Turu
 
         private void btnDuzenle_Click(object sender, EventArgs e)
         {
-            string secilen = gridOdemeTuru.GetFocusedRowCellValue(colOdemeTuruKodu).ToString();
-            FrmOdemeTuruIslem form = new FrmOdemeTuruIslem(OdemeTuruDAL.GetByFilter(context,c=>c.OdemeTuruKodu==secilen));
+            secilen = Convert.ToInt32(gridOdemeTuru.GetFocusedRowCellValue(colId));
+            FrmOdemeTuruIslem form = new FrmOdemeTuruIslem(OdemeTuruDAL.GetByFilter(context,c=>c.Id==secilen));
             form.ShowDialog();
         }
 
         private void btnHareket_Click(object sender, EventArgs e)
         {
-            string secilen = gridOdemeTuru.GetFocusedRowCellValue(colOdemeTuruKodu).ToString();
-            string secilenAd = gridOdemeTuru.GetFocusedRowCellValue(colOdemeTuruAdi).ToString();
-            FrmCariHareket form = new FrmCariHareket(secilen, secilenAd);
+            secilen = Convert.ToInt32(gridOdemeTuru.GetFocusedRowCellValue(colId));
+            FrmCariHareket form = new FrmCariHareket(secilen);
             form.ShowDialog();
             Listele();
         }

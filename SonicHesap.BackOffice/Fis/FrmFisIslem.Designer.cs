@@ -1867,7 +1867,7 @@
             this.navOdemeEkrani.Name = "navOdemeEkrani";
             this.navOdemeEkrani.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.navOdemeEkrani.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
-            this.navOdemeEkrani.Size = new System.Drawing.Size(1250, 213);
+            this.navOdemeEkrani.Size = new System.Drawing.Size(1249, 213);
             // 
             // gridContKasaHareket
             // 
@@ -1880,7 +1880,7 @@
             this.gridContKasaHareket.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repoKasa,
             this.repoOHSil});
-            this.gridContKasaHareket.Size = new System.Drawing.Size(1250, 150);
+            this.gridContKasaHareket.Size = new System.Drawing.Size(1249, 150);
             this.gridContKasaHareket.TabIndex = 3;
             this.gridContKasaHareket.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridKasaHareket});
@@ -1901,7 +1901,7 @@
             // 
             // colKasaKodu
             // 
-            this.colKasaKodu.FieldName = "KasaKodu";
+            this.colKasaKodu.FieldName = "Kasa.KasaKodu";
             this.colKasaKodu.MinWidth = 25;
             this.colKasaKodu.Name = "colKasaKodu";
             this.colKasaKodu.OptionsColumn.AllowEdit = false;
@@ -1911,7 +1911,7 @@
             // 
             this.colKasaAdi.Caption = "Kasa Adı";
             this.colKasaAdi.ColumnEdit = this.repoKasa;
-            this.colKasaAdi.FieldName = "KasaAdi";
+            this.colKasaAdi.FieldName = "Kasa.KasaAdi";
             this.colKasaAdi.MinWidth = 25;
             this.colKasaAdi.Name = "colKasaAdi";
             this.colKasaAdi.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
@@ -1932,7 +1932,7 @@
             // 
             // colOdemeTuruKodu
             // 
-            this.colOdemeTuruKodu.FieldName = "OdemeTuruKodu";
+            this.colOdemeTuruKodu.FieldName = "OdemeTuru.OdemeTuruKodu";
             this.colOdemeTuruKodu.MinWidth = 25;
             this.colOdemeTuruKodu.Name = "colOdemeTuruKodu";
             this.colOdemeTuruKodu.OptionsColumn.AllowEdit = false;
@@ -1941,7 +1941,7 @@
             // colOdemeTuruAdi
             // 
             this.colOdemeTuruAdi.Caption = "Ödeme Türü";
-            this.colOdemeTuruAdi.FieldName = "OdemeTuruAdi";
+            this.colOdemeTuruAdi.FieldName = "OdemeTuru.OdemeTuruAdi";
             this.colOdemeTuruAdi.MinWidth = 25;
             this.colOdemeTuruAdi.Name = "colOdemeTuruAdi";
             this.colOdemeTuruAdi.OptionsColumn.AllowEdit = false;
@@ -2003,7 +2003,7 @@
             this.flowOdemeTurleri.Location = new System.Drawing.Point(0, 0);
             this.flowOdemeTurleri.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.flowOdemeTurleri.Name = "flowOdemeTurleri";
-            this.flowOdemeTurleri.Size = new System.Drawing.Size(1250, 63);
+            this.flowOdemeTurleri.Size = new System.Drawing.Size(1249, 63);
             this.flowOdemeTurleri.TabIndex = 2;
             // 
             // navPersonelIslem

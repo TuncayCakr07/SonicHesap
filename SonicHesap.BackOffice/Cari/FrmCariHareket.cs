@@ -17,12 +17,13 @@ namespace SonicHesap.BackOffice.Cari
     {
         CariDAL cariDAL=new CariDAL();
         SonicHesapContext context=new SonicHesapContext();
-        private string _cariKodu = null;
-        public FrmCariHareket(string cariKodu,string cariAdi)
+        private int _cariId;
+        public FrmCariHareket(int cariId)
         {
             InitializeComponent();
-            _cariKodu=cariKodu;
-            lblBaslik.Text = _cariKodu + "-" + cariAdi +" "+"Hareketleri";
+            _cariId = cariId;
+            var cariEntity=cariDAL.GetByFilter(context,c=>c.Id==cariId);
+            lblBaslik.Text = cariEntity.CariKodu + "-" + cariEntity.CariAdi +" "+"Hareketleri";
         }
 
         private void FrmCariHareket_Load(object sender, EventArgs e)
@@ -31,9 +32,9 @@ namespace SonicHesap.BackOffice.Cari
         }
         private void Guncelle()
         {
-            gridContFisToplam.DataSource = cariDAL.CariFisGenelToplam(context, _cariKodu);
-            gridContBakiye.DataSource=cariDAL.CariFisGenelToplam(context, _cariKodu);
-            gridContCariHareket.DataSource = cariDAL.CariFisAyrinti(context, _cariKodu);
+            gridContFisToplam.DataSource = cariDAL.CariFisGenelToplam(context,_cariId);
+            gridContBakiye.DataSource=cariDAL.CariFisGenelToplam(context, _cariId);
+            gridContCariHareket.DataSource = cariDAL.CariFisAyrinti(context, _cariId);
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)

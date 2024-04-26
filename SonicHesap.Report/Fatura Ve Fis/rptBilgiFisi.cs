@@ -22,10 +22,10 @@ namespace SonicHesap.Report.Fatura_Ve_Fiş
 
             Fis fisBilgi = fisDal.GetByFilter(context, c => c.FisKodu == fiskodu);
             ObjectDataSource stokHareketDataSource = new ObjectDataSource { DataSource = stokHareketDal.GetAll(context, c => c.FisKodu == fiskodu) };
-            var kullaniciAdi = context.Personeller .Where(c => c.PersonelKodu ==fisBilgi.PlasiyerKodu).Select(c => c.PersonelAdi).FirstOrDefault();
+            var kullaniciAdi = context.Personeller .Where(c => c.Id ==fisBilgi.Personel.Id).Select(c => c.PersonelAdi).FirstOrDefault();
             lblfisKodu.Text =   "Fiş Kodu  :" + fisBilgi.FisKodu;
-            lblKullanici.Text = "Personel  :" + fisBilgi.PlasiyerAdi;
-            lblCariAdi.Text =   "Müşteri   :" + fisBilgi.CariAdi;
+            lblKullanici.Text = "Personel  :" + fisBilgi.Personel.PersonelAdi;
+            lblCariAdi.Text =   "Müşteri   :" + fisBilgi.Cari.CariAdi;
             lblAdres.Text =     "Adres     :" + fisBilgi.Il + " " + fisBilgi.Ilce + " " + fisBilgi.Semt;
             lblTarih.Text =     "Tarih     :" + fisBilgi.Tarih.ToString();
 

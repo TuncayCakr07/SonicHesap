@@ -22,7 +22,7 @@ namespace SonicHesap.Report.Fatura_Ve_Fiş
             Fis fisBilgi=fisDal.GetByFilter(context,c=>c.FisKodu==fisKodu);
             ObjectDataSource stokHareketDataSource = new ObjectDataSource { DataSource = stokHareketDal.GetAll(context,c=>c.FisKodu==fisKodu) };
 
-            lblCariAdi.Text = fisBilgi.CariAdi;
+            lblCariAdi.Text = fisBilgi.Cari.CariAdi;
             lblAdres.Text= fisBilgi.Adres;
             lblFaturaTarihi.Text = fisBilgi.Tarih.ToString();
             lblIkametgah.Text = fisBilgi.Semt + "\\" + fisBilgi.Ilce + "\\" + fisBilgi.Il;

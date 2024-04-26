@@ -36,7 +36,7 @@ namespace SonicHesap.FrontOffice
         KasaHareketDAL kasaHareketDal = new KasaHareketDAL();
         StokHareketDAL stokHareketDal = new StokHareketDAL();
         ExchangeTool doviz = new ExchangeTool();
-        private string odemeTuruKodu, odemeTuruAdi;
+        private int odemeTuruId;
         decimal eskifiyat = 0;
         private bool tekparca = false;
 
@@ -44,6 +44,7 @@ namespace SonicHesap.FrontOffice
         private int cagirilanSatisId = -1;
         List<BekleyenSatis> _bekleyenSatis = new List<BekleyenSatis>();
 
+        private Nullable<int> _cariId;
 
         public FrmFrontOffice()
         {
@@ -145,6 +146,7 @@ namespace SonicHesap.FrontOffice
                 var buton = new SimpleButton
                 {
                     Name = item.OdemeTuruKodu,
+                    Tag= item.Id,
                     Text = item.OdemeTuruAdi,
                     Height = 55,
                     Width = 110,
@@ -183,6 +185,7 @@ namespace SonicHesap.FrontOffice
                 {
                     Name = item.PersonelKodu,
                     Text = item.PersonelAdi,
+                    Tag = item.Id,
                     GroupIndex = 1,
                     Height = 70,
                     Width = 150,
@@ -209,7 +212,7 @@ namespace SonicHesap.FrontOffice
                     return; // Kullanıcı vazgeçti, işlemi iptal et
                 }
             }
-            odemeTuruKodu = "AcikHesap";
+            odemeTuruId = -1;
             radialYazdir.ShowPopup(MousePosition);
         }
 
@@ -219,13 +222,11 @@ namespace SonicHesap.FrontOffice
             var buton = sender as CheckButton;
             if (buton.Name == "Temizle")
             {
-                _fisEntity.PlasiyerKodu = null;
-                _fisEntity.PlasiyerAdi = null;
+                _fisEntity.PlasiyerId = null;
             }
             else
             {
-                _fisEntity.PlasiyerKodu = buton.Name;
-                _fisEntity.PlasiyerAdi = buton.Text;
+                _fisEntity.PlasiyerId = Convert.ToInt32(buton.Tag);
             }
 
         }
@@ -241,7 +242,7 @@ namespace SonicHesap.FrontOffice
                 }
                 else
                 {
-                    FrmOdemeEkrani form = new FrmOdemeEkrani(buton.Text, buton.Name, txtOdenmesiGereken.Value);
+                    FrmOdemeEkrani form = new FrmOdemeEkrani(Convert.ToInt32(buton.Tag), txtOdenmesiGereken.Value);
                     form.ShowDialog();
                     if (form.entity != null)
                     {
@@ -252,8 +253,7 @@ namespace SonicHesap.FrontOffice
             }
             else
             {
-                odemeTuruKodu = buton.Name;
-                odemeTuruAdi = buton.Text;
+                odemeTuruId = Convert.ToInt32(buton.Tag);
                 tekparca = true;
                 radialYazdir.ShowPopup(MousePosition);
             }
@@ -264,7 +264,6 @@ namespace SonicHesap.FrontOffice
             Toplamlar();
             OdenenTutarGuncelle();
             int StokHata = context.StokHareketleri.Local.Where(c => c.DepoKodu == null).Count();
-            int KasaHata = context.KasaHareketleri.Local.Where(c => c.KasaKodu == null).Count();
             string message = null;
             int hata = 0;
 
@@ -289,12 +288,6 @@ namespace SonicHesap.FrontOffice
             if (StokHata != 0)
             {
                 message += ("Satış Ekranındaki Ürünlerin Depo Seçimlerinde Eksiklikler Var!") + System.Environment.NewLine;
-                hata++;
-            }
-
-            if (KasaHata != 0)
-            {
-                message += ("Ödeme Ekranındaki Ödemelerin Kasa Seçimlerinde Eksiklikler Var!" + System.Environment.NewLine);
                 hata++;
             }
 
@@ -338,8 +331,7 @@ namespace SonicHesap.FrontOffice
                 kasaVeri.Tarih = DateTime.Now;
                 kasaVeri.FisKodu = txtFisKodu.Text;
                 kasaVeri.Hareket = txtIslem.Text == "İADE" ? "Kasa Çıkış" : "Kasa Giriş";
-                kasaVeri.CariKodu = txtCariKodu.Text;
-                kasaVeri.CariAdi = txtCariAdi.Text;
+                kasaVeri.CariId = _cariId;
                 kasaVeri.Tutar = txtToplam.Value;
             }
 
@@ -350,22 +342,19 @@ namespace SonicHesap.FrontOffice
 
             fisDal.AddOrUpdate(context, _fisEntity);
 
-            string kasaKodu = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa);
-            if (!chOdemeBol.Checked && odemeTuruKodu != "AcikHesap")
+            int kasaId = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa));
+            if (!chOdemeBol.Checked && odemeTuruId != -1)
             {
                 kasaHareketDal.AddOrUpdate(context, new KasaHareket
                 {
-                    CariKodu = txtCariKodu.Text,
-                    CariAdi = txtCariAdi.Text,
+                    CariId=_cariId,
                     FisKodu = txtFisKodu.Text,
                     Hareket = txtIslem.Text == "İADE" ? "Kasa Çıkış" : "Kasa Giriş",
-                    KasaKodu = kasaKodu,
-                    KasaAdi = context.Kasalar.SingleOrDefault(x => x.KasaKodu == kasaKodu).KasaAdi,
-                    OdemeTuruKodu = odemeTuruKodu,
-                    OdemeTuruAdi = odemeTuruAdi,
+                    KasaId = kasaId,
+                    OdemeTuruId = odemeTuruId,
                     Tarih = DateTime.Now,
                     Tutar = txtToplam.Value,
-                });
+                });;
                 OdenenTutarGuncelle();
             }
             context.SaveChanges();
@@ -542,8 +531,8 @@ namespace SonicHesap.FrontOffice
             if (form.secildi)
             {
                 Entities.Tables.Cari entity = form.secilen.FirstOrDefault();
-                entityBakiye = cariDal.CariBakiyesi(context, entity.CariKodu);
-
+                entityBakiye = cariDal.CariBakiyesi(context, entity.Id);
+                _cariId = entity.Id;
                 txtCariKodu.Text = entity.CariKodu;
                 txtCariAdi.Text = entity.CariAdi;
                 txtFaturaUnvani.Text = entity.FaturaUnvani;
@@ -619,8 +608,8 @@ namespace SonicHesap.FrontOffice
             if (form.secildi)
             {
                 Entities.Tables.Cari entity = form.secilen.FirstOrDefault();
-                entityBakiye = cariDal.CariBakiyesi(context, entity.CariKodu);
-
+                entityBakiye = cariDal.CariBakiyesi(context, entity.Id);
+                _cariId = entity.Id;
                 txtCariKodu.Text = entity.CariKodu;
                 txtCariAdi.Text = entity.CariAdi;
                 txtFaturaUnvani.Text = entity.FaturaUnvani;
@@ -867,7 +856,7 @@ namespace SonicHesap.FrontOffice
                 BekleyenId = cagirilanSatisId;
                 satis = _bekleyenSatis.SingleOrDefault(c => c.Id == BekleyenId);
                 var buton = (SimpleButton)flowBekleyenSatis.Controls.Find(Convert.ToString(BekleyenId), false).SingleOrDefault();
-                Text = txtCariKodu.Text + " - " + txtCariAdi.Text + "\n" + _fisEntity.PlasiyerKodu + " - " + _fisEntity.PlasiyerAdi + "\n" + context.StokHareketleri.Local.Count + " " + "Adet Ürün Eklendi." + "\n" + txtToplam.Value.ToString("C2");
+                Text = txtCariKodu.Text + " - " + txtCariAdi.Text + "\n" + _fisEntity.Personel.PersonelKodu + " - " + _fisEntity.Personel.PersonelAdi + "\n" + context.StokHareketleri.Local.Count + " " + "Adet Ürün Eklendi." + "\n" + txtToplam.Value.ToString("C2");
             }
             else
             {
@@ -878,7 +867,7 @@ namespace SonicHesap.FrontOffice
                 SimpleButton Bekleyenbuton = new SimpleButton
                 {
                     Name = BekleyenSatisId.ToString(),
-                    Text = txtCariKodu.Text + " - " + txtCariAdi.Text + "\n" + _fisEntity.PlasiyerKodu + " - " + _fisEntity.PlasiyerAdi + "\n" + context.StokHareketleri.Local.Count + " " + "Adet Ürün Eklendi." + "\n" + txtToplam.Value.ToString("C2"),
+                    Text = txtCariKodu.Text + " - " + txtCariAdi.Text + "\n" + _fisEntity.Personel.PersonelKodu + " - " + _fisEntity.Personel.PersonelAdi + "\n" + context.StokHareketleri.Local.Count + " " + "Adet Ürün Eklendi." + "\n" + txtToplam.Value.ToString("C2"),
                     Height = 150,
                     Width = flowBekleyenSatis.Width - 5,
                     BackColor = Color.SteelBlue,
@@ -892,8 +881,7 @@ namespace SonicHesap.FrontOffice
                 flowBekleyenSatis.Controls.Add(Bekleyenbuton);
                 BekleyenSatisId++;
             }
-            satis.BekleyenFis.CariKodu = _fisEntity.CariKodu;
-            satis.BekleyenFis.CariAdi = _fisEntity.CariAdi;
+            satis.BekleyenFis.CariId = _fisEntity.CariId;
             satis.BekleyenFis.Aciklama = _fisEntity.Aciklama;
             satis.BekleyenFis.Adres = _fisEntity.Adres;
             satis.BekleyenFis.BelgeNo = _fisEntity.BelgeNo;
@@ -904,8 +892,7 @@ namespace SonicHesap.FrontOffice
             satis.BekleyenFis.Il = _fisEntity.Il;
             satis.BekleyenFis.Ilce = _fisEntity.Ilce;
             satis.BekleyenFis.Semt = _fisEntity.Semt;
-            satis.BekleyenFis.PlasiyerKodu = _fisEntity.PlasiyerKodu;
-            satis.BekleyenFis.PlasiyerAdi = _fisEntity.PlasiyerAdi;
+            satis.BekleyenFis.PlasiyerId = _fisEntity.PlasiyerId;
             satis.BekleyenFis.VergiDairesi = _fisEntity.VergiDairesi;
             satis.BekleyenFis.VergiNo = _fisEntity.VergiNo;
             satis.BekleyenFis.IskontoOrani = txtIskontoOrani.Value;
@@ -947,19 +934,19 @@ namespace SonicHesap.FrontOffice
             txtFisKodu.Text = CodeTool.KodOlustur("FI", SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu));
             txtBelgeNo.Text = satisBilgisi.BekleyenFis.BelgeNo;
             txtAciklama.Text = satisBilgisi.BekleyenFis.Aciklama;
-            txtCariKodu.Text = satisBilgisi.BekleyenFis.CariKodu;
-            txtCariAdi.Text = satisBilgisi.BekleyenFis.CariAdi;
-            if (!String.IsNullOrEmpty(satisBilgisi.BekleyenFis.CariKodu))
+            txtCariKodu.Text = satisBilgisi.BekleyenFis.Cari.CariKodu;
+            txtCariAdi.Text = satisBilgisi.BekleyenFis.Cari.CariAdi;
+            if (satisBilgisi.BekleyenFis.CariId!=null)
             {
-                entityBakiye = cariDal.CariBakiyesi(context, satisBilgisi.BekleyenFis.CariKodu);
+                entityBakiye = cariDal.CariBakiyesi(context, Convert.ToInt32(satisBilgisi.BekleyenFis.CariId));
                 lblAlacak.Text = entityBakiye.Alacak.ToString("C2");
                 lblBorc.Text = entityBakiye.Borc.ToString("C2");
                 lblBakiye.Text = entityBakiye.Bakiye.ToString("C2");
             }
 
-            if (!String.IsNullOrEmpty(satisBilgisi.BekleyenFis.PlasiyerKodu))
+            if (satisBilgisi.BekleyenFis.PlasiyerId!=null)
             {
-                var button = (CheckButton)flowPersonel.Controls.Find(satisBilgisi.BekleyenFis.PlasiyerKodu, false).SingleOrDefault();
+                var button = (CheckButton)flowPersonel.Controls.Find(satisBilgisi.BekleyenFis.Personel.PersonelKodu, false).SingleOrDefault();
                 button.Checked = true;
             }
             else
@@ -992,7 +979,7 @@ namespace SonicHesap.FrontOffice
             var buton = (SimpleButton)flowBekleyenSatis.Controls.Find(Convert.ToString(Id), false).SingleOrDefault();
             if (buton != null)
             {
-                buton.Text = txtCariKodu.Text + " - " + txtCariAdi.Text + "\n" + _fisEntity.PlasiyerKodu + " - " + _fisEntity.PlasiyerAdi + "\n" + context.StokHareketleri.Local.Count + " " + "Adet Ürün Eklendi." + "\n" + txtToplam.Value.ToString("C2");
+                buton.Text = txtCariKodu.Text + " - " + txtCariAdi.Text + "\n" + _fisEntity.Personel.PersonelKodu + " - " + _fisEntity.Personel.PersonelAdi + "\n" + context.StokHareketleri.Local.Count + " " + "Adet Ürün Eklendi." + "\n" + txtToplam.Value.ToString("C2");
             }
         }
 

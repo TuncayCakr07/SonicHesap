@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
+using SonicHesap.Entities.Tables;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,12 +19,13 @@ namespace SonicHesap.BackOffice.Personel
         SonicHesapContext context=new SonicHesapContext();
         PersonelDAL personelDal= new PersonelDAL(); 
         FisDAL fisDAL = new FisDAL();
-        private string _personelKodu;
-        public FrmPersonelHareket(string personelKodu,string personelAdi)
+        private int _personelId;
+        public FrmPersonelHareket(int personelId)
         {
             InitializeComponent();
-            _personelKodu = personelKodu;
-            lblBaslik.Text = personelKodu + " - " + personelAdi;
+            _personelId = personelId;
+            var personelBilgi=context.Personeller.SingleOrDefault(c=>c.Id==personelId);
+            lblBaslik.Text = personelBilgi.PersonelKodu + " - " + personelBilgi.PersonelAdi;
         }
 
         private void FrmPersonelHareket_Load(object sender, EventArgs e)
@@ -32,8 +34,8 @@ namespace SonicHesap.BackOffice.Personel
         }
         private void Listele()
         {
-            gridContPersonelHareket.DataSource = fisDAL.GetAll(context, c => c.PlasiyerKodu == _personelKodu);
-            gridContFisToplam.DataSource = personelDal.PersonelFisToplam(context, _personelKodu);
+            gridContPersonelHareket.DataSource = fisDAL.GetAll(context, c => c.PlasiyerId == _personelId);
+            gridContFisToplam.DataSource = personelDal.PersonelFisToplam(context, _personelId);
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)

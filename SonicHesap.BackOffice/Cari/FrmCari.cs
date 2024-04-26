@@ -18,7 +18,7 @@ namespace SonicHesap.BackOffice.Cari
     {
         SonicHesapContext context=new SonicHesapContext();
         CariDAL cariDal = new CariDAL();
-        private string secilen=null;
+        private Nullable<int> secilen=null;
         public FrmCari()
         {
             InitializeComponent();
@@ -86,8 +86,8 @@ namespace SonicHesap.BackOffice.Cari
 
         private void btnDuzenle_Click(object sender, EventArgs e)
         {
-            secilen = gridView1.GetFocusedRowCellValue(colCariKodu).ToString();
-            FrmCariIslem form = new FrmCariIslem(cariDal.GetByFilter(context, c => c.CariKodu == secilen));
+            secilen = Convert.ToInt32(gridView1.GetFocusedRowCellValue(colId));
+            FrmCariIslem form = new FrmCariIslem(cariDal.GetByFilter(context, c => c.Id == secilen));
             form.ShowDialog();
             if (form.saved)
             {
@@ -97,9 +97,9 @@ namespace SonicHesap.BackOffice.Cari
 
         private void btnKopyala_Click(object sender, EventArgs e)
         {
-            secilen = gridView1.GetFocusedRowCellValue(colCariKodu).ToString();
+            secilen = Convert.ToInt32(gridView1.GetFocusedRowCellValue(colId));
             Entities.Tables.Cari cariEntity = new Entities.Tables.Cari();
-            cariEntity = cariDal.GetByFilter(context, c => c.CariKodu == secilen);
+            cariEntity = cariDal.GetByFilter(context, c => c.Id == secilen);
             cariEntity.Id = -1;
             cariEntity.CariKodu = null;
             FrmCariIslem form = new FrmCariIslem(cariEntity);
@@ -110,9 +110,9 @@ namespace SonicHesap.BackOffice.Cari
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            secilen = gridView1.GetFocusedRowCellValue(colCariKodu).ToString();
+            secilen = Convert.ToInt32(gridView1.GetFocusedRowCellValue(colId));
             string secilenAd = gridView1.GetFocusedRowCellValue(colCariAdi).ToString();
-            FrmCariHareket form = new FrmCariHareket(secilen, secilenAd);
+            FrmCariHareket form = new FrmCariHareket(Convert.ToInt32(secilen));
             form.ShowDialog();
             GetAll();
         }

@@ -17,12 +17,13 @@ namespace SonicHesap.BackOffice.Kasa
     {
         KasaDAL kasaDal=new KasaDAL();
         SonicHesapContext context=new SonicHesapContext();
-        private string _kasaKodu;
-        public FrmKasaHareket(string kasaKodu,string kasaAdi)
+        private int _kasaId;
+        public FrmKasaHareket(int kasaId)
         {
             InitializeComponent();
-            _kasaKodu = kasaKodu;
-            lblBaslik.Text = kasaKodu + " - " + kasaAdi + "Hareketleri";
+            _kasaId = kasaId;
+            var kasaBilgi = context.Kasalar.SingleOrDefault(c => c.Id == kasaId);
+            lblBaslik.Text = kasaBilgi.KasaKodu + " - " + kasaBilgi.KasaAdi + "Hareketleri";
         }
 
         private void FrmKasaHareket_Load(object sender, EventArgs e)
@@ -31,9 +32,9 @@ namespace SonicHesap.BackOffice.Kasa
         }
         public void Guncelle()
         {
-            gridContKasaHareket.DataSource = kasaDal.GetAll(context, c => c.KasaKodu == _kasaKodu);
-            gridContOdemeTuruToplam.DataSource = kasaDal.OdemeTuruToplamListele(context, _kasaKodu);
-            gridContGenelToplam.DataSource = kasaDal.GenelToplamListele(context, _kasaKodu);
+            gridContKasaHareket.DataSource = kasaDal.GetAll(context, c => c.Id == _kasaId);
+            gridContOdemeTuruToplam.DataSource = kasaDal.OdemeTuruToplamListele(context, _kasaId);
+            gridContGenelToplam.DataSource = kasaDal.GenelToplamListele(context, _kasaId);
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)

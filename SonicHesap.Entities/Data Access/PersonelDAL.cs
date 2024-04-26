@@ -15,7 +15,7 @@ namespace SonicHesap.Entities.Data_Access
     {
         public object PersonelListele(SonicHesapContext context)
         {
-            var result = context.Personeller.GroupJoin(context.fisler, c => c.PersonelKodu, c => c.PlasiyerKodu, (personel, fis) => new
+            var result = context.Personeller.GroupJoin(context.fisler, c => c.Id, c => c.PlasiyerId, (personel, fis) => new
             {
                 personel.Id,
                 personel.Calisiyor,
@@ -47,7 +47,7 @@ namespace SonicHesap.Entities.Data_Access
 
         public object TarihePersonelListele(SonicHesapContext context,int Ay,int Yil)
         {
-            var result = context.Personeller.GroupJoin(context.fisler, c => c.PersonelKodu, c => c.PlasiyerKodu, (personel, fis) => new
+            var result = context.Personeller.GroupJoin(context.fisler, c => c.Id, c => c.PlasiyerId, (personel, fis) => new
             {
                 personel.Id,
                 personel.Calisiyor,
@@ -77,9 +77,9 @@ namespace SonicHesap.Entities.Data_Access
             return result;
         }
 
-        public object PersonelFisToplam(SonicHesapContext context,string personelKodu)
+        public object PersonelFisToplam(SonicHesapContext context,int personelId)
         {
-            var result = (from c in context.fisler.Where(c => c.PlasiyerKodu == personelKodu)
+            var result = (from c in context.fisler.Where(c => c.PlasiyerId == personelId)
                           group c by new { c.FisTuru } into grp
                           select new
                           {

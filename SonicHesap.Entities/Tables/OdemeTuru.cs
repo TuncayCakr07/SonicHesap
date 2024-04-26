@@ -13,5 +13,6 @@ namespace SonicHesap.Entities.Tables
         public string OdemeTuruKodu { get; set; }
         public string OdemeTuruAdi { get; set; }
         public string Aciklama { get; set; }
+        public virtual ICollection<KasaHareket> KasaHareket { get; set; }
     }
 }

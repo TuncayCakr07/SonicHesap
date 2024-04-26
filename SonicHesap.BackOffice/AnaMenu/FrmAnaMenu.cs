@@ -54,7 +54,7 @@ namespace SonicHesap.BackOffice
             using (var context = new SonicHesapContext())
             {
                 context.Database.CreateIfNotExists();
-                if (context.Kullanicilar.Any(c=>c.KullaniciAdi=="Yönetici"))
+                if (!context.Kullanicilar.Any(c=>c.KullaniciAdi=="Yönetici"))
                 {
                     context.Kullanicilar.Add(new Entities.Tables.Kullanici
                     {
@@ -68,6 +68,7 @@ namespace SonicHesap.BackOffice
             FrmKullaniciGiris girisform = new FrmKullaniciGiris();
             girisform.ShowDialog();
             barKullaniciAdi.Caption =$"Aktif Kullanıcı: {RoleTool.KullaniciEntity.KullaniciAdi}";
+            barStaticTarih.Caption = $"Giriş Saati:{DateTime.Now.ToString()}";
             string SunucuVersion = "https://www.softcakir.com/versiyonn.txt";
             string ProgramVersiyon = Assembly.Load("SonicHesap.BackOffice").GetName().Version.ToString().Trim();
             if (ProgramVersiyon != SunucuVersion)
@@ -81,7 +82,7 @@ namespace SonicHesap.BackOffice
                     }
                 }
             }
-
+            barEditversion.Caption= $"Versiyonunuz Güncel:{DateTime.Now.ToString()}";
 
         }
 

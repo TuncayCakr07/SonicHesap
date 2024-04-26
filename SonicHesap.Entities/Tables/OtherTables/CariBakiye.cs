@@ -8,7 +8,7 @@ namespace SonicHesap.Entities.Tables
 {
     public class CariBakiye
     {
-        public string CariKodu { get; set; }
+        public int CariId { get; set; }
         public decimal RiskLimiti { get; set; }
         public decimal Alacak { get; set; }
         public decimal Borc { get; set; }

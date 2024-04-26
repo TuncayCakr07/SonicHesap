@@ -33,6 +33,7 @@ namespace SonicHesap.BackOffice.Fis
         CariDAL cariDal = new CariDAL();
         SonicHesapContext contex = new SonicHesapContext();
         CariBakiye entityBakiye = new CariBakiye();
+        private Nullable<int> _cariId;
         FisDAL fisDal = new FisDAL();
         KasaHareketDAL kasaHareketDal = new KasaHareketDAL();
         StokHareketDAL stokHareketDal = new StokHareketDAL();
@@ -50,9 +51,9 @@ namespace SonicHesap.BackOffice.Fis
 
                 toggleBakiye.IsOn = contex.KasaHareketleri.Count(c => c.FisKodu == fisKodu && c.Hareket == "Kasa Giriş") == 0;
 
-                if (_fisEntity.CariKodu != null)
+                if (_fisEntity.CariId != null)
                 {
-                    entityBakiye = cariDal.CariBakiyesi(contex, _fisEntity.CariKodu);
+                    entityBakiye = cariDal.CariBakiyesi(contex, Convert.ToInt32(_fisEntity.CariId));
                 }
 
                 lblAlacak.Text = entityBakiye.Alacak.ToString("C2");
@@ -109,6 +110,7 @@ namespace SonicHesap.BackOffice.Fis
                 var buton = new SimpleButton
                 {
                     Name = item.OdemeTuruKodu,
+                    Tag = item.Id,
                     Text = item.OdemeTuruAdi,
                     Height = 55,
                     Width = 110,
@@ -123,7 +125,7 @@ namespace SonicHesap.BackOffice.Fis
                 GroupIndex = 1,
                 Height = 70,
                 Width = 150,
-                Checked = _fisEntity.PlasiyerKodu == null
+                Checked = _fisEntity.PlasiyerId == null
             };
             SecimTemizle.Click += PersonelEkle_Click;
             flowPersonel.Controls.Add(SecimTemizle);
@@ -137,7 +139,7 @@ namespace SonicHesap.BackOffice.Fis
                     GroupIndex = 1,
                     Height = 70,
                     Width = 150,
-                    Checked = item.PersonelKodu == _fisEntity.PlasiyerKodu
+                    Checked = item.Id == _fisEntity.PlasiyerId
                 };
                 buton.Click += PersonelEkle_Click;
                 flowPersonel.Controls.Add(buton);
@@ -151,8 +153,8 @@ namespace SonicHesap.BackOffice.Fis
             if (form.secildi)
             {
                 Entities.Tables.Cari entity = form.secilen.FirstOrDefault();
-                entityBakiye = cariDal.CariBakiyesi(contex, entity.CariKodu);
-
+                entityBakiye = cariDal.CariBakiyesi(contex, entity.Id);
+                _cariId = entity.Id;
                 lblCariKodu.Text = entity.CariKodu;
                 lblCariAdi.Text = entity.CariAdi;
                 txtFaturaUnvani.Text = entity.FaturaUnvani;
@@ -197,7 +199,6 @@ namespace SonicHesap.BackOffice.Fis
                 ayarlar.KasaHareketi = "Kasa Giriş"; // Doğru kasa hareketini atadığınızdan emin olun
             }
             int StokHata = contex.StokHareketleri.Local.Where(c => c.DepoKodu == null).Count();
-            int KasaHata = contex.KasaHareketleri.Local.Where(c => c.KasaKodu == null).Count();
             string message = null;
             int hata = 0;
 
@@ -207,7 +208,7 @@ namespace SonicHesap.BackOffice.Fis
                 hata++;
             }
 
-            if (_fisEntity.CariKodu == null && ayarlar.SatisEkrani == false && txtFisTuru.Text!="Hakediş Fişi")
+            if (_fisEntity.CariId == null && ayarlar.SatisEkrani == false && txtFisTuru.Text!="Hakediş Fişi")
             {
                 message += (txtFisTuru.Text + " " + "Türünde Cari Seçimi Zorunludur!") + System.Environment.NewLine;
                 hata++;
@@ -234,11 +235,6 @@ namespace SonicHesap.BackOffice.Fis
             if (StokHata != 0)
             {
                 message += ("Satış Ekranındaki Ürünlerin Depo Seçimlerinde Eksiklikler Var!") + System.Environment.NewLine;
-                hata++;
-            }
-            if (KasaHata != 0) // Burada StokHata yerine KasaHata kullanılmalı
-            {
-                message += ("Ödeme Ekranındaki Ödemelerin Kasa Seçimlerinde Eksiklikler Var!");
                 hata++;
             }
 
@@ -278,8 +274,7 @@ namespace SonicHesap.BackOffice.Fis
                     kasaVeri.Hareket = ayarlar.KasaHareketi;
                     if (txtFisTuru.Text!="Hakediş Fişi")
                     {
-                        kasaVeri.CariKodu = lblCariKodu.Text;
-                        kasaVeri.CariAdi = lblCariAdi.Text;
+                        kasaVeri.CariId =_cariId;
                     }
                     kasaVeri.Tutar = txtToplam.Value;
                 }
@@ -307,6 +302,7 @@ namespace SonicHesap.BackOffice.Fis
 
         private void btnTemizle_Click(object sender, EventArgs e)
         {
+            _cariId = null;
             lblCariKodu.Text = null;
             lblCariAdi.Text = null;
             txtFaturaUnvani.Text = null;
@@ -474,12 +470,12 @@ namespace SonicHesap.BackOffice.Fis
             var buton = (sender as SimpleButton);
             if (ayarlar.SatisEkrani == false && txtFisTuru.Text!="Hakediş Fişi")
             {
-                FrmOdemeEkrani form = new FrmOdemeEkrani(buton.Text, buton.Name);
+                FrmOdemeEkrani form = new FrmOdemeEkrani(Convert.ToInt32(buton.Tag));
                 form.ShowDialog();
                 if (form.entity != null)
                 {
                     // Ödeme türü adını da ekleyin
-                    form.entity.OdemeTuruAdi = buton.Text;
+                    form.entity.OdemeTuru.OdemeTuruAdi = buton.Text;
                     kasaHareketDal.AddOrUpdate(contex, form.entity);
                     OdenenTutarGuncelle();
                 }
@@ -499,8 +495,8 @@ namespace SonicHesap.BackOffice.Fis
                     {
                         KasaHareket entitykasaHareket = new KasaHareket
                         {
-                            OdemeTuruKodu = odemeTuruKodu,
-                            OdemeTuruAdi = odemeTuruAdi,
+                            OdemeTuruId = Convert.ToInt32(buton.Tag),
+                            Tarih=DateTime.Now,
                             Tutar = txtOdenmesiGereken.Value
                         };
                         kasaHareketDal.AddOrUpdate(contex, entitykasaHareket);
@@ -512,10 +508,8 @@ namespace SonicHesap.BackOffice.Fis
                         {
                             KasaHareket entitykasaHareket = new KasaHareket
                             {
-                                CariKodu= gridPersonelHareket.GetRowCellValue(i, colPersonelKodu).ToString(),
-                                CariAdi = gridPersonelHareket.GetRowCellValue(i, colPersonelAdi).ToString(),
-                                OdemeTuruKodu = odemeTuruKodu,
-                                OdemeTuruAdi = odemeTuruAdi,
+                                CariId = _cariId,
+                                OdemeTuruId = Convert.ToInt32(buton.Tag),
                                 Tutar = Convert.ToDecimal(gridPersonelHareket.GetRowCellValue(i,colOdenecekTutar)),
                                 Aciklama=$"{gridPersonelHareket.GetRowCellValue(i, colPersonelKodu).ToString()} - {gridPersonelHareket.GetRowCellValue(i, colPersonelAdi).ToString()} - Aylık Maaş : {Convert.ToDecimal(gridPersonelHareket.GetRowCellValue(i, colAylikMaasi)).ToString("C2")} || Prim Tutarı : {Convert.ToDecimal(gridPersonelHareket.GetRowCellValue(i, colPrimTutari)).ToString("C2")}"
                             };
@@ -547,13 +541,12 @@ namespace SonicHesap.BackOffice.Fis
             var buton = sender as CheckButton;
             if (buton.Name == "Temizle")
             {
-                _fisEntity.PlasiyerKodu = null;
-                _fisEntity.PlasiyerAdi = null;
+                _fisEntity.PlasiyerId = null;
             }
             else
             {
-                _fisEntity.PlasiyerKodu = buton.Name;
-                _fisEntity.PlasiyerAdi = buton.Text;
+                _fisEntity.Personel.PersonelKodu = buton.Name;
+                _fisEntity.Personel.PersonelAdi = buton.Text;
             }
 
         }
@@ -629,7 +622,7 @@ namespace SonicHesap.BackOffice.Fis
             stokHareket.Barkod = entity.Barkod;
             stokHareket.IndirimOrani = indirimDal.StokIndirimi(contex, entity.StokKodu);
             stokHareket.DepoKodu = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepo);
-            stokHareket.DepoAdi = contex.Depolar.SingleOrDefault(x => x.DepoKodu == stokHareket.DepoKodu).DepoAdi;
+            stokHareket.DepoAdi = contex.Depolar.SingleOrDefault(x => x.Id == Convert.ToInt32(stokHareket.DepoKodu)).DepoAdi;
             stokHareket.BarkodTuru = entity.BarkodTuru;
             stokHareket.BirimFiyati = txtFisTuru.Text == "Alış Faturası" ? entity.AlisFiyati1 : entity.SatisFiyati1;
             stokHareket.Birimi = entity.Birimi;

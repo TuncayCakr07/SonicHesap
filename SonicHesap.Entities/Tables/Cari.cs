@@ -38,5 +38,7 @@ namespace SonicHesap.Entities.Tables
         public string AlisOzelFiyati { get; set; }
         public string SatisOzelFiyati { get; set; }
         public string Aciklama { get; set; }
+        public virtual ICollection<KasaHareket> KasaHareket { get; set; }
+        public virtual ICollection<Fis> Fis { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace SonicHesap.BackOffice.Kasa
     {
         KasaDAL kasaDAL=new KasaDAL();
         SonicHesapContext context=new SonicHesapContext();
-        string secilen = null;
+        int secilen;
         public FrmKasa()
         {
             InitializeComponent();
@@ -79,8 +79,8 @@ namespace SonicHesap.BackOffice.Kasa
 
         private void btnDuzenle_Click(object sender, EventArgs e)
         {
-            secilen = gridKasalar.GetFocusedRowCellValue(colKasaKodu).ToString();
-            FrmKasaIslem form = new FrmKasaIslem(kasaDAL.GetByFilter(context, c => c.KasaKodu == secilen));
+            secilen = Convert.ToInt32(gridKasalar.GetFocusedRowCellValue(colId));
+            FrmKasaIslem form = new FrmKasaIslem(kasaDAL.GetByFilter(context, c => c.Id == secilen));
             form.ShowDialog();
             if (form.Kaydedildi)
             {
@@ -92,8 +92,8 @@ namespace SonicHesap.BackOffice.Kasa
         {
             if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string secilen = gridKasalar.GetFocusedRowCellValue(colKasaKodu).ToString();
-                kasaDAL.Delete(context, c => c.KasaKodu == secilen);
+                secilen = Convert.ToInt32(gridKasalar.GetFocusedRowCellValue(colId));
+                kasaDAL.Delete(context, c => c.Id == secilen);
                 kasaDAL.Save(context);
                 Guncelle();
             }
@@ -101,9 +101,9 @@ namespace SonicHesap.BackOffice.Kasa
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            secilen = gridKasalar.GetFocusedRowCellValue(colKasaKodu).ToString();
+            secilen = Convert.ToInt32(gridKasalar.GetFocusedRowCellValue(colId));
             string secilenAd = gridKasalar.GetFocusedRowCellValue(colKasaKodu).ToString();
-            FrmCariHareket form = new FrmCariHareket(secilen, secilenAd);
+            FrmCariHareket form = new FrmCariHareket(secilen);
             form.ShowDialog();
             Guncelle();
         }
