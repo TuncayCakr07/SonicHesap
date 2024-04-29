@@ -16,7 +16,7 @@ namespace SonicHesap.Entities.Data_Access
     {
         public object StokListele(SonicHesapContext context)
         {
-            var table = context.Stoklar.GroupJoin( context.StokHareketleri,c=>c.StokKodu,c=>c.StokKodu,
+            var table = context.Stoklar.GroupJoin( context.StokHareketleri,c=>c.Id,c=>c.StokId,
                 (Stoklar,StokHareketleri) => 
                 
                 new

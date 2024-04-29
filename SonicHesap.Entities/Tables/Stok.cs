@@ -37,6 +37,6 @@ namespace SonicHesap.Entities.Tables
         public Nullable<decimal> MinStokMiktari { get; set; }
         public Nullable<decimal> MaxStokMiktari { get; set; }
         public string Aciklama { get; set; }
-
+        public virtual ICollection<StokHareket> StokHareket { get; set; }
     }
 }

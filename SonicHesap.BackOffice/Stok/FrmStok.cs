@@ -18,7 +18,7 @@ namespace SonicHesap.BackOffice.Stok
     {
         SonicHesapContext context=new SonicHesapContext();
         StokDAL StokDAL = new StokDAL();
-        string secilen;
+        int secilen;
         public FrmStok()
         {
             InitializeComponent();
@@ -69,8 +69,8 @@ namespace SonicHesap.BackOffice.Stok
         {
             if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
             {
-                secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
-                StokDAL.Delete(context,c=>c.StokKodu==secilen);
+                secilen = Convert.ToInt32(gridView1.GetFocusedRowCellValue(colId));
+                StokDAL.Delete(context,c=>c.Id==secilen);
                 StokDAL.Save(context);
                 GetAll();
             }
@@ -89,8 +89,8 @@ namespace SonicHesap.BackOffice.Stok
 
         private void btnDuzenle_Click(object sender, EventArgs e)
         {
-             secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
-            FrmStokIslem form = new FrmStokIslem(StokDAL.GetByFilter(context,c=>c.StokKodu==secilen));
+            secilen = Convert.ToInt32(gridView1.GetFocusedRowCellValue(colId));
+            FrmStokIslem form = new FrmStokIslem(StokDAL.GetByFilter(context,c=>c.Id==secilen));
             form.ShowDialog();
             if (form.saved)
             {
@@ -100,9 +100,9 @@ namespace SonicHesap.BackOffice.Stok
 
         private void btnKopyala_Click(object sender, EventArgs e)
         {
-             secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
+            secilen = Convert.ToInt32(gridView1.GetFocusedRowCellValue(colId));
             Entities.Tables.Stok stokEntity= new Entities.Tables.Stok();
-            stokEntity = StokDAL.GetByFilter(context, c => c.StokKodu == secilen);
+            stokEntity = StokDAL.GetByFilter(context, c => c.Id == secilen);
             stokEntity.Id = -1;
             stokEntity.StokKodu = null;
             FrmStokIslem form = new FrmStokIslem(stokEntity);
@@ -115,9 +115,8 @@ namespace SonicHesap.BackOffice.Stok
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-             secilen = gridView1.GetFocusedRowCellValue(colStokKodu).ToString();
-            string secilenAd = gridView1.GetFocusedRowCellValue(colStokAdi).ToString();
-            FrmStokHareket form = new FrmStokHareket(secilen,secilenAd);
+            secilen = Convert.ToInt32(gridView1.GetFocusedRowCellValue(colId));
+            FrmStokHareket form = new FrmStokHareket(secilen);
             form.ShowDialog();
         }
     }

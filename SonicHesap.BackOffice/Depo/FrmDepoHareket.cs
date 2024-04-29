@@ -17,12 +17,13 @@ namespace SonicHesap.BackOffice.Depo
     {
         SonicHesapContext context=new SonicHesapContext();
         StokHareketDAL stokhareketDal= new StokHareketDAL();
-        string _depoKodu;
-        public FrmDepoHareket(string depoKodu,string depoAdi)
+        int _depoId;
+        public FrmDepoHareket(int depoId)
         {
             InitializeComponent();
-            _depoKodu = depoKodu;
-            lblBaslik.Text = depoKodu + " - " + depoAdi + "Hareketleri";
+            _depoId = depoId;
+            var depo=context.Depolar.SingleOrDefault(c=>c.Id==depoId);
+            lblBaslik.Text = depo.DepoKodu + " - " + depo.DepoAdi + "Hareketleri";
         }
 
         private void FrmDepoHareket_Load(object sender, EventArgs e)
@@ -32,9 +33,9 @@ namespace SonicHesap.BackOffice.Depo
 
         private void Guncelle()
         {
-            gridContHareket.DataSource = stokhareketDal.GetAll(context, c => c.DepoKodu == _depoKodu);
-            gridContDepoStokMiktar.DataSource = stokhareketDal.DepoStokListele(context,_depoKodu);
-            gridContİstatistik.DataSource=stokhareketDal.DepoIstatistikListele(context,_depoKodu);
+            gridContHareket.DataSource = stokhareketDal.GetAll(context, c => c.DepoId == _depoId);
+            gridContDepoStokMiktar.DataSource = stokhareketDal.DepoStokListele(context, _depoId);
+            gridContİstatistik.DataSource=stokhareketDal.DepoIstatistikListele(context,_depoId);
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)

@@ -17,9 +17,9 @@ namespace SonicHesap.BackOffice.Depo
 {
     public partial class FrmDepo : DevExpress.XtraEditors.XtraForm
     {
-        SonicHesapContext context=new SonicHesapContext();
-        DepoDAL depoDal=new DepoDAL();
-        string secilen = null;
+        SonicHesapContext context = new SonicHesapContext();
+        DepoDAL depoDal = new DepoDAL();
+        int secilen;
         public FrmDepo()
         {
             InitializeComponent();
@@ -71,8 +71,8 @@ namespace SonicHesap.BackOffice.Depo
         {
             if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string secilen = gridDepolar.GetFocusedRowCellValue(colDepoKodu).ToString();
-                depoDal.Delete(context, c => c.DepoKodu == secilen);
+                secilen = Convert.ToInt32(gridDepolar.GetFocusedRowCellValue(colId));
+                depoDal.Delete(context, c => c.Id == secilen);
                 depoDal.Save(context);
                 Listele();
             }
@@ -80,7 +80,7 @@ namespace SonicHesap.BackOffice.Depo
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            FrmDepoIslem form=new FrmDepoIslem(new Entities.Tables.Depo());
+            FrmDepoIslem form = new FrmDepoIslem(new Entities.Tables.Depo());
             form.ShowDialog();
             if (form.kaydedildi)
             {
@@ -90,8 +90,8 @@ namespace SonicHesap.BackOffice.Depo
 
         private void btnDuzenle_Click(object sender, EventArgs e)
         {
-            secilen = gridDepolar.GetFocusedRowCellValue(colDepoKodu).ToString();
-            FrmDepoIslem form = new FrmDepoIslem(depoDal.GetByFilter(context, c => c.DepoKodu == secilen));
+            secilen = Convert.ToInt32(gridDepolar.GetFocusedRowCellValue(colId));
+            FrmDepoIslem form = new FrmDepoIslem(depoDal.GetByFilter(context, c => c.Id == secilen));
             form.ShowDialog();
             if (form.kaydedildi)
             {
@@ -101,9 +101,8 @@ namespace SonicHesap.BackOffice.Depo
 
         private void btnHareket_Click(object sender, EventArgs e)
         {
-            secilen = gridDepolar.GetFocusedRowCellValue(colDepoKodu).ToString();
-            string depoKodu = gridDepolar.GetFocusedRowCellValue(colDepoKodu).ToString();
-            FrmDepoHareket form = new FrmDepoHareket(secilen,depoKodu);
+            secilen = Convert.ToInt32(gridDepolar.GetFocusedRowCellValue(colId));
+            FrmDepoHareket form = new FrmDepoHareket(secilen);
             form.ShowDialog();
             Listele();
         }

@@ -17,12 +17,13 @@ namespace SonicHesap.BackOffice.Stok
     {
         StokHareketDAL hareketDal=new StokHareketDAL();
         SonicHesapContext context = new SonicHesapContext();
-        private string _stokKodu;
-        public FrmStokHareket(string stokKodu,string stokAdi)
+        private int _stokId;
+        public FrmStokHareket(int stokId)
         {
             InitializeComponent();
-            _stokKodu = stokKodu;
-            lblBaslik.Text = _stokKodu + "-" + stokAdi + "Hareketleri";
+            _stokId = stokId;
+            var stok=context.Stoklar.SingleOrDefault(c=>c.Id==stokId);
+            lblBaslik.Text = stok.StokKodu + "-" + stok.StokAdi + "Hareketleri";
         }
 
         private void FrmStokHareket_Load(object sender, EventArgs e)
@@ -32,9 +33,9 @@ namespace SonicHesap.BackOffice.Stok
 
         private void Guncelle()
         {
-            gridContStokHareket.DataSource = hareketDal.GetAll(context, c => c.StokKodu == _stokKodu);
-            gridContGenelStok.DataSource = hareketDal.GetGenelStok(context, _stokKodu);
-            gridContDepoStok.DataSource = hareketDal.GetDepoStok(context, _stokKodu);
+            gridContStokHareket.DataSource = hareketDal.GetAll(context, c => c.Id == _stokId);
+            gridContGenelStok.DataSource = hareketDal.GetGenelStok(context, _stokId);
+            gridContDepoStok.DataSource = hareketDal.GetDepoStok(context, _stokId);
         }
 
         private void btnKapat_Click(object sender, EventArgs e)

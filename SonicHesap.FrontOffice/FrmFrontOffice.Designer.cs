@@ -221,6 +221,8 @@
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.colStokId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDepoId = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
             this.navigationPane1.SuspendLayout();
             this.navigationPage1.SuspendLayout();
@@ -1619,7 +1621,9 @@
             this.colSil,
             this.colIndirimtutari,
             this.colToplamTutar,
-            this.colKdvToplam});
+            this.colKdvToplam,
+            this.colStokId,
+            this.colDepoId});
             this.gridStokHareket.GridControl = this.gridContStokHareket;
             this.gridStokHareket.Name = "gridStokHareket";
             this.gridStokHareket.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
@@ -2354,6 +2358,26 @@
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Size = new System.Drawing.Size(967, 20);
             // 
+            // colStokId
+            // 
+            this.colStokId.Caption = "StokId";
+            this.colStokId.FieldName = "StokId";
+            this.colStokId.MinWidth = 25;
+            this.colStokId.Name = "colStokId";
+            this.colStokId.OptionsColumn.AllowEdit = false;
+            this.colStokId.OptionsColumn.ShowInCustomizationForm = false;
+            this.colStokId.Width = 94;
+            // 
+            // colDepoId
+            // 
+            this.colDepoId.Caption = "DepoId";
+            this.colDepoId.FieldName = "DepoId";
+            this.colDepoId.MinWidth = 25;
+            this.colDepoId.Name = "colDepoId";
+            this.colDepoId.OptionsColumn.AllowEdit = false;
+            this.colDepoId.OptionsColumn.ShowInCustomizationForm = false;
+            this.colDepoId.Width = 94;
+            // 
             // FrmFrontOffice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -2621,6 +2645,8 @@
         private DevExpress.XtraEditors.LabelControl lblRiskLimiti;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
+        private DevExpress.XtraGrid.Columns.GridColumn colStokId;
+        private DevExpress.XtraGrid.Columns.GridColumn colDepoId;
     }
 }
 

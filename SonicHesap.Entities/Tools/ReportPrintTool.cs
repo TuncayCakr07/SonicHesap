@@ -132,7 +132,7 @@ namespace SonicHesap.Entities.Tools
                         // Her bir satışı SampleData nesnesine dönüştür
                         SampleData data = new SampleData
                         {
-                            UrunAd = satis.StokAdi,
+                            UrunAd = satis.Stok.StokAdi,
                             Miktar = satis.Miktar ?? 0, // Null değerler için default değer belirle
                             Fiyat = satis.BirimFiyati ?? 0, // Null değerler için default değer belirle
                             Tutar = (satis.Miktar ?? 0) * (satis.BirimFiyati ?? 0) // Tutarı hesapla

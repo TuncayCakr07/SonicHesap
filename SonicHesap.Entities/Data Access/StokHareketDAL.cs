@@ -13,7 +13,7 @@ namespace SonicHesap.Entities.Data_Access
     public class StokHareketDAL : EntityRepositoryBase<SonicHesapContext, StokHareket,StokHareketValidator>
     {
 
-        public object GetGenelStok(SonicHesapContext context, string stokKodu)
+        public object GetGenelStok(SonicHesapContext context, int stokId)
         {
             var result = (from c in context.StokHareketleri
                           group c by new { c.Hareket } into g
@@ -26,11 +26,11 @@ namespace SonicHesap.Entities.Data_Access
             return result;
         }
 
-        public object GetDepoStok(SonicHesapContext context, string stokKodu)
+        public object GetDepoStok(SonicHesapContext context, int stokId)
         {
-            var result = context.Depolar.GroupJoin(context.StokHareketleri.Where(c => c.StokKodu == stokKodu),
-               c => c.DepoKodu,
-               c => c.DepoKodu,
+            var result = context.Depolar.GroupJoin(context.StokHareketleri.Where(c => c.StokId == stokId),
+               c => c.Id,
+               c => c.DepoId,
                (depolar, stokhareketleri) => new
                {
                    depolar.DepoKodu,
@@ -42,12 +42,12 @@ namespace SonicHesap.Entities.Data_Access
                }).ToList();
             return result;
         }
-        public object DepoStokListele(SonicHesapContext context,string depoKodu)
+        public object DepoStokListele(SonicHesapContext context, int depoId)
         {
             var table = context.Stoklar.GroupJoin(
-                context.StokHareketleri.Where(c=>c.DepoKodu==depoKodu),
-                stok => stok.StokKodu,
-                hareket => hareket.StokKodu,
+                context.StokHareketleri.Where(c=>c.DepoId== depoId),
+                stok => stok.Id,
+                hareket => hareket.StokId,
                 (stok, hareketler) => new
                 {
                     stok.StokAdi,
@@ -60,7 +60,7 @@ namespace SonicHesap.Entities.Data_Access
 
             return table;
         }
-        public object DepoIstatistikListele(SonicHesapContext context, string depoKodu)
+        public object DepoIstatistikListele(SonicHesapContext context, int depoId)
         {
 
             List<GenelToplam> genelToplamlar = new List<GenelToplam>()
@@ -68,15 +68,15 @@ namespace SonicHesap.Entities.Data_Access
                 new GenelToplam
                 {
                     Bilgi="Stok Giriş",
-                    KayitSayisi=context.StokHareketleri.Where(c=>c.DepoKodu==depoKodu && c.Hareket=="Stok Giriş").Count(),
-                    Tutar=context.StokHareketleri.Where(c=>c.DepoKodu==depoKodu && c.Hareket=="Stok Giriş").Sum(c=>c.Miktar) ?? 0,
+                    KayitSayisi=context.StokHareketleri.Where(c=>c.DepoId==depoId && c.Hareket=="Stok Giriş").Count(),
+                    Tutar=context.StokHareketleri.Where(c=>c.DepoId==depoId && c.Hareket=="Stok Giriş").Sum(c=>c.Miktar) ?? 0,
 
                 },
                 new GenelToplam
                 {
                     Bilgi="Stok Çıkış",
-                   KayitSayisi=context.StokHareketleri.Where(c=>c.DepoKodu==depoKodu && c.Hareket=="Stok Çıkış").Count(),
-                    Tutar=context.StokHareketleri.Where(c=>c.DepoKodu==depoKodu && c.Hareket=="Stok Çıkış").Sum(c=>c.Miktar) ?? 0,
+                   KayitSayisi=context.StokHareketleri.Where(c=>c.DepoId==depoId && c.Hareket=="Stok Çıkış").Count(),
+                    Tutar=context.StokHareketleri.Where(c=>c.DepoId==depoId&& c.Hareket=="Stok Çıkış").Sum(c=>c.Miktar) ?? 0,
                 },
             };
             return genelToplamlar;

@@ -146,7 +146,7 @@ namespace SonicHesap.FrontOffice
                 var buton = new SimpleButton
                 {
                     Name = item.OdemeTuruKodu,
-                    Tag= item.Id,
+                    Tag = item.Id,
                     Text = item.OdemeTuruAdi,
                     Height = 55,
                     Width = 110,
@@ -263,7 +263,6 @@ namespace SonicHesap.FrontOffice
         {
             Toplamlar();
             OdenenTutarGuncelle();
-            int StokHata = context.StokHareketleri.Local.Where(c => c.DepoKodu == null).Count();
             string message = null;
             int hata = 0;
 
@@ -282,12 +281,6 @@ namespace SonicHesap.FrontOffice
             if (string.IsNullOrEmpty(txtFisKodu.Text))
             {
                 message += ("Fiş Kodu Alanı Boş Geçilemez!") + System.Environment.NewLine;
-                hata++;
-            }
-
-            if (StokHata != 0)
-            {
-                message += ("Satış Ekranındaki Ürünlerin Depo Seçimlerinde Eksiklikler Var!") + System.Environment.NewLine;
                 hata++;
             }
 
@@ -347,14 +340,14 @@ namespace SonicHesap.FrontOffice
             {
                 kasaHareketDal.AddOrUpdate(context, new KasaHareket
                 {
-                    CariId=_cariId,
+                    CariId = _cariId,
                     FisKodu = txtFisKodu.Text,
                     Hareket = txtIslem.Text == "İADE" ? "Kasa Çıkış" : "Kasa Giriş",
                     KasaId = kasaId,
                     OdemeTuruId = odemeTuruId,
                     Tarih = DateTime.Now,
                     Tutar = txtToplam.Value,
-                });;
+                }); ;
                 OdenenTutarGuncelle();
             }
             context.SaveChanges();
@@ -465,15 +458,9 @@ namespace SonicHesap.FrontOffice
         private bool StokKontrol(Stok entity)
         {
             // Stok Girişlerinden toplam miktar
-            var stokGiris = context.StokHareketleri
-                                  .Where(c => c.Hareket == "Stok Giriş" && c.Barkod == entity.Barkod)
-                                  .Sum(c => c.Miktar) ?? 0;
-
+            var stokGiris = context.StokHareketleri.Where(c => c.Hareket == "Stok Giriş" && c.StokId == entity.Id).Sum(c => c.Miktar) ?? 0;
             // Stok Çıkışlarından toplam miktar
-            var stokCikis = context.StokHareketleri
-                                  .Where(c => c.Hareket == "Stok Çıkış" && c.Barkod == entity.Barkod)
-                                  .Sum(c => c.Miktar) ?? 0;
-
+            var stokCikis = context.StokHareketleri.Where(c => c.Hareket == "Stok Çıkış" && c.StokId == entity.Id).Sum(c => c.Miktar) ?? 0;
             // Mevcut Stok Miktarı
             var mevcutStok = stokGiris - stokCikis;
 
@@ -494,15 +481,10 @@ namespace SonicHesap.FrontOffice
         {
             StokHareket stokHareket = new StokHareket();
             IndirimDAL indirimDal = new IndirimDAL();
-            stokHareket.StokKodu = entity.StokKodu;
-            stokHareket.StokAdi = entity.StokAdi;
-            stokHareket.Barkod = entity.Barkod;
+            stokHareket.StokId = entity.Id;
             stokHareket.IndirimOrani = indirimDal.StokIndirimi(context, entity.StokKodu);
-            stokHareket.DepoKodu = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepo);
-            stokHareket.DepoAdi = context.Depolar.SingleOrDefault(x => x.DepoKodu == stokHareket.DepoKodu).DepoAdi;
-            stokHareket.BarkodTuru = entity.BarkodTuru;
+            stokHareket.DepoId = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepo));
             stokHareket.BirimFiyati = _fisEntity.FisTuru == "Alış Faturası" ? entity.AlisFiyati1 : entity.SatisFiyati1;
-            stokHareket.Birimi = entity.Birimi;
             stokHareket.Miktar = txtMiktar.Value;
             stokHareket.Kdv = entity.SatisKdv;
             stokHareket.Tarih = DateTime.Now;
@@ -570,7 +552,7 @@ namespace SonicHesap.FrontOffice
 
         private void repoDepoSecim_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            FrmDepoSec form = new FrmDepoSec(gridStokHareket.GetFocusedRowCellValue(colStokKodu).ToString());
+            FrmDepoSec form = new FrmDepoSec(Convert.ToInt32(gridStokHareket.GetFocusedRowCellValue(colStokId)));
             form.ShowDialog();
             if (form.secildi)
             {
@@ -936,7 +918,7 @@ namespace SonicHesap.FrontOffice
             txtAciklama.Text = satisBilgisi.BekleyenFis.Aciklama;
             txtCariKodu.Text = satisBilgisi.BekleyenFis.Cari.CariKodu;
             txtCariAdi.Text = satisBilgisi.BekleyenFis.Cari.CariAdi;
-            if (satisBilgisi.BekleyenFis.CariId!=null)
+            if (satisBilgisi.BekleyenFis.CariId != null)
             {
                 entityBakiye = cariDal.CariBakiyesi(context, Convert.ToInt32(satisBilgisi.BekleyenFis.CariId));
                 lblAlacak.Text = entityBakiye.Alacak.ToString("C2");
@@ -944,7 +926,7 @@ namespace SonicHesap.FrontOffice
                 lblBakiye.Text = entityBakiye.Bakiye.ToString("C2");
             }
 
-            if (satisBilgisi.BekleyenFis.PlasiyerId!=null)
+            if (satisBilgisi.BekleyenFis.PlasiyerId != null)
             {
                 var button = (CheckButton)flowPersonel.Controls.Find(satisBilgisi.BekleyenFis.Personel.PersonelKodu, false).SingleOrDefault();
                 button.Checked = true;

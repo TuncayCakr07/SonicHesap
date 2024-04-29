@@ -12,19 +12,16 @@ namespace SonicHesap.Entities.Tables
         public int Id { get; set; }
         public string FisKodu { get; set; }
         public string Hareket { get; set; }
-        public string StokKodu { get; set; }
-        public string StokAdi { get; set; }
-        public string BarkodTuru { get; set; }
-        public string Barkod { get; set; }
-        public string Birimi { get; set; }
+        public int StokId { get; set; }
         public Nullable<decimal> Miktar { get; set; }
         public int Kdv { get; set; }
         public Nullable<decimal> BirimFiyati { get; set; }
         public Nullable<decimal> IndirimOrani { get; set; }
-        public string DepoKodu { get; set; }
-        public string DepoAdi { get; set; }
+        public int DepoId { get; set; }
         public string SeriNo { get; set; }
         public Nullable<DateTime> Tarih { get; set; }
         public string Aciklama { get; set; }
+        public virtual Stok Stok { get; set; }
+        public virtual Depo Depo { get; set; }
     }
 }

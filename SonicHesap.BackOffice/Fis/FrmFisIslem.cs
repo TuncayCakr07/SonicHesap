@@ -198,7 +198,6 @@ namespace SonicHesap.BackOffice.Fis
             {
                 ayarlar.KasaHareketi = "Kasa Giriş"; // Doğru kasa hareketini atadığınızdan emin olun
             }
-            int StokHata = contex.StokHareketleri.Local.Where(c => c.DepoKodu == null).Count();
             string message = null;
             int hata = 0;
 
@@ -229,12 +228,6 @@ namespace SonicHesap.BackOffice.Fis
             if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani == true && String.IsNullOrEmpty(lblCariKodu.Text) && txtFisTuru.Text != "Hakediş Fişi")
             {
                 message += ("Ödenmesi Gereken Tutar Ödenmemiş Gözüküyor. Ödenmeyen Kısmı Açık Hesaba Aktarabilmek İçin Cari Seçmek Zorunludur!") + System.Environment.NewLine;
-                hata++;
-            }
-
-            if (StokHata != 0)
-            {
-                message += ("Satış Ekranındaki Ürünlerin Depo Seçimlerinde Eksiklikler Var!") + System.Environment.NewLine;
                 hata++;
             }
 
@@ -567,7 +560,7 @@ namespace SonicHesap.BackOffice.Fis
 
         private void repoDepoSecim_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            FrmDepoSec form = new FrmDepoSec(gridStokHareket.GetFocusedRowCellValue(colStokKodu).ToString());
+            FrmDepoSec form = new FrmDepoSec(Convert.ToInt32(gridStokHareket.GetFocusedRowCellValue(colStokId)));
             form.ShowDialog();
             if (form.secildi)
             {
@@ -617,15 +610,10 @@ namespace SonicHesap.BackOffice.Fis
         {
             StokHareket stokHareket = new StokHareket();
             IndirimDAL indirimDal = new IndirimDAL();
-            stokHareket.StokKodu = entity.StokKodu;
-            stokHareket.StokAdi = entity.StokAdi;
-            stokHareket.Barkod = entity.Barkod;
+            stokHareket.StokId = entity.Id;
             stokHareket.IndirimOrani = indirimDal.StokIndirimi(contex, entity.StokKodu);
-            stokHareket.DepoKodu = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepo);
-            stokHareket.DepoAdi = contex.Depolar.SingleOrDefault(x => x.Id == Convert.ToInt32(stokHareket.DepoKodu)).DepoAdi;
-            stokHareket.BarkodTuru = entity.BarkodTuru;
+            stokHareket.DepoId = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepo));
             stokHareket.BirimFiyati = txtFisTuru.Text == "Alış Faturası" ? entity.AlisFiyati1 : entity.SatisFiyati1;
-            stokHareket.Birimi = entity.Birimi;
             stokHareket.Miktar = txtMiktar.Value;
             stokHareket.Kdv = entity.SatisKdv;
             stokHareket.Tarih = DateTime.Now;

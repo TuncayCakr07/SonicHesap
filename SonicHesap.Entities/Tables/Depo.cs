@@ -20,5 +20,6 @@ namespace SonicHesap.Entities.Tables
         public string Adres { get; set; }
         public string Telefon { get; set; }
         public string Aciklama { get; set; }
+        public virtual ICollection<StokHareket> StokHareket { get; set; }
     }
 }

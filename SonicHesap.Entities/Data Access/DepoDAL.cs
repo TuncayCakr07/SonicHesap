@@ -12,11 +12,11 @@ namespace SonicHesap.Entities.Data_Access
 {
     public class DepoDAL : EntityRepositoryBase<SonicHesapContext, Depo,DepoValidator>
     {
-        public object DepoBazindaStokListele(SonicHesapContext context,string stokKodu)
+        public object DepoBazindaStokListele(SonicHesapContext context,int stokId)
         {
-            var result = context.Depolar.GroupJoin(context.StokHareketleri.Where(c => c.StokKodu == stokKodu),
-                c => c.DepoKodu,
-                c => c.DepoKodu,
+            var result = context.Depolar.GroupJoin(context.StokHareketleri.Where(c => c.StokId == stokId),
+                c => c.Id,
+                c => c.DepoId,
                 (depolar, stokhareketleri) => new
                 {
                     depolar.Id,

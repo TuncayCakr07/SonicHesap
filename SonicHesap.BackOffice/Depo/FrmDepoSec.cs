@@ -18,17 +18,17 @@ namespace SonicHesap.BackOffice.Depo
         SonicHesapContext context=new SonicHesapContext();
         DepoDAL depoDal=new DepoDAL();
         public Entities.Tables.Depo entity=new Entities.Tables.Depo();
-        private string _stokKodu;
+        private int _stokId;
         public bool secildi = false;
-        public FrmDepoSec(string stokKodu)
+        public FrmDepoSec(int stokId)
         {
             InitializeComponent();
-            _stokKodu = stokKodu;
+            _stokId = stokId;
         }
 
         private void FrmDepoSec_Load(object sender, EventArgs e)
         {
-            gridContDepolar.DataSource = depoDal.DepoBazindaStokListele(context, _stokKodu);
+            gridContDepolar.DataSource = depoDal.DepoBazindaStokListele(context, _stokId);
         }
 
         private void btnSec_Click(object sender, EventArgs e)
