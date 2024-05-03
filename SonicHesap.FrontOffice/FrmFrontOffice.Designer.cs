@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFrontOffice));
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -60,12 +59,12 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
-            this.ımageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.ımageList2 = new System.Windows.Forms.ImageList();
             this.navigationPane1 = new DevExpress.XtraBars.Navigation.NavigationPane();
             this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.gridLookUpEdit1 = new DevExpress.XtraEditors.GridLookUpEdit();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -76,7 +75,7 @@
             this.Fatura = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.dovizKurlariBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dovizKurlariBindingSource = new System.Windows.Forms.BindingSource();
             this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colIsim = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCurrencyCode = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -181,18 +180,9 @@
             this.colIndirimtutari = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colToplamTutar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKdvToplam = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStokId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDepoId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.navOdeme = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.gridContKasaHareket = new DevExpress.XtraGrid.GridControl();
-            this.gridKasaHareket = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colKasaKodu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKasaAdi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repoKasa = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.colOdemeTuruKodu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colOdemeTuruAdi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTutar = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colAciklama1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKHSil = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repoOHSil = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.BtnFisKaydet = new DevExpress.XtraEditors.SimpleButton();
             this.panelOdeme = new DevExpress.XtraEditors.PanelControl();
@@ -207,9 +197,9 @@
             this.txtBarkod = new DevExpress.XtraEditors.TextEdit();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.radialFiyat = new DevExpress.XtraBars.Ribbon.RadialMenu(this.components);
-            this.radialYazdir = new DevExpress.XtraBars.Ribbon.RadialMenu(this.components);
-            this.barManager2 = new DevExpress.XtraBars.BarManager(this.components);
+            this.radialFiyat = new DevExpress.XtraBars.Ribbon.RadialMenu();
+            this.radialYazdir = new DevExpress.XtraBars.Ribbon.RadialMenu();
+            this.barManager2 = new DevExpress.XtraBars.BarManager();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
@@ -221,8 +211,19 @@
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.colStokId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDepoId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridContKasaHareket = new DevExpress.XtraGrid.GridControl();
+            this.gridKasaHareket = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colKasaKodu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKasaAdi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoKasa = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.colOdemeTuruKodu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOdemeTuruAdi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTutar = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAciklama1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKHSil = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoOHSil = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.colKasaId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOdemeTuruId = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
             this.navigationPane1.SuspendLayout();
             this.navigationPage1.SuspendLayout();
@@ -284,10 +285,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repoSeriNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoSil)).BeginInit();
             this.navOdeme.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridContKasaHareket)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridKasaHareket)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoKasa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoOHSil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelOdeme)).BeginInit();
@@ -303,6 +300,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.radialFiyat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radialYazdir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridContKasaHareket)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridKasaHareket)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoKasa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoOHSil)).BeginInit();
             this.SuspendLayout();
             // 
             // ımageList2
@@ -1641,7 +1642,7 @@
             // 
             // colStokKodu
             // 
-            this.colStokKodu.FieldName = "StokKodu";
+            this.colStokKodu.FieldName = "Stok.StokKodu";
             this.colStokKodu.MinWidth = 25;
             this.colStokKodu.Name = "colStokKodu";
             this.colStokKodu.OptionsColumn.AllowEdit = false;
@@ -1651,7 +1652,7 @@
             // colStokAdi
             // 
             this.colStokAdi.Caption = "Ürün Adı";
-            this.colStokAdi.FieldName = "StokAdi";
+            this.colStokAdi.FieldName = "Stok.StokAdi";
             this.colStokAdi.MinWidth = 25;
             this.colStokAdi.Name = "colStokAdi";
             this.colStokAdi.OptionsColumn.AllowEdit = false;
@@ -1663,7 +1664,7 @@
             // colBarkodTuru
             // 
             this.colBarkodTuru.Caption = "Barkod Türü";
-            this.colBarkodTuru.FieldName = "BarkodTuru";
+            this.colBarkodTuru.FieldName = "Stok.BarkodTuru";
             this.colBarkodTuru.MinWidth = 25;
             this.colBarkodTuru.Name = "colBarkodTuru";
             this.colBarkodTuru.OptionsColumn.AllowEdit = false;
@@ -1675,7 +1676,7 @@
             // colBarkod
             // 
             this.colBarkod.Caption = "Barkod";
-            this.colBarkod.FieldName = "Barkod";
+            this.colBarkod.FieldName = "Stok.Barkod";
             this.colBarkod.MinWidth = 25;
             this.colBarkod.Name = "colBarkod";
             this.colBarkod.OptionsColumn.AllowEdit = false;
@@ -1687,7 +1688,7 @@
             // colBirimi
             // 
             this.colBirimi.Caption = "Birimi";
-            this.colBirimi.FieldName = "Birimi";
+            this.colBirimi.FieldName = "Stok.Birimi";
             this.colBirimi.MinWidth = 25;
             this.colBirimi.Name = "colBirimi";
             this.colBirimi.OptionsColumn.AllowEdit = false;
@@ -1746,6 +1747,7 @@
             this.repoBirimFiyat.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repoBirimFiyat.Name = "repoBirimFiyat";
+            this.repoBirimFiyat.Click += new System.EventHandler(this.repoBirimFiyat_Click);
             // 
             // colIndirimOrani
             // 
@@ -1762,7 +1764,7 @@
             // 
             // colDepoKodu
             // 
-            this.colDepoKodu.FieldName = "DepoKodu";
+            this.colDepoKodu.FieldName = "Depo.DepoKodu";
             this.colDepoKodu.MinWidth = 25;
             this.colDepoKodu.Name = "colDepoKodu";
             this.colDepoKodu.OptionsColumn.AllowEdit = false;
@@ -1772,7 +1774,7 @@
             // colDepoAdi
             // 
             this.colDepoAdi.ColumnEdit = this.repoDepoSecim;
-            this.colDepoAdi.FieldName = "DepoAdi";
+            this.colDepoAdi.FieldName = "Depo.DepoAdi";
             this.colDepoAdi.MinWidth = 25;
             this.colDepoAdi.Name = "colDepoAdi";
             this.colDepoAdi.OptionsColumn.ShowInCustomizationForm = false;
@@ -1789,6 +1791,7 @@
             this.repoDepoSecim.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repoDepoSecim.Name = "repoDepoSecim";
+            this.repoDepoSecim.Click += new System.EventHandler(this.repoDepoSecim_Click);
             // 
             // colSeriNo
             // 
@@ -1810,6 +1813,7 @@
             this.repoSeriNo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Seri No", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repoSeriNo.Name = "repoSeriNo";
+            this.repoSeriNo.Click += new System.EventHandler(this.repoSeriNo_Click);
             // 
             // colAciklama
             // 
@@ -1889,139 +1893,32 @@
             this.colKdvToplam.Visible = true;
             this.colKdvToplam.VisibleIndex = 10;
             // 
+            // colStokId
+            // 
+            this.colStokId.Caption = "StokId";
+            this.colStokId.FieldName = "StokId";
+            this.colStokId.MinWidth = 25;
+            this.colStokId.Name = "colStokId";
+            this.colStokId.OptionsColumn.AllowEdit = false;
+            this.colStokId.OptionsColumn.ShowInCustomizationForm = false;
+            this.colStokId.Width = 94;
+            // 
+            // colDepoId
+            // 
+            this.colDepoId.Caption = "DepoId";
+            this.colDepoId.FieldName = "DepoId";
+            this.colDepoId.MinWidth = 25;
+            this.colDepoId.Name = "colDepoId";
+            this.colDepoId.OptionsColumn.AllowEdit = false;
+            this.colDepoId.OptionsColumn.ShowInCustomizationForm = false;
+            this.colDepoId.Width = 94;
+            // 
             // navOdeme
             // 
             this.navOdeme.Controls.Add(this.gridContKasaHareket);
             this.navOdeme.Controls.Add(this.groupControl4);
             this.navOdeme.Name = "navOdeme";
             this.navOdeme.Size = new System.Drawing.Size(969, 266);
-            // 
-            // gridContKasaHareket
-            // 
-            this.gridContKasaHareket.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridContKasaHareket.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.gridContKasaHareket.Location = new System.Drawing.Point(0, 0);
-            this.gridContKasaHareket.MainView = this.gridKasaHareket;
-            this.gridContKasaHareket.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.gridContKasaHareket.Name = "gridContKasaHareket";
-            this.gridContKasaHareket.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repoKasa,
-            this.repoOHSil});
-            this.gridContKasaHareket.Size = new System.Drawing.Size(969, 166);
-            this.gridContKasaHareket.TabIndex = 4;
-            this.gridContKasaHareket.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridKasaHareket});
-            // 
-            // gridKasaHareket
-            // 
-            this.gridKasaHareket.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colKasaKodu,
-            this.colKasaAdi,
-            this.colOdemeTuruKodu,
-            this.colOdemeTuruAdi,
-            this.colTutar,
-            this.colAciklama1,
-            this.colKHSil});
-            this.gridKasaHareket.GridControl = this.gridContKasaHareket;
-            this.gridKasaHareket.Name = "gridKasaHareket";
-            this.gridKasaHareket.OptionsView.ShowGroupPanel = false;
-            // 
-            // colKasaKodu
-            // 
-            this.colKasaKodu.FieldName = "KasaKodu";
-            this.colKasaKodu.MinWidth = 25;
-            this.colKasaKodu.Name = "colKasaKodu";
-            this.colKasaKodu.OptionsColumn.AllowEdit = false;
-            this.colKasaKodu.Width = 94;
-            // 
-            // colKasaAdi
-            // 
-            this.colKasaAdi.Caption = "Kasa Adı";
-            this.colKasaAdi.ColumnEdit = this.repoKasa;
-            this.colKasaAdi.FieldName = "KasaAdi";
-            this.colKasaAdi.MinWidth = 25;
-            this.colKasaAdi.Name = "colKasaAdi";
-            this.colKasaAdi.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
-            this.colKasaAdi.Visible = true;
-            this.colKasaAdi.VisibleIndex = 2;
-            this.colKasaAdi.Width = 209;
-            // 
-            // repoKasa
-            // 
-            this.repoKasa.AutoHeight = false;
-            editorButtonImageOptions5.ImageIndex = 3;
-            editorButtonImageOptions5.ImageList = this.ımageList2;
-            this.repoKasa.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.repoKasa.Name = "repoKasa";
-            this.repoKasa.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            // 
-            // colOdemeTuruKodu
-            // 
-            this.colOdemeTuruKodu.FieldName = "OdemeTuruKodu";
-            this.colOdemeTuruKodu.MinWidth = 25;
-            this.colOdemeTuruKodu.Name = "colOdemeTuruKodu";
-            this.colOdemeTuruKodu.OptionsColumn.AllowEdit = false;
-            this.colOdemeTuruKodu.Width = 94;
-            // 
-            // colOdemeTuruAdi
-            // 
-            this.colOdemeTuruAdi.Caption = "Ödeme Türü";
-            this.colOdemeTuruAdi.FieldName = "OdemeTuruAdi";
-            this.colOdemeTuruAdi.MinWidth = 25;
-            this.colOdemeTuruAdi.Name = "colOdemeTuruAdi";
-            this.colOdemeTuruAdi.OptionsColumn.AllowEdit = false;
-            this.colOdemeTuruAdi.Visible = true;
-            this.colOdemeTuruAdi.VisibleIndex = 1;
-            this.colOdemeTuruAdi.Width = 143;
-            // 
-            // colTutar
-            // 
-            this.colTutar.Caption = "Tutar";
-            this.colTutar.DisplayFormat.FormatString = "C2";
-            this.colTutar.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colTutar.FieldName = "Tutar";
-            this.colTutar.MinWidth = 25;
-            this.colTutar.Name = "colTutar";
-            this.colTutar.OptionsColumn.AllowEdit = false;
-            this.colTutar.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Tutar", "SUM={0:C2}")});
-            this.colTutar.Visible = true;
-            this.colTutar.VisibleIndex = 4;
-            this.colTutar.Width = 223;
-            // 
-            // colAciklama1
-            // 
-            this.colAciklama1.Caption = "Açıklama";
-            this.colAciklama1.FieldName = "Aciklama";
-            this.colAciklama1.MinWidth = 25;
-            this.colAciklama1.Name = "colAciklama1";
-            this.colAciklama1.OptionsColumn.AllowEdit = false;
-            this.colAciklama1.Visible = true;
-            this.colAciklama1.VisibleIndex = 3;
-            this.colAciklama1.Width = 611;
-            // 
-            // colKHSil
-            // 
-            this.colKHSil.Caption = "Sil";
-            this.colKHSil.ColumnEdit = this.repoOHSil;
-            this.colKHSil.MinWidth = 25;
-            this.colKHSil.Name = "colKHSil";
-            this.colKHSil.OptionsColumn.AllowEdit = false;
-            this.colKHSil.Visible = true;
-            this.colKHSil.VisibleIndex = 0;
-            this.colKHSil.Width = 34;
-            // 
-            // repoOHSil
-            // 
-            this.repoOHSil.AutoHeight = false;
-            editorButtonImageOptions6.ImageIndex = 0;
-            editorButtonImageOptions6.ImageList = this.ımageList2;
-            this.repoOHSil.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.repoOHSil.Name = "repoOHSil";
-            this.repoOHSil.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.repoOHSil.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repoOHSil_ButtonClick);
             // 
             // groupControl4
             // 
@@ -2358,25 +2255,153 @@
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Size = new System.Drawing.Size(967, 20);
             // 
-            // colStokId
+            // gridContKasaHareket
             // 
-            this.colStokId.Caption = "StokId";
-            this.colStokId.FieldName = "StokId";
-            this.colStokId.MinWidth = 25;
-            this.colStokId.Name = "colStokId";
-            this.colStokId.OptionsColumn.AllowEdit = false;
-            this.colStokId.OptionsColumn.ShowInCustomizationForm = false;
-            this.colStokId.Width = 94;
+            this.gridContKasaHareket.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridContKasaHareket.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.gridContKasaHareket.Location = new System.Drawing.Point(0, 0);
+            this.gridContKasaHareket.MainView = this.gridKasaHareket;
+            this.gridContKasaHareket.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.gridContKasaHareket.Name = "gridContKasaHareket";
+            this.gridContKasaHareket.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repoKasa,
+            this.repoOHSil});
+            this.gridContKasaHareket.Size = new System.Drawing.Size(969, 166);
+            this.gridContKasaHareket.TabIndex = 6;
+            this.gridContKasaHareket.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridKasaHareket});
             // 
-            // colDepoId
+            // gridKasaHareket
             // 
-            this.colDepoId.Caption = "DepoId";
-            this.colDepoId.FieldName = "DepoId";
-            this.colDepoId.MinWidth = 25;
-            this.colDepoId.Name = "colDepoId";
-            this.colDepoId.OptionsColumn.AllowEdit = false;
-            this.colDepoId.OptionsColumn.ShowInCustomizationForm = false;
-            this.colDepoId.Width = 94;
+            this.gridKasaHareket.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colKasaKodu,
+            this.colKasaAdi,
+            this.colOdemeTuruKodu,
+            this.colOdemeTuruAdi,
+            this.colTutar,
+            this.colAciklama1,
+            this.colKHSil,
+            this.colKasaId,
+            this.colOdemeTuruId});
+            this.gridKasaHareket.GridControl = this.gridContKasaHareket;
+            this.gridKasaHareket.Name = "gridKasaHareket";
+            this.gridKasaHareket.OptionsView.ShowGroupPanel = false;
+            // 
+            // colKasaKodu
+            // 
+            this.colKasaKodu.FieldName = "Kasa.KasaKodu";
+            this.colKasaKodu.MinWidth = 25;
+            this.colKasaKodu.Name = "colKasaKodu";
+            this.colKasaKodu.OptionsColumn.AllowEdit = false;
+            this.colKasaKodu.Width = 94;
+            // 
+            // colKasaAdi
+            // 
+            this.colKasaAdi.Caption = "Kasa Adı";
+            this.colKasaAdi.ColumnEdit = this.repoKasa;
+            this.colKasaAdi.FieldName = "Kasa.KasaAdi";
+            this.colKasaAdi.MinWidth = 25;
+            this.colKasaAdi.Name = "colKasaAdi";
+            this.colKasaAdi.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
+            this.colKasaAdi.Visible = true;
+            this.colKasaAdi.VisibleIndex = 2;
+            this.colKasaAdi.Width = 209;
+            // 
+            // repoKasa
+            // 
+            this.repoKasa.AutoHeight = false;
+            editorButtonImageOptions5.ImageIndex = 3;
+            editorButtonImageOptions5.ImageList = this.ımageList2;
+            this.repoKasa.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repoKasa.Name = "repoKasa";
+            this.repoKasa.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // colOdemeTuruKodu
+            // 
+            this.colOdemeTuruKodu.FieldName = "OdemeTuru.OdemeTuruKodu";
+            this.colOdemeTuruKodu.MinWidth = 25;
+            this.colOdemeTuruKodu.Name = "colOdemeTuruKodu";
+            this.colOdemeTuruKodu.OptionsColumn.AllowEdit = false;
+            this.colOdemeTuruKodu.Width = 94;
+            // 
+            // colOdemeTuruAdi
+            // 
+            this.colOdemeTuruAdi.Caption = "Ödeme Türü";
+            this.colOdemeTuruAdi.FieldName = "OdemeTuru.OdemeTuruAdi";
+            this.colOdemeTuruAdi.MinWidth = 25;
+            this.colOdemeTuruAdi.Name = "colOdemeTuruAdi";
+            this.colOdemeTuruAdi.OptionsColumn.AllowEdit = false;
+            this.colOdemeTuruAdi.Visible = true;
+            this.colOdemeTuruAdi.VisibleIndex = 1;
+            this.colOdemeTuruAdi.Width = 143;
+            // 
+            // colTutar
+            // 
+            this.colTutar.Caption = "Tutar";
+            this.colTutar.DisplayFormat.FormatString = "C2";
+            this.colTutar.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colTutar.FieldName = "Tutar";
+            this.colTutar.MinWidth = 25;
+            this.colTutar.Name = "colTutar";
+            this.colTutar.OptionsColumn.AllowEdit = false;
+            this.colTutar.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Tutar", "SUM={0:C2}")});
+            this.colTutar.Visible = true;
+            this.colTutar.VisibleIndex = 4;
+            this.colTutar.Width = 223;
+            // 
+            // colAciklama1
+            // 
+            this.colAciklama1.Caption = "Açıklama";
+            this.colAciklama1.FieldName = "Aciklama";
+            this.colAciklama1.MinWidth = 25;
+            this.colAciklama1.Name = "colAciklama1";
+            this.colAciklama1.OptionsColumn.AllowEdit = false;
+            this.colAciklama1.Visible = true;
+            this.colAciklama1.VisibleIndex = 3;
+            this.colAciklama1.Width = 611;
+            // 
+            // colKHSil
+            // 
+            this.colKHSil.Caption = "Sil";
+            this.colKHSil.ColumnEdit = this.repoOHSil;
+            this.colKHSil.MinWidth = 25;
+            this.colKHSil.Name = "colKHSil";
+            this.colKHSil.OptionsColumn.AllowEdit = false;
+            this.colKHSil.Visible = true;
+            this.colKHSil.VisibleIndex = 0;
+            this.colKHSil.Width = 34;
+            // 
+            // repoOHSil
+            // 
+            this.repoOHSil.AutoHeight = false;
+            editorButtonImageOptions6.ImageIndex = 0;
+            editorButtonImageOptions6.ImageList = this.ımageList2;
+            this.repoOHSil.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repoOHSil.Name = "repoOHSil";
+            this.repoOHSil.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            // 
+            // colKasaId
+            // 
+            this.colKasaId.Caption = "KasaId";
+            this.colKasaId.FieldName = "KasaId";
+            this.colKasaId.MinWidth = 25;
+            this.colKasaId.Name = "colKasaId";
+            this.colKasaId.OptionsColumn.AllowEdit = false;
+            this.colKasaId.OptionsColumn.ShowInCustomizationForm = false;
+            this.colKasaId.Width = 94;
+            // 
+            // colOdemeTuruId
+            // 
+            this.colOdemeTuruId.Caption = "OdemeTuruId";
+            this.colOdemeTuruId.FieldName = "OdemeTuruId";
+            this.colOdemeTuruId.MinWidth = 25;
+            this.colOdemeTuruId.Name = "colOdemeTuruId";
+            this.colOdemeTuruId.OptionsColumn.AllowEdit = false;
+            this.colOdemeTuruId.OptionsColumn.ShowInCustomizationForm = false;
+            this.colOdemeTuruId.Width = 94;
             // 
             // FrmFrontOffice
             // 
@@ -2458,10 +2483,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repoSeriNo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoSil)).EndInit();
             this.navOdeme.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridContKasaHareket)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridKasaHareket)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoKasa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoOHSil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelOdeme)).EndInit();
@@ -2477,6 +2498,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.radialFiyat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radialYazdir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridContKasaHareket)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridKasaHareket)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoKasa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoOHSil)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2596,17 +2621,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colToplamTutar;
         private DevExpress.XtraGrid.Columns.GridColumn colKdvToplam;
         private DevExpress.XtraBars.Navigation.NavigationPage navOdeme;
-        private DevExpress.XtraGrid.GridControl gridContKasaHareket;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridKasaHareket;
-        private DevExpress.XtraGrid.Columns.GridColumn colKasaKodu;
-        private DevExpress.XtraGrid.Columns.GridColumn colKasaAdi;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repoKasa;
-        private DevExpress.XtraGrid.Columns.GridColumn colOdemeTuruKodu;
-        private DevExpress.XtraGrid.Columns.GridColumn colOdemeTuruAdi;
-        private DevExpress.XtraGrid.Columns.GridColumn colTutar;
-        private DevExpress.XtraGrid.Columns.GridColumn colAciklama1;
-        private DevExpress.XtraGrid.Columns.GridColumn colKHSil;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repoOHSil;
         private DevExpress.XtraEditors.GroupControl groupControl4;
         private DevExpress.XtraEditors.PanelControl panelOdeme;
         private DevExpress.XtraEditors.LabelControl labelControl20;
@@ -2647,6 +2661,19 @@
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
         private DevExpress.XtraGrid.Columns.GridColumn colStokId;
         private DevExpress.XtraGrid.Columns.GridColumn colDepoId;
+        private DevExpress.XtraGrid.GridControl gridContKasaHareket;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridKasaHareket;
+        private DevExpress.XtraGrid.Columns.GridColumn colKasaKodu;
+        private DevExpress.XtraGrid.Columns.GridColumn colKasaAdi;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repoKasa;
+        private DevExpress.XtraGrid.Columns.GridColumn colOdemeTuruKodu;
+        private DevExpress.XtraGrid.Columns.GridColumn colOdemeTuruAdi;
+        private DevExpress.XtraGrid.Columns.GridColumn colTutar;
+        private DevExpress.XtraGrid.Columns.GridColumn colAciklama1;
+        private DevExpress.XtraGrid.Columns.GridColumn colKHSil;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repoOHSil;
+        private DevExpress.XtraGrid.Columns.GridColumn colKasaId;
+        private DevExpress.XtraGrid.Columns.GridColumn colOdemeTuruId;
     }
 }
 

@@ -42,6 +42,9 @@ namespace SonicHesap.BackOffice.Fis
         public FrmFisIslem(string fisKodu = null, string fisTuru = null)
         {
             InitializeComponent();
+            contex.Stoklar.Load();
+            contex.Depolar.Load();
+            contex.Kasalar.Load();
             if (fisKodu != null)
             {
                 _fisEntity = contex.fisler.Where(c => c.FisKodu == fisKodu).SingleOrDefault();
@@ -54,11 +57,12 @@ namespace SonicHesap.BackOffice.Fis
                 if (_fisEntity.CariId != null)
                 {
                     entityBakiye = cariDal.CariBakiyesi(contex, Convert.ToInt32(_fisEntity.CariId));
+                    lblCariKodu.Text = _fisEntity.Cari.CariKodu;
+                    lblCariAdi.Text = _fisEntity.Cari.CariAdi;
+                    lblAlacak.Text = entityBakiye.Alacak.ToString("C2");
+                    lblBorc.Text = entityBakiye.Borc.ToString("C2");
+                    lblBakiye.Text = entityBakiye.Bakiye.ToString("C2");
                 }
-
-                lblAlacak.Text = entityBakiye.Alacak.ToString("C2");
-                lblBorc.Text = entityBakiye.Borc.ToString("C2");
-                lblBakiye.Text = entityBakiye.Bakiye.ToString("C2");
             }
             else
             {
@@ -91,8 +95,7 @@ namespace SonicHesap.BackOffice.Fis
             cmbTarih.DataBindings.Add("EditValue", _fisEntity, "Tarih", false, DataSourceUpdateMode.OnPropertyChanged);
             txtBelgeNo.DataBindings.Add("Text", _fisEntity, "BelgeNo", false, DataSourceUpdateMode.OnPropertyChanged);
             txtAciklama.DataBindings.Add("Text", _fisEntity, "Aciklama", false, DataSourceUpdateMode.OnPropertyChanged);
-            lblCariKodu.DataBindings.Add("Text", _fisEntity, "CariKodu", false, DataSourceUpdateMode.OnPropertyChanged);
-            lblCariAdi.DataBindings.Add("Text", _fisEntity, "CariAdi", false, DataSourceUpdateMode.OnPropertyChanged);
+
             txtFaturaUnvani.DataBindings.Add("Text", _fisEntity, "FaturaUnvani", false, DataSourceUpdateMode.OnPropertyChanged);
             txtCepTelefonu.DataBindings.Add("Text", _fisEntity, "CepTelefonu", false, DataSourceUpdateMode.OnPropertyChanged);
             txtIl.DataBindings.Add("Text", _fisEntity, "Il", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -155,6 +158,7 @@ namespace SonicHesap.BackOffice.Fis
                 Entities.Tables.Cari entity = form.secilen.FirstOrDefault();
                 entityBakiye = cariDal.CariBakiyesi(contex, entity.Id);
                 _cariId = entity.Id;
+                _fisEntity.CariId = entity.Id;
                 lblCariKodu.Text = entity.CariKodu;
                 lblCariAdi.Text = entity.CariAdi;
                 txtFaturaUnvani.Text = entity.FaturaUnvani;
@@ -296,6 +300,7 @@ namespace SonicHesap.BackOffice.Fis
         private void btnTemizle_Click(object sender, EventArgs e)
         {
             _cariId = null;
+            _fisEntity.CariId = null;
             lblCariKodu.Text = null;
             lblCariAdi.Text = null;
             txtFaturaUnvani.Text = null;
@@ -489,6 +494,7 @@ namespace SonicHesap.BackOffice.Fis
                         KasaHareket entitykasaHareket = new KasaHareket
                         {
                             OdemeTuruId = Convert.ToInt32(buton.Tag),
+                            KasaId=Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa)),
                             Tarih=DateTime.Now,
                             Tutar = txtOdenmesiGereken.Value
                         };
@@ -564,8 +570,8 @@ namespace SonicHesap.BackOffice.Fis
             form.ShowDialog();
             if (form.secildi)
             {
-                gridStokHareket.SetFocusedRowCellValue(colDepoKodu, form.entity.DepoKodu);
-                gridStokHareket.SetFocusedRowCellValue(colDepoAdi, form.entity.DepoAdi);
+                gridStokHareket.SetFocusedRowCellValue(colDepoId, form.entity.Id);
+                contex.ChangeTracker.DetectChanges();
             }
         }
 
@@ -575,8 +581,8 @@ namespace SonicHesap.BackOffice.Fis
             form.ShowDialog();
             if (form.secildi)
             {
-                gridKasaHareket.SetFocusedRowCellValue(colKasaKodu, form.entity.KasaKodu);
-                gridKasaHareket.SetFocusedRowCellValue(colKasaAdi, form.entity.KasaAdi);
+                gridKasaHareket.SetFocusedRowCellValue(colKasaId, form.entity.Id);
+                contex.ChangeTracker.DetectChanges();
             }
         }
 
@@ -608,6 +614,7 @@ namespace SonicHesap.BackOffice.Fis
         }
         private StokHareket StokSec(Entities.Tables.Stok entity)
         {
+
             StokHareket stokHareket = new StokHareket();
             IndirimDAL indirimDal = new IndirimDAL();
             stokHareket.StokId = entity.Id;

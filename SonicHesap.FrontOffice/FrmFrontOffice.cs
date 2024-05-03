@@ -5,6 +5,7 @@ using SonicHesap.Admin;
 using SonicHesap.BackOffice.Cari;
 using SonicHesap.BackOffice.Depo;
 using SonicHesap.BackOffice.Fis;
+using SonicHesap.BackOffice.Kasa;
 using SonicHesap.BackOffice.Stok;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
@@ -53,14 +54,16 @@ namespace SonicHesap.FrontOffice
             FrmKullaniciGiris girisform = new FrmKullaniciGiris();
             girisform.ShowDialog();
 
+            context.Stoklar.Load();
+            context.Depolar.Load();
+
             gridContStokHareket.DataSource = context.StokHareketleri.Local.ToBindingList();
             gridContKasaHareket.DataSource = context.KasaHareketleri.Local.ToBindingList();
             gridLookUpEdit1.Properties.DataSource = doviz.DovizKuruCek();
             txtFisKodu.DataBindings.Add("Text", _fisEntity, "FisKodu", false, DataSourceUpdateMode.OnPropertyChanged);
             txtBelgeNo.DataBindings.Add("Text", _fisEntity, "BelgeNo", false, DataSourceUpdateMode.OnPropertyChanged);
             txtAciklama.DataBindings.Add("Text", _fisEntity, "Aciklama", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtCariKodu.DataBindings.Add("Text", _fisEntity, "CariKodu", false, DataSourceUpdateMode.OnPropertyChanged, null);
-            txtCariAdi.DataBindings.Add("Text", _fisEntity, "CariAdi", false, DataSourceUpdateMode.OnPropertyChanged, null);
+
             txtFaturaUnvani.DataBindings.Add("Text", _fisEntity, "FaturaUnvani", false, DataSourceUpdateMode.OnPropertyChanged);
             txtCepTelefonu.DataBindings.Add("Text", _fisEntity, "CepTelefonu", false, DataSourceUpdateMode.OnPropertyChanged);
             txtIl.DataBindings.Add("Text", _fisEntity, "Il", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -69,7 +72,7 @@ namespace SonicHesap.FrontOffice
             txtAdres.DataBindings.Add("Text", _fisEntity, "Adres", false, DataSourceUpdateMode.OnPropertyChanged);
             txtVergiDairesi.DataBindings.Add("Text", _fisEntity, "VergiDairesi", false, DataSourceUpdateMode.OnPropertyChanged);
             txtVergiNo.DataBindings.Add("Text", _fisEntity, "VergiNo", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtFisKodu.Text = CodeTool.KodOlustur("FI", SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu));
+            txtFisKodu.Text = FisNumarasiGetir();
             ButonlariYukle();
             txtIslem.Text = "SATIŞ";
             this.WindowState = FormWindowState.Maximized;
@@ -234,6 +237,7 @@ namespace SonicHesap.FrontOffice
         {
             var buton = (sender as SimpleButton);
             string kasaKodu = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa);
+            string kasaAdi = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasaAdi);
             if (chOdemeBol.Checked && tekparca == false)
             {
                 if (txtOdenmesiGereken.Value == 0)
@@ -377,10 +381,12 @@ namespace SonicHesap.FrontOffice
             }
 
             FisTemizle();
+            int fisno = (int.Parse(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu))) + 1;
+            SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SatisAyarlari_FisKodu, fisno.ToString());
+            SettingsTool.Save();
 
-            string FisKoduBilgisi = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu);
-            SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SatisAyarlari_FisKodu, Convert.ToString(Convert.ToInt32(FisKoduBilgisi + 1)));
-            txtFisKodu.Text = CodeTool.KodOlustur("Fİ", SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu));
+
+            //***** 
             tekparca = false;
         }
 
@@ -393,7 +399,7 @@ namespace SonicHesap.FrontOffice
 
         private void FisTemizle()
         {
-            txtFisKodu.Text = CodeTool.KodOlustur("FI", SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu));
+            txtFisKodu.Text = "";
             txtToplam.Text = null;
             txtAraToplam.Text = null;
             txtKDVToplam.Text = null;
@@ -427,6 +433,7 @@ namespace SonicHesap.FrontOffice
         {
             txtCariKodu.Text = null;
             txtCariAdi.Text = null;
+            _fisEntity.CariId=null;
             txtFaturaUnvani.Text = null;
             txtVergiDairesi.Text = null;
             txtVergiNo.Text = null;
@@ -506,7 +513,7 @@ namespace SonicHesap.FrontOffice
         {
             if (txtFisKodu.Text == "")
             {
-                txtFisKodu.Text = CodeTool.KodOlustur("FI", SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu));
+                txtFisKodu.Text = FisNumarasiGetir();
             }
             FrmCariSec form = new FrmCariSec();
             form.ShowDialog();
@@ -540,49 +547,6 @@ namespace SonicHesap.FrontOffice
         }
 
 
-
-        private void repoSil_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (MessageBox.Show("Seçili Olan Veriyi Silmek İstediğinize Eminmisiniz?", "Uyarı!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                gridStokHareket.DeleteSelectedRows();
-                Toplamlar();
-            }
-        }
-
-        private void repoDepoSecim_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            FrmDepoSec form = new FrmDepoSec(Convert.ToInt32(gridStokHareket.GetFocusedRowCellValue(colStokId)));
-            form.ShowDialog();
-            if (form.secildi)
-            {
-                gridStokHareket.SetFocusedRowCellValue(colDepoKodu, form.entity.DepoKodu);
-                gridStokHareket.SetFocusedRowCellValue(colDepoAdi, form.entity.DepoAdi);
-            }
-        }
-
-        private void repoSeriNo_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            string veri = Convert.ToString(gridStokHareket.GetFocusedRowCellValue(colSeriNo));
-            FrmSeriNoGir form = new FrmSeriNoGir(veri, false);
-            form.ShowDialog();
-            gridStokHareket.SetFocusedRowCellValue(colSeriNo, form.veriSeriNo);
-        }
-
-        private void repoBirimFiyat_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            string fiyatSecilen = gridStokHareket.GetFocusedRowCellValue(colStokKodu).ToString();
-            Entities.Tables.Stok fiyatEntity = context.Stoklar.Where(c => c.StokKodu == fiyatSecilen).SingleOrDefault();
-
-            barFiyat1.Tag = _fisEntity.FisTuru == "Alış Faturası" ? fiyatEntity.AlisFiyati1 ?? 0 : fiyatEntity.SatisFiyati1 ?? 0;
-            barFiyat2.Tag = _fisEntity.FisTuru == "Alış Faturası" ? fiyatEntity.AlisFiyati2 ?? 0 : fiyatEntity.SatisFiyati2 ?? 0;
-            barFiyat3.Tag = _fisEntity.FisTuru == "Alış Faturası" ? fiyatEntity.AlisFiyati3 ?? 0 : fiyatEntity.SatisFiyati3 ?? 0;
-            barFiyat1.Caption = string.Format("{0:C2}", barFiyat1.Tag);
-            barFiyat2.Caption = string.Format("{0:C2}", barFiyat2.Tag);
-            barFiyat3.Caption = string.Format("{0:C2}", barFiyat3.Tag);
-            radialFiyat.ShowPopup(MousePosition);
-        }
-
         private void btnCariSec_Click(object sender, EventArgs e)
         {
             FrmCariSec form = new FrmCariSec();
@@ -592,6 +556,7 @@ namespace SonicHesap.FrontOffice
                 Entities.Tables.Cari entity = form.secilen.FirstOrDefault();
                 entityBakiye = cariDal.CariBakiyesi(context, entity.Id);
                 _cariId = entity.Id;
+                _fisEntity.CariId = entity.Id;
                 txtCariKodu.Text = entity.CariKodu;
                 txtCariAdi.Text = entity.CariAdi;
                 txtFaturaUnvani.Text = entity.FaturaUnvani;
@@ -609,7 +574,7 @@ namespace SonicHesap.FrontOffice
             }
             if (txtFisKodu.Text == "")
             {
-                txtFisKodu.Text = CodeTool.KodOlustur("FI", SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu));
+                txtFisKodu.Text = FisNumarasiGetir();
             }
         }
 
@@ -755,6 +720,7 @@ namespace SonicHesap.FrontOffice
             }
             radialYazdir.ShowPopup(MousePosition);
             FisiKaydet(ReportsPrintTool.Belge.Diger);
+            SettingsTool.Save();
             FisTemizle();
         }
 
@@ -779,8 +745,9 @@ namespace SonicHesap.FrontOffice
         {
             FisiKaydet(ReportsPrintTool.Belge.BilgiFisi);
             MessageBox.Show("Satış Kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //Bilgifisi
+            //Bilgifisi 
             FisTemizle();
+            txtFisKodu.Text = FisNumarasiGetir(); 
         }
 
         private void gridStokHareket_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -887,7 +854,7 @@ namespace SonicHesap.FrontOffice
             }
             cagirilanSatisId = -1;
             FisTemizle();
-            txtFisKodu.Text = CodeTool.KodOlustur("FI", SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu));
+            txtFisKodu.Text = FisNumarasiGetir();
         }
 
 
@@ -913,7 +880,7 @@ namespace SonicHesap.FrontOffice
             FisTemizle();
 
             var satisBilgisi = _bekleyenSatis.SingleOrDefault(c => c.Id == Id);
-            txtFisKodu.Text = CodeTool.KodOlustur("FI", SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu));
+            txtFisKodu.Text =FisNumarasiGetir();
             txtBelgeNo.Text = satisBilgisi.BekleyenFis.BelgeNo;
             txtAciklama.Text = satisBilgisi.BekleyenFis.Aciklama;
             txtCariKodu.Text = satisBilgisi.BekleyenFis.Cari.CariKodu;
@@ -967,7 +934,7 @@ namespace SonicHesap.FrontOffice
 
         private void FrmFrontOffice_Load(object sender, EventArgs e)
         {
-            txtFisKodu.Text = CodeTool.KodOlustur("FI", SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu));
+            txtFisKodu.Text = FisNumarasiGetir();
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -998,6 +965,51 @@ namespace SonicHesap.FrontOffice
                 gridKasaHareket.DeleteSelectedRows();
                 Toplamlar();
             }
+        }
+
+        private void repoDepoSecim_Click(object sender, EventArgs e)
+        {
+            FrmDepoSec form = new FrmDepoSec(Convert.ToInt32(gridStokHareket.GetFocusedRowCellValue(colStokId)));
+            form.ShowDialog();
+            if (form.secildi)
+            {
+                gridStokHareket.SetFocusedRowCellValue(colDepoId, form.entity.Id);
+                context.ChangeTracker.DetectChanges();
+            }
+        }
+
+        private void repoSeriNo_Click(object sender, EventArgs e)
+        {
+            string veri = Convert.ToString(gridStokHareket.GetFocusedRowCellValue(colSeriNo));
+            FrmSeriNoGir form = new FrmSeriNoGir(veri, false);
+            form.ShowDialog();
+            gridStokHareket.SetFocusedRowCellValue(colSeriNo, form.veriSeriNo);
+        }
+
+        private void repoBirimFiyat_Click(object sender, EventArgs e)
+        {
+            string fiyatSecilen = gridStokHareket.GetFocusedRowCellValue(colStokKodu).ToString();
+            Entities.Tables.Stok fiyatEntity = context.Stoklar.Where(c => c.StokKodu == fiyatSecilen).SingleOrDefault();
+
+            barFiyat1.Tag = _fisEntity.FisTuru == "Alış Faturası" ? fiyatEntity.AlisFiyati1 ?? 0 : fiyatEntity.SatisFiyati1 ?? 0;
+            barFiyat2.Tag = _fisEntity.FisTuru == "Alış Faturası" ? fiyatEntity.AlisFiyati2 ?? 0 : fiyatEntity.SatisFiyati2 ?? 0;
+            barFiyat3.Tag = _fisEntity.FisTuru == "Alış Faturası" ? fiyatEntity.AlisFiyati3 ?? 0 : fiyatEntity.SatisFiyati3 ?? 0;
+            barFiyat1.Caption = string.Format("{0:C2}", barFiyat1.Tag);
+            barFiyat2.Caption = string.Format("{0:C2}", barFiyat2.Tag);
+            barFiyat3.Caption = string.Format("{0:C2}", barFiyat3.Tag);
+            radialFiyat.ShowPopup(MousePosition);
+        }
+
+        private void repoKasa_Click(object sender, EventArgs e)
+        {
+        }
+
+        private string FisNumarasiGetir()
+        {
+            int sonfisnumarasi = int.Parse(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu));
+
+            var fisnumarasi = CodeTool.KodOlustur("FI", (sonfisnumarasi + 1).ToString());
+            return fisnumarasi;
         }
     }
 }

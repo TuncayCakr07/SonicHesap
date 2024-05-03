@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraRichEdit.Unicode;
 using SonicHesap.BackOffice.Kasa;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Tables;
@@ -7,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,12 +25,12 @@ namespace SonicHesap.BackOffice.Fis
         private Nullable<decimal> gelenTutar;
         private Entities.Tables.Kasa _kasaBilgi;
         OdemeTuru _odemeTuruBilgi;
-        public FrmOdemeEkrani(int odemeTuruId,Nullable<decimal>odenmesiGereken=null)
+        public FrmOdemeEkrani(int odemeTuruId, Nullable<decimal> odenmesiGereken = null)
         {
             InitializeComponent();
             int kasaId = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa));
-            var _kasaBilgi = context.Kasalar.SingleOrDefault(c=>c.Id==kasaId);
-            var _odemeTuruBilgi = context.OdemeTurleri.SingleOrDefault(c => c.Id == odemeTuruId);
+            _kasaBilgi = context.Kasalar.SingleOrDefault(c => c.Id == kasaId);
+            _odemeTuruBilgi = context.OdemeTurleri.SingleOrDefault(c => c.Id == odemeTuruId);
             txtKasaKodu.Text = _kasaBilgi.KasaKodu;
             txtOdemeTuru.Text = _odemeTuruBilgi.OdemeTuruAdi;
             txtKasaAdi.Text = _kasaBilgi.KasaAdi;
@@ -35,7 +38,7 @@ namespace SonicHesap.BackOffice.Fis
             {
                 gelenTutar = odenmesiGereken.Value;
             }
-            else 
+            else
             {
                 txtTutar.Properties.Buttons[1].Visible = false;
             }
@@ -50,12 +53,15 @@ namespace SonicHesap.BackOffice.Fis
         }
         private void btnKasaSec_Click(object sender, EventArgs e)
         {
-            FrmKasaSecim form= new FrmKasaSecim();
+            FrmKasaSecim form = new FrmKasaSecim();
             form.ShowDialog();
             if (form.secildi)
             {
-                txtKasaKodu.Text = form.entity.KasaKodu;
-                txtKasaAdi.Text = form.entity.KasaAdi;
+                _kasaBilgi = context.Kasalar.SingleOrDefault(c => c.Id == form.entity.Id);
+                _kasaBilgi.KasaAdi = txtKasaAdi.Text;
+                _kasaBilgi.KasaKodu = txtKasaKodu.Text;
+                context.ChangeTracker.DetectChanges();
+                context.SaveChanges();
             }
         }
 
@@ -68,41 +74,50 @@ namespace SonicHesap.BackOffice.Fis
         {
             string message = null;
             int error = 0;
-            if (txtKasaAdi.Text=="")
+            if (txtKasaAdi.Text == "")
+            {
+                message += "Kasa Bilgileri boş Bırakılamaz!" + System.Environment.NewLine;
+                error++;
+            }
+            if (txtKasaAdi.Text == "")
             {
                 message += "Kasa Bilgileri boş Bırakılamaz!" + System.Environment.NewLine;
                 error++;
             }
 
-            if (txtTutar.Value<=0)
+            if (txtTutar.Value <= 0)
             {
                 message += "Tutar 0 Değerine Eşit Veya 0 Değerinden Küçük Olamaz!" + System.Environment.NewLine;
                 error++;
             }
 
-            if (txtTutar.Value > gelenTutar && gelenTutar!=null)
+            if (txtTutar.Value > gelenTutar && gelenTutar != null)
             {
                 message += "Eklenen Tutar Ödenmesi Gereken Tutardan Büyük Olamaz!" + System.Environment.NewLine;
                 error++;
             }
 
-            if (error!=0)
+            if (error != 0)
             {
                 MessageBox.Show(message, "Hata!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            entity=new KasaHareket();
+            entity = new KasaHareket();
             entity.OdemeTuruId = _odemeTuruBilgi.Id;
             entity.KasaId = _kasaBilgi.Id;
-            entity.Tutar=txtTutar.Value;
-            entity.Aciklama=txtAciklama.Text;
+            entity.Tutar = txtTutar.Value;
+            entity.Aciklama = txtAciklama.Text;
+            _kasaBilgi.KasaAdi = txtKasaAdi.Text;
+            _kasaBilgi.KasaKodu = txtKasaKodu.Text;
+            context.KasaHareketleri.AddOrUpdate(entity);
+            context.SaveChanges();
             this.Close();
         }
 
         private void txtTutar_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (e.Button.Index==1)
+            if (e.Button.Index == 1)
             {
                 txtTutar.Value = gelenTutar.Value;
             }

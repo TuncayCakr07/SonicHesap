@@ -25,6 +25,11 @@ namespace SonicHesap.Admin
 
         private async void btnGiris_Click(object sender, EventArgs e)
         {
+            GirisYap();
+        }
+
+        private void GirisYap()
+        {
             if (context.Kullanicilar.Any(c => c.KullaniciAdi == txtKullanici.Text && c.Parola == txtParola.Text))
             {
                 girisBasarili = true;
@@ -34,9 +39,9 @@ namespace SonicHesap.Admin
             }
             else
             {
-                MessageBox.Show("Girmiş Olduğunuz Kullanıcı Bilgileri Hatalıdır!\nLütfen Bilgilerinizi Kontrol Ediniz!","Kullanıcı Bilgisi Hatası",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Girmiş Olduğunuz Kullanıcı Bilgileri Hatalıdır!\nLütfen Bilgilerinizi Kontrol Ediniz!", "Kullanıcı Bilgisi Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtKullanici.Text = null;
-                txtParola.Text=null;
+                txtParola.Text = null;
                 this.Close();
             }
         }
@@ -59,6 +64,14 @@ namespace SonicHesap.Admin
             else
             {
                 MessageBox.Show("Bu Kullanıcı Adına Ait Kullanıcı Bulunamadı!","Kullanıcı Hatası!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        private void FrmKullaniciGiris_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GirisYap();
             }
         }
     }

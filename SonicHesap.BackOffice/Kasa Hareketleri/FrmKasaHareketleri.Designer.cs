@@ -257,7 +257,7 @@
             // 
             // colKasaKodu
             // 
-            this.colKasaKodu.FieldName = "KasaKodu";
+            this.colKasaKodu.FieldName = "Kasa.KasaKodu";
             this.colKasaKodu.MinWidth = 25;
             this.colKasaKodu.Name = "colKasaKodu";
             this.colKasaKodu.OptionsColumn.AllowEdit = false;
@@ -268,7 +268,7 @@
             // 
             // colKasaAdi
             // 
-            this.colKasaAdi.FieldName = "KasaAdi";
+            this.colKasaAdi.FieldName = "Kasa.KasaAdi";
             this.colKasaAdi.MinWidth = 25;
             this.colKasaAdi.Name = "colKasaAdi";
             this.colKasaAdi.OptionsColumn.AllowEdit = false;
@@ -279,7 +279,7 @@
             // 
             // colOdemeTuruKodu
             // 
-            this.colOdemeTuruKodu.FieldName = "OdemeTuruKodu";
+            this.colOdemeTuruKodu.FieldName = "OdemeTuru.OdemeTuruKodu";
             this.colOdemeTuruKodu.MinWidth = 25;
             this.colOdemeTuruKodu.Name = "colOdemeTuruKodu";
             this.colOdemeTuruKodu.OptionsColumn.AllowEdit = false;
@@ -291,7 +291,7 @@
             // colOdemeTuruAdi
             // 
             this.colOdemeTuruAdi.Caption = "Ödeme Türü";
-            this.colOdemeTuruAdi.FieldName = "OdemeTuruAdi";
+            this.colOdemeTuruAdi.FieldName = "OdemeTuru.OdemeTuruAdi";
             this.colOdemeTuruAdi.MinWidth = 25;
             this.colOdemeTuruAdi.Name = "colOdemeTuruAdi";
             this.colOdemeTuruAdi.OptionsColumn.AllowEdit = false;
@@ -303,7 +303,7 @@
             // colCariKodu
             // 
             this.colCariKodu.Caption = "Cari Kodu";
-            this.colCariKodu.FieldName = "CariKodu";
+            this.colCariKodu.FieldName = "Cari.CariKodu";
             this.colCariKodu.MinWidth = 25;
             this.colCariKodu.Name = "colCariKodu";
             this.colCariKodu.OptionsColumn.AllowEdit = false;
@@ -315,7 +315,7 @@
             // colCariAdi
             // 
             this.colCariAdi.Caption = "Cari Adı";
-            this.colCariAdi.FieldName = "CariAdi";
+            this.colCariAdi.FieldName = "Cari.CariAdi";
             this.colCariAdi.MinWidth = 25;
             this.colCariAdi.Name = "colCariAdi";
             this.colCariAdi.OptionsColumn.AllowEdit = false;

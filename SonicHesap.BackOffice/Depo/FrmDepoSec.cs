@@ -31,7 +31,7 @@ namespace SonicHesap.BackOffice.Depo
             gridContDepolar.DataSource = depoDal.DepoBazindaStokListele(context, _stokId);
         }
 
-        private void btnSec_Click(object sender, EventArgs e)
+        private void btnSec_Click(object sender, EventArgs e)   
         {
             if (gridDepolar.SelectedRowsCount!=0)
             {

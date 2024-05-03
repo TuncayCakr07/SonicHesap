@@ -63,7 +63,7 @@
             this.txtKullanici.Properties.Appearance.Options.UseFont = true;
             this.txtKullanici.Properties.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("txtKullanici.Properties.ContextImageOptions.Image")));
             this.txtKullanici.Size = new System.Drawing.Size(420, 52);
-            this.txtKullanici.TabIndex = 11;
+            this.txtKullanici.TabIndex = 1;
             // 
             // txtParola
             // 
@@ -74,7 +74,7 @@
             this.txtParola.Properties.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("txtParola.Properties.ContextImageOptions.Image")));
             this.txtParola.Properties.PasswordChar = '*';
             this.txtParola.Size = new System.Drawing.Size(420, 52);
-            this.txtParola.TabIndex = 11;
+            this.txtParola.TabIndex = 2;
             // 
             // pictureBox1
             // 
@@ -125,7 +125,7 @@
             this.simpleButton1.Location = new System.Drawing.Point(98, 28);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(129, 59);
-            this.simpleButton1.TabIndex = 1;
+            this.simpleButton1.TabIndex = 3;
             this.simpleButton1.Text = "Parolamı \r\nUnuttum";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
@@ -139,7 +139,7 @@
             this.btnGiris.Location = new System.Drawing.Point(227, 28);
             this.btnGiris.Name = "btnGiris";
             this.btnGiris.Size = new System.Drawing.Size(104, 59);
-            this.btnGiris.TabIndex = 0;
+            this.btnGiris.TabIndex = 4;
             this.btnGiris.Text = "Giriş";
             this.btnGiris.Click += new System.EventHandler(this.btnGiris_Click);
             // 
@@ -153,7 +153,7 @@
             this.btnKapat.Location = new System.Drawing.Point(331, 28);
             this.btnKapat.Name = "btnKapat";
             this.btnKapat.Size = new System.Drawing.Size(106, 59);
-            this.btnKapat.TabIndex = 0;
+            this.btnKapat.TabIndex = 5;
             this.btnKapat.Text = "Kapat";
             // 
             // FrmKullaniciGiris
@@ -166,12 +166,14 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtParola);
             this.Controls.Add(this.txtKullanici);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmKullaniciGiris";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kullanıcı Giriş Ekranı";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmKullaniciGiris_FormClosed);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmKullaniciGiris_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.txtKullanici.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtParola.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

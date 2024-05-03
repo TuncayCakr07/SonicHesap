@@ -242,7 +242,7 @@
             // 
             // colStokKodu
             // 
-            this.colStokKodu.Caption = "Stok Kodu";
+            this.colStokKodu.Caption = "Stok.Stok Kodu";
             this.colStokKodu.FieldName = "StokKodu";
             this.colStokKodu.MinWidth = 25;
             this.colStokKodu.Name = "colStokKodu";
@@ -253,7 +253,7 @@
             // colStokAdi
             // 
             this.colStokAdi.Caption = "Ürün Adı";
-            this.colStokAdi.FieldName = "StokAdi";
+            this.colStokAdi.FieldName = "Stok.StokAdi";
             this.colStokAdi.MinWidth = 25;
             this.colStokAdi.Name = "colStokAdi";
             this.colStokAdi.OptionsColumn.AllowEdit = false;
@@ -265,7 +265,7 @@
             // colBarkodTuru
             // 
             this.colBarkodTuru.Caption = "Barkod Türü";
-            this.colBarkodTuru.FieldName = "BarkodTuru";
+            this.colBarkodTuru.FieldName = "Stok.BarkodTuru";
             this.colBarkodTuru.MinWidth = 25;
             this.colBarkodTuru.Name = "colBarkodTuru";
             this.colBarkodTuru.OptionsColumn.AllowEdit = false;
@@ -277,7 +277,7 @@
             // colBarkod
             // 
             this.colBarkod.Caption = "Barkod";
-            this.colBarkod.FieldName = "Barkod";
+            this.colBarkod.FieldName = "Stok.Barkod";
             this.colBarkod.MinWidth = 25;
             this.colBarkod.Name = "colBarkod";
             this.colBarkod.OptionsColumn.AllowEdit = false;
@@ -289,7 +289,7 @@
             // colBirimi
             // 
             this.colBirimi.Caption = "Birimi";
-            this.colBirimi.FieldName = "Birimi";
+            this.colBirimi.FieldName = "Stok.Birimi";
             this.colBirimi.MinWidth = 25;
             this.colBirimi.Name = "colBirimi";
             this.colBirimi.OptionsColumn.AllowEdit = false;
@@ -363,7 +363,7 @@
             // colDepoKodu
             // 
             this.colDepoKodu.Caption = "Depo Kodu";
-            this.colDepoKodu.FieldName = "DepoKodu";
+            this.colDepoKodu.FieldName = "Depo.DepoKodu";
             this.colDepoKodu.MinWidth = 25;
             this.colDepoKodu.Name = "colDepoKodu";
             this.colDepoKodu.OptionsColumn.AllowEdit = false;
@@ -376,7 +376,7 @@
             // 
             this.colDepoAdi.Caption = "Depo Adı";
             this.colDepoAdi.ColumnEdit = this.repoDepoSecim;
-            this.colDepoAdi.FieldName = "DepoAdi";
+            this.colDepoAdi.FieldName = "Depo.DepoAdi";
             this.colDepoAdi.MinWidth = 25;
             this.colDepoAdi.Name = "colDepoAdi";
             this.colDepoAdi.OptionsColumn.ShowInCustomizationForm = false;

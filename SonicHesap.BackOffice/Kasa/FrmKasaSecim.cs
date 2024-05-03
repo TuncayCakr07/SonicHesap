@@ -36,6 +36,7 @@ namespace SonicHesap.BackOffice.Kasa
             {
                 string kasaKodu = gridSecim.GetFocusedRowCellValue(colKasaKodu).ToString();
                 entity = context.Kasalar.SingleOrDefault(c => c.KasaKodu == kasaKodu);
+                entity.KasaAdi= gridSecim.GetFocusedRowCellValue(colKasaAdi).ToString();
                 secildi = true;
                 this.Close();
             }
