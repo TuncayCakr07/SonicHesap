@@ -1,5 +1,6 @@
 ﻿using SonicHesap.Entities.Mapping;
 using SonicHesap.Entities.Tables;
+using SonicHesap.Entities.Tools;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,6 +12,10 @@ namespace SonicHesap.Entities.Context
 {
     public class SonicHesapContext:DbContext
     {
+        public SonicHesapContext() : base("SonicHesapContext") 
+        {
+            
+        }
         public DbSet<Stok> Stoklar { get; set; }
         public DbSet<Cari> Cariler { get; set; }
         public DbSet<Fis> fisler { get; set; }

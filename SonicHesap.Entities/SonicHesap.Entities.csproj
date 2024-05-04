@@ -112,10 +112,6 @@
     <Compile Include="Mapping\StokHareketMap.cs" />
     <Compile Include="Mapping\StokMap.cs" />
     <Compile Include="Mapping\TanimMap.cs" />
-    <Compile Include="Migrations\202404022237489_InitialCreate.cs" />
-    <Compile Include="Migrations\202404022237489_InitialCreate.designer.cs">
-      <DependentUpon>202404022237489_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EntityRepositoryBase.cs" />
@@ -144,6 +140,7 @@
     <Compile Include="Tables\StokHareket.cs" />
     <Compile Include="Tables\Tanim.cs" />
     <Compile Include="Tools\CodeTool.cs" />
+    <Compile Include="Tools\ConnectionTool.cs" />
     <Compile Include="Tools\ConverterTool.cs" />
     <Compile Include="Tools\ExchangeTool.cs" />
     <Compile Include="Tools\ReportPrintTool.cs" />
@@ -171,11 +168,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.OtherTables.DovizKurlari.datasource" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202404022237489_InitialCreate.resx">
-      <DependentUpon>202404022237489_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

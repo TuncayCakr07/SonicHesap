@@ -51,20 +51,7 @@ namespace SonicHesap.BackOffice
         public FrmAnaMenu()
         {
             InitializeComponent();
-            using (var context = new SonicHesapContext())
-            {
-                context.Database.CreateIfNotExists();
-                if (!context.Kullanicilar.Any(c=>c.KullaniciAdi=="Yönetici"))
-                {
-                    context.Kullanicilar.Add(new Entities.Tables.Kullanici
-                    {
-                        KullaniciAdi = "Yönetici",
-                        Parola = "1234",
 
-                    });
-                    context.SaveChanges();
-                }
-            }
             FrmKullaniciGiris girisform = new FrmKullaniciGiris();
             girisform.ShowDialog();
             barKullaniciAdi.Caption =$"Aktif Kullanıcı: {RoleTool.KullaniciEntity.KullaniciAdi}";

@@ -18,7 +18,7 @@ namespace SonicHesap.Admin
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmKullanicilar());
+            Application.Run(new FrmKullaniciGiris());
         }
     }
 }

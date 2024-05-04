@@ -51,7 +51,8 @@ namespace SonicHesap.Entities.Tools
             YedeklemeAyarlari_OtomatikYedekleme,
             YedeklemeAyarlari_OtomatikYedekAl,
             YedeklemeAyarlari_KaydedilmisTarih,
-            GenelAyarlar_GuncellemeKontrol
+            GenelAyarlar_GuncellemeKontrol,
+            DatabaseAyarlari_BaglantiCumlesi
         }
 
         public static void AyarDegistir(Ayarlar ayar, string value)

@@ -60,18 +60,7 @@ namespace SonicHesap.FrontOffice
             gridContStokHareket.DataSource = context.StokHareketleri.Local.ToBindingList();
             gridContKasaHareket.DataSource = context.KasaHareketleri.Local.ToBindingList();
             gridLookUpEdit1.Properties.DataSource = doviz.DovizKuruCek();
-            txtFisKodu.DataBindings.Add("Text", _fisEntity, "FisKodu", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtBelgeNo.DataBindings.Add("Text", _fisEntity, "BelgeNo", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtAciklama.DataBindings.Add("Text", _fisEntity, "Aciklama", false, DataSourceUpdateMode.OnPropertyChanged);
 
-            txtFaturaUnvani.DataBindings.Add("Text", _fisEntity, "FaturaUnvani", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtCepTelefonu.DataBindings.Add("Text", _fisEntity, "CepTelefonu", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtIl.DataBindings.Add("Text", _fisEntity, "Il", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtIlce.DataBindings.Add("Text", _fisEntity, "Ilce", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtSemt.DataBindings.Add("Text", _fisEntity, "Semt", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtAdres.DataBindings.Add("Text", _fisEntity, "Adres", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtVergiDairesi.DataBindings.Add("Text", _fisEntity, "VergiDairesi", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtVergiNo.DataBindings.Add("Text", _fisEntity, "VergiNo", false, DataSourceUpdateMode.OnPropertyChanged);
             txtFisKodu.Text = FisNumarasiGetir();
             ButonlariYukle();
             txtIslem.Text = "SATIŞ";
@@ -331,7 +320,17 @@ namespace SonicHesap.FrontOffice
                 kasaVeri.CariId = _cariId;
                 kasaVeri.Tutar = txtToplam.Value;
             }
-
+            _fisEntity.FisKodu = txtFisKodu.Text;
+            _fisEntity.BelgeNo = txtBelgeNo.Text;
+            _fisEntity.Aciklama = txtAciklama.Text;
+            _fisEntity.FaturaUnvani = txtFaturaUnvani.Text;
+            _fisEntity.CepTelefonu = txtCepTelefonu.Text;
+            _fisEntity.Il=txtIl.Text;
+            _fisEntity.Ilce=txtIlce.Text;
+            _fisEntity.Semt=txtSemt.Text;
+            _fisEntity.Adres=txtAdres.Text;
+            _fisEntity.VergiDairesi = txtVergiDairesi.Text;
+            _fisEntity.VergiNo = txtVergiNo.Text;
             _fisEntity.ToplamTutar = txtToplam.Value;
             _fisEntity.IskontoOrani = txtIskontoOrani.Value;
             _fisEntity.IskontoTutar = txtIskontoTutar.Value;
@@ -399,6 +398,7 @@ namespace SonicHesap.FrontOffice
 
         private void FisTemizle()
         {
+
             txtFisKodu.Text = "";
             txtToplam.Text = null;
             txtAraToplam.Text = null;
@@ -421,10 +421,12 @@ namespace SonicHesap.FrontOffice
             lblAlacak.Text = "Alacak Görüntülenemiyor";
             lblBorc.Text = "Borç Görüntülenemiyor";
             lblBakiye.Text = "Bakiye Görüntülenemiyor";
-            _fisEntity.BelgeNo = null;
-            _fisEntity.Aciklama = null;
-            context.StokHareketleri.Local.Clear();
-            context.KasaHareketleri.Local.Clear();
+            var cikarilacakKayit = context.ChangeTracker.Entries().Where(c => c.Entity is KasaHareket || c.Entity is StokHareket || c.Entity is Fis).ToList();
+            foreach (var kayit in cikarilacakKayit)
+            {
+                context.Entry(kayit.Entity).State = EntityState.Detached;
+            }
+            _fisEntity = new Fis();
             CariTemizle();
             OdenenTutarGuncelle();
             Toplamlar();

@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmBaglantiAyarlari.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBaglantiAyarlari.Designer.cs">
+      <DependentUpon>FrmBaglantiAyarlari.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmKullaniciGiris.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBaglantiAyarlari.resx">
+      <DependentUpon>FrmBaglantiAyarlari.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmKullaniciGiris.resx">
       <DependentUpon>FrmKullaniciGiris.cs</DependentUpon>
     </EmbeddedResource>

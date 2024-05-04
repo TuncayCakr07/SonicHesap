@@ -16,11 +16,17 @@ namespace SonicHesap.Admin
 {
     public partial class FrmKullaniciGiris : DevExpress.XtraEditors.XtraForm
     {
-        SonicHesapContext context=new SonicHesapContext();
+        SonicHesapContext context;
         private bool girisBasarili=false;
         public FrmKullaniciGiris()
         {
             InitializeComponent();
+            if (!ConnectionTool.CheckConnection(SettingsTool.AyarOku(SettingsTool.Ayarlar.DatabaseAyarlari_BaglantiCumlesi)))
+            {
+                FrmBaglantiAyarlari form = new FrmBaglantiAyarlari();
+                form.ShowDialog();
+            }
+            context = new SonicHesapContext();
         }
 
         private async void btnGiris_Click(object sender, EventArgs e)
