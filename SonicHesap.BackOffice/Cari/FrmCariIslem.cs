@@ -3,6 +3,7 @@ using SonicHesap.BackOffice.Tanimlar;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
 using SonicHesap.Entities.Tables;
+using SonicHesap.Entities.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,15 +18,51 @@ namespace SonicHesap.BackOffice.Cari
 {
     public partial class FrmCariIslem : DevExpress.XtraEditors.XtraForm
     {
-        private  Entities.Tables.Cari _entity;
-        private CariDAL cariDAL=new CariDAL();
-        private SonicHesapContext context=new SonicHesapContext();
-        public bool saved=false;
+        private Entities.Tables.Cari _entity;
+        private CariDAL cariDAL = new CariDAL();
+        private SonicHesapContext context = new SonicHesapContext();
+        public bool saved = false;
 
-        public FrmCariIslem(Entities.Tables.Cari entity)
+        public FrmCariIslem(Entities.Tables.Cari entity, bool kopyala = false)
         {
             InitializeComponent();
-            _entity = entity;
+            if (kopyala)
+            {
+                _entity = new Entities.Tables.Cari();
+                _entity.Id = -1;
+                _entity.CariKodu = "";
+                _entity.Aciklama = entity.Aciklama;
+                _entity.Adres = entity.Adres;
+                _entity.AlisOzelFiyati = entity.AlisOzelFiyati;
+                _entity.CariAdi = entity.CariAdi;
+                _entity.CariAltGrubu = entity.CariAltGrubu;
+                _entity.CariGrubu = entity.CariGrubu;
+                _entity.CariTuru = entity.CariTuru;
+                _entity.CepTelefonu = entity.CepTelefonu;
+                _entity.Durumu = entity.Durumu;
+                _entity.EMail = entity.EMail;
+                _entity.FaturaUnvani = entity.FaturaUnvani;
+                _entity.Fax = entity.Fax;
+                _entity.Il = entity.Il;
+                _entity.Ilce = entity.Ilce;
+                _entity.IskontoOranı = entity.IskontoOranı;
+                _entity.OzelKod1 = entity.OzelKod1;
+                _entity.OzelKod2 = entity.OzelKod2;
+                _entity.OzelKod3 = entity.OzelKod3;
+                _entity.OzelKod4 = entity.OzelKod4;
+                _entity.SatisOzelFiyati = entity.SatisOzelFiyati;
+                _entity.RiskLimiti = entity.RiskLimiti;
+                _entity.Semt = entity.Semt;
+                _entity.VergiDairesi = entity.VergiDairesi;
+                _entity.VergiNo = entity.VergiNo;
+                _entity.Web = entity.Web;
+                _entity.YetkiliKisi = entity.YetkiliKisi;
+                _entity.Telefon = entity.Telefon;
+            }
+            else
+            {
+                _entity = entity;
+            }
             toggleDurum.DataBindings.Add("EditValue", _entity, "Durumu", false, DataSourceUpdateMode.OnPropertyChanged);
             txtCariKodu.DataBindings.Add("Text", _entity, "CariKodu", false, DataSourceUpdateMode.OnPropertyChanged);
             txtCariAdi.DataBindings.Add("Text", _entity, "CariAdi", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -68,10 +105,10 @@ namespace SonicHesap.BackOffice.Cari
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            if (cariDAL.AddOrUpdate(context,_entity))
+            if (cariDAL.AddOrUpdate(context, _entity))
             {
                 cariDAL.Save(context);
-                saved=true;
+                saved = true;
                 this.Close();
             }
         }
@@ -183,6 +220,11 @@ namespace SonicHesap.BackOffice.Cari
                     btnOzelKod4.Text = null;
                     break;
             }
+        }
+
+        private void btnKod_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }

@@ -3,6 +3,7 @@ using DevExpress.XtraReports.UI;
 using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Data_Access;
 using SonicHesap.Entities.Tables;
+using SonicHesap.Entities.Tools;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -23,6 +24,8 @@ namespace SonicHesap.Report.Fatura_Ve_Fiş
             Fis fisBilgi = fisDal.GetByFilter(context, c => c.FisKodu == fiskodu);
             ObjectDataSource stokHareketDataSource = new ObjectDataSource { DataSource = stokHareketDal.GetAll(context, c => c.FisKodu == fiskodu) };
             var kullaniciAdi = context.Personeller .Where(c => c.Id ==fisBilgi.Personel.Id).Select(c => c.PersonelAdi).FirstOrDefault();
+            var firmaAdi=SettingsTool.AyarOku(SettingsTool.Ayarlar.FirmaAyarlari_FirmaAdi);
+            lblFirmaAdi.Text = "Firma Adı  :" + firmaAdi;
             lblfisKodu.Text =   "Fiş Kodu  :" + fisBilgi.FisKodu;
             lblKullanici.Text = "Personel  :" + fisBilgi.Personel.PersonelAdi;
             lblCariAdi.Text =   "Müşteri   :" + fisBilgi.Cari.CariAdi;

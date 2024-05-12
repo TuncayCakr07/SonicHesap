@@ -155,6 +155,7 @@
             this.btnKapat.Size = new System.Drawing.Size(106, 59);
             this.btnKapat.TabIndex = 5;
             this.btnKapat.Text = "Kapat";
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Click);
             // 
             // FrmKullaniciGiris
             // 

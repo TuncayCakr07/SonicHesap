@@ -289,6 +289,12 @@
     <Compile Include="Kasa\FrmKasaSecim.Designer.cs">
       <DependentUpon>FrmKasaSecim.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kod\FrmKodlar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kod\FrmKodlar.Designer.cs">
+      <DependentUpon>FrmKodlar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Odeme Turu\FrmOdemeTuru.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -488,6 +494,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Kasa\FrmKasaSecim.resx">
       <DependentUpon>FrmKasaSecim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kod\FrmKodlar.resx">
+      <DependentUpon>FrmKodlar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Odeme Turu\FrmOdemeTuru.resx">
       <DependentUpon>FrmOdemeTuru.cs</DependentUpon>

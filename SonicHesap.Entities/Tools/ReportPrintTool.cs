@@ -30,6 +30,9 @@ namespace SonicHesap.Entities.Tools
                     yaziciAdi = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FaturaYazici);
                     break;
                 case Belge.BilgiFisi:
+                    rapor.RequestParameters = false;
+                    rapor.Parameters["FirmaAdi"].Value = SettingsTool.AyarOku(SettingsTool.Ayarlar.FirmaAyarlari_FirmaAdi);
+                    raporYazdir.AutoShowParametersPanel = false;
                     ayar = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_BilgiFisiYazdirmaAyari));
                     yaziciAdi = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_BilgiFisiYazici);
                     break;

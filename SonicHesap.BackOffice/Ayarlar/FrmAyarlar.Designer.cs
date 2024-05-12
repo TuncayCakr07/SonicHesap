@@ -67,6 +67,8 @@
             this.colYetkiliKodu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYetkiliAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.txtFirmaAdi = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.grpMenu)).BeginInit();
             this.grpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
@@ -84,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookupDepo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFirmaAdi.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBaslik
@@ -170,7 +173,7 @@
             this.navigationPage1.Controls.Add(this.labelControl1);
             this.navigationPage1.Controls.Add(this.toggleGuncelle);
             this.navigationPage1.Name = "navigationPage1";
-            this.navigationPage1.Size = new System.Drawing.Size(928, 385);
+            this.navigationPage1.Size = new System.Drawing.Size(929, 385);
             // 
             // labelControl1
             // 
@@ -196,10 +199,12 @@
             // navigationPage2
             // 
             this.navigationPage2.Caption = "Satış Ayarları";
+            this.navigationPage2.Controls.Add(this.txtFirmaAdi);
             this.navigationPage2.Controls.Add(this.calcEdit1);
             this.navigationPage2.Controls.Add(this.cmbBilgiFisiYazici);
             this.navigationPage2.Controls.Add(this.cmbFaturaYazici);
             this.navigationPage2.Controls.Add(this.cmbBilgiFisiAyar);
+            this.navigationPage2.Controls.Add(this.labelControl9);
             this.navigationPage2.Controls.Add(this.labelControl8);
             this.navigationPage2.Controls.Add(this.labelControl7);
             this.navigationPage2.Controls.Add(this.cmbFaturaAyar);
@@ -211,7 +216,7 @@
             this.navigationPage2.Controls.Add(this.LookUpKasa);
             this.navigationPage2.Controls.Add(this.lookupDepo);
             this.navigationPage2.Name = "navigationPage2";
-            this.navigationPage2.Size = new System.Drawing.Size(928, 385);
+            this.navigationPage2.Size = new System.Drawing.Size(929, 385);
             // 
             // calcEdit1
             // 
@@ -477,6 +482,25 @@
             this.colAciklama.Visible = true;
             this.colAciklama.VisibleIndex = 4;
             // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Options.UseTextOptions = true;
+            this.labelControl9.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl9.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl9.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl9.Location = new System.Drawing.Point(3, 212);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(162, 24);
+            this.labelControl9.TabIndex = 1;
+            this.labelControl9.Text = "Firma Adı :";
+            // 
+            // txtFirmaAdi
+            // 
+            this.txtFirmaAdi.Location = new System.Drawing.Point(173, 213);
+            this.txtFirmaAdi.Name = "txtFirmaAdi";
+            this.txtFirmaAdi.Size = new System.Drawing.Size(364, 22);
+            this.txtFirmaAdi.TabIndex = 5;
+            // 
             // FrmAyarlar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -510,6 +534,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookupDepo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFirmaAdi.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -553,5 +578,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.CalcEdit calcEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.TextEdit txtFirmaAdi;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
     }
 }

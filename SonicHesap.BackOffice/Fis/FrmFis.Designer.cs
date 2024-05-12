@@ -78,11 +78,17 @@
             this.barSayimEksigiFisi = new DevExpress.XtraBars.BarButtonItem();
             this.barSayimFazlasiFisi = new DevExpress.XtraBars.BarButtonItem();
             this.barStokDevirFisi = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barToggleSwitchItem1 = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             this.splitContainerControl1.Panel1.SuspendLayout();
@@ -287,7 +293,7 @@
             // colCariKodu
             // 
             this.colCariKodu.Caption = "Cari Kodu";
-            this.colCariKodu.FieldName = "CariKodu";
+            this.colCariKodu.FieldName = "Cari.CariKodu";
             this.colCariKodu.MinWidth = 25;
             this.colCariKodu.Name = "colCariKodu";
             this.colCariKodu.Visible = true;
@@ -297,7 +303,7 @@
             // colCariAdi
             // 
             this.colCariAdi.Caption = "Cari Adı";
-            this.colCariAdi.FieldName = "Cari Adı";
+            this.colCariAdi.FieldName = "Cari.CariAdi";
             this.colCariAdi.MinWidth = 25;
             this.colCariAdi.Name = "colCariAdi";
             this.colCariAdi.Visible = true;
@@ -346,7 +352,7 @@
             // colPlasiyerKodu
             // 
             this.colPlasiyerKodu.Caption = "Plasiyer Kodu";
-            this.colPlasiyerKodu.FieldName = "PlasiyerKodu";
+            this.colPlasiyerKodu.FieldName = "Personel.PersonelKodu";
             this.colPlasiyerKodu.MinWidth = 25;
             this.colPlasiyerKodu.Name = "colPlasiyerKodu";
             this.colPlasiyerKodu.OptionsColumn.AllowEdit = false;
@@ -356,7 +362,7 @@
             // colPlasiyerAdi
             // 
             this.colPlasiyerAdi.Caption = "Plasiyer Adı";
-            this.colPlasiyerAdi.FieldName = "PlasiyerAdi";
+            this.colPlasiyerAdi.FieldName = "Personel.PersonelAdi";
             this.colPlasiyerAdi.MinWidth = 25;
             this.colPlasiyerAdi.Name = "colPlasiyerAdi";
             this.colPlasiyerAdi.OptionsColumn.AllowEdit = false;
@@ -510,6 +516,7 @@
             // grpMenu
             // 
             this.grpMenu.Controls.Add(this.dropDownButton1);
+            this.grpMenu.Controls.Add(this.simpleButton1);
             this.grpMenu.Controls.Add(this.btnAra);
             this.grpMenu.Controls.Add(this.btnKapat);
             this.grpMenu.Controls.Add(this.btnGuncelle);
@@ -542,7 +549,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem5)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
@@ -674,6 +682,32 @@
             this.barStokDevirFisi.Name = "barStokDevirFisi";
             this.barStokDevirFisi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
             // 
+            // barSubItem5
+            // 
+            this.barSubItem5.Caption = "Sipariş Fişleri";
+            this.barSubItem5.Id = 17;
+            this.barSubItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem5.ImageOptions.Image")));
+            this.barSubItem5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
+            this.barSubItem5.Name = "barSubItem5";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Sipariş Fişi(Alınan)";
+            this.barButtonItem2.Id = 18;
+            this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Sipariş Fişi(Verilen)";
+            this.barButtonItem3.Id = 19;
+            this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
+            // 
             // barManager1
             // 
             this.barManager1.DockControls.Add(this.barDockControlTop);
@@ -696,8 +730,13 @@
             this.barSubItem1,
             this.barSubItem2,
             this.barSubItem3,
-            this.barSubItem4});
-            this.barManager1.MaxItemId = 15;
+            this.barSubItem4,
+            this.barToggleSwitchItem1,
+            this.barButtonItem1,
+            this.barSubItem5,
+            this.barButtonItem2,
+            this.barButtonItem3});
+            this.barManager1.MaxItemId = 20;
             // 
             // barDockControlTop
             // 
@@ -730,6 +769,31 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1365, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 743);
+            // 
+            // barToggleSwitchItem1
+            // 
+            this.barToggleSwitchItem1.Caption = "barToggleSwitchItem1";
+            this.barToggleSwitchItem1.Id = 15;
+            this.barToggleSwitchItem1.Name = "barToggleSwitchItem1";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 16;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.ImageOptions.ImageIndex = 20;
+            this.simpleButton1.ImageOptions.ImageList = this.ımageMenu;
+            this.simpleButton1.Location = new System.Drawing.Point(566, 28);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(127, 53);
+            this.simpleButton1.TabIndex = 2;
+            this.simpleButton1.Text = "Siparişi\r\nFaturalandır\r\n";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // FrmFis
             // 
@@ -819,5 +883,11 @@
         private DevExpress.XtraBars.BarSubItem barSubItem2;
         private DevExpress.XtraBars.BarSubItem barSubItem3;
         private DevExpress.XtraBars.BarSubItem barSubItem4;
+        private DevExpress.XtraBars.BarSubItem barSubItem5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarToggleSwitchItem barToggleSwitchItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

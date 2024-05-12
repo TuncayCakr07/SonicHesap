@@ -15,7 +15,7 @@ namespace SonicHesap.Entities.Data_Access
 {
     public class CariDAL : EntityRepositoryBase<SonicHesapContext, Cari, CariValidator>
     {
-        public object GetCariler(SonicHesapContext context)
+        public object CariListele(SonicHesapContext context)
         {
             var result = context.Cariler.GroupJoin(context.fisler, c => c.Id, c => c.CariId, (cariler, fisler) => new
             {
@@ -48,64 +48,28 @@ namespace SonicHesap.Entities.Data_Access
                 cariler.AlisOzelFiyati,
                 cariler.SatisOzelFiyati,
                 cariler.Aciklama,
-                AlisToplam = fisler.Where(c => c.FisTuru == "Alış Faturası").Sum(c => c.ToplamTutar) ?? 0,
-                SatisToplam = fisler.Where(c => c.FisTuru == "Perakende Satış Faturası").Sum(c => c.ToplamTutar) ?? 0,
-            }).GroupJoin(context.KasaHareketleri, c => c.Id, c => c.CariId, (cariler, kasahareket) => new
-            {
-                cariler.Id,
-                cariler.Durumu,
-                cariler.CariKodu,
-                cariler.CariAdi,
-                cariler.CariTuru,
-                cariler.YetkiliKisi,
-                cariler.FaturaUnvani,
-                cariler.CepTelefonu,
-                cariler.Telefon,
-                cariler.Fax,
-                cariler.EMail,
-                cariler.Web,
-                cariler.Il,
-                cariler.Ilce,
-                cariler.Semt,
-                cariler.Adres,
-                cariler.CariGrubu,
-                cariler.CariAltGrubu,
-                cariler.OzelKod1,
-                cariler.OzelKod2,
-                cariler.OzelKod3,
-                cariler.OzelKod4,
-                cariler.VergiDairesi,
-                cariler.VergiNo,
-                cariler.IskontoOranı,
-                cariler.RiskLimiti,
-                cariler.AlisOzelFiyati,
-                cariler.SatisOzelFiyati,
-                cariler.Aciklama,
-                Alacak = cariler.AlisToplam + (kasahareket.Where(c => c.Hareket == "Kasa Giriş").Sum(c => c.Tutar) ?? 0),
-                Borc = cariler.SatisToplam + (kasahareket.Where(c => c.Hareket == "Kasa Çıkış").Sum(c => c.Tutar) ?? 0),
-                Bakiye = (cariler.AlisToplam + (kasahareket.Where(c => c.Hareket == "Kasa Giriş").Sum(c => c.Tutar) ?? 0)) - (cariler.SatisToplam + (kasahareket.Where(c => c.Hareket == "Kasa Çıkış").Sum(c => c.Tutar) ?? 0))
+                Alacak = fisler.Sum(c => c.Alacak) ?? 0,
+                Borç = fisler.Sum(c => c.Borc) ?? 0,
+                Bakiye = fisler.Select(c => (decimal?)(c.Alacak ?? 0 - c.Borc ?? 0)).Sum() ?? 0
             }).ToList();
             return result;
         }
 
         public object CariFisAyrinti(SonicHesapContext context,int cariId)
         {
-            var result=context.fisler.Where(c=>c.CariId == cariId).GroupJoin(context.KasaHareketleri.Where(c => c.CariId == cariId), c => c.CariId, c => c.CariId, (fisler, kasahareket) => new
-            {
-                fisler.Id,
-                fisler.FisKodu,
-                fisler.FisTuru,
-                fisler.Personel.PersonelKodu,
-                fisler.Personel.PersonelAdi,
-                fisler.BelgeNo,
-                fisler.Tarih,
-                fisler.IskontoOrani,
-                fisler.Aciklama,
-                fisler.ToplamTutar,
-                Odenen=context.KasaHareketleri.Where(c=>c.FisKodu==fisler.FisKodu).Sum(c=>c.Tutar) ?? 0,
-                KalanOdeme=fisler.ToplamTutar - context.KasaHareketleri.Where(c => c.FisKodu == fisler.FisKodu).Sum(c => c.Tutar) ?? 0
-            }).ToList();
-            return result;
+            return (from fis in context.fisler.Where(c => c.CariId == cariId)
+                    select new
+                    {
+                        fis.Id,
+                        fis.FisKodu,
+                        fis.FisTuru,
+                        fis.BelgeNo,
+                        fis.Tarih,
+                        fis.Aciklama,
+                        fis.Alacak,
+                        fis.Borc,
+                        Bakiye = context.fisler.OrderBy(c => c.Tarih).ThenBy(c=>c.Id).Where(c => c.CariId == cariId && c.Tarih <= fis.Tarih && c.Id<=fis.Id).Select(c => (decimal?)(c.Alacak ?? 0 - c.Borc ?? 0)).Sum() ?? 0
+                    }).OrderBy(c => c.Tarih).ToList();
         }
         public object CariFisGenelToplam(SonicHesapContext context, int cariId)
         {
@@ -113,18 +77,14 @@ namespace SonicHesap.Entities.Data_Access
             {
               Bilgi=grp.Key.FisTuru,
               KayitSayisi=grp.Count(),
-              Tutar=grp.Sum(c=>c.ToplamTutar),
+              Tutar=grp.Sum(c=>c.Alacak??c.Borc),
             }).ToList();
             return result;
         }
         public object CariGenelToplam(SonicHesapContext context, int cariId)
         {
-            decimal alacak = (context.fisler.Where(c => c.CariId == cariId && c.FisTuru == "Alış Faturası").Sum(c => c.ToplamTutar) ?? 0 +
-                (context.KasaHareketleri.Where(c => c.CariId == cariId && c.Hareket == "Kasa Giriş").Sum(c => c.Tutar) ?? 0));
-
-            decimal borc = (context.fisler.Where(c => c.CariId == cariId && c.FisTuru == "Perakende Satış Faturası").Sum(c => c.ToplamTutar) ?? 0 +
-            (context.KasaHareketleri.Where(c => c.CariId == cariId && c.Hareket == "Kasa Çıkış").Sum(c => c.Tutar) ?? 0));
-
+            decimal alacak = context.fisler.Where(c => c.CariId == cariId).Sum(c => c.Alacak) ?? 0;
+            decimal borc = context.fisler.Where(c => c.CariId == cariId).Sum(c => c.Borc) ?? 0;
             List<GenelToplam> genelToplamlar = new List<GenelToplam>()
             {
                 new GenelToplam
@@ -150,16 +110,12 @@ namespace SonicHesap.Entities.Data_Access
         }
         public CariBakiye CariBakiyesi(SonicHesapContext context, int cariId)
         {
-            decimal alacak = (context.fisler.Where(c => c.CariId == cariId && c.FisTuru == "Alış Faturası").Sum(c => c.ToplamTutar) ?? 0 +
-    (context.KasaHareketleri.Where(c => c.CariId == cariId && c.Hareket == "Kasa Giriş").Sum(c => c.Tutar) ?? 0));
-
-            decimal borc = (context.fisler.Where(c => c.CariId == cariId && c.FisTuru == "Perakende Satış Faturası").Sum(c => c.ToplamTutar) ?? 0 +
-            (context.KasaHareketleri.Where(c => c.CariId == cariId && c.Hareket == "Kasa Çıkış").Sum(c => c.Tutar) ?? 0));
-
+            decimal alacak = context.fisler.Where(c => c.CariId == cariId).Sum(c => c.Alacak) ?? 0;
+            decimal borc = context.fisler.Where(c => c.CariId == cariId).Sum(c => c.Borc) ?? 0;
             CariBakiye entity = new CariBakiye
             {
                 CariId = cariId,
-                RiskLimiti=Convert.ToDecimal(context.Cariler.Where(c=> c.Id == cariId).SingleOrDefault().RiskLimiti),
+                RiskLimiti=Convert.ToDecimal(context.Cariler.SingleOrDefault(c=>c.Id==cariId).RiskLimiti),
                 Alacak = alacak,
                 Borc = borc,
                 Bakiye=alacak-borc,

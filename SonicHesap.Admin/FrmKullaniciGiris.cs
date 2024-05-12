@@ -40,7 +40,7 @@ namespace SonicHesap.Admin
             {
                 girisBasarili = true;
                 RoleTool.KullaniciEntity = context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == txtKullanici.Text);
-                MessageBox.Show("Giriş Başarılı", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Giriş Başarılı.. Ana Menü'ye Yönlendiriliyorsunuz!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             else
@@ -48,7 +48,7 @@ namespace SonicHesap.Admin
                 MessageBox.Show("Girmiş Olduğunuz Kullanıcı Bilgileri Hatalıdır!\nLütfen Bilgilerinizi Kontrol Ediniz!", "Kullanıcı Bilgisi Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtKullanici.Text = null;
                 txtParola.Text = null;
-                this.Close();
+                return;
             }
         }
 
@@ -79,6 +79,12 @@ namespace SonicHesap.Admin
             {
                 GirisYap();
             }
+        }
+
+        private void btnKapat_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+            this.Close();
         }
     }
 }

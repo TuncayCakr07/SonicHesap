@@ -61,10 +61,10 @@
             this.colPlasiyerAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIskontoOrani = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIskontoTutar = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colToplamTutar = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBakiye = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colOdenen = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKalanTutar = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAlacak = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBorc = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -352,10 +352,10 @@
             this.colPlasiyerAdi,
             this.colIskontoOrani,
             this.colIskontoTutar,
-            this.colToplamTutar,
+            this.colBakiye,
             this.colAciklama,
-            this.colOdenen,
-            this.colKalanTutar});
+            this.colAlacak,
+            this.colBorc});
             this.gridCariHareket.CustomizationFormBounds = new System.Drawing.Rectangle(1062, 322, 326, 271);
             this.gridCariHareket.GridControl = this.gridContCariHareket;
             this.gridCariHareket.Name = "gridCariHareket";
@@ -366,6 +366,7 @@
             this.colId.MinWidth = 25;
             this.colId.Name = "colId";
             this.colId.OptionsColumn.AllowEdit = false;
+            this.colId.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colId.OptionsColumn.ShowInCustomizationForm = false;
             this.colId.Width = 94;
             // 
@@ -376,6 +377,7 @@
             this.colFisKodu.MinWidth = 25;
             this.colFisKodu.Name = "colFisKodu";
             this.colFisKodu.OptionsColumn.AllowEdit = false;
+            this.colFisKodu.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colFisKodu.OptionsColumn.ShowInCustomizationForm = false;
             this.colFisKodu.Visible = true;
             this.colFisKodu.VisibleIndex = 0;
@@ -388,6 +390,7 @@
             this.colFisTuru.MinWidth = 25;
             this.colFisTuru.Name = "colFisTuru";
             this.colFisTuru.OptionsColumn.AllowEdit = false;
+            this.colFisTuru.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colFisTuru.OptionsColumn.ShowInCustomizationForm = false;
             this.colFisTuru.Visible = true;
             this.colFisTuru.VisibleIndex = 1;
@@ -400,6 +403,7 @@
             this.colBelgeNo.MinWidth = 25;
             this.colBelgeNo.Name = "colBelgeNo";
             this.colBelgeNo.OptionsColumn.AllowEdit = false;
+            this.colBelgeNo.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colBelgeNo.OptionsColumn.ShowInCustomizationForm = false;
             this.colBelgeNo.Visible = true;
             this.colBelgeNo.VisibleIndex = 2;
@@ -414,6 +418,7 @@
             this.colTarih.MinWidth = 25;
             this.colTarih.Name = "colTarih";
             this.colTarih.OptionsColumn.AllowEdit = false;
+            this.colTarih.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colTarih.OptionsColumn.ShowInCustomizationForm = false;
             this.colTarih.Visible = true;
             this.colTarih.VisibleIndex = 3;
@@ -428,6 +433,7 @@
             this.colSaat.MinWidth = 25;
             this.colSaat.Name = "colSaat";
             this.colSaat.OptionsColumn.AllowEdit = false;
+            this.colSaat.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colSaat.Visible = true;
             this.colSaat.VisibleIndex = 4;
             this.colSaat.Width = 64;
@@ -439,6 +445,7 @@
             this.colPlasiyerKodu.MinWidth = 25;
             this.colPlasiyerKodu.Name = "colPlasiyerKodu";
             this.colPlasiyerKodu.OptionsColumn.AllowEdit = false;
+            this.colPlasiyerKodu.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colPlasiyerKodu.OptionsColumn.ShowInCustomizationForm = false;
             this.colPlasiyerKodu.Width = 94;
             // 
@@ -449,6 +456,7 @@
             this.colPlasiyerAdi.MinWidth = 25;
             this.colPlasiyerAdi.Name = "colPlasiyerAdi";
             this.colPlasiyerAdi.OptionsColumn.AllowEdit = false;
+            this.colPlasiyerAdi.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colPlasiyerAdi.OptionsColumn.ShowInCustomizationForm = false;
             this.colPlasiyerAdi.Width = 94;
             // 
@@ -461,6 +469,7 @@
             this.colIskontoOrani.MinWidth = 25;
             this.colIskontoOrani.Name = "colIskontoOrani";
             this.colIskontoOrani.OptionsColumn.AllowEdit = false;
+            this.colIskontoOrani.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colIskontoOrani.OptionsColumn.ShowInCustomizationForm = false;
             this.colIskontoOrani.Visible = true;
             this.colIskontoOrani.VisibleIndex = 5;
@@ -475,24 +484,26 @@
             this.colIskontoTutar.MinWidth = 25;
             this.colIskontoTutar.Name = "colIskontoTutar";
             this.colIskontoTutar.OptionsColumn.AllowEdit = false;
+            this.colIskontoTutar.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colIskontoTutar.OptionsColumn.ShowInCustomizationForm = false;
             this.colIskontoTutar.Visible = true;
             this.colIskontoTutar.VisibleIndex = 6;
             this.colIskontoTutar.Width = 66;
             // 
-            // colToplamTutar
+            // colBakiye
             // 
-            this.colToplamTutar.Caption = "Toplam Tutar";
-            this.colToplamTutar.DisplayFormat.FormatString = "C2";
-            this.colToplamTutar.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colToplamTutar.FieldName = "ToplamTutar";
-            this.colToplamTutar.MinWidth = 25;
-            this.colToplamTutar.Name = "colToplamTutar";
-            this.colToplamTutar.OptionsColumn.AllowEdit = false;
-            this.colToplamTutar.OptionsColumn.ShowInCustomizationForm = false;
-            this.colToplamTutar.Visible = true;
-            this.colToplamTutar.VisibleIndex = 8;
-            this.colToplamTutar.Width = 103;
+            this.colBakiye.Caption = "Bakiye";
+            this.colBakiye.DisplayFormat.FormatString = "C2";
+            this.colBakiye.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colBakiye.FieldName = "Bakiye";
+            this.colBakiye.MinWidth = 25;
+            this.colBakiye.Name = "colBakiye";
+            this.colBakiye.OptionsColumn.AllowEdit = false;
+            this.colBakiye.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
+            this.colBakiye.OptionsColumn.ShowInCustomizationForm = false;
+            this.colBakiye.Visible = true;
+            this.colBakiye.VisibleIndex = 10;
+            this.colBakiye.Width = 103;
             // 
             // colAciklama
             // 
@@ -501,36 +512,33 @@
             this.colAciklama.MinWidth = 25;
             this.colAciklama.Name = "colAciklama";
             this.colAciklama.OptionsColumn.AllowEdit = false;
+            this.colAciklama.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colAciklama.OptionsColumn.ShowInCustomizationForm = false;
             this.colAciklama.Visible = true;
             this.colAciklama.VisibleIndex = 7;
             this.colAciklama.Width = 296;
             // 
-            // colOdenen
+            // colAlacak
             // 
-            this.colOdenen.Caption = "Ödenen Tutar";
-            this.colOdenen.DisplayFormat.FormatString = "C2";
-            this.colOdenen.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colOdenen.FieldName = "Odenen";
-            this.colOdenen.MinWidth = 25;
-            this.colOdenen.Name = "colOdenen";
-            this.colOdenen.OptionsColumn.AllowEdit = false;
-            this.colOdenen.Visible = true;
-            this.colOdenen.VisibleIndex = 9;
-            this.colOdenen.Width = 116;
+            this.colAlacak.Caption = "Alacak";
+            this.colAlacak.FieldName = "Alacak";
+            this.colAlacak.MinWidth = 25;
+            this.colAlacak.Name = "colAlacak";
+            this.colAlacak.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
+            this.colAlacak.Visible = true;
+            this.colAlacak.VisibleIndex = 8;
+            this.colAlacak.Width = 94;
             // 
-            // colKalanTutar
+            // colBorc
             // 
-            this.colKalanTutar.Caption = "Kalan Tutar";
-            this.colKalanTutar.DisplayFormat.FormatString = "C2";
-            this.colKalanTutar.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colKalanTutar.FieldName = "KalanOdeme";
-            this.colKalanTutar.MinWidth = 25;
-            this.colKalanTutar.Name = "colKalanTutar";
-            this.colKalanTutar.OptionsColumn.AllowEdit = false;
-            this.colKalanTutar.Visible = true;
-            this.colKalanTutar.VisibleIndex = 10;
-            this.colKalanTutar.Width = 108;
+            this.colBorc.Caption = "Borç";
+            this.colBorc.FieldName = "Borc";
+            this.colBorc.MinWidth = 25;
+            this.colBorc.Name = "colBorc";
+            this.colBorc.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
+            this.colBorc.Visible = true;
+            this.colBorc.VisibleIndex = 9;
+            this.colBorc.Width = 94;
             // 
             // FrmCariHareket
             // 
@@ -604,9 +612,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn colPlasiyerAdi;
         private DevExpress.XtraGrid.Columns.GridColumn colIskontoOrani;
         private DevExpress.XtraGrid.Columns.GridColumn colIskontoTutar;
-        private DevExpress.XtraGrid.Columns.GridColumn colToplamTutar;
+        private DevExpress.XtraGrid.Columns.GridColumn colBakiye;
         private DevExpress.XtraGrid.Columns.GridColumn colAciklama;
-        private DevExpress.XtraGrid.Columns.GridColumn colOdenen;
-        private DevExpress.XtraGrid.Columns.GridColumn colKalanTutar;
+        private DevExpress.XtraGrid.Columns.GridColumn colAlacak;
+        private DevExpress.XtraGrid.Columns.GridColumn colBorc;
     }
 }

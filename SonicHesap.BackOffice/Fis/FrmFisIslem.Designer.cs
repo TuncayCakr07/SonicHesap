@@ -207,6 +207,8 @@
             this.colAciklama1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKHSil = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repoOHSil = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.colKasaId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOdemeTuruId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.flowOdemeTurleri = new System.Windows.Forms.FlowLayoutPanel();
             this.navPersonelIslem = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.gridContPersonelHareket = new DevExpress.XtraGrid.GridControl();
@@ -238,8 +240,6 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.radialFiyat = new DevExpress.XtraBars.Ribbon.RadialMenu(this.components);
-            this.colKasaId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colOdemeTuruId = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupToplamlar)).BeginInit();
             this.groupToplamlar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelToplam)).BeginInit();
@@ -1138,7 +1138,7 @@
             this.navFisBilgi.Name = "navFisBilgi";
             this.navFisBilgi.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.navFisBilgi.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
-            this.navFisBilgi.Size = new System.Drawing.Size(1249, 194);
+            this.navFisBilgi.Size = new System.Drawing.Size(1250, 194);
             // 
             // panelCariDevir
             // 
@@ -1443,6 +1443,8 @@
             this.ımageList3.Images.SetKeyName(5, "Sayım Fazlası.fw.png");
             this.ımageList3.Images.SetKeyName(6, "Sayım Eksiği.fw.png");
             this.ımageList3.Images.SetKeyName(7, "Stok Devir.fw.png");
+            this.ımageList3.Images.SetKeyName(8, "iade.fw.png");
+            this.ımageList3.Images.SetKeyName(9, "shopping_basket.fw.png");
             // 
             // navigationPane2
             // 
@@ -1473,7 +1475,7 @@
             this.navSatisEkrani.Name = "navSatisEkrani";
             this.navSatisEkrani.Properties.ShowCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.navSatisEkrani.Properties.ShowExpandButton = DevExpress.Utils.DefaultBoolean.False;
-            this.navSatisEkrani.Size = new System.Drawing.Size(1249, 213);
+            this.navSatisEkrani.Size = new System.Drawing.Size(1250, 213);
             // 
             // gridContStokHareket
             // 
@@ -1488,7 +1490,7 @@
             this.repoBirimFiyat,
             this.repoDepoSecim,
             this.repoSeriNo});
-            this.gridContStokHareket.Size = new System.Drawing.Size(1249, 144);
+            this.gridContStokHareket.Size = new System.Drawing.Size(1250, 144);
             this.gridContStokHareket.TabIndex = 1;
             this.gridContStokHareket.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridStokHareket});
@@ -1811,7 +1813,7 @@
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1249, 69);
+            this.panelControl1.Size = new System.Drawing.Size(1250, 69);
             this.panelControl1.TabIndex = 2;
             // 
             // txtMiktar
@@ -2022,6 +2024,26 @@
             this.repoOHSil.Name = "repoOHSil";
             this.repoOHSil.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repoOHSil.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repoOHSil_ButtonClick);
+            // 
+            // colKasaId
+            // 
+            this.colKasaId.Caption = "KasaId";
+            this.colKasaId.FieldName = "KasaId";
+            this.colKasaId.MinWidth = 25;
+            this.colKasaId.Name = "colKasaId";
+            this.colKasaId.OptionsColumn.AllowEdit = false;
+            this.colKasaId.OptionsColumn.ShowInCustomizationForm = false;
+            this.colKasaId.Width = 94;
+            // 
+            // colOdemeTuruId
+            // 
+            this.colOdemeTuruId.Caption = "OdemeTuruId";
+            this.colOdemeTuruId.FieldName = "OdemeTuruId";
+            this.colOdemeTuruId.MinWidth = 25;
+            this.colOdemeTuruId.Name = "colOdemeTuruId";
+            this.colOdemeTuruId.OptionsColumn.AllowEdit = false;
+            this.colOdemeTuruId.OptionsColumn.ShowInCustomizationForm = false;
+            this.colOdemeTuruId.Width = 94;
             // 
             // flowOdemeTurleri
             // 
@@ -2382,26 +2404,6 @@
             this.radialFiyat.Manager = this.barManager1;
             this.radialFiyat.Name = "radialFiyat";
             this.radialFiyat.PaintStyle = DevExpress.XtraBars.Ribbon.PaintStyle.Classic;
-            // 
-            // colKasaId
-            // 
-            this.colKasaId.Caption = "KasaId";
-            this.colKasaId.FieldName = "KasaId";
-            this.colKasaId.MinWidth = 25;
-            this.colKasaId.Name = "colKasaId";
-            this.colKasaId.OptionsColumn.AllowEdit = false;
-            this.colKasaId.OptionsColumn.ShowInCustomizationForm = false;
-            this.colKasaId.Width = 94;
-            // 
-            // colOdemeTuruId
-            // 
-            this.colOdemeTuruId.Caption = "OdemeTuruId";
-            this.colOdemeTuruId.FieldName = "OdemeTuruId";
-            this.colOdemeTuruId.MinWidth = 25;
-            this.colOdemeTuruId.Name = "colOdemeTuruId";
-            this.colOdemeTuruId.OptionsColumn.AllowEdit = false;
-            this.colOdemeTuruId.OptionsColumn.ShowInCustomizationForm = false;
-            this.colOdemeTuruId.Width = 94;
             // 
             // FrmFisIslem
             // 

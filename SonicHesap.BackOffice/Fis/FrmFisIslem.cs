@@ -38,10 +38,12 @@ namespace SonicHesap.BackOffice.Fis
         KasaHareketDAL kasaHareketDal = new KasaHareketDAL();
         StokHareketDAL stokHareketDal = new StokHareketDAL();
         PersonelHareketDAL personelHareketDal = new PersonelHareketDAL();
+        CodeTool kodOlustur;
 
-        public FrmFisIslem(string fisKodu = null, string fisTuru = null)
+        public FrmFisIslem(string fisKodu = null, string fisTuru = null,bool siparisFaturalandir=false)
         {
             InitializeComponent();
+            kodOlustur = new CodeTool();
             contex.Stoklar.Load();
             contex.Depolar.Load();
             contex.Kasalar.Load();
@@ -49,7 +51,19 @@ namespace SonicHesap.BackOffice.Fis
             {
                 _fisEntity = contex.fisler.Where(c => c.FisKodu == fisKodu).SingleOrDefault();
                 contex.StokHareketleri.Where(c => c.FisKodu == fisKodu).Load();
-                contex.KasaHareketleri.Where(c => c.FisKodu == fisKodu).Load();
+
+                if (siparisFaturalandir)
+                {
+                    _fisEntity.FisTuru = "Perakende Satış Faturası";
+                }
+                if (String.IsNullOrEmpty(_fisEntity.FisBaglantiKodu))
+                {
+                    contex.KasaHareketleri.Where(c => c.FisKodu == fisKodu).Load();
+                }
+                else
+                {
+                    contex.KasaHareketleri.Where(c => c.FisKodu == _fisEntity.FisBaglantiKodu).Load();
+                }
                 contex.PersonelHareketleri.Where(c => c.FisKodu == fisKodu).Load();
 
                 toggleBakiye.IsOn = contex.KasaHareketleri.Count(c => c.FisKodu == fisKodu && c.Hareket == "Kasa Giriş") == 0;
@@ -255,6 +269,7 @@ namespace SonicHesap.BackOffice.Fis
                 stokVeri.Tarih = stokVeri.Tarih == null ? Convert.ToDateTime(cmbTarih.DateTime) : Convert.ToDateTime(stokVeri.Tarih);
                 stokVeri.FisKodu = txtFisKodu.Text;
                 stokVeri.Hareket = ayarlar.StokHareketi;
+                stokVeri.Siparis = txtFisTuru.Text.Contains("Sipariş Fişi") ? stokVeri.Siparis == true : stokVeri.Siparis = false;
             }
 
             foreach (var item in contex.PersonelHareketleri.Local.ToList())
@@ -262,24 +277,65 @@ namespace SonicHesap.BackOffice.Fis
                 item.FisKodu = txtFisKodu.Text;
             }
 
-            if (ayarlar.OdemeEkrani)
+            if (ayarlar.BakiyeTuru=="Borç")
             {
-                foreach (var kasaVeri in contex.KasaHareketleri.Local.ToList())
-                {
-                    kasaVeri.Tarih = kasaVeri.Tarih == null ? Convert.ToDateTime(cmbTarih.DateTime) : Convert.ToDateTime(kasaVeri.Tarih);
-                    kasaVeri.FisKodu = txtFisKodu.Text;
-                    kasaVeri.Hareket = ayarlar.KasaHareketi;
-                    if (txtFisTuru.Text!="Hakediş Fişi")
-                    {
-                        kasaVeri.CariId =_cariId;
-                    }
-                    kasaVeri.Tutar = txtToplam.Value;
-                }
+                _fisEntity.Borc = txtToplam.Value;
             }
+            else if(ayarlar.BakiyeTuru == "Alacak")
+            {
+                _fisEntity.Alacak = txtToplam.Value;
+            }
+
             _fisEntity.ToplamTutar = txtToplam.Value;
             _fisEntity.IskontoOrani = txtIskontoOrani.Value;
             _fisEntity.IskontoTutar = txtIskontoTutar.Value;
+            _fisEntity.Tarih = _fisEntity.Tarih != null ? _fisEntity.Tarih : DateTime.Now;
             fisDal.AddOrUpdate(contex, _fisEntity);
+
+            if (ayarlar.OdemeEkrani)
+            {
+
+                Entities.Tables.Fis fisOdeme = new Entities.Tables.Fis();
+                if (String.IsNullOrEmpty(_fisEntity.FisBaglantiKodu))
+                {
+                    fisOdeme = _fisEntity.Clone();
+                    fisOdeme.FisTuru = "Fiş Ödemesi";
+                    fisOdeme.Id = -1;
+                    fisOdeme.FisKodu = kodOlustur.YeniFisOdemeKodu();
+                    fisOdeme.FisBaglantiKodu = _fisEntity.FisKodu;
+                }
+                else
+                {
+                    fisOdeme = contex.fisler.SingleOrDefault(c => c.FisKodu == _fisEntity.FisBaglantiKodu);
+                }
+                _fisEntity.FisBaglantiKodu = fisOdeme.FisKodu;
+
+                if (ayarlar.BakiyeTuru == "Borç")
+                {
+                    fisOdeme.Alacak = txtOdenenTutar.Value;
+                    fisOdeme.Borc = null;
+                }
+                else if (ayarlar.BakiyeTuru == "Alacak")
+                {
+                    fisOdeme.Borc = txtOdenenTutar.Value;
+                    fisOdeme.Alacak = null;
+                }
+         
+
+                foreach (var kasaVeri in contex.KasaHareketleri.Local.ToList())
+                {
+                    kasaVeri.Tarih = kasaVeri.Tarih == null ? Convert.ToDateTime(cmbTarih.DateTime) : Convert.ToDateTime(kasaVeri.Tarih);
+                    kasaVeri.FisKodu = fisOdeme.FisKodu;
+                    kasaVeri.Hareket = ayarlar.KasaHareketi;
+                    if (txtFisTuru.Text != "Hakediş Fişi")
+                    {
+                        kasaVeri.CariId = _cariId;
+                    }
+                    kasaVeri.Tutar = txtToplam.Value;
+                }
+                fisOdeme.ToplamTutar = txtOdenenTutar.Value;
+                fisDal.AddOrUpdate(contex, fisOdeme);
+            }
             contex.SaveChanges();
             Toplamlar();
             MessageBox.Show("Belge Kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -323,6 +379,7 @@ namespace SonicHesap.BackOffice.Fis
                 case "Alış Faturası":
                     ayarlar.StokHareketi = "Stok Giriş";
                     ayarlar.KasaHareketi = "Kasa Çıkış";
+                    ayarlar.BakiyeTuru = "Alacak";
                     ayarlar.OdemeEkrani = true;
                     ayarlar.SatisEkrani = true;
                     lblBaslik.ImageOptions.ImageIndex = 0;
@@ -333,6 +390,7 @@ namespace SonicHesap.BackOffice.Fis
                     ayarlar.KasaHareketi = "Kasa Giriş";
                     ayarlar.OdemeEkrani = true;
                     ayarlar.SatisEkrani = true;
+                    ayarlar.BakiyeTuru = "Borç";
                     lblBaslik.ImageOptions.ImageIndex = 1;
                     navPersonelIslem.Dispose();
                     break;
@@ -341,6 +399,7 @@ namespace SonicHesap.BackOffice.Fis
                     ayarlar.KasaHareketi = "Kasa Giriş";
                     ayarlar.OdemeEkrani = true;
                     ayarlar.SatisEkrani = true;
+                    ayarlar.BakiyeTuru = "Borç";
                     lblBaslik.ImageOptions.ImageIndex = 2;
                     navPersonelIslem.Dispose();
                     break;
@@ -349,6 +408,7 @@ namespace SonicHesap.BackOffice.Fis
                     ayarlar.KasaHareketi = "Kasa Giriş";
                     ayarlar.OdemeEkrani = true;
                     ayarlar.SatisEkrani = true;
+                    ayarlar.BakiyeTuru = "Borç";
                     lblBaslik.ImageOptions.ImageIndex = 3;
                     navPersonelIslem.Dispose();
                     break;
@@ -357,6 +417,7 @@ namespace SonicHesap.BackOffice.Fis
                     ayarlar.KasaHareketi = "Kasa Çıkış";
                     ayarlar.OdemeEkrani = true;
                     ayarlar.SatisEkrani = true;
+                    ayarlar.BakiyeTuru = "Alacak";
                     lblBaslik.ImageOptions.ImageIndex = 4;
                     navPersonelIslem.Dispose();
                     break;
@@ -394,6 +455,7 @@ namespace SonicHesap.BackOffice.Fis
                     ayarlar.KasaHareketi = "Kasa Giriş";
                     ayarlar.OdemeEkrani = true;
                     ayarlar.SatisEkrani = false;
+                    ayarlar.BakiyeTuru = "Alacak";
                     navSatisEkrani.Dispose();
                     navPersonelIslem.Dispose();
                     panelOdeme.Visible = false;
@@ -407,6 +469,7 @@ namespace SonicHesap.BackOffice.Fis
                     ayarlar.KasaHareketi = "Kasa Çıkış";
                     ayarlar.OdemeEkrani = true;
                     ayarlar.SatisEkrani = false;
+                    ayarlar.BakiyeTuru = "Borç";
                     panelOdeme.Visible = false;
                     panelIskontoIndirim.Visible = false;
                     panelKdv.Visible = false;
@@ -442,6 +505,26 @@ namespace SonicHesap.BackOffice.Fis
                     navCariBilgi.Dispose();
                     navPlasiyerBilgi.Dispose();
                     navigationPane2.SelectedPage = navPersonelIslem; // ya da navCariBilgi, ihtiyaca göre// Kasa hareketinin açıklamasını belirt // Kasa hareketini kaydet
+                    break;
+
+                case "Sipariş Fişi(Alınan)":
+                    ayarlar.StokHareketi = "Stok Çıkış";
+                    ayarlar.OdemeEkrani = false;
+                    ayarlar.SatisEkrani = true;
+                    lblBaslik.ImageOptions.ImageIndex = 8;
+                    panelOdeme.Visible = false;
+                    navOdemeEkrani.Dispose();
+                    navPersonelIslem.Dispose();
+                    break;
+
+                case "Sipariş Fişi(Verilen)":
+                    ayarlar.StokHareketi = "Stok Giriş";
+                    ayarlar.OdemeEkrani = false;
+                    ayarlar.SatisEkrani = true;
+                    lblBaslik.ImageOptions.ImageIndex = 9;
+                    panelOdeme.Visible = false;
+                    navOdemeEkrani.Dispose();
+                    navPersonelIslem.Dispose();
                     break;
 
             }
@@ -544,7 +627,7 @@ namespace SonicHesap.BackOffice.Fis
             }
             else
             {
-                _fisEntity.Personel.PersonelKodu = buton.Name;
+                _fisEntity.Personel.PersonelKodu = buton.Tag.ToString();
                 _fisEntity.Personel.PersonelAdi = buton.Text;
             }
 

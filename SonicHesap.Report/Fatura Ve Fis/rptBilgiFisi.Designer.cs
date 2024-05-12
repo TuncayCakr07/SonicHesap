@@ -38,6 +38,8 @@
             this.colBirimFiyat = new DevExpress.XtraReports.UI.XRTableCell();
             this.colToplamTutar = new DevExpress.XtraReports.UI.XRTableCell();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.lblFirmaAdi = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblKullanici = new DevExpress.XtraReports.UI.XRLabel();
             this.lblfisKodu = new DevExpress.XtraReports.UI.XRLabel();
             this.lblTarih = new DevExpress.XtraReports.UI.XRLabel();
             this.lblAdres = new DevExpress.XtraReports.UI.XRLabel();
@@ -47,7 +49,7 @@
             this.lblKdvToplam = new DevExpress.XtraReports.UI.XRLabel();
             this.lblAraToplam = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.lblKullanici = new DevExpress.XtraReports.UI.XRLabel();
+            this.FirmaAdi = new DevExpress.XtraReports.Parameters.Parameter();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -60,7 +62,7 @@
             // BottomMargin
             // 
             this.BottomMargin.Dpi = 254F;
-            this.BottomMargin.HeightF = 29.63333F;
+            this.BottomMargin.HeightF = 0F;
             this.BottomMargin.Name = "BottomMargin";
             // 
             // Detail
@@ -69,7 +71,7 @@
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrTable1});
             this.Detail.Dpi = 254F;
-            this.Detail.HeightF = 80.43333F;
+            this.Detail.HeightF = 59.26666F;
             this.Detail.HierarchyPrintOptions.Indent = 50.8F;
             this.Detail.MultiColumn.Mode = DevExpress.XtraReports.UI.MultiColumnMode.UseColumnCount;
             this.Detail.Name = "Detail";
@@ -109,6 +111,8 @@
             // colStokAdi
             // 
             this.colStokAdi.Dpi = 254F;
+            this.colStokAdi.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Stok].[StokAdi]")});
             this.colStokAdi.Multiline = true;
             this.colStokAdi.Name = "colStokAdi";
             this.colStokAdi.Text = "colStokAdi";
@@ -148,21 +152,50 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.lblFirmaAdi,
             this.lblKullanici,
             this.lblfisKodu,
             this.lblTarih,
             this.lblAdres,
             this.lblCariAdi});
             this.ReportHeader.Dpi = 254F;
-            this.ReportHeader.HeightF = 323.85F;
+            this.ReportHeader.HeightF = 431.8F;
             this.ReportHeader.Name = "ReportHeader";
             this.ReportHeader.StylePriority.UseBorders = false;
+            // 
+            // lblFirmaAdi
+            // 
+            this.lblFirmaAdi.Dpi = 254F;
+            this.lblFirmaAdi.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.lblFirmaAdi.LocationFloat = new DevExpress.Utils.PointFloat(3.229777E-05F, 0F);
+            this.lblFirmaAdi.Multiline = true;
+            this.lblFirmaAdi.Name = "lblFirmaAdi";
+            this.lblFirmaAdi.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.lblFirmaAdi.SizeF = new System.Drawing.SizeF(704.9999F, 58.42001F);
+            this.lblFirmaAdi.StylePriority.UseFont = false;
+            this.lblFirmaAdi.StylePriority.UseTextAlignment = false;
+            this.lblFirmaAdi.Text = "Firma Adı";
+            this.lblFirmaAdi.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // lblKullanici
+            // 
+            this.lblKullanici.Dpi = 254F;
+            this.lblKullanici.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.lblKullanici.LocationFloat = new DevExpress.Utils.PointFloat(0F, 314.96F);
+            this.lblKullanici.Multiline = true;
+            this.lblKullanici.Name = "lblKullanici";
+            this.lblKullanici.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.lblKullanici.SizeF = new System.Drawing.SizeF(370.823F, 58.42001F);
+            this.lblKullanici.StylePriority.UseFont = false;
+            this.lblKullanici.StylePriority.UseTextAlignment = false;
+            this.lblKullanici.Text = "Kullanıcı bilgi";
+            this.lblKullanici.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // lblfisKodu
             // 
             this.lblfisKodu.Dpi = 254F;
             this.lblfisKodu.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblfisKodu.LocationFloat = new DevExpress.Utils.PointFloat(406.8003F, 116.84F);
+            this.lblfisKodu.LocationFloat = new DevExpress.Utils.PointFloat(406.8003F, 224.84F);
             this.lblfisKodu.Multiline = true;
             this.lblfisKodu.Name = "lblfisKodu";
             this.lblfisKodu.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
@@ -176,7 +209,7 @@
             // 
             this.lblTarih.Dpi = 254F;
             this.lblTarih.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblTarih.LocationFloat = new DevExpress.Utils.PointFloat(0F, 265.43F);
+            this.lblTarih.LocationFloat = new DevExpress.Utils.PointFloat(0F, 373.38F);
             this.lblTarih.Multiline = true;
             this.lblTarih.Name = "lblTarih";
             this.lblTarih.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
@@ -190,7 +223,7 @@
             // 
             this.lblAdres.Dpi = 254F;
             this.lblAdres.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblAdres.LocationFloat = new DevExpress.Utils.PointFloat(3.229777E-05F, 58.42001F);
+            this.lblAdres.LocationFloat = new DevExpress.Utils.PointFloat(3.229777E-05F, 166.42F);
             this.lblAdres.Multiline = true;
             this.lblAdres.Name = "lblAdres";
             this.lblAdres.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
@@ -204,7 +237,7 @@
             // 
             this.lblCariAdi.Dpi = 254F;
             this.lblCariAdi.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblCariAdi.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.lblCariAdi.LocationFloat = new DevExpress.Utils.PointFloat(0F, 108F);
             this.lblCariAdi.Multiline = true;
             this.lblCariAdi.Name = "lblCariAdi";
             this.lblCariAdi.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
@@ -273,19 +306,10 @@
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrPageInfo1.SizeF = new System.Drawing.SizeF(254F, 58.42F);
             // 
-            // lblKullanici
+            // FirmaAdi
             // 
-            this.lblKullanici.Dpi = 254F;
-            this.lblKullanici.Font = new DevExpress.Drawing.DXFont("Century Gothic", 10F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblKullanici.LocationFloat = new DevExpress.Utils.PointFloat(0F, 207.01F);
-            this.lblKullanici.Multiline = true;
-            this.lblKullanici.Name = "lblKullanici";
-            this.lblKullanici.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.lblKullanici.SizeF = new System.Drawing.SizeF(370.823F, 58.42001F);
-            this.lblKullanici.StylePriority.UseFont = false;
-            this.lblKullanici.StylePriority.UseTextAlignment = false;
-            this.lblKullanici.Text = "Kullanıcı bilgi";
-            this.lblKullanici.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            this.FirmaAdi.Description = "Firma Adı";
+            this.FirmaAdi.Name = "FirmaAdi";
             // 
             // rptBilgiFisi
             // 
@@ -297,10 +321,14 @@
             this.ReportFooter});
             this.Dpi = 254F;
             this.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F);
-            this.Margins = new DevExpress.Drawing.DXMargins(61F, 34F, 48.68333F, 29.63333F);
+            this.Margins = new DevExpress.Drawing.DXMargins(61F, 34F, 48.68333F, 0F);
             this.PageHeight = 2794;
             this.PageWidth = 800;
             this.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.Custom;
+            this.ParameterPanelLayoutItems.AddRange(new DevExpress.XtraReports.Parameters.ParameterPanelLayoutItem[] {
+            new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.FirmaAdi, DevExpress.XtraReports.Parameters.Orientation.Horizontal)});
+            this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
+            this.FirmaAdi});
             this.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter;
             this.RollPaper = true;
             this.SnapGridSize = 25F;
@@ -331,6 +359,8 @@
         private DevExpress.XtraReports.UI.XRLabel lblKdvToplam;
         private DevExpress.XtraReports.UI.XRLabel lblAraToplam;
         private DevExpress.XtraReports.UI.XRLabel lblfisKodu;
+        private DevExpress.XtraReports.Parameters.Parameter FirmaAdi;
         private DevExpress.XtraReports.UI.XRLabel lblKullanici;
+        private DevExpress.XtraReports.UI.XRLabel lblFirmaAdi;
     }
 }

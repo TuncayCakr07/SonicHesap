@@ -60,7 +60,7 @@ namespace SonicHesap.BackOffice.Cari
         }
         public void GetAll()
         {
-            gridControl1.DataSource = cariDal.GetCariler(context);
+            gridControl1.DataSource = cariDal.CariListele(context);
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
@@ -100,12 +100,13 @@ namespace SonicHesap.BackOffice.Cari
             secilen = Convert.ToInt32(gridView1.GetFocusedRowCellValue(colId));
             Entities.Tables.Cari cariEntity = new Entities.Tables.Cari();
             cariEntity = cariDal.GetByFilter(context, c => c.Id == secilen);
-            cariEntity.Id = -1;
-            cariEntity.CariKodu = null;
-            FrmCariIslem form = new FrmCariIslem(cariEntity);
+            FrmCariIslem form = new FrmCariIslem(cariEntity,true);
             form.ShowDialog();
-            GetAll();
-
+            if (form.saved)
+            {
+                context = new SonicHesapContext();
+                GetAll();
+            }
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)

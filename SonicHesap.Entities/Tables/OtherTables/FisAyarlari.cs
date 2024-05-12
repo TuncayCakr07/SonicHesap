@@ -12,5 +12,6 @@ namespace SonicHesap.Entities.Tables.OtherTables
         public string KasaHareketi { get; set; }
         public bool OdemeEkrani { get; set; }
         public bool SatisEkrani { get; set; }
+        public string BakiyeTuru { get; set; }
     }
 }

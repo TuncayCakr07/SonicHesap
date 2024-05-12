@@ -46,6 +46,7 @@ namespace SonicHesap.FrontOffice
         List<BekleyenSatis> _bekleyenSatis = new List<BekleyenSatis>();
 
         private Nullable<int> _cariId;
+        CodeTool fisKoduOlustur;
 
         public FrmFrontOffice()
         {
@@ -53,7 +54,7 @@ namespace SonicHesap.FrontOffice
 
             FrmKullaniciGiris girisform = new FrmKullaniciGiris();
             girisform.ShowDialog();
-
+            fisKoduOlustur=new CodeTool();
             context.Stoklar.Load();
             context.Depolar.Load();
 
@@ -337,7 +338,28 @@ namespace SonicHesap.FrontOffice
             _fisEntity.Tarih = DateTime.Now;
 
             fisDal.AddOrUpdate(context, _fisEntity);
+            Entities.Tables.Fis odemeFisi= new Fis().Clone();
+            odemeFisi.FisTuru = "Fiş Ödemesi";
+            odemeFisi.FisKodu = CodeTool.KodOlustur("OF","1");
+            _fisEntity.FisBaglantiKodu = odemeFisi.FisKodu;
+            odemeFisi.FisBaglantiKodu = _fisEntity.FisKodu;
+            odemeFisi.ToplamTutar = tekparca ? txtToplam.Value : txtOdenenTutar.Value;
 
+            if (txtIslem.Text=="SATIŞ")
+            {
+                _fisEntity.Borc = txtToplam.Value;
+                odemeFisi.Alacak = tekparca ? txtToplam.Value : txtOdenenTutar.Value;
+                odemeFisi.Borc = null;
+                _fisEntity.Alacak = null;
+            }
+            else
+            {
+                _fisEntity.Alacak = txtToplam.Value;
+                odemeFisi.Borc = tekparca ? txtToplam.Value : txtOdenenTutar.Value;
+                odemeFisi.Alacak = null;
+                _fisEntity.Borc = null;
+            }
+            fisDal.AddOrUpdate(context, odemeFisi);
             int kasaId = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa));
             if (!chOdemeBol.Checked && odemeTuruId != -1)
             {

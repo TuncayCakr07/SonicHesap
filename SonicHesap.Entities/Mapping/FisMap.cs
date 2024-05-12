@@ -16,6 +16,7 @@ namespace SonicHesap.Entities.Mapping
             this.HasKey(x => x.Id);
             this.Property(x => x.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             this.Property(x => x.FisKodu).HasMaxLength(15);
+            this.Property(x => x.FisBaglantiKodu).HasMaxLength(15);
             this.Property(x => x.FisTuru).HasMaxLength(30);
             this.Property(x => x.FaturaUnvani).HasMaxLength(50);
             this.Property(x => x.CepTelefonu).HasMaxLength(50);
@@ -28,12 +29,15 @@ namespace SonicHesap.Entities.Mapping
             this.Property(x => x.BelgeNo).HasMaxLength(30);
             this.Property(x => x.IskontoOrani).HasPrecision(5, 2);
             this.Property(x => x.IskontoTutar).HasPrecision(12, 2);
+            this.Property(x => x.Alacak).HasPrecision(12, 2);
+            this.Property(x => x.Borc).HasPrecision(12, 2);
             this.Property(x => x.ToplamTutar).HasPrecision(12, 2);
             this.Property(x=>x.Aciklama).HasMaxLength(300);
 
             this.ToTable("Fisler");
             this.Property(x => x.Id).HasColumnName("Id");
             this.Property(x => x.FisKodu).HasColumnName("FisKodu");
+            this.Property(x => x.FisBaglantiKodu).HasColumnName("FisBaglantiKodu");
             this.Property(x => x.FisTuru).HasColumnName("FisTuru");
             this.Property(x => x.CariId).HasColumnName("CariId");
             this.Property(x => x.FaturaUnvani).HasColumnName("FaturaUnvani");
@@ -49,6 +53,8 @@ namespace SonicHesap.Entities.Mapping
             this.Property(x => x.PlasiyerId).HasColumnName("PlasiyerId");
             this.Property(x => x.IskontoOrani).HasColumnName("IskontoOrani");
             this.Property(x => x.IskontoTutar).HasColumnName("IskontoTutar");
+            this.Property(x => x.Alacak).HasColumnName("Alacak");
+            this.Property(x => x.Borc).HasColumnName("Borc");
             this.Property(x => x.ToplamTutar).HasColumnName("ToplamTutar");
             this.Property(x => x.Aciklama).HasColumnName("Aciklama");
 

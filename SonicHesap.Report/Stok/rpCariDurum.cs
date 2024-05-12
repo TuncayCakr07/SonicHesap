@@ -18,7 +18,7 @@ namespace SonicHesap.Report.Stok
             SonicHesapContext context = new SonicHesapContext();
             CariDAL cariDal=new CariDAL();
 
-            ObjectDataSource dataSource=new ObjectDataSource { DataSource = cariDal.GetCariler(context) }; 
+            ObjectDataSource dataSource=new ObjectDataSource { DataSource = cariDal.CariListele(context) }; 
             this.DataSource = dataSource;
             colDurumu.DataBindings.Add("Text", this.DataSource, "Durumu");
             colCariTuru.DataBindings.Add("Text", this.DataSource, "CariTuru");

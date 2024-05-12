@@ -14,6 +14,7 @@ using SonicHesap.BackOffice.HizliSatis;
 using SonicHesap.BackOffice.Indirim;
 using SonicHesap.BackOffice.Kasa;
 using SonicHesap.BackOffice.Kasa_Hareketleri;
+using SonicHesap.BackOffice.Kod;
 using SonicHesap.BackOffice.Odeme_Turu;
 using SonicHesap.BackOffice.Personel;
 using SonicHesap.BackOffice.Raporlar;
@@ -359,6 +360,12 @@ namespace SonicHesap.BackOffice
             FrmRaporGoruntuleme form = new FrmRaporGoruntuleme(report);
             form.WindowState = FormWindowState.Maximized;
             form.Show();
+        }
+
+        private void barButtonItem32_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmKodlar form = new FrmKodlar("");
+            form.ShowDialog();
         }
     }
 }

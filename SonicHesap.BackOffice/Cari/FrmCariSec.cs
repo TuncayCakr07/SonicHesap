@@ -29,7 +29,7 @@ namespace SonicHesap.BackOffice.Cari
                 lblUyari.Visible = true;
                 gridView1.OptionsSelection.MultiSelect = true;
             }
-            gridControl1.DataSource = cariDAL.GetCariler(context);
+            gridControl1.DataSource = cariDAL.CariListele(context);
         }
 
         private void FrmCariSec_Load(object sender, EventArgs e)

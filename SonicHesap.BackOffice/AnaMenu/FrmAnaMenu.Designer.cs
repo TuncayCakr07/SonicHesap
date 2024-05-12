@@ -83,6 +83,11 @@
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemHypertextLabel1 = new DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.barStaticTarih = new DevExpress.XtraBars.BarStaticItem();
+            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemMarqueeProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar();
+            this.barEditversion = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemMarqueeProgressBar2 = new DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -102,17 +107,15 @@
             this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.barStaticTarih = new DevExpress.XtraBars.BarStaticItem();
-            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemMarqueeProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar();
-            this.barEditversion = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemMarqueeProgressBar2 = new DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar();
+            this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMarqueeProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMarqueeProgressBar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -173,10 +176,12 @@
             this.barStaticItem1,
             this.barStaticTarih,
             this.barEditItem2,
-            this.barEditversion});
+            this.barEditversion,
+            this.barButtonItem1,
+            this.barButtonItem4});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 54;
+            this.ribbonControl1.MaxItemId = 56;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.OptionsMenuMinWidth = 385;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -516,6 +521,7 @@
             this.barButtonItem32.Id = 41;
             this.barButtonItem32.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem32.ImageOptions.LargeImage")));
             this.barButtonItem32.Name = "barButtonItem32";
+            this.barButtonItem32.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem32_ItemClick);
             // 
             // barButtonItem33
             // 
@@ -589,6 +595,36 @@
             this.barStaticItem1.Id = 50;
             this.barStaticItem1.Name = "barStaticItem1";
             // 
+            // barStaticTarih
+            // 
+            this.barStaticTarih.Caption = "barStaticItem2";
+            this.barStaticTarih.Id = 51;
+            this.barStaticTarih.Name = "barStaticTarih";
+            // 
+            // barEditItem2
+            // 
+            this.barEditItem2.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barEditItem2.Caption = "barEditItem2";
+            this.barEditItem2.Edit = this.repositoryItemMarqueeProgressBar1;
+            this.barEditItem2.Id = 52;
+            this.barEditItem2.Name = "barEditItem2";
+            // 
+            // repositoryItemMarqueeProgressBar1
+            // 
+            this.repositoryItemMarqueeProgressBar1.Name = "repositoryItemMarqueeProgressBar1";
+            // 
+            // barEditversion
+            // 
+            this.barEditversion.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barEditversion.Caption = "barEditItem3";
+            this.barEditversion.Edit = this.repositoryItemMarqueeProgressBar2;
+            this.barEditversion.Id = 53;
+            this.barEditversion.Name = "barEditversion";
+            // 
+            // repositoryItemMarqueeProgressBar2
+            // 
+            this.repositoryItemMarqueeProgressBar2.Name = "repositoryItemMarqueeProgressBar2";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -656,7 +692,8 @@
             this.ribbonPageGroup7,
             this.ribbonPageGroup8,
             this.ribbonPageGroup9,
-            this.ribbonPageGroup10});
+            this.ribbonPageGroup10,
+            this.ribbonPageGroup15});
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "Fatura Ve Fişler";
             // 
@@ -744,35 +781,29 @@
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
-            // barStaticTarih
+            // ribbonPageGroup15
             // 
-            this.barStaticTarih.Caption = "barStaticItem2";
-            this.barStaticTarih.Id = 51;
-            this.barStaticTarih.Name = "barStaticTarih";
+            this.ribbonPageGroup15.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup15.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup15.Name = "ribbonPageGroup15";
+            this.ribbonPageGroup15.Text = "Siparişler";
             // 
-            // barEditItem2
+            // barButtonItem1
             // 
-            this.barEditItem2.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barEditItem2.Caption = "barEditItem2";
-            this.barEditItem2.Edit = this.repositoryItemMarqueeProgressBar1;
-            this.barEditItem2.Id = 52;
-            this.barEditItem2.Name = "barEditItem2";
+            this.barButtonItem1.Caption = "Sipariş Fişi(Alınan)";
+            this.barButtonItem1.Id = 54;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
             // 
-            // repositoryItemMarqueeProgressBar1
+            // barButtonItem4
             // 
-            this.repositoryItemMarqueeProgressBar1.Name = "repositoryItemMarqueeProgressBar1";
-            // 
-            // barEditversion
-            // 
-            this.barEditversion.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barEditversion.Caption = "barEditItem3";
-            this.barEditversion.Edit = this.repositoryItemMarqueeProgressBar2;
-            this.barEditversion.Id = 53;
-            this.barEditversion.Name = "barEditversion";
-            // 
-            // repositoryItemMarqueeProgressBar2
-            // 
-            this.repositoryItemMarqueeProgressBar2.Name = "repositoryItemMarqueeProgressBar2";
+            this.barButtonItem4.Caption = "Sipariş Fişi(Verilen)";
+            this.barButtonItem4.Id = 55;
+            this.barButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.FisIslem_Click);
             // 
             // FrmAnaMenu
             // 
@@ -792,9 +823,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMarqueeProgressBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMarqueeProgressBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -879,6 +910,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar repositoryItemMarqueeProgressBar1;
         private DevExpress.XtraBars.BarEditItem barEditversion;
         private DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar repositoryItemMarqueeProgressBar2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup15;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using SonicHesap.Entities.Mapping;
+using SonicHesap.Entities.Migrations;
 using SonicHesap.Entities.Tables;
 using SonicHesap.Entities.Tools;
 using System;
@@ -14,7 +15,7 @@ namespace SonicHesap.Entities.Context
     {
         public SonicHesapContext() : base("SonicHesapContext") 
         {
-            
+            Database.SetInitializer<SonicHesapContext>(new MigrateDatabaseToLatestVersion<SonicHesapContext,Configuration>());
         }
         public DbSet<Stok> Stoklar { get; set; }
         public DbSet<Cari> Cariler { get; set; }
@@ -34,6 +35,8 @@ namespace SonicHesap.Entities.Context
         public DbSet<EFResource> EFResources { get; set; }
         public DbSet<Kullanici> Kullanicilar { get; set; }
         public DbSet<KullaniciRol> KullaniciRolleri { get; set; }
+        public DbSet<Kod> Kodlar { get; set; }
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -54,6 +57,7 @@ namespace SonicHesap.Entities.Context
             modelBuilder.Configurations.Add(new HizliSatisGrupMap());
             modelBuilder.Configurations.Add(new KullaniciMap());
             modelBuilder.Configurations.Add(new KullaniciRolMap());
+            modelBuilder.Configurations.Add(new KodMap());
         }
     }
 }
