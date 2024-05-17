@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v23.1" />
     <Reference Include="DevExpress.Data.Desktop.v23.1" />
@@ -47,6 +50,7 @@
     <Reference Include="DevExpress.XtraLayout.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraWizard.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -71,6 +75,18 @@
     </Compile>
     <Compile Include="FrmBaglantiAyarlari.Designer.cs">
       <DependentUpon>FrmBaglantiAyarlari.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDevir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDevir.Designer.cs">
+      <DependentUpon>FrmDevir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDonemSec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDonemSec.Designer.cs">
+      <DependentUpon>FrmDonemSec.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmKullaniciGiris.cs">
       <SubType>Form</SubType>
@@ -101,6 +117,12 @@
     <EmbeddedResource Include="FrmBaglantiAyarlari.resx">
       <DependentUpon>FrmBaglantiAyarlari.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDevir.resx">
+      <DependentUpon>FrmDevir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDonemSec.resx">
+      <DependentUpon>FrmDonemSec.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmKullaniciGiris.resx">
       <DependentUpon>FrmKullaniciGiris.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +146,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.Kullanici.datasource" />
     <None Include="Properties\DataSources\SonicHesap.Entities.Tables.KullaniciRol.datasource" />

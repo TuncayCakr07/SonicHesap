@@ -17,6 +17,10 @@ namespace SonicHesap.Entities.Context
         {
             Database.SetInitializer<SonicHesapContext>(new MigrateDatabaseToLatestVersion<SonicHesapContext,Configuration>());
         }
+        public SonicHesapContext(string connString):base(connString) 
+        {
+            Database.SetInitializer<SonicHesapContext>(new MigrateDatabaseToLatestVersion<SonicHesapContext, Configuration>());
+        }
         public DbSet<Stok> Stoklar { get; set; }
         public DbSet<Cari> Cariler { get; set; }
         public DbSet<Fis> fisler { get; set; }

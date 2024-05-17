@@ -60,5 +60,11 @@ namespace SonicHesap.Admin
                 Guncelle();
             }
         }
+
+        private void btnAra_Click(object sender, EventArgs e)
+        {
+            FrmDevir form=new FrmDevir();
+            form.ShowDialog();
+        }
     }
 }

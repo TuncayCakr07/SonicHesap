@@ -94,6 +94,7 @@
             this.btnAra.Size = new System.Drawing.Size(111, 53);
             this.btnAra.TabIndex = 2;
             this.btnAra.Text = "Ara";
+            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
             // 
             // ımageList1
             // 
