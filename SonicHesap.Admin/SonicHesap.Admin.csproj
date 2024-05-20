@@ -70,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAdminMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAdminMenu.Designer.cs">
+      <DependentUpon>FrmAdminMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBaglantiAyarlari.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAdminMenu.resx">
+      <DependentUpon>FrmAdminMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmBaglantiAyarlari.resx">
       <DependentUpon>FrmBaglantiAyarlari.cs</DependentUpon>
     </EmbeddedResource>

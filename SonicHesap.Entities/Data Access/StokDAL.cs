@@ -1,6 +1,7 @@
 ﻿using SonicHesap.Entities.Context;
 using SonicHesap.Entities.Repositories;
 using SonicHesap.Entities.Tables;
+using SonicHesap.Entities.Tables.OtherTables;
 using SonicHesap.Entities.Validations;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,13 @@ using System.Threading.Tasks;
 
 namespace SonicHesap.Entities.Data_Access
 {
-    public class StokDAL:EntityRepositoryBase<SonicHesapContext,Stok,StokValidator>
+    public class StokDAL : EntityRepositoryBase<SonicHesapContext, Stok, StokValidator>
     {
         public object StokListele(SonicHesapContext context)
         {
-            var table = context.Stoklar.GroupJoin( context.StokHareketleri,c=>c.Id,c=>c.StokId,
-                (Stoklar,StokHareketleri) => 
-                
+            var table = context.Stoklar.GroupJoin(context.StokHareketleri, c => c.Id, c => c.StokId,
+                (Stoklar, StokHareketleri) =>
+
                 new
                 {
                     Stoklar.Id,
@@ -54,7 +55,18 @@ namespace SonicHesap.Entities.Data_Access
                     MevcutStok = (StokHareketleri.Where(c => c.Siparis == false && c.Hareket == "Stok Giriş").Sum(c => c.Miktar) ?? 0) -
                                  (StokHareketleri.Where(c => c.Siparis == false && c.Hareket == "Stok Çıkış").Sum(c => c.Miktar) ?? 0),
                 }).ToList();
-            return table; 
+            return table;
+        }
+        public StokBakiye StokBakiyesi(SonicHesapContext context, int stokId)
+        {
+            return new StokBakiye
+            {
+                StokId = stokId,
+                StokGiris = context.StokHareketleri.Where(c => c.Siparis == false && c.Hareket == "Stok Giriş").Sum(c => c.Miktar) ?? 0,
+                StokCikis = context.StokHareketleri.Where(c => c.Siparis == false && c.Hareket == "Stok Çıkış").Sum(c => c.Miktar) ?? 0,
+                MevcutStok= (context.StokHareketleri.Where(c => c.Siparis == false && c.Hareket == "Stok Giriş").Sum(c => c.Miktar) ?? 0) -
+                                 (context.StokHareketleri.Where(c => c.Siparis == false && c.Hareket == "Stok Çıkış").Sum(c => c.Miktar) ?? 0),
+            };
         }
     }
 }

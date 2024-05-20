@@ -301,7 +301,7 @@ namespace SonicHesap.BackOffice.Fis
                     fisOdeme = _fisEntity.Clone();
                     fisOdeme.FisTuru = "Fiş Ödemesi";
                     fisOdeme.Id = -1;
-                    fisOdeme.FisKodu = kodOlustur.YeniFisOdemeKodu();
+                    fisOdeme.FisKodu = CodeTool.YeniFisOdemeKodu();
                     fisOdeme.FisBaglantiKodu = _fisEntity.FisKodu;
                 }
                 else

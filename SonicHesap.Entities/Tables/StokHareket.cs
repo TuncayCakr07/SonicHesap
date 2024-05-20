@@ -9,6 +9,23 @@ namespace SonicHesap.Entities.Tables
 {
     public class StokHareket : IEntity
     {
+        public StokHareket Clone() 
+        {
+            StokHareket hareket = new StokHareket();
+            hareket.FisKodu = FisKodu;
+            hareket.Hareket = Hareket;  
+            hareket.StokId = StokId;
+            hareket.Miktar=Miktar;
+            hareket.Kdv=Kdv;
+            hareket.BirimFiyati=BirimFiyati;
+            hareket.IndirimOrani=IndirimOrani;
+            hareket.DepoId=DepoId;
+            hareket.SeriNo=SeriNo;
+            hareket.Tarih=Tarih;
+            hareket.Aciklama=Aciklama;
+            hareket.Siparis=Siparis;
+            return hareket;
+        }
         public int Id { get; set; }
         public string FisKodu { get; set; }
         public string Hareket { get; set; }

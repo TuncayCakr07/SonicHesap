@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDevir));
             this.wizardControl1 = new DevExpress.XtraWizard.WizardControl();
             this.welcomeWizardPage1 = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.wizardPage1 = new DevExpress.XtraWizard.WizardPage();
@@ -80,6 +82,7 @@
             this.toggleDepoAktar = new DevExpress.XtraEditors.ToggleSwitch();
             this.toggleKasaAktar = new DevExpress.XtraEditors.ToggleSwitch();
             this.toggleStokAktar = new DevExpress.XtraEditors.ToggleSwitch();
+            this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).BeginInit();
             this.wizardControl1.SuspendLayout();
             this.wizardPage1.SuspendLayout();
@@ -117,6 +120,7 @@
             this.wizardControl1.Controls.Add(this.wizardPage2);
             this.wizardControl1.Controls.Add(this.wizardPage3);
             this.wizardControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wizardControl1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("wizardControl1.ImageOptions.Image")));
             this.wizardControl1.Name = "wizardControl1";
             this.wizardControl1.Pages.AddRange(new DevExpress.XtraWizard.BaseWizardPage[] {
             this.welcomeWizardPage1,
@@ -125,15 +129,17 @@
             this.wizardPage3,
             this.completionWizardPage1});
             this.wizardControl1.Size = new System.Drawing.Size(1057, 676);
-            this.wizardControl1.Text = "";
+            this.wizardControl1.Text = "SonicHesap Devir Sihirbazı";
             this.wizardControl1.WizardStyle = DevExpress.XtraWizard.WizardStyle.WizardAero;
             this.wizardControl1.SelectedPageChanging += new DevExpress.XtraWizard.WizardPageChangingEventHandler(this.wizardControl1_SelectedPageChanging);
             this.wizardControl1.FinishClick += new System.ComponentModel.CancelEventHandler(this.wizardControl1_FinishClick);
             // 
             // welcomeWizardPage1
             // 
+            this.welcomeWizardPage1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.welcomeWizardPage1.Name = "welcomeWizardPage1";
             this.welcomeWizardPage1.Size = new System.Drawing.Size(983, 465);
+            this.welcomeWizardPage1.Text = "SonicHesap Devir Sihirbazına Hoşgeldiniz..";
             // 
             // wizardPage1
             // 
@@ -154,6 +160,7 @@
             // 
             this.completionWizardPage1.Name = "completionWizardPage1";
             this.completionWizardPage1.Size = new System.Drawing.Size(983, 465);
+            this.completionWizardPage1.Text = "Devir İşleminiz Tamamlanmıştır.";
             // 
             // wizardPage2
             // 
@@ -505,7 +512,7 @@
             this.toggleStokGirisCikisAktar.Properties.Appearance.Options.UseFont = true;
             this.toggleStokGirisCikisAktar.Properties.OffText = "Stok Giriş Ve Çıkışları Aktarma";
             this.toggleStokGirisCikisAktar.Properties.OnText = "Sadece Mevcut Stok Miktarını Aktar";
-            this.toggleStokGirisCikisAktar.Size = new System.Drawing.Size(299, 24);
+            this.toggleStokGirisCikisAktar.Size = new System.Drawing.Size(406, 24);
             this.toggleStokGirisCikisAktar.TabIndex = 0;
             // 
             // toggleHizliSatisAktar
@@ -671,6 +678,13 @@
             this.toggleStokAktar.TabIndex = 0;
             this.toggleStokAktar.Toggled += new System.EventHandler(this.toggleStokAktar_Toggled);
             // 
+            // ımageList1
+            // 
+            this.ımageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ımageList1.ImageStream")));
+            this.ımageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.ımageList1.Images.SetKeyName(0, "data_green.png");
+            this.ımageList1.Images.SetKeyName(1, "server_to_client.png");
+            // 
             // FrmDevir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -768,5 +782,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.ToggleSwitch toggleKullaniciAktar;
         private DevExpress.XtraEditors.ToggleSwitch toggleCariAktar;
+        private System.Windows.Forms.ImageList ımageList1;
     }
 }

@@ -17,7 +17,7 @@ namespace SonicHesap.Admin
     public partial class FrmBaglantiAyarlari : DevExpress.XtraEditors.XtraForm
     {
         SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder();
-        bool kaydedildi=false;
+        public bool kaydedildi=false;
         public FrmBaglantiAyarlari()
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace SonicHesap.Admin
         private void BaglantiCumleOlustur()
         {
             connectionStringBuilder.DataSource = txtServer.Text;
-            connectionStringBuilder.InitialCatalog = txtDBAdi.Text;
+            connectionStringBuilder.InitialCatalog = "master";
             if (chkWindows.Checked)
             {
                 connectionStringBuilder.IntegratedSecurity = true;
@@ -74,24 +74,8 @@ namespace SonicHesap.Admin
             connectionStringBuilder.InitialCatalog = "master";
             if (ConnectionTool.CheckConnection(connectionStringBuilder.ConnectionString))
             {
-                connectionStringBuilder.InitialCatalog = txtDBAdi.Text;
-                MessageBox.Show("Seçtiğiniz Server'da Belirttiğiniz Database Yoksa Bu Mesajdan Sonra Oluşturulacaktır.\n Bu İşlem Uzun Sürebilir..","Veritabanı Kontrol Uyarısı!",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 SettingsTool.AyarDegistir(SettingsTool.Ayarlar.DatabaseAyarlari_BaglantiCumlesi, connectionStringBuilder.ConnectionString);
                 SettingsTool.Save();
-                using (var context = new SonicHesapContext())
-                {
-                    context.Database.CreateIfNotExists();
-                    if (!context.Kullanicilar.Any(c => c.KullaniciAdi == "Yönetici"))
-                    {
-                        context.Kullanicilar.Add(new Entities.Tables.Kullanici
-                        {
-                            KullaniciAdi = "Yönetici",
-                            Parola = "1234",
-
-                        });
-                        context.SaveChanges();
-                    }
-                }
 
                 kaydedildi = true;
                 MessageBox.Show("Veritabanı Bağlantısı Başarıyla Sağlandı", "Veritabanı Bağlantısı Uyarısı!", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -82,7 +82,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(167, 326);
+            this.pictureBox1.Size = new System.Drawing.Size(167, 314);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
@@ -109,7 +109,7 @@
             this.grpMenu.Controls.Add(this.btnGiris);
             this.grpMenu.Controls.Add(this.btnKapat);
             this.grpMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grpMenu.Location = new System.Drawing.Point(167, 237);
+            this.grpMenu.Location = new System.Drawing.Point(167, 225);
             this.grpMenu.Name = "grpMenu";
             this.grpMenu.Size = new System.Drawing.Size(439, 89);
             this.grpMenu.TabIndex = 14;
@@ -161,7 +161,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 326);
+            this.ClientSize = new System.Drawing.Size(606, 314);
             this.Controls.Add(this.grpMenu);
             this.Controls.Add(this.lblBaslik);
             this.Controls.Add(this.pictureBox1);

@@ -77,8 +77,9 @@ namespace SonicHesap.Entities.Tools
             }
             return OnEki + SifirDizisi + Kod;
         }
-        public string YeniFisOdemeKodu()
+        public static string YeniFisOdemeKodu()
         {
+            var context=new SonicHesapContext();
             var kod = context.Kodlar.SingleOrDefault(c => c.OnEki == "FO" && c.Tablo=="Fis");
             string oneki = kod.OnEki;
             string sonDeger = kod.SonDeger.ToString();

@@ -17,7 +17,7 @@ namespace SonicHesap.Admin
     public partial class FrmKullaniciGiris : DevExpress.XtraEditors.XtraForm
     {
         SonicHesapContext context;
-        private bool girisBasarili=false;
+        private bool girisBasarili = false;
         public FrmKullaniciGiris()
         {
             InitializeComponent();
@@ -62,14 +62,14 @@ namespace SonicHesap.Admin
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            if (context.Kullanicilar.Any(c=>c.KullaniciAdi==txtKullanici.Text))
+            if (context.Kullanicilar.Any(c => c.KullaniciAdi == txtKullanici.Text))
             {
                 FrmParolaHatirlat form = new FrmParolaHatirlat(txtKullanici.Text);
                 form.ShowDialog();
             }
             else
             {
-                MessageBox.Show("Bu Kullanıcı Adına Ait Kullanıcı Bulunamadı!","Kullanıcı Hatası!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Bu Kullanıcı Adına Ait Kullanıcı Bulunamadı!", "Kullanıcı Hatası!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -34,8 +34,6 @@
             this.chkSql = new DevExpress.XtraEditors.CheckButton();
             this.txtServer = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.txtDBAdi = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtKullaniciAdi = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -43,7 +41,6 @@
             this.btnTest = new DevExpress.XtraEditors.SimpleButton();
             this.btnKaydet = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtServer.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDBAdi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKullaniciAdi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtParola.Properties)).BeginInit();
             this.SuspendLayout();
@@ -104,32 +101,13 @@
             this.labelControl3.TabIndex = 16;
             this.labelControl3.Text = "Server Adı :";
             // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Options.UseTextOptions = true;
-            this.labelControl1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl1.Location = new System.Drawing.Point(12, 289);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(108, 24);
-            this.labelControl1.TabIndex = 16;
-            this.labelControl1.Text = "DB Adı:";
-            // 
-            // txtDBAdi
-            // 
-            this.txtDBAdi.Location = new System.Drawing.Point(126, 291);
-            this.txtDBAdi.Name = "txtDBAdi";
-            this.txtDBAdi.Size = new System.Drawing.Size(350, 22);
-            this.txtDBAdi.TabIndex = 17;
-            // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Options.UseTextOptions = true;
             this.labelControl2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl2.Location = new System.Drawing.Point(12, 317);
+            this.labelControl2.Location = new System.Drawing.Point(12, 286);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(108, 24);
             this.labelControl2.TabIndex = 16;
@@ -138,7 +116,7 @@
             // txtKullaniciAdi
             // 
             this.txtKullaniciAdi.Enabled = false;
-            this.txtKullaniciAdi.Location = new System.Drawing.Point(126, 319);
+            this.txtKullaniciAdi.Location = new System.Drawing.Point(126, 288);
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
             this.txtKullaniciAdi.Size = new System.Drawing.Size(350, 22);
             this.txtKullaniciAdi.TabIndex = 17;
@@ -149,7 +127,7 @@
             this.labelControl4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl4.Location = new System.Drawing.Point(12, 345);
+            this.labelControl4.Location = new System.Drawing.Point(12, 314);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(108, 24);
             this.labelControl4.TabIndex = 16;
@@ -158,14 +136,14 @@
             // txtParola
             // 
             this.txtParola.Enabled = false;
-            this.txtParola.Location = new System.Drawing.Point(126, 347);
+            this.txtParola.Location = new System.Drawing.Point(126, 316);
             this.txtParola.Name = "txtParola";
             this.txtParola.Size = new System.Drawing.Size(350, 22);
             this.txtParola.TabIndex = 17;
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(12, 375);
+            this.btnTest.Location = new System.Drawing.Point(12, 344);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(231, 64);
             this.btnTest.TabIndex = 18;
@@ -174,7 +152,7 @@
             // 
             // btnKaydet
             // 
-            this.btnKaydet.Location = new System.Drawing.Point(249, 375);
+            this.btnKaydet.Location = new System.Drawing.Point(249, 344);
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(231, 64);
             this.btnKaydet.TabIndex = 18;
@@ -191,10 +169,8 @@
             this.Controls.Add(this.txtParola);
             this.Controls.Add(this.txtKullaniciAdi);
             this.Controls.Add(this.labelControl4);
-            this.Controls.Add(this.txtDBAdi);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.txtServer);
-            this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.chkSql);
             this.Controls.Add(this.chkWindows);
@@ -206,7 +182,6 @@
             this.Text = "Bağlantı Ayarları";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBaglantiAyarlari_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.txtServer.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDBAdi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKullaniciAdi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtParola.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -220,8 +195,6 @@
         private DevExpress.XtraEditors.CheckButton chkSql;
         private DevExpress.XtraEditors.TextEdit txtServer;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit txtDBAdi;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtKullaniciAdi;
         private DevExpress.XtraEditors.LabelControl labelControl4;
