@@ -54,3 +54,6 @@ SonicHesap is an Accounting and Quick Sales Application developed using C# and m
 
 ### Remote Server Updates and Version Control
 - Version control and update processes at each application login.
+
+![1716243579372](https://github.com/user-attachments/assets/e22c7ad7-4465-47d9-843c-a2b73b25e15f)
+
